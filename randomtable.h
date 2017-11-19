@@ -11,11 +11,15 @@ class RandomTable
     QList<TableEntry> _possibleEntries;
     uint _seed;
 
+
 public:
     RandomTable();
-    void addEntry(TableEntry entry);
+    void addEntry(QString entry, int weight = 1);
     TableEntry rollTable();
     QString getRollTableEntry();
+private:
+
+    void _addEntry(TableEntry entry);
 };
 
 #endif // RANDOMTABLE_H

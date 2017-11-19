@@ -12,7 +12,7 @@ public:
     int randomNumber(int min, int max);
     int roll(int number, int sides, int mod);
 
-    QString generateRoom(int dungeonLevel);
+    QString generateGeneralRoom(int dungeonLevel);
 
     // 5e dmg
     QString doorType();

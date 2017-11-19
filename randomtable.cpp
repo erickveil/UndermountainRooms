@@ -5,9 +5,14 @@ RandomTable::RandomTable()
 
 }
 
-void RandomTable::addEntry(TableEntry entry)
+void RandomTable::_addEntry(TableEntry entry)
 {
     _possibleEntries.append(entry);
+}
+
+void RandomTable::addEntry(QString entry, int weight)
+{
+    _possibleEntries.append(TableEntry(entry, weight));
 }
 
 TableEntry RandomTable::rollTable()
