@@ -12,7 +12,8 @@ void RandomTable::_addEntry(TableEntry entry)
 
 void RandomTable::addEntry(QString entry, int weight)
 {
-    _possibleEntries.append(TableEntry(entry, weight));
+    TableEntry record(entry, weight);
+    _possibleEntries.append(record);
 }
 
 TableEntry RandomTable::rollTable()
@@ -29,7 +30,7 @@ TableEntry RandomTable::rollTable()
     // select from table
     int min = 0;
     int max = fullTable.size();
-    int index = qrand() % ((max + 1) - min) + min;
+    int index = (qrand() % ((max) - min) + min);
 
     return fullTable[index];
 }

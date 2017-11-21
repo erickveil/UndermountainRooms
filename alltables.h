@@ -68,9 +68,10 @@ public:
 
     // monster tables
 
-    QString generateInhabitants(int dungeionLevel);
+    // TODO: Left off at Shadow Dragon
+    QString generateInhabitants(int dungionLevel);
 
-    QString beastialFoeUnderdark(int dungeonLevel);
+    QString monsterousFoe(int dungeonLevel);
     QString intellegentFoeUnderdark(int dungeonLevel);
 
     /*
@@ -79,6 +80,28 @@ public:
     QString guardianFoeUnderdark(int dungeonLevel);
     QString summonedFoe(int dungeonLevel);
     */
+
+    QString airFoe(int dungeonLevel);
+    QString bossFoeAmphibius(int dungeonLevel);
+    QString celestialFoe(int dungeonLevel);
+    QString animatedFoe(int dungeonLevel);
+    QString fireFoe(int dungeonLevel);
+    QString hauntingFoe(int dungeonLevel);
+    QString bossFoeUnderdark(int dungeonLevel);
+    QString guardianFoe(int dungeonLevel);
+    QString plantFoe(int dungeonLevel);
+    QString goblinoidFoe(int dungeonLevel);
+    QString fiendFoe(int dungeonLevel);
+    QString sylvanFoe(int dungeonLevel);
+    QString undeadFoe(int dungeonLevel);
+    QString giantFoe(int dungeonLevel);
+    QString undeadBoss(int dungeonLevel);
+    QString dinosaurFoe(int dungeonLevel);
+    QString waterFoe(int dungeonLevel);
+    QString urbanFoe(int dungeonLevel);
+    QString dragonFoe(int dungeonLevel);
+    QString shadowFoe(int dungeonLevel);
+
 
     QString beastActivity();
     QString intellegentActivity();

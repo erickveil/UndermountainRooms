@@ -7,7 +7,7 @@ AllTables::AllTables()
 
 int AllTables::randomNumber(int min, int max)
 {
-    return qrand() % ((max + 1) - min) + min;
+    return qrand() % (max - min) + min;
 }
 
 int AllTables::roll(int number, int sides, int mod = 0)
@@ -29,14 +29,15 @@ QString AllTables::generateGeneralRoom(int dungeonLevel)
             + doorType() + ".\n";
 
     bool hasTrap = (roll(1,8) == 1);
-    if (hasTrap) {
-        description += "This room is trapped by " + generateTrap() + ".\n";
+    //if (hasTrap) {
+    if (true) {
+        QString trap = generateTrap();
+        description += "This room is trapped by " + trap + ".\n";
     }
 
     bool hasFoes = (roll(1,6) <= 2);
     if (hasFoes) {
-        description + "This room is occupied by "
-                + generateInhabitants(dungeonLevel) + ".\n";
+        description += "This room is occupied.";
     }
 
     return description;
@@ -109,7 +110,7 @@ QString AllTables::generalDungeonRoomType()
     table.addEntry("Smithy", 2);
     table.addEntry("Stable");
     table.addEntry("Storage Room", 2);
-    table.addEntry("String Room or Vault", 2);
+    table.addEntry("Storage Room or Vault", 2);
     table.addEntry("Study", 2);
     table.addEntry("Temple", 3);
     table.addEntry("Throne Room", 2);
@@ -129,6 +130,7 @@ QString AllTables::generateTrap()
     QString description;
     description = trapEffects() + " triggered by " + trapTrigger()
             + ". The trap severity is " + trapSeverity();
+    return description;
 
 }
 
@@ -141,7 +143,7 @@ QString AllTables::trapTrigger()
     table.addEntry("Touched (doorknob, statue)");
     table.addEntry("Opened (door, chest)");
     table.addEntry("Looked at (mural, arcane symbol)");
-    table.addEntry("Moved (car, stone block)");
+    table.addEntry("Moved (cart, stone block)");
 
     return table.getRollTableEntry();
 }
@@ -206,6 +208,9 @@ QString AllTables::trapEffects()
                    4);
     table.addEntry("Steel or stone jaws restrain a character", 3);
     table.addEntry("Stone block smashes across hallway", 3);
+
+    // TODO: What kind of symbol
+
     table.addEntry("Symbol spell", 3);
     table.addEntry("Walls slide together", 3);
 
@@ -214,19 +219,364 @@ QString AllTables::trapEffects()
 
 }
 
-QString AllTables::generateInhabitants(int dungeionLevel)
+QString AllTables::generateInhabitants(int dungionLevel)
 {
 
 }
 
-QString AllTables::beastialFoeUnderdark(int dungeonLevel)
+QString AllTables::monsterousFoe(int dungeonLevel)
 {
+    RandomTable table;
+
+    // 1/2
+    table.addEntry("Cockatrice");
+    table.addEntry("Darkmantle");
+
+    // 2
+    table.addEntry("Ankheg");
+    table.addEntry("Carrion Crawler");
+
+    // 3
+    table.addEntry("Basilisk");
+    table.addEntry("Displacer Beast");
+    table.addEntry("Doppleganger");
+
+    // 4
+    table.addEntry("Chuul");
+
+    // 5
+    table.addEntry("Bulette");
+
+    // 6
+    table.addEntry("Chimera");
+
+    // 8
+    table.addEntry("Cloaker");
+
+    // 11
+    table.addEntry("Behir");
+
+    return table.getRollTableEntry();
 
 }
 
 QString AllTables::intellegentFoeUnderdark(int dungeonLevel)
 {
+    RandomTable table;
 
+    return table.getRollTableEntry();
+
+}
+
+QString AllTables::airFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 1/4
+    table.addEntry("Aarakocra");
+    table.addEntry("Pteranodon");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::bossFoeAmphibius(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 10
+    table.addEntry("Aboleth");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::celestialFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 4
+    table.addEntry("Couatl");
+
+    // 10
+    table.addEntry("Deva");
+
+    // 16
+    table.addEntry("Planetar");
+
+    // 21
+    table.addEntry("Solar");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::animatedFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 1/4
+    table.addEntry("Flying Sword");
+
+    // 1
+    table.addEntry("Animated Armor");
+
+    // 2
+    table.addEntry("Rug of Smothering");
+
+    return table.getRollTableEntry();
+
+}
+
+QString AllTables::fireFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 2
+    table.addEntry("Azer");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::hauntingFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 4
+    table.addEntry("Banshee");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::bossFoeUnderdark(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 3
+    table.addEntry("Bugbear Chief");
+
+    // 13
+    table.addEntry("Beholder");
+
+    // 14
+    table.addEntry("Death Tyrant Beholder");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::guardianFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 3
+    table.addEntry("Spectator Beholder");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::plantFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 1/8
+    table.addEntry("Twig Blight");
+    // 1/4
+    table.addEntry("Needle Blight");
+    // 1/2
+    table.addEntry("Vine Blight");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::goblinoidFoe(int dungeonLevel)
+{
+    RandomTable table;
+    // 1/4
+    table.addEntry("Bullywug");
+
+    // 3
+    table.addEntry("Doppleganger");
+
+    // 1
+    table.addEntry("Bugbear");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::fiendFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 0
+    table.addEntry("Lemure Devil");
+
+    // 1/8
+    table.addEntry("Manes Demon");
+
+    // 1/4
+    table.addEntry("Dretch Demon");
+
+    // 1
+    table.addEntry("Quasit Demon");
+    table.addEntry("Imp Devil");
+
+    // 2
+    table.addEntry("Spined Devil");
+
+    // 3
+    table.addEntry("Bearded Devil");
+
+    // 4
+    table.addEntry("Shadow Demon");
+
+    // 5
+    table.addEntry("Cambion");
+    table.addEntry("Balgura Demon");
+    table.addEntry("Barbed Devil");
+
+    // 6
+    table.addEntry("Chasme Demon");
+    table.addEntry("Vrock Demon");
+
+    // 8
+    table.addEntry("Hezrou Demon");
+    table.addEntry("Chain Devil");
+
+    // 9
+    table.addEntry("Glabrezu Demon");
+    table.addEntry("Bone Devil");
+
+    // 10
+    table.addEntry("Yochlol Demon");
+
+    // 11
+    table.addEntry("Horned Devil");
+
+    // 12
+    table.addEntry("Erinyes Devil");
+
+    // 13
+    table.addEntry("Nafeshneee Demon");
+
+    // 14
+    table.addEntry("Ice Devil");
+
+    // 16
+    table.addEntry("Merilith Demon");
+
+    // 17
+    table.addEntry("Goristro Demon");
+
+    // 19
+    table.addEntry("Balor Demon");
+
+    // 20
+    table.addEntry("Pit Fiend");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::sylvanFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 2
+    table.addEntry("Centaur");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::undeadFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 0
+    table.addEntry("Crawling Claw");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::giantFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 6
+    table.addEntry("Cyclops");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::undeadBoss(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 17
+    table.addEntry("Death Knight");
+    table.addEntry("Dracolich");
+
+    // 18
+    table.addEntry("Demilich");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::dinosaurFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 2
+    table.addEntry("Allosaurus");
+
+    // 3
+    table.addEntry("Ankylosaurus");
+
+    // 5
+    table.addEntry("Triceratops");
+
+    // 8
+    table.addEntry("Tyrannosarus Rex");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::waterFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 2
+    table.addEntry("Plesiosaurus");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::urbanFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 3
+    table.addEntry("Doppleganger");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::dragonFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 13
+    table.addEntry("Shadow Dragon");
+
+    // 17
+    table.addEntry("Dracolich");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::shadowFoe(int dungeonLevel)
+{
+    RandomTable table;
+
+    // 13
+    table.addEntry("Shadow Dragon");
+
+    return table.getRollTableEntry();
 }
 
 QString AllTables::beastActivity()

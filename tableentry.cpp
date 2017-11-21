@@ -17,8 +17,8 @@ TableEntry::TableEntry()
 
 TableEntry::TableEntry(QString result, int weight=1)
 {
-    result = result;
-    weight = weight;
+    _result = result;
+    _weight = weight;
 
 }
 
