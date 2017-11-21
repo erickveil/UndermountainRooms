@@ -28,9 +28,15 @@ QString AllTables::generateGeneralRoom(int dungeonLevel)
             + "All of it's doors are "
             + doorType() + ".\n";
 
+    bool isRepurposed = (roll(1,4) == 1);
+    if (isRepurposed) {
+        description += "This room used to be "
+                + generalDungeonRoomType()
+                + " but it was repurposed.\n";
+    }
+
     bool hasTrap = (roll(1,8) == 1);
-    //if (hasTrap) {
-    if (true) {
+    if (hasTrap) {
         QString trap = generateTrap();
         description += "This room is trapped by " + trap + ".\n";
     }
@@ -125,11 +131,55 @@ QString AllTables::generalDungeonRoomType()
     return table.getRollTableEntry();
 }
 
+QString AllTables::deathTrapRoomType()
+{
+    RandomTable table;
+
+    table.addEntry("Antechamber or waiting room for spectators");
+    table.addEntry("Guardroom fortified against intruders", 6);
+    table.addEntry("Vault for holding important treasures, accessible only by "
+                   "locked or secret door.", 3);
+    table.addEntry("Room containing a puzzle that must be solved to bypass a "
+                   "trap or monster", 3);
+    table.addEntry("Trap designed to kill or capture creatures", 5);
+    table.addEntry("Observation room, allowing guards or spectators to observe "
+                   "creatures moving through the dungeon");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::lairRoomType()
+{
+    RandomTable table;
+
+    table.addEntry("Armory stocked with weapons and armor");
+    table.addEntry("Audience chamber, used to receive guests");
+    table.addEntry("Banquet room for important celebrations");
+    table.addEntry("Barracks where the lair's defenders are quartered");
+    table.addEntry("Bedroom for use by leaders");
+    table.addEntry("Chapel where the lair's inhabitants worship");
+    table.addEntry("Cistern or well for drinking water");
+    table.addEntry("Guardroom for the defense of the lair", 2);
+    table.addEntry("Kennel for pets or guard beasts");
+    table.addEntry("Kitchen for food storage and preparation");
+    table.addEntry("Pen or prison where captives are held");
+    table.addEntry("Storage, mostly nonperishable goods", 2);
+    table.addEntry("Throne room where the lair's leaders hold court");
+    table.addEntry("Torture chamber");
+    table.addEntry("Training and exercise room");
+    table.addEntry("Trophy room or museum");
+    table.addEntry("Latrine or bath");
+    table.addEntry("Workshop for the construction of weapons, armor, tools, and "
+                   "other goods");
+
+    return table.getRollTableEntry();
+}
+
 QString AllTables::generateTrap()
 {
     QString description;
-    description = trapEffects() + " triggered by " + trapTrigger()
-            + ". The trap severity is " + trapSeverity();
+    description = trapEffects() + ",\n triggered by " + trapTrigger()
+            + ".\n The trap severity is " + trapSeverity();
     return description;
 
 }
@@ -138,12 +188,17 @@ QString AllTables::trapTrigger()
 {
     RandomTable table;
 
-    table.addEntry("Stepped on (floor, stairs)");
-    table.addEntry("Moved through (doorway, hallway)");
-    table.addEntry("Touched (doorknob, statue)");
-    table.addEntry("Opened (door, chest)");
-    table.addEntry("Looked at (mural, arcane symbol)");
-    table.addEntry("Moved (cart, stone block)");
+    table.addEntry("stepping on (floor, stairs)");
+    table.addEntry("moving through (doorway, hallway)");
+    table.addEntry("touching (doorknob, statue)");
+    table.addEntry("opening (door, chest)");
+    table.addEntry("looking at (mural, arcane symbol)");
+    table.addEntry("moving (cart, stone block)");
+    table.addEntry("tripping on wire");
+    table.addEntry("stepping on loose stone block");
+    table.addEntry("disturbing spider webs");
+    table.addEntry("breaking beam of light");
+    table.addEntry("pulling the wrong lever");
 
     return table.getRollTableEntry();
 }
@@ -170,10 +225,10 @@ QString AllTables::trapEffects()
     table.addEntry("Celing lowers slowly in locked room", 2);
     table.addEntry("Chute opens in floor", 2);
     table.addEntry("Clanging noise attracts nearby monsters", 2);
-    table.addEntry("Touching an object Disintegrate Spell", 3);
-    table.addEntry("Door or other Object is coated with contact poison", 3);
+    table.addEntry("Disintegrate Spell", 3);
+    table.addEntry("Contact Poison", 3);
     table.addEntry("Fire shoots out from a wall, floor, or object", 3);
-    table.addEntry("Touching an object triggers a flesh to stone spell", 3);
+    table.addEntry("Flesh to stone spell", 3);
     table.addEntry("Floor collapses or is an illusion", 3);
 
     RandomTable gasSubtable;
@@ -191,27 +246,116 @@ QString AllTables::trapEffects()
     table.addEntry("Huge wheeld statue rolls down corridor", 3);
     table.addEntry("Lightning bolt shoots from wall or object", 3);
     table.addEntry("Locked room floods with water or acid", 3);
-    table.addEntry("Darts shoot out of an opened chest", 3);
-    table.addEntry("A weapon, suit of armor, or rug animates and attacks when "
-                   "touched (Animated Object)", 3);
+    table.addEntry("Darts shoot out", 3);
+    table.addEntry("A weapon, suit of armor, or rug animates and attacks "
+                   "(Animated Object)", 3);
     table.addEntry("Pendulum, either bladed or weighted as a maul, swings "
                    "across the room or hall", 3);
     table.addEntry("Hidden pit opens beneath characters (25% chance that a "
                    "black pudding or gelatinous cube fills the bottom of the "
                    "pit)", 5);
-    table.addEntry("Hidden pid floods with acid of fire", 3);
-    table.addEntry("Locking pid floods with water", 3);
+    table.addEntry("Hidden pit floods with acid of fire", 3);
+    table.addEntry("Locking pit floods with water", 3);
     table.addEntry("Scything blade emerges from wall or object", 4);
     table.addEntry("Spears (possibly poisoned) spring out", 4);
     table.addEntry("Brittle stairs collapse over spikes", 3);
-    table.addEntry("Thunderwave spell knocks characters into a pit or spikes",
-                   4);
+    table.addEntry("Thunderwave spell knocks characters into a pit of spikes",
+                   2);
     table.addEntry("Steel or stone jaws restrain a character", 3);
     table.addEntry("Stone block smashes across hallway", 3);
+    table.addEntry("Blade Trap in Corridor: The trigger release flying blades "
+                   "from slots in the walls. Creatures in the passageway are "
+                   "caught in the hail of blades, which clatter loudly against "
+                   "the stone.");
+    table.addEntry("Crossbow Trap in Corridor: Trigger activate a crossbow "
+                   "trap (four attacks against random targets in the "
+                   "passage).");
+    table.addEntry("Poison Glyph Trap: Triggers a cloud of poison erupts from "
+                   "the center of the room. Before the cloud dissipates, each "
+                   "creature in the area takes poison damage (Constitution "
+                   "saving throw for half damage).");
+    table.addEntry("Necrotic Glyph Trap: Triggered is subject to a wave of "
+                   "necrotic energy (half damage on a miss).");
+    table.addEntry("Duplicate of trap previously used in this dungeon.");
+    table.addEntry("Magic Obelisk: This obelisk dates back nearly two thousand "
+                   "years but maintains its magic. The Elven runes are "
+                   "unintelligible, but a DC 10 History check reveals that "
+                   "they are millennia old. Once per day, a creature that "
+                   "touches the obelisk is overcome with a vision of elves "
+                   "doing battle with devils within a vast and ancient elven "
+                   "city. The creature must succeed on a Wisdom saving throw "
+                   "or take psychic damage from the vision. On a successful "
+                   "save, the creature gains advantage on Wisdom checks for "
+                   "24 hours.");
+    table.addEntry("Stalactite Collapse: Small flying creatures attack and "
+                   "retreat back to the ceiling (drawing attacks of "
+                   "opportunity). Any ranged or area attack aimed toward "
+                   "the ceiling has a chance of dislodging the fragile "
+                   "stalactites in this area. Whenever a character makes a "
+                   "ranged attack against a flying creature and misses, "
+                   "roll a d6. On a result of 4-6, a stalactite splinters "
+                   "and falls directly down beneath the target of the attack, "
+                   "spraying fragments in a 5-foot-radius burst. Any area "
+                   "attack that hits the ceiling brings down a hail of rock "
+                   "in a burst equal to the area of the original attack. Any "
+                   "creature in a stalactite burst makes a Dexterity saving "
+                   "throw. On a failed save, falls prone.");
+    table.addEntry("Blinding Alarm: Magical darkness that foils even "
+                   "darkvision fills the area and a loud gong sound echos "
+                   "throughout the dungeon. Only those who were in the area "
+                   "when the trap was triggered are affected by the darkness, "
+                   "while newcomers are not. Leaving the area restores sight "
+                   "but the selective darkness still hangs in the area.");
+    table.addEntry("Explosive Alchemy: The experiments in this area are "
+                   "incredibly volatile. Whenever a creature makes an attack "
+                   "that misses by 5 or more, that attacker must make a "
+                   "Dexterity saving throw. On a failed save, the attack "
+                   "disturbs the alchemical equipment and triggers an "
+                   "explosion. Any creature in the room takes fire damage "
+                   "(Dexterity saving throw for half damage).");
+    table.addEntry("Fire Trap: a sheet of flame issues forth from an object. "
+                   "The magical fire does not harm the room, but deals fire "
+                   "damage to any creature in the area (Dexterity saving "
+                   "throw for half damage). The trap resets 30 minutes after "
+                   "it is triggered.");
+    table.addEntry("Marbles spill out onto the floor. Dex save to move "
+                   "through the room without falling down.");
 
-    // TODO: What kind of symbol
+    RandomTable trapDoorContentsSubtable;
 
-    table.addEntry("Symbol spell", 3);
+    trapDoorContentsSubtable.addEntry("poisonous snakes");
+    trapDoorContentsSubtable.addEntry("poisonous spiders");
+    trapDoorContentsSubtable.addEntry("offal (attracts predators until "
+                                      "cleaned)");
+    trapDoorContentsSubtable.addEntry("acid vials");
+    trapDoorContentsSubtable.addEntry("oil vials and a stone that sparks when "
+                                      "it lands");
+    trapDoorContentsSubtable.addEntry("enough water to flood the whole room");
+    trapDoorContentsSubtable.addEntry("green slime");
+    trapDoorContentsSubtable.addEntry("gelatinous cube");
+    trapDoorContentsSubtable.addEntry("bones or rocks");
+    trapDoorContentsSubtable.addEntry("something sticky then a bunch of "
+                                      "feathers");
+    trapDoorContentsSubtable.addEntry("a bucket of blood (character leaves "
+                                      "bloody footprints that attracts hunters "
+                                      "for 1000 feet)");
+    trapDoorContentsSubtable.addEntry("nothing!?");
+
+    QString drops = trapDoorContentsSubtable.getRollTableEntry();
+    table.addEntry("Trap door in ceiling drops " + drops);
+
+    RandomTable symbolSubtable;
+    symbolSubtable.addEntry("Death");
+    symbolSubtable.addEntry("Discord");
+    symbolSubtable.addEntry("Fear");
+    symbolSubtable.addEntry("Hopelessness");
+    symbolSubtable.addEntry("Insanity");
+    symbolSubtable.addEntry("Pain");
+    symbolSubtable.addEntry("Sleep");
+    symbolSubtable.addEntry("Stunning");
+    QString symbolType = symbolSubtable.getRollTableEntry();
+
+    table.addEntry(symbolType + " Symbol spell", 3);
     table.addEntry("Walls slide together", 3);
 
     return table.getRollTableEntry();

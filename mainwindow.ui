@@ -32,6 +32,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="genTrap">
+       <property name="text">
+        <string>Generate Trap</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPlainTextEdit" name="resultArea"/>
      </item>
     </layout>

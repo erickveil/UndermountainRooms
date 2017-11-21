@@ -16,7 +16,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_genRoom_clicked()
 {
-    AllTables roller;
     QString result = roller.generateGeneralRoom(1);
+    ui->resultArea->setPlainText(result);
+}
+
+void MainWindow::on_genTrap_clicked()
+{
+    QString result = roller.generateTrap();
     ui->resultArea->setPlainText(result);
 }

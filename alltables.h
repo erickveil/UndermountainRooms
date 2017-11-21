@@ -20,8 +20,6 @@ public:
 
     /*
     QString dungeonType();
-    QString deathTrapRoomType();
-    QString lairRoomType();
     QString mazeRoomType();
     QString mineRoomType();
     QString planarGateRoomType();
@@ -31,6 +29,8 @@ public:
     QString treasureVaultRoomType();
     */
     QString generalDungeonRoomType();
+    QString deathTrapRoomType();
+    QString lairRoomType();
 
     /*
     QString currentChamberState();
