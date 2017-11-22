@@ -25,7 +25,7 @@ QString AllTables::generateGeneralRoom(int dungeonLevel)
     QString description;
     description = "This room is "
             + generalDungeonRoomType() + ".\n"
-            + "All of it's doors are "
+            + "All of its doors are "
             + doorType() + ".\n";
 
     bool isRepurposed = (roll(1,4) == 1);
@@ -49,6 +49,65 @@ QString AllTables::generateGeneralRoom(int dungeonLevel)
     return description;
 }
 
+QString AllTables::generateDeathTrapRoom(int dungeonLevel)
+{
+    QString description;
+    description = "This room is a "
+            + deathTrapRoomType() + ".\n"
+            + "All of its doors are "
+            + doorType() + ".\n";
+
+    bool isRepurposed = (roll(1,4) == 1);
+    if (isRepurposed) {
+        description += "This room used to be "
+                + generalDungeonRoomType()
+                + " but it was repurposed.\n";
+    }
+
+    bool hasTrap = (roll(1,8) <= 3);
+    if (hasTrap) {
+        QString trap = generateTrap();
+        description += "This room is trapped by " + trap + ".\n";
+    }
+
+    bool hasFoes = (roll(1,6) <= 3);
+    if (hasFoes) {
+        description += "This room is occupied.";
+    }
+
+    return description;
+}
+
+QString AllTables::generateLairRoom(int dungeonLevel)
+{
+    QString description;
+    description = "This room is a "
+            + lairRoomType() + ".\n"
+            + "All of its doors are "
+            + doorType() + ".\n";
+
+    bool isRepurposed = (roll(1,4) == 1);
+    if (isRepurposed) {
+        description += "This room used to be "
+                + generalDungeonRoomType()
+                + " but it was repurposed.\n";
+    }
+
+    bool hasTrap = (roll(1,8) <= 2);
+    if (hasTrap) {
+        QString trap = generateTrap();
+        description += "This room is trapped by " + trap + ".\n";
+    }
+
+    bool hasFoes = (roll(1,6) <= 4);
+    if (hasFoes) {
+        description += "This room is occupied.";
+    }
+
+    return description;
+
+}
+
 QString AllTables::doorType()
 {
     RandomTable table;
@@ -62,6 +121,24 @@ QString AllTables::doorType()
     table.addEntry("Portcullis, locked in place");
     table.addEntry("Secret door");
     table.addEntry("Secret door, barred or locked");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::dungeonType()
+{
+    RandomTable table;
+
+    table.addEntry("General Dungeon");
+    table.addEntry("Death Trap Dungeon");
+    table.addEntry("Lair");
+    table.addEntry("Maze");
+    table.addEntry("Mine");
+    table.addEntry("Planar Gate");
+    table.addEntry("Stronghold");
+    table.addEntry("Temple");
+    table.addEntry("Tomb");
+    table.addEntry("Treasure Vault");
 
     return table.getRollTableEntry();
 }
@@ -171,6 +248,26 @@ QString AllTables::lairRoomType()
     table.addEntry("Latrine or bath");
     table.addEntry("Workshop for the construction of weapons, armor, tools, and "
                    "other goods");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::mazeRoomType()
+{
+    RandomTable table;
+    table.addEntry("Conjuring room, used to summon creatures that guard the "
+                   "maze.");
+    table.addEntry("Guardroom for sentinesl that patrol the maze.");
+    table.addEntry("Lair for guard beasts that patrol the maze.");
+    table.addEntry("Pen or prison accessible only by secret door, used to "
+                   "hold captives condemned to the maze.");
+    table.addEntry("Shrine dedicated to a god or other entity.");
+    table.addEntry("Storage for food, as well as tools used by the maze's "
+                   "guardians to keep the complex in working order.");
+    table.addEntry("Trap to confound or kill those sent into the maze.");
+    table.addEntry("Well that provides drinking water.");
+    table.addEntry("Workshop where doors, torch sconces, and other "
+                   "furnishings are repaired and maintained.");
 
     return table.getRollTableEntry();
 }

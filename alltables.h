@@ -13,14 +13,14 @@ public:
     int roll(int number, int sides, int mod);
 
     QString generateGeneralRoom(int dungeonLevel);
+    QString generateDeathTrapRoom(int dungeonLevel);
+    QString generateLairRoom(int dungeonLevel);
 
     // 5e dmg
     QString doorType();
 
 
     /*
-    QString dungeonType();
-    QString mazeRoomType();
     QString mineRoomType();
     QString planarGateRoomType();
     QString strongholdRoomType();
@@ -28,9 +28,12 @@ public:
     QString tombRoomType();
     QString treasureVaultRoomType();
     */
+    QString dungeonType();
+
     QString generalDungeonRoomType();
     QString deathTrapRoomType();
     QString lairRoomType();
+    QString mazeRoomType();
 
     /*
     QString currentChamberState();

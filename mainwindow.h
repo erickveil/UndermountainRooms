@@ -23,6 +23,12 @@ private slots:
 
     void on_genTrap_clicked();
 
+    void on_genDeath_clicked();
+
+    void on_genLair_clicked();
+
+    void on_dunType_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

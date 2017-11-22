@@ -25,3 +25,18 @@ void MainWindow::on_genTrap_clicked()
     QString result = roller.generateTrap();
     ui->resultArea->setPlainText(result);
 }
+
+void MainWindow::on_genDeath_clicked()
+{
+    ui->resultArea->setPlainText(roller.generateDeathTrapRoom(1));
+}
+
+void MainWindow::on_genLair_clicked()
+{
+    ui->resultArea->setPlainText(roller.generateLairRoom(1));
+}
+
+void MainWindow::on_dunType_clicked()
+{
+    ui->resultArea->setPlainText(roller.dungeonType());
+}

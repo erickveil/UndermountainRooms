@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,14 +20,35 @@
       <x>9</x>
       <y>9</y>
       <width>381</width>
-      <height>281</height>
+      <height>431</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <widget class="QPushButton" name="dunType">
+       <property name="text">
+        <string>Dungeon Type</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="genRoom">
        <property name="text">
         <string>Generate Room</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="genDeath">
+       <property name="text">
+        <string>Generate Death Trap Room</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="genLair">
+       <property name="text">
+        <string>Generate Lair Room</string>
        </property>
       </widget>
      </item>
