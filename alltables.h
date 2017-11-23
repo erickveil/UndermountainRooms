@@ -2,6 +2,7 @@
 #define ALLTABLES_H
 
 #include "randomtable.h"
+#include <QDateTime>
 
 
 class AllTables
@@ -15,13 +16,15 @@ public:
     QString generateGeneralRoom(int dungeonLevel);
     QString generateDeathTrapRoom(int dungeonLevel);
     QString generateLairRoom(int dungeonLevel);
+    QString generateMineRoom(int tier);
+    QString generatePlanarGateRoom(int tier);
+    QString checkForWanderingMonsters(int tier);
 
     // 5e dmg
     QString doorType();
 
 
     /*
-    QString mineRoomType();
     QString planarGateRoomType();
     QString strongholdRoomType();
     QString templeRoomType();
@@ -34,14 +37,14 @@ public:
     QString deathTrapRoomType();
     QString lairRoomType();
     QString mazeRoomType();
+    QString mineRoomType();
+    QString planarGateRoomType();
 
-    /*
     QString currentChamberState();
-    QString chamberContents();
-    QString monsterMotivation();
+    QString chamberContents(int tier);
     QString dungeonHazards();
+    QString monsterMotivation();
     QString obstacles();
-    */
 
     QString generateTrap();
     QString trapTrigger();
@@ -60,6 +63,9 @@ public:
     QString generalFeatures();
     */
 
+    QString primaryFeature();
+    QString lighting();
+
     /*
     QString generalFurnishings();
     QString religiousFurnishings();
@@ -73,6 +79,8 @@ public:
 
     // TODO: Left off at Shadow Dragon
     QString generateInhabitants(int dungionLevel);
+
+    QString dungeonMonster(int tier);
 
     QString monsterousFoe(int dungeonLevel);
     QString intellegentFoeUnderdark(int dungeonLevel);

@@ -40,3 +40,18 @@ void MainWindow::on_dunType_clicked()
 {
     ui->resultArea->setPlainText(roller.dungeonType());
 }
+
+void MainWindow::on_genMine_clicked()
+{
+    ui->resultArea->setPlainText(roller.generateMineRoom(1));
+}
+
+void MainWindow::on_genGate_clicked()
+{
+    ui->resultArea->setPlainText(roller.generatePlanarGateRoom(1));
+}
+
+void MainWindow::on_wanderingMonster_clicked()
+{
+    ui->resultArea->setPlainText(roller.checkForWanderingMonsters(1));
+}

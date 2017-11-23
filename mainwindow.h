@@ -29,6 +29,12 @@ private slots:
 
     void on_dunType_clicked();
 
+    void on_genMine_clicked();
+
+    void on_genGate_clicked();
+
+    void on_wanderingMonster_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

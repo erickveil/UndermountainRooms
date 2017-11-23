@@ -16,11 +16,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     tableentry.cpp \
     randomtable.cpp \
-    alltables.cpp
+    alltables.cpp \
+    monsterentry.cpp \
+    monstertable.cpp
 
 HEADERS  += mainwindow.h \
     tableentry.h \
     randomtable.h \
-    alltables.h
+    alltables.h \
+    monsterentry.h \
+    monstertable.h
 
 FORMS    += mainwindow.ui

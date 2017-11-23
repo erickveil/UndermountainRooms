@@ -2,7 +2,7 @@
 
 AllTables::AllTables()
 {
-
+    qsrand(QDateTime::currentMSecsSinceEpoch());
 }
 
 int AllTables::randomNumber(int min, int max)
@@ -23,28 +23,13 @@ int AllTables::roll(int number, int sides, int mod = 0)
 QString AllTables::generateGeneralRoom(int dungeonLevel)
 {
     QString description;
-    description = "This room is "
-            + generalDungeonRoomType() + ".\n"
-            + "All of its doors are "
-            + doorType() + ".\n";
-
-    bool isRepurposed = (roll(1,4) == 1);
-    if (isRepurposed) {
-        description += "This room used to be "
-                + generalDungeonRoomType()
-                + " but it was repurposed.\n";
-    }
-
-    bool hasTrap = (roll(1,8) == 1);
-    if (hasTrap) {
-        QString trap = generateTrap();
-        description += "This room is trapped by " + trap + ".\n";
-    }
-
-    bool hasFoes = (roll(1,6) <= 2);
-    if (hasFoes) {
-        description += "This room is occupied.";
-    }
+    description = "This room is " + generalDungeonRoomType() + ".\n";
+    description += "All of its doors are " + doorType() + ".\n";
+    description += "Illumination: " + lighting() + ".\n";
+    description += "The primary feature is a " + primaryFeature() + ".\n";
+    description += "This room's state is: " + currentChamberState() + ".\n";
+    description += "This room contains: " + chamberContents(dungeonLevel)
+            + ".\n";
 
     return description;
 }
@@ -52,28 +37,13 @@ QString AllTables::generateGeneralRoom(int dungeonLevel)
 QString AllTables::generateDeathTrapRoom(int dungeonLevel)
 {
     QString description;
-    description = "This room is a "
-            + deathTrapRoomType() + ".\n"
-            + "All of its doors are "
-            + doorType() + ".\n";
-
-    bool isRepurposed = (roll(1,4) == 1);
-    if (isRepurposed) {
-        description += "This room used to be "
-                + generalDungeonRoomType()
-                + " but it was repurposed.\n";
-    }
-
-    bool hasTrap = (roll(1,8) <= 3);
-    if (hasTrap) {
-        QString trap = generateTrap();
-        description += "This room is trapped by " + trap + ".\n";
-    }
-
-    bool hasFoes = (roll(1,6) <= 3);
-    if (hasFoes) {
-        description += "This room is occupied.";
-    }
+    description = "This room is a " + deathTrapRoomType() + ".\n";
+    description += "All of its doors are " + doorType() + ".\n";
+    description += "Illumination: " + lighting() + ".\n";
+    description += "The primary feature is a " + primaryFeature() + ".\n";
+    description += "This room's state is: " + currentChamberState() + ".\n";
+    description += "This room contains: " + chamberContents(dungeonLevel)
+            + ".\n";
 
     return description;
 }
@@ -81,30 +51,55 @@ QString AllTables::generateDeathTrapRoom(int dungeonLevel)
 QString AllTables::generateLairRoom(int dungeonLevel)
 {
     QString description;
-    description = "This room is a "
-            + lairRoomType() + ".\n"
-            + "All of its doors are "
-            + doorType() + ".\n";
-
-    bool isRepurposed = (roll(1,4) == 1);
-    if (isRepurposed) {
-        description += "This room used to be "
-                + generalDungeonRoomType()
-                + " but it was repurposed.\n";
-    }
-
-    bool hasTrap = (roll(1,8) <= 2);
-    if (hasTrap) {
-        QString trap = generateTrap();
-        description += "This room is trapped by " + trap + ".\n";
-    }
-
-    bool hasFoes = (roll(1,6) <= 4);
-    if (hasFoes) {
-        description += "This room is occupied.";
-    }
+    description = "This room is a " + lairRoomType() + ".\n";
+    description += "All of its doors are " + doorType() + ".\n";
+    description += "Illumination: " + lighting() + ".\n";
+    description += "The primary feature is a " + primaryFeature() + ".\n";
+    description += "This room's state is: " + currentChamberState() + ".\n";
+    description += "This room contains: " + chamberContents(dungeonLevel)
+            + ".\n";
 
     return description;
+}
+
+QString AllTables::generateMineRoom(int tier)
+{
+    QString description;
+    description = "This room is a " + mineRoomType() + ".\n";
+    description += "All of its doors are " + doorType() + ".\n";
+    description += "Illumination: " + lighting() + ".\n";
+    description += "The primary feature is a " + primaryFeature() + ".\n";
+    description += "This room's state is: " + currentChamberState() + ".\n";
+    description += "This room contains: " + chamberContents(tier) + ".\n";
+
+    return description;
+
+}
+
+QString AllTables::generatePlanarGateRoom(int tier)
+{
+    QString description;
+    description = "This room is a " + planarGateRoomType() + ".\n";
+    description += "All of its doors are " + doorType() + ".\n";
+    description += "Illumination: " + lighting() + ".\n";
+    description += "The primary feature is a " + primaryFeature() + ".\n";
+    description += "This room's state is: " + currentChamberState() + ".\n";
+    description += "This room contains: " + chamberContents(tier) + ".\n";
+
+    return description;
+
+}
+
+QString AllTables::checkForWanderingMonsters(int tier)
+{
+    //bool isEncounter = roll(1,6) == 1;
+    bool isEncounter = true;
+    if (isEncounter) {
+        return dungeonMonster(tier);
+    }
+    else {
+        return "No monsters this time!";
+    }
 
 }
 
@@ -255,19 +250,227 @@ QString AllTables::lairRoomType()
 QString AllTables::mazeRoomType()
 {
     RandomTable table;
+
     table.addEntry("Conjuring room, used to summon creatures that guard the "
                    "maze.");
-    table.addEntry("Guardroom for sentinesl that patrol the maze.");
-    table.addEntry("Lair for guard beasts that patrol the maze.");
+    table.addEntry("Guardroom for sentinesl that patrol the maze.", 4);
+    table.addEntry("Lair for guard beasts that patrol the maze.", 4);
     table.addEntry("Pen or prison accessible only by secret door, used to "
                    "hold captives condemned to the maze.");
     table.addEntry("Shrine dedicated to a god or other entity.");
     table.addEntry("Storage for food, as well as tools used by the maze's "
-                   "guardians to keep the complex in working order.");
-    table.addEntry("Trap to confound or kill those sent into the maze.");
+                   "guardians to keep the complex in working order.", 2);
+    table.addEntry("Trap to confound or kill those sent into the maze.", 4);
     table.addEntry("Well that provides drinking water.");
     table.addEntry("Workshop where doors, torch sconces, and other "
                    "furnishings are repaired and maintained.");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::mineRoomType()
+{
+    RandomTable table;
+
+    table.addEntry("Barracks for miners", 2);
+    table.addEntry("Bedroom for a supervisor or manager");
+    table.addEntry("Chapel dedicated to a patron deity of miners, earth, or"
+                   "protection");
+    table.addEntry("Cistern providing drinking water for miners");
+    table.addEntry("Guardroom", 2);
+    table.addEntry("Kitchen used to feed workers");
+    table.addEntry("Laboratory used to conduct tests on strange nimerals "
+                   "extracted from the mine");
+    bool isDepleted = roll(1, 100) < 75;
+    QString depleted = isDepleted ? "(Depleted)" : "(Still viable)";
+    table.addEntry("Lode where metal ore is mined " + depleted, 6);
+    table.addEntry("Office used by the mine supervisor");
+    table.addEntry("Smithy for repairing damaged tools");
+    table.addEntry("Storage for tools and other equipment", 2);
+    table.addEntry("Strong room or vault used to store ore for transport to "
+                   "the surface");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::planarGateRoomType()
+{
+    RandomTable table;
+
+    table.addEntry("Decorated foyer or antechamber", 3);
+    table.addEntry("Armory used by the portal's guardians", 5);
+    table.addEntry("Audience chamber for receiving visitors", 2);
+    table.addEntry("Barracks used by the portal's guards", 9);
+    table.addEntry("Bedroom for use by the high-ranking members of the order "
+                   "that guards the portal", 4);
+    table.addEntry("Chapel dedicatd to a deity or deities related to the portal "
+                   "and its defenders", 7);
+    table.addEntry("Cistern providing fresh water", 5);
+    table.addEntry("Classroom for use of initiates learning about the portal's "
+                   "secrets", 3);
+    table.addEntry("Conjuring room for summoning creatures used to investigate "
+                   "or defend the portal");
+    table.addEntry("Crypt where the remains of those that died guarding the "
+                   "portal are kept", 2);
+    table.addEntry("Dining room", 6);
+    table.addEntry("Divination room used to investigate the portal and events "
+                   "tied to it", 3);
+    table.addEntry("Dormitory for visitors and guards", 5);
+    table.addEntry("Entry room or vesibule", 2);
+    table.addEntry("Gallery for displaying trophies and objects related to the "
+                   "portal and those that guard it", 2);
+    table.addEntry("Guardroom to protect or watch over the portal", 8);
+    table.addEntry("Kitchen", 5);
+    table.addEntry("Laboratory for conducting exoperiments relating to the "
+                   "portal and creatures that emerge from it", 5);
+    table.addEntry("Library holding books about the portal's history", 3);
+    table.addEntry("Pen or prison for holding captives or creatures that "
+                   "emerge from the portal", 5);
+
+    bool isActive = roll(1, 100) < 25;
+    QString active = isActive ? " (Still active)" : "";
+    table.addEntry("Planar junction, where the gate to another plane stands"
+                   + active, 2);
+
+    table.addEntry("Storage", 3);
+    table.addEntry("Strong room or vault, for guarding valuable treasures "
+                   "connecet to the portal or funds used to pay the planar "
+                   "gate's guardians");
+    table.addEntry("Study", 2);
+    table.addEntry("Torture chamber, for questioning creatures that pass"
+                   "through the portal or that attmept to clandestinely use it",
+                   1);
+    table.addEntry("Latrine or bath", 3);
+    table.addEntry("Workshop for constructing tools and gear needed to study"
+                   "the portal", 2);
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::currentChamberState()
+{
+    RandomTable table;
+
+    table.addEntry("Rubble, ceiling partially collapsed.", 3);
+    table.addEntry("Holes, floor partially collapsed", 2);
+    table.addEntry("Ashes, contents mostly burned", 2);
+    table.addEntry("Used as a campsite", 2);
+    table.addEntry("Pool of water; chamber's original contents are water "
+                   "damaged", 2);
+    table.addEntry("Furniture wrecked but still present", 5);
+    QString newUse = generalDungeonRoomType();
+    table.addEntry("Converted to some other use: " + newUse, 2);
+    table.addEntry("Stripped bare");
+    table.addEntry("Pristine and in original state");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::chamberContents(int tier)
+{
+    RandomTable table;
+
+    QString motivation = "\nMotivation: " + monsterMotivation();
+
+    QString monster = dungeonMonster(tier);
+
+    table.addEntry("Monster (dominant inhabitant or "
+                   + monster + ")" + motivation, 8);
+    table.addEntry("Monster (dominant inhabitant or "
+                   + monster + ") with treasure" + motivation, 7);
+    table.addEntry("Monster (pet or allied creature): "
+                   + monster
+                   + motivation, 12);
+    table.addEntry("Monster (pet or allied creature) guarding treasure: "
+                   + monster, 6);
+    table.addEntry("Monster (random): " + monster + motivation, 9);
+    table.addEntry("Monster (random) with treasure: " + monster
+                   + motivation, 8);
+    QString hazard = dungeonHazards();
+    table.addEntry("Dungeon Hazard (" + hazard + ") with incidental treasure",
+                   7);
+    QString obstacle = obstacles();
+    table.addEntry("Obstacle: " + obstacle, 5);
+    QString trap = generateTrap();
+    table.addEntry("Trap: " + trap, 10);
+    table.addEntry("Trap protecting treasure: " + trap, 3);
+    // todo: tricks table
+    table.addEntry("Trick", 4);
+    table.addEntry("Empty room", 8);
+    table.addEntry("Empty room with dungeon hazard: " + hazard, 6);
+    table.addEntry("Empty room with treasure", 6);
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::dungeonHazards()
+{
+    RandomTable table;
+
+    table.addEntry("Brown mold", 3);
+    table.addEntry("Green slime", 5);
+    table.addEntry("Shrieker", 2);
+    table.addEntry("Spiderwebs", 6);
+    table.addEntry("Violet fungus", 2);
+    table.addEntry("Yellow mold", 3);
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::monsterMotivation()
+{
+    RandomTable table;
+
+    table.addEntry("Find a sanctuary", 2);
+    table.addEntry("Conquer the dungeon", 3);
+    table.addEntry("Seek an item in the dungeon", 3);
+    table.addEntry("Slay a rival", 3);
+    table.addEntry("Hide from enemies", 2);
+    table.addEntry("Recover from battle", 2);
+    table.addEntry("Avoid danger", 2);
+    table.addEntry("Seek wealth", 3);
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::obstacles()
+{
+    RandomTable table;
+
+    int radius = roll(1, 10) * 10;
+    table.addEntry("Antilife aura with radius of "
+                   + QString::number(radius)
+                   + " feet; while in the aura, living creatures can't regain "
+                     "hit points.");
+    table.addEntry("Battering winds reduce speed by half, impose disadvantage "
+                   "on ranged attack rolls");
+    table.addEntry("Blade Barrier blocks passage");
+    table.addEntry("Cave-in", 9);
+    int width = roll(1, 4) * 10;
+    int deep = roll(2, 6) * 10;
+    table.addEntry("Chasm "
+                   + QString::number(width) + " feet wide and "
+                   + QString::number(deep)
+                   + " feet deep, possibly connected to other levels of the "
+                     "dungeon");
+    deep = roll(2, 10);
+    table.addEntry("Flooding leaves " + QString::number(deep)
+                   + "ft. of water in the area; create nearby upward-sloping "
+                     "passages, raised floors, or rising stairs to contain the "
+                     "water.", 2);
+    bool isBridge = roll(1, 100) < 50;
+    QString bridge = isBridge? ". A stone bridge crosses it." : "";
+    table.addEntry("Lava flows through the area" + bridge);
+    bool isHazard = roll(1, 100) < 25;
+    QString hazard = isHazard? ". " + dungeonHazards() + " is among them." : "";
+    table.addEntry("Overgrown mushrooms block progress and must be hacked down"
+                   + hazard);
+    table.addEntry("Poisonous gas deals 1d6 poison damage per minute of "
+                   "esposure");
+    table.addEntry("Reverse Gravity spell effect causes creatures to fall "
+                   "toward the ceiling");
+    table.addEntry("Wall of Fire spell blocks passage");
+    table.addEntry("Wall of Force spell blocks passage");
 
     return table.getRollTableEntry();
 }
@@ -460,10 +663,360 @@ QString AllTables::trapEffects()
 
 }
 
+QString AllTables::primaryFeature()
+{
+    RandomTable table;
+
+    table.addEntry("None", 20);
+    table.addEntry("Chains hang from ceiling");
+    table.addEntry("Cobwebs");
+    table.addEntry("Ceiling cracks");
+    table.addEntry("Floor cracks");
+    table.addEntry("Wall cracks");
+    table.addEntry("Dripping wet ceiling");
+    table.addEntry("Damp walls");
+    table.addEntry("Dried blood");
+    table.addEntry("Dung");
+    table.addEntry("Thick dust");
+    table.addEntry("Common fungi");
+    table.addEntry("Lever with non-obvious use");
+    table.addEntry("Common mold");
+    table.addEntry("Leaves and twigs");
+    table.addEntry("Harmless slime");
+    table.addEntry("Floor spikes, rusted and immobile");
+    table.addEntry("Straw");
+    table.addEntry("Wall scratchings");
+    table.addEntry("Altar");
+    table.addEntry("Armchair");
+    table.addEntry("Armoire");
+    table.addEntry("Curtain");
+    table.addEntry("Bed");
+    table.addEntry("Brazier and charcoal");
+    table.addEntry("Huge, 125 galon cask");
+    table.addEntry("Chandelier");
+    table.addEntry("Large, empty chest");
+    table.addEntry("Couch");
+    table.addEntry("Pile of cussions");
+    table.addEntry("Dais");
+    table.addEntry("Desk");
+    table.addEntry("Fireplace and wood");
+    table.addEntry("Fireplace with mantel");
+    table.addEntry("Fountain");
+    table.addEntry("Fresco");
+    table.addEntry("Grindstone");
+    table.addEntry("Large idol");
+    table.addEntry("Painting");
+    table.addEntry("Pedestal");
+    table.addEntry("Rug");
+    table.addEntry("Shrine");
+    table.addEntry("Statue");
+    table.addEntry("Large Table");
+    table.addEntry("Throne");
+    table.addEntry("Tapestry");
+    table.addEntry("Tub");
+    table.addEntry("Urn");
+    table.addEntry("Workbench");
+    table.addEntry("Large bell");
+    table.addEntry("Chimes");
+    table.addEntry("Pillars");
+    table.addEntry("Font");
+    table.addEntry("Gong");
+    table.addEntry("Holy or unholy symbol");
+    table.addEntry("Holy or unholy writings");
+    table.addEntry("Lectern");
+    table.addEntry("Mosaic");
+    table.addEntry("Pews");
+    table.addEntry("Pulpit");
+    table.addEntry("Book");
+    table.addEntry("Large bowl");
+    table.addEntry("Cage");
+    table.addEntry("Cauldron");
+    table.addEntry("Crystal Ball (mundane)");
+    table.addEntry("Large Horn");
+    table.addEntry("Magic Circle");
+    table.addEntry("Large skull");
+    table.addEntry("Giant hourglass");
+    table.addEntry("Mirror");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::lighting()
+{
+    RandomTable table;
+
+    table.addEntry("Unlit");
+    table.addEntry("Torch, lit");
+    table.addEntry("Torch, unlit");
+    table.addEntry("Torch holders, empty");
+    table.addEntry("Candles, lit");
+    table.addEntry("Candles, unlit");
+    table.addEntry("Wax blobs, unlit");
+    table.addEntry("Oil lantern, lit");
+    table.addEntry("Oil lantern, full but unlit");
+    table.addEntry("Oil lantern, empty");
+    table.addEntry("Floating, glowing glass sphere");
+    table.addEntry("Chandelier, lit");
+    table.addEntry("Chandelier, unlit");
+    table.addEntry("Candelabra, lit");
+    table.addEntry("Candelabra, unlit");
+    table.addEntry("Errie, glowing mold");
+    table.addEntry("Light spell");
+    table.addEntry("Magical darkness spell");
+    table.addEntry("Brazier, burning coal");
+    table.addEntry("Brazier, burning wood");
+    table.addEntry("Brazier, smoldering ash");
+    table.addEntry("Brazier, coal, unlit");
+    table.addEntry("Brazier, wood, unlit");
+    table.addEntry("Brazier, empty");
+    table.addEntry("Burning fireplace");
+    table.addEntry("Fireplace, with wood, unlit");
+    table.addEntry("Fireplace, smoldering embers");
+    table.addEntry("Fireplace, empty");
+    table.addEntry("Burning firepit");
+    table.addEntry("Firepit, wood, unlit");
+    table.addEntry("Firepit, smoldering embers");
+    table.addEntry("Firepit, empty");
+
+    return table.getRollTableEntry();
+}
+
 QString AllTables::generateInhabitants(int dungionLevel)
 {
 
 }
+
+QString AllTables::dungeonMonster(int tier)
+{
+    RandomTable table;
+    QString qty;
+
+    // tier 1
+    table.addEntry("1 Mind Flayer Arcanist");
+
+    qty = QString::number(roll(1,3) + 1);
+    table.addEntry(qty + " giant poisonous snakes");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " giant lizards");
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(qty + " giant fire beetles");
+
+    qty = QString::number(roll(1,8) +1);
+    table.addEntry(qty + " flumphs");
+
+    table.addEntry("1 shreiker");
+
+    qty = QString::number(roll(1,12));
+    table.addEntry(qty + " giant rats");
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(qty + " kobolds");
+
+    qty = QString::number(roll(1,8) + 1);
+    table.addEntry(qty + " stirges");
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(qty + " humans (tribal warriors) seeking the way to the "
+                         "surface, fleeing thier Underdark oppressors");
+
+    qty = QString::number(roll(1,10));
+    table.addEntry(qty + " troglodytes");
+
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " gray oozes");
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(qty + " stirges");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " magma mephits");
+
+    qty = QString::number(roll(1,10));
+    table.addEntry(qty + " goblins");
+
+    table.addEntry("1 swarm of insects");
+    table.addEntry("1 deep gnome");
+
+    qty = QString::number(roll(1,8)+1);
+    table.addEntry(qty + " drow");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " violet fungi");
+
+    qty = QString::number(roll(1,12));
+    table.addEntry(qty + " kuo-toa");
+
+    table.addEntry("1 rust monster");
+
+    qty = QString::number(roll(1,8)+1);
+    table.addEntry(qty + " giant bats");
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(qty + " kobolds");
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(qty + " grimlocks");
+
+    qty = QString::number(roll(1,4)+3);
+    table.addEntry(qty + " swarms of bats");
+
+    table.addEntry("1 dwarf prospector (scout) looking for gold");
+    table.addEntry("1 carrion crawler");
+    table.addEntry("1 gelatinous cube");
+
+    qty = QString::number(roll(1,8));
+    table.addEntry(qty + " darkmantles");
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(qty + " piercers");
+
+    table.addEntry("1 hell hound");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " spectres");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " bugbears");
+
+    qty = QString::number(roll(1,10) + 5);
+    table.addEntry(qty + " winged kobolds");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " fire snakes");
+
+    qty = QString::number(roll(2,8)+1);
+    table.addEntry(qty + " troglodytes");
+
+    qty = QString::number(roll(1,6));
+    table.addEntry(qty + " giant spiders");
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(qty + "kuo-toa");
+
+    qty = QString::number(roll(2,4));
+    table.addEntry("1 goblin boss with " + qty + " goblins");
+
+    qty = QString::number(roll(4,4));
+    table.addEntry(qty + " grimlocks");
+
+    table.addEntry("1 ochre jelly");
+
+    qty = QString::number(roll(2,10));
+    table.addEntry(qty + " giant centipedes");
+
+    table.addEntry("1 nothic");
+    table.addEntry("1 giant toad");
+
+    qty = QString::number(roll(1,4));
+    QString qty2 = QString::number(roll(5,4));
+    table.addEntry(qty + " myconid adults with " + qty2 + " myconid sprouts");
+
+    table.addEntry("1 Minotaur");
+    table.addEntry("1 Minotaur Skeleton");
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(qty + " drow");
+
+    table.addEntry("1 mimic");
+    table.addEntry("1 doppleganger");
+
+    qty = QString::number(roll(1,6)+3);
+    table.addEntry(qty + " hobgoblins");
+
+    table.addEntry("1 intellect devourer");
+    table.addEntry("1 spectator");
+
+    qty = QString::number(roll(1,8)+1);
+    table.addEntry(qty + " orcs");
+
+    table.addEntry("1 gibbering mouther");
+    table.addEntry("1 water wierd");
+
+    qty = QString::number(roll(1,12));
+    table.addEntry(qty + " gas spores");
+
+    table.addEntry("1 giant constrictor snake");
+
+    qty = QString::number(roll(1,19));
+    table.addEntry(qty + " shadows");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " grells");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " wights");
+
+    qty = QString::number(roll(1,8)+1);
+    table.addEntry(qty + " quaggoth spore servants");
+
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " gargoyles");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " ogres");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " ettins");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " dwarf explorers (veterans)");
+
+    table.addEntry("1 chuul");
+    table.addEntry("1 salamander");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " phase spiders");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " hook horrors");
+
+    qty = QString::number(roll(5,4));
+    table.addEntry(qty + " duergar");
+
+    table.addEntry("1 ghost");
+    table.addEntry("1 flameskull");
+    table.addEntry("1 wraith");
+    table.addEntry("1 druid with 1 polar bear (cave bear)");
+
+    qty = QString::number(roll(1,4));
+    qty2 = QString::number(roll(2,10));
+    table.addEntry("1 hobgoblin captain with " + qty + " half-ogres and "
+                   + qty2 + " hobgoblins");
+
+    table.addEntry("1 earth elemental");
+    table.addEntry("1 black pudding");
+
+    qty = QString::number(roll(1,8)+1);
+    table.addEntry("1 kuo-toa monitor with " + qty + " kuo-toa whips");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry("1 quaggoth thonot with " + qty + " quaggoths");
+
+    table.addEntry("1 beholder zombie");
+    table.addEntry("1 bone naga");
+
+    qty = QString::number(roll(1,4));
+    qty2 = QString::number(roll(2,8));
+    table.addEntry("1 orc Eye of Gruumsh with " + qty + " orogs and " + qty2
+                   + " orcs");
+
+    qty = QString::number(roll(1,4));
+    qty2 = QString::number(roll(1,10));
+    table.addEntry(qty + " ghasts with " + qty2 + " ghouls");
+
+    table.addEntry("1 otyugh");
+    table.addEntry("1 roper");
+    table.addEntry("1 vampire spawn");
+    table.addEntry("1 chimera");
+    table.addEntry("1 mind flayer");
+    table.addEntry("1 spirit naga");
+
+    return table.getRollTableEntry();
+}
+
+
 
 QString AllTables::monsterousFoe(int dungeonLevel)
 {
