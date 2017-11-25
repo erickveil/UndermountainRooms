@@ -50,6 +50,8 @@ public:
     QString trapTrigger();
     QString trapSeverity();
     QString trapEffects();
+    QString trapDisarm();
+
 
     /*
     QString trickObject();
@@ -75,12 +77,17 @@ public:
     QString booksScrolls();
     */
 
+    QString generateActivity();
+    QString monsterDowntime();
+    QString animalDowntime();
+
+
     // monster tables
 
-    // TODO: Left off at Shadow Dragon
-    QString generateInhabitants(int dungionLevel);
+    //QString generateInhabitants(int dungionLevel);
 
     QString dungeonMonster(int tier);
+    QString undermountainMonster(int tier);
 
     QString monsterousFoe(int dungeonLevel);
     QString intellegentFoeUnderdark(int dungeonLevel);

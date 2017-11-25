@@ -35,6 +35,12 @@ private slots:
 
     void on_wanderingMonster_clicked();
 
+    void on_genAct_clicked();
+
+    void on_disarm_clicked();
+
+    void on_underMonst_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

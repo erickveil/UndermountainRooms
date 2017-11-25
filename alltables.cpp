@@ -23,12 +23,12 @@ int AllTables::roll(int number, int sides, int mod = 0)
 QString AllTables::generateGeneralRoom(int dungeonLevel)
 {
     QString description;
-    description = "This room is " + generalDungeonRoomType() + ".\n";
-    description += "All of its doors are " + doorType() + ".\n";
-    description += "Illumination: " + lighting() + ".\n";
-    description += "The primary feature is a " + primaryFeature() + ".\n";
-    description += "This room's state is: " + currentChamberState() + ".\n";
-    description += "This room contains: " + chamberContents(dungeonLevel)
+    description = "ROOM: " + generalDungeonRoomType() + ".\n";
+    description += "DOORS: " + doorType() + ".\n";
+    description += "LIGHT: " + lighting() + ".\n";
+    description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "STATE: " + currentChamberState() + ".\n";
+    description += "CONTENTS: /n" + chamberContents(dungeonLevel)
             + ".\n";
 
     return description;
@@ -51,12 +51,12 @@ QString AllTables::generateDeathTrapRoom(int dungeonLevel)
 QString AllTables::generateLairRoom(int dungeonLevel)
 {
     QString description;
-    description = "This room is a " + lairRoomType() + ".\n";
-    description += "All of its doors are " + doorType() + ".\n";
-    description += "Illumination: " + lighting() + ".\n";
-    description += "The primary feature is a " + primaryFeature() + ".\n";
-    description += "This room's state is: " + currentChamberState() + ".\n";
-    description += "This room contains: " + chamberContents(dungeonLevel)
+    description = "ROOM: " + lairRoomType() + ".\n";
+    description += "DOORS: " + doorType() + ".\n";
+    description += "LIGHT: " + lighting() + ".\n";
+    description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "STATE: " + currentChamberState() + ".\n";
+    description += "CONTENTS: " + chamberContents(dungeonLevel)
             + ".\n";
 
     return description;
@@ -370,22 +370,34 @@ QString AllTables::chamberContents(int tier)
 {
     RandomTable table;
 
-    QString motivation = "\nMotivation: " + monsterMotivation();
+    QString motivation = "\nMOTIVATION: " + monsterMotivation();
 
     QString monster = dungeonMonster(tier);
+    QString guard = guardianFoe(tier);
+    QString activity = generateActivity();
 
     table.addEntry("Monster (dominant inhabitant or "
-                   + monster + ")" + motivation, 8);
+                   + monster + ")"
+                   + motivation + "\n"
+                   + activity, 8);
     table.addEntry("Monster (dominant inhabitant or "
-                   + monster + ") with treasure" + motivation, 7);
+                   + monster + ") with treasure"
+                   + motivation + "\n"
+                   + activity, 7);
     table.addEntry("Monster (pet or allied creature): "
                    + monster
-                   + motivation, 12);
+                   + motivation + "\n"
+                   + activity, 12);
     table.addEntry("Monster (pet or allied creature) guarding treasure: "
-                   + monster, 6);
-    table.addEntry("Monster (random): " + monster + motivation, 9);
-    table.addEntry("Monster (random) with treasure: " + monster
-                   + motivation, 8);
+                   + guard + "\n"
+                   + activity, 6);
+    table.addEntry("Monster (random): "
+                   + monster
+                   + motivation + "\n"
+                   + activity, 9);
+    table.addEntry("Monster (random) with treasure: "
+                   + monster
+                   + motivation + "\n" + activity, 8);
     QString hazard = dungeonHazards();
     table.addEntry("Dungeon Hazard (" + hazard + ") with incidental treasure",
                    7);
@@ -407,7 +419,7 @@ QString AllTables::dungeonHazards()
 {
     RandomTable table;
 
-    table.addEntry("Brown mold", 3);
+    table.addEntry("Brown mold (DMG 104)", 3);
     table.addEntry("Green slime", 5);
     table.addEntry("Shrieker", 2);
     table.addEntry("Spiderwebs", 6);
@@ -478,8 +490,11 @@ QString AllTables::obstacles()
 QString AllTables::generateTrap()
 {
     QString description;
-    description = trapEffects() + ",\n triggered by " + trapTrigger()
-            + ".\n The trap severity is " + trapSeverity();
+    description = trapEffects()
+            + ",\nTRIGGER: " + trapTrigger()
+            + ".\nSEVERITY: " + trapSeverity()
+            + ".\nDISARM: " + trapDisarm();
+
     return description;
 
 }
@@ -663,6 +678,114 @@ QString AllTables::trapEffects()
 
 }
 
+QString AllTables::trapDisarm()
+{
+    RandomTable table;
+
+    table.addEntry("Rusty chains snake across the ceiling, disappearing into holes on either wall.");
+    table.addEntry("Three brass floor plates, nearly invisible beneath the dust and detritus.");
+    table.addEntry("An eroded bas-relief of a grinning Pan-like figure, its fingers appear to be moveable.");
+    table.addEntry("A shallow gutter runs along the far wall, with a loose brick restricting the flow of water through it.");
+    table.addEntry("What appears to be a keyhole is discover behind a loose stone.");
+    table.addEntry("A rusted and jammed lever is found beneath a discarded pile of clothing.");
+    table.addEntry("A row of fake-emerald buttons on the wall, covered in cobwebs.");
+    table.addEntry("Three stones are arranged in a circle on a lead pressure plate.");
+    table.addEntry("A painting of an octopus is found in a far corner, three of its arms appear depressible.");
+    table.addEntry("A foot-long strip of iron is set into the ceiling, with a small magnet at one end.");
+    table.addEntry("A small wooden door opens to a panel filled with strange metal gears.");
+    table.addEntry("Three tiny brass levers in a hand-sized hole in the floor.");
+    table.addEntry("A moldy rope lies on the floor, leading to a pulley lost in the shadows of the ceiling.");
+    table.addEntry("Four keyhole sized openings along the bottom of a door.");
+    table.addEntry("A magical rune glows red when touched.");
+    table.addEntry("A small statuette of an elephant lies beside a small stone pedestal.");
+    table.addEntry("A loose block in the ceiling appears to be hooked to a chain above.");
+    table.addEntry("Three counterweights hang on ropes just inside the door.");
+    table.addEntry("A bas-relief of a demonic face has depressible eyes.");
+    table.addEntry("A camouflaged metal door on one wall conceals a copper lever.");
+    table.addEntry("A magic mouth appears and demands a password.");
+    table.addEntry("Magic runes spell out “Erase Me” with Read Magic.");
+    table.addEntry("A statue of a wizened sage has moveable arms.");
+    table.addEntry("An abandoned bottle contains a key matching a concealed hole in the wall.");
+    table.addEntry("A loose brick has fallen out of the wall and must be replaced.");
+    table.addEntry("A ghostly apparition appears and demands a song be sung to him.");
+    table.addEntry("A pulley disarms the trap, but the rope is missing.");
+    table.addEntry("A empty gourd hangs from a hook on the wall and must be filled with water.");
+    table.addEntry("Three couplets of an old poem are scrawled on the wall; the missing couplet must be recited aloud.");
+    table.addEntry("Two orcs are painted on the floor; erasing one disarms, erasing the other sets off trap again.");
+    table.addEntry("The trap is not disarm-able, but a detailed schematic of the next trap is drawn in chalk upon the floor.");
+    table.addEntry("Four loose bricks must be straitened.");
+    table.addEntry("Water must be poured upon a leather strap hanging over the door to loosen it.");
+    table.addEntry("A ceramic cap over the disarming panel must be broken open.");
+    table.addEntry("A filthy wax seal over the panel must be melted away.");
+    table.addEntry("A magic mouth appears and demands to know the meaning of life.");
+    table.addEntry("Five pewter runes in the ceiling must be depressed in order.");
+    table.addEntry("A console of brass buttons is a decoy; the real trap release is hidden beneath.");
+    table.addEntry("Detect Magic must be cast to reveal the invisible lever.");
+    table.addEntry("A statuette of a dog must be broken open to reveal a key.");
+    table.addEntry("A silver floor panel (20gp value) covers a stone lever crawling with centipedes.");
+    table.addEntry("A stone chest must be opened to a precise degree.");
+    table.addEntry("An empty hourglass must be filled with sand and turned upside down.");
+    table.addEntry("Three wall levers: two set off the trap again, one disarms.");
+    table.addEntry("A candle in a wall sconce must be burned down to disarm.");
+    table.addEntry("A wall sconce must be turned to a right angle.");
+    table.addEntry("A chandelier must be pulled down to floor, revolved 180 degrees, and sent back up again.");
+    table.addEntry("Every candle on a seventeen candle-candelabra must be lit; seven candles are missing.");
+    table.addEntry("A torch must be applied to a heat-sensitive floor panel.");
+    table.addEntry("An invisible statue in the corner must have both arms lowered.");
+    table.addEntry("An imp appears and demands payment to disarm the trap.");
+    table.addEntry("A globe hangs from the ceiling; Light must be cast upon it.");
+    table.addEntry("A hollow needle emerges from the wall; pricking a finger upon it disarms trap.");
+    table.addEntry("A ceramic alligator statue with gaping maw: will close maw if fed meat and disarm trap.");
+    table.addEntry("A snake-filled pit contains the release lever.");
+    table.addEntry("A small ochre jelly (1+1HD) must be coerced off the pressure plate it rests upon");
+    table.addEntry("The open mouth of a gargoyle must be filled with wine or beer.");
+    table.addEntry("An illusory wall conceals a control panel.");
+    table.addEntry("A release lever at the bottom of a sludge-filled well.");
+    table.addEntry("Four small toilets line the far wall; all must be flushed.");
+    table.addEntry("A dagger must be placed into the hand of the statue of an impish child.");
+    table.addEntry("A complex set of gears is concealed within an armoire.");
+    table.addEntry("A lever is hidden behind a wine rack.");
+    table.addEntry("An empty, moveable bookcase conceals a set of rope pulleys.");
+    table.addEntry("A fake toadstool, among a patch of real ones, may be turned like a doorknob.");
+    table.addEntry("A patch of mildew conceals a diagram detailing how to disarm the trap.");
+    table.addEntry("An unlit torch on the wall must be lit.");
+    table.addEntry("The release lever has a hive of angry wasps built around it.");
+    table.addEntry("An acid-filled crystal ewer on a pedestal must be carefully emptied.");
+    table.addEntry("A row of clever brass gears is concealed just under the plaster on one wall.");
+    table.addEntry("A wick leading into a hole in the wall must be lit.");
+    table.addEntry("A row of skulls upon a ledge high on one wall; one contains the detached lever deactivating the trap.");
+    table.addEntry("An immense chalk maze drawn into the floor must be carefully walked through to completion.");
+    table.addEntry("A magic circle scribed into one wall must have a corpse placed within it.");
+    table.addEntry("A blackened steel wire stretches across the ceiling and must be cut.");
+    table.addEntry("Forty feet of chain must be pulled from a hole in the ceiling; very noisy (check for wandering monsters).");
+    table.addEntry("An iron spike must be pulled out of the stone wall it’s driven into (very difficult!).");
+    table.addEntry("A leprechaun is geased to guard the release and must be appeased with gold.");
+    table.addEntry("A complex set of archaic runes must be deciphered and read aloud.");
+    table.addEntry("A frayed rope pull-cord is concealed behind infested cobwebs.");
+    table.addEntry("A nine-headed hydra statue must have its heads hacked off.");
+    table.addEntry("Acid must be applied to a soapstone plug.");
+    table.addEntry("Seven locks must be picked, or the proper keys found.");
+    table.addEntry("A rude drawing of an elven maiden conceals a wall plate.");
+    table.addEntry("A magic mouth appears and demands an immediate dance recital.");
+    table.addEntry("A shallow pool of filthy water conceals rusty mechanism; must be dry, clean, and oiled.");
+    table.addEntry("A brazier must be filled with coal and lit.");
+    table.addEntry("A chair attached to a hidden floor lever must be tipped back.");
+    table.addEntry("A slimy stone in the wall must be removed, turned, and replaced.");
+    table.addEntry("A dagger must be placed into a hole; cannot be removed afterwards.");
+    table.addEntry("A hand-shaped depression in the high ceiling must be depressed.");
+    table.addEntry("Dust-covered elvish runes on the far wall must be read aloud.");
+    table.addEntry("A froglike idol must be knelt in front of, depressing a hidden floor plate.");
+    table.addEntry("A rudely fashioned ceramic face on the wall must be broken away to reveal a lever.");
+    table.addEntry("Acid must be poured upon a series of thin copper filaments.");
+    table.addEntry("Three ceiling hooks must be chained together and pulled; the chain is missing.");
+    table.addEntry("The apparition of a pirate appears and demands a bawdy tune.");
+    table.addEntry("Three silver wires, nearly invisible, run across the floor from either wall.");
+    table.addEntry("Five brass levers are concealed behind the painting of a grinning ettin.");
+    table.addEntry("Rows of colored circles dot the floor. A spinning wheel depicts the colors, and hands or feet must be placed on the corresponding colors until the trap releases. May require multiple participants.");
+
+    return table.getRollTableEntry();
+}
+
 QString AllTables::primaryFeature()
 {
     RandomTable table;
@@ -781,10 +904,155 @@ QString AllTables::lighting()
     return table.getRollTableEntry();
 }
 
-QString AllTables::generateInhabitants(int dungionLevel)
+QString AllTables::generateActivity()
 {
-
+    QString desc;
+    desc = "Intelegent activity: " + monsterDowntime() + "\n";
+    desc += "Animal activity: " + animalDowntime() + "\n";
+    return desc;
 }
+
+QString AllTables::monsterDowntime()
+{
+    RandomTable table;
+
+    table.addEntry("Maintaining weapons and armour");
+    table.addEntry("Sparing and training");
+    table.addEntry("Cleaning room");
+    table.addEntry("Shaving");
+    table.addEntry("Enjoying a good meal");
+    table.addEntry("Drinking beer");
+    table.addEntry("Abusing a subordinate");
+    table.addEntry("Tormenting a captive");
+    table.addEntry("Slaughtering a animal to eat");
+    table.addEntry("Gambling");
+    table.addEntry("Making small animals fight for sport and bets");
+    table.addEntry("Delousing self");
+    table.addEntry("Applying first aid");
+    table.addEntry("Cleaning boots");
+    table.addEntry("Whining about dungeon conditions and superiors");
+    table.addEntry("Punishing a subordinate");
+    table.addEntry("Smoking");
+    table.addEntry("High on shrooms");
+    table.addEntry("Playing a game of skill");
+    table.addEntry("Pranking a dorm mate");
+    table.addEntry("Lancing a boil");
+    table.addEntry("Having a brawl or wrestle");
+    table.addEntry("Throwing knives at a target (possibly tied up and alive)");
+    table.addEntry("Abusing a animal");
+    table.addEntry("Trying to read dungeon time sheet or battle plan");
+    table.addEntry("Talking about sweetheart back home (crude artwork or memento like hair)");
+    table.addEntry("Talking about plans to settle down after this tour of duty");
+    table.addEntry("Trimming toenails");
+    table.addEntry("Grooming for date or meeting with boss");
+    table.addEntry("Sitting on bed with a bucket from hangover");
+    table.addEntry("Cheering at dancer or stripper");
+    table.addEntry("Whittle a piece of wood");
+    table.addEntry("Playing dice / Playing knuckle bones");
+    table.addEntry("Arm wrestling");
+    table.addEntry("Getting a tattoo");
+    table.addEntry("Carving artwork on a monster tooth");
+    table.addEntry("Telling dirty and/or racist jokes");
+    table.addEntry("Picking teeth clean");
+    table.addEntry("Cutting hair");
+    table.addEntry("Eating a pie");
+    table.addEntry("Eating sausages");
+    table.addEntry("Eating a turnip");
+    table.addEntry("Playing music and intently listening");
+    table.addEntry("Reciting poetry");
+    table.addEntry("Singing and dancing");
+    table.addEntry("Getting drunk on rotgut grog");
+    table.addEntry("Talking over local map");
+    table.addEntry("Telling ghost stories");
+    table.addEntry("Telling battle stories");
+    table.addEntry("Eating smoked or dried fish");
+    table.addEntry("A spot of cannibalism");
+    table.addEntry("Looting a corpse");
+    table.addEntry("Braiding hair");
+    table.addEntry("Eating coarse moldy bread");
+    table.addEntry("Looking at pornographic artwork");
+    table.addEntry("Mending boots");
+    table.addEntry("Skinning a rat, cat or dog");
+    table.addEntry("Playing with pet");
+    table.addEntry("Training pet");
+    table.addEntry("Teaching a child");
+    table.addEntry("Showing off to each other with feats of strength/prowess");
+    table.addEntry("Reminiscing");
+    table.addEntry("Making fun of humans: 'no after you' 'No! after you!'");
+    table.addEntry("Disturbing grooming - removing bones or prosthetics for cleaning, checking for lesions");
+    table.addEntry("Posing and painting");
+    table.addEntry("Weaving, knitting, sewing and other dungeon handicrafts");
+    table.addEntry("Debugging battle plans");
+    table.addEntry("Mourning over dead comrades body");
+    table.addEntry("Teasing a huge foot long spider or scorpion");
+    table.addEntry("Kicking about a severed head");
+    table.addEntry("Consoling a comrade whose wife left him or some other family tragedy");
+    table.addEntry("Practicing battle cries");
+    table.addEntry("Trying to reach down a drain or air vent for something");
+    table.addEntry("Listening to instructions or pep talk from boss");
+    table.addEntry("Rolling out dough");
+    table.addEntry("Hunting, enraged, for lost keys");
+    table.addEntry("Arguing about latest dungeon roster");
+    table.addEntry("Reading aloud to illiterate comrades");
+    table.addEntry("Talking about who is best god or demon or devil or old one");
+    table.addEntry("Comparing trophies like ears, fingers, scalps, skulls or shrunken heads");
+    table.addEntry("Bathing in a barrel or tub or with sponge or with oil and scraper");
+    table.addEntry("Discussing alignment morality");
+    table.addEntry("Sharing recipes for food or poison");
+    table.addEntry("Brewing grog in small keg or pumpkin before returning to secret hiding spot");
+    table.addEntry("Telling funny stories about murder");
+    table.addEntry("Practicing drill or battle tactics or dance");
+    table.addEntry("Performing sacrifice");
+    table.addEntry("Counting coins");
+    table.addEntry("Talking about wives and girlfriends and moms");
+    table.addEntry("Planning a heist");
+    table.addEntry("Kangaroo courtroom against peer who let team down");
+    table.addEntry("Planing of stealing rival dorm idol or mascot (an ongoing project)");
+    table.addEntry("Hazing a new recruit");
+    table.addEntry("Impersonating boss or enemies or priest");
+    table.addEntry("Sniffing women's stolen clothing");
+    table.addEntry("Biting heads off snakes");
+    table.addEntry("Flexing muscles to see who is strongest");
+    table.addEntry("Dressing in women's clothing for dungeon revue show coming soon");
+    table.addEntry("Reading name tags aloud from lost hats");
+    table.addEntry("Playing board or card game");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::animalDowntime()
+{
+    RandomTable table;
+
+    table.addEntry("Waiting in ambush");
+    table.addEntry("Emerging from a portal");
+    table.addEntry("Trying to hide");
+    table.addEntry("Hunting or stalking prey");
+    table.addEntry("Killing something/someone");
+    table.addEntry("Eating");
+    table.addEntry("Defecating");
+    table.addEntry("Wandering aimlessly");
+    table.addEntry("Crying out, howling, or signaling");
+    table.addEntry("Playing");
+    table.addEntry("Guarding something");
+    table.addEntry("Comming right at us!");
+    table.addEntry("Staring off into space");
+    table.addEntry("Inspecting something invisible");
+    table.addEntry("Smelling something intently");
+    table.addEntry("Drinking something");
+    table.addEntry("Taking a bath");
+    table.addEntry("Digging a hole");
+    table.addEntry("Burrying something");
+    table.addEntry("Running away from party");
+    table.addEntry("Rolling on the ground");
+    table.addEntry("Fleeing something bigger!");
+    table.addEntry("Acting wounded");
+    table.addEntry("Protecting eggs/young");
+    table.addEntry("Sleeping");
+
+    return table.getRollTableEntry();
+}
+
 
 QString AllTables::dungeonMonster(int tier)
 {
@@ -1016,6 +1284,32 @@ QString AllTables::dungeonMonster(int tier)
     return table.getRollTableEntry();
 }
 
+QString AllTables::undermountainMonster(int tier)
+{
+    int normalUnderdarkChance = 85;
+    bool isNormalUnderdark = roll(1, 100) < normalUnderdarkChance;
+    if (isNormalUnderdark) { return dungeonMonster(tier); }
+
+
+    RandomTable table;
+
+    table.addEntry("Rat spy of the Sewer Rats");
+    table.addEntry("NPC party: Wyvernroost Feduciary");
+    table.addEntry("Bloodfist Goblin expedition: A lasher leads a unit of "
+                   "hunters in search of prey.");
+    table.addEntry("Drakefinger Kobold Treasure Hunters: The Dragon Shield "
+                   "leads a unit of kobods on a treasure scavenging expedition "
+                   "for their draconic master.");
+    table.addEntry("Belorem Deoblood: Powerful archmage apprentice of Halaster "
+                   "and his apprentice necromancer. Will geas the party into "
+                   "finding a MacGuffin for him on this level.");
+    table.addEntry("A wererat rogue of the Sewer Rats tails the party, hoping "
+                   "to pilfer some gear. A second one might cause a "
+                   "distraction, giving him advantage.");
+
+    return table.getRollTableEntry();
+}
+
 
 
 QString AllTables::monsterousFoe(int dungeonLevel)
@@ -1159,8 +1453,51 @@ QString AllTables::guardianFoe(int dungeonLevel)
 {
     RandomTable table;
 
+    // 0
+    table.addEntry("Shreiker - cr0", 15);
+    // 1/8
+    table.addEntry("Mastiff - cr1/8", 14);
+    table.addEntry("Guard - cr1/8", 14);
+    // 1/4
+    table.addEntry("Skeleton - cr1/4", 13);
+    table.addEntry("Zombie - cr1/4", 13);
+    table.addEntry("Flying Sword - cr1/4", 13);
+    // 1
+    table.addEntry("Animated Armor - cr1", 12);
+    // 2
+    table.addEntry("Gargoyle - cr2", 11);
+    table.addEntry("Shadow Mastiff (VGE) - cr2", 11);
+    table.addEntry("Rug of Smothering - cr2", 11);
+    table.addEntry("Mimic - cr2", 11);
+    table.addEntry("Minotaur Skeleton - cr2", 11);
+    table.addEntry("Gibbering Mouther - cr2", 11);
+    table.addEntry("Ogre Zombie - cr2", 11);
+    table.addEntry("Guard Drake (VGE) - cr2", 11);
     // 3
-    table.addEntry("Spectator Beholder");
+    table.addEntry("Spectator Beholder - cr3", 10);
+    table.addEntry("Hell Hound - cr3", 10);
+    table.addEntry("Basilisk - cr3", 10);
+    // 4
+    table.addEntry("Flameskull - cr4", 9);
+    table.addEntry("Helmed Horror - cr4", 9);
+    // 5
+    table.addEntry("Flesh Golem - cr5", 8);
+    table.addEntry("Otyug - cr5", 8);
+    // 6
+    table.addEntry("Galeb Duhr - cr6", 7);
+    // 7
+    table.addEntry("Shield Guardian - cr7", 6);
+    // 9
+    table.addEntry("Clay Golem - cr9", 5);
+    // 10
+    table.addEntry("Stone Golem - cr10", 4);
+    // 11
+    table.addEntry("Gynosphynx - cr11", 3);
+    // 16
+    table.addEntry("Iron Golem - cr16", 2);
+    // 17
+    table.addEntry("Androsphynx - cr17");
+
 
     return table.getRollTableEntry();
 }

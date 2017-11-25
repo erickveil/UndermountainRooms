@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>446</height>
+    <height>616</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>411</width>
-      <height>131</height>
+      <height>341</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
@@ -77,19 +77,6 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="genTrap">
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Generate Trap</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QPushButton" name="dunType">
        <property name="sizePolicy">
@@ -116,15 +103,61 @@
        </property>
       </widget>
      </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="underMonst">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>UM Wandering Monster</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QPushButton" name="genAct">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Creature Activity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="genTrap">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Generate Trap</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPushButton" name="disarm">
+       <property name="text">
+        <string>Disarm Trap</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QPlainTextEdit" name="resultArea">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>150</y>
+      <y>370</y>
       <width>411</width>
-      <height>271</height>
+      <height>241</height>
      </rect>
     </property>
    </widget>

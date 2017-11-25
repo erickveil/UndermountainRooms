@@ -55,3 +55,19 @@ void MainWindow::on_wanderingMonster_clicked()
 {
     ui->resultArea->setPlainText(roller.checkForWanderingMonsters(1));
 }
+
+void MainWindow::on_genAct_clicked()
+{
+    ui->resultArea->setPlainText(roller.generateActivity());
+}
+
+void MainWindow::on_disarm_clicked()
+{
+    ui->resultArea->setPlainText(roller.trapDisarm());
+}
+
+void MainWindow::on_underMonst_clicked()
+{
+    ui->resultArea->setPlainText(roller.undermountainMonster(1));
+}
+
