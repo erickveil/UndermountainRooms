@@ -13,24 +13,25 @@ public:
     int randomNumber(int min, int max);
     int roll(int number, int sides, int mod);
 
-    QString generateGeneralRoom(int dungeonLevel);
+    QString generateGeneralRoom(int tier);
     QString generateDeathTrapRoom(int dungeonLevel);
     QString generateLairRoom(int dungeonLevel);
     QString generateMineRoom(int tier);
     QString generatePlanarGateRoom(int tier);
+    QString generateMazeRoomType(int tier);
+    QString generateStrongholdRoom(int tier);
+    QString generateTempleRoom(int tier);
+    QString generateToomb(int tier);
+    QString generateTreasureVault(int tier);
+    QString generateHallwayContents(int tier);
+
     QString checkForWanderingMonsters(int tier);
+    QString hallCheck(int tier);
 
     // 5e dmg
     QString doorType();
 
 
-    /*
-    QString planarGateRoomType();
-    QString strongholdRoomType();
-    QString templeRoomType();
-    QString tombRoomType();
-    QString treasureVaultRoomType();
-    */
     QString dungeonType();
 
     QString generalDungeonRoomType();
@@ -39,6 +40,10 @@ public:
     QString mazeRoomType();
     QString mineRoomType();
     QString planarGateRoomType();
+    QString strongholdRoom();
+    QString templeRoom();
+    QString tombRoom();
+    QString treasureVaultRoom();
 
     QString currentChamberState();
     QString chamberContents(int tier);
@@ -46,17 +51,16 @@ public:
     QString monsterMotivation();
     QString obstacles();
 
-    QString generateTrap();
+    QString generateTrap(int tier = 1);
     QString trapTrigger();
-    QString trapSeverity();
+    QString trapSeverity(int tier);
     QString trapEffects();
     QString trapDisarm();
 
 
-    /*
+    QString generateTrick();
     QString trickObject();
     QString trick();
-    */
 
     /*
     QString noises();
@@ -92,52 +96,7 @@ public:
     QString monsterousFoe(int dungeonLevel);
     QString intellegentFoeUnderdark(int dungeonLevel);
 
-    /*
-    QString minionFoeUnderdark(int dungeonLevel);
-    QString bossFoeUnderdark(int dungeonLevel);
-    QString guardianFoeUnderdark(int dungeonLevel);
-    QString summonedFoe(int dungeonLevel);
-    */
-
-    QString airFoe(int dungeonLevel);
-    QString bossFoeAmphibius(int dungeonLevel);
-    QString celestialFoe(int dungeonLevel);
-    QString animatedFoe(int dungeonLevel);
-    QString fireFoe(int dungeonLevel);
-    QString hauntingFoe(int dungeonLevel);
-    QString bossFoeUnderdark(int dungeonLevel);
     QString guardianFoe(int dungeonLevel);
-    QString plantFoe(int dungeonLevel);
-    QString goblinoidFoe(int dungeonLevel);
-    QString fiendFoe(int dungeonLevel);
-    QString sylvanFoe(int dungeonLevel);
-    QString undeadFoe(int dungeonLevel);
-    QString giantFoe(int dungeonLevel);
-    QString undeadBoss(int dungeonLevel);
-    QString dinosaurFoe(int dungeonLevel);
-    QString waterFoe(int dungeonLevel);
-    QString urbanFoe(int dungeonLevel);
-    QString dragonFoe(int dungeonLevel);
-    QString shadowFoe(int dungeonLevel);
-
-
-    QString beastActivity();
-    QString intellegentActivity();
-
-    /*
-    QString minionActivity();
-    QString bossActivity();
-    QString guardianActivity();
-    */
-
-    // note: maybe use monster character versions
-    /*
-    QString adventurerRace();
-    QString adventurerClass();
-    QString adventurerGender();
-    QString alignment();
-    int adventurerLevel(int dungeonLevel);
-    */
 
     // 1st edition dmg
     /*

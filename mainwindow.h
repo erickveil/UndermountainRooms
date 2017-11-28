@@ -41,6 +41,8 @@ private slots:
 
     void on_underMonst_clicked();
 
+    void on_genCombo_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
