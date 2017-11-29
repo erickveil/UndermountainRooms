@@ -31,8 +31,12 @@ public:
     // 5e dmg
     QString doorType();
 
-
     QString dungeonType();
+    QString dungeonLocation();
+    QString dungeonCreator();
+    QString dungeonHistory();
+    QString adventureHook();
+    QString generateRandomAdventure(int tier);
 
     QString generalDungeonRoomType();
     QString deathTrapRoomType();
