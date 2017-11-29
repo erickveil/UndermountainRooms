@@ -84,6 +84,12 @@ public:
     QString generateActivity();
     QString monsterDowntime();
     QString animalDowntime();
+    QString humanoidAttacksUrban();
+    QString creatureAttacksUrban();
+
+    QString generateUrbanEncounter(int tier);
+
+
 
 
     // monster tables
@@ -92,8 +98,9 @@ public:
 
     QString dungeonMonster(int tier);
     QString undermountainMonster(int tier);
+    QString urbanEncounterXge(int tier);
+    QString urbanEncountersUnique();
 
-    QString monsterousFoe(int dungeonLevel);
     QString intellegentFoeUnderdark(int dungeonLevel);
 
     QString guardianFoe(int dungeonLevel);
