@@ -36,6 +36,7 @@ public:
     QString dungeonCreator();
     QString dungeonHistory();
     QString adventureHook();
+    QString dungeonGoals();
     QString generateRandomAdventure(int tier);
 
     QString generalDungeonRoomType();

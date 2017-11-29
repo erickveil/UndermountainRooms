@@ -116,6 +116,13 @@
        </property>
       </widget>
      </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="genAdventure">
+       <property name="text">
+        <string>Adventure</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QPlainTextEdit" name="resultArea">

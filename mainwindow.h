@@ -19,19 +19,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_genRoom_clicked();
 
     void on_genTrap_clicked();
 
-    void on_genDeath_clicked();
-
-    void on_genLair_clicked();
-
     void on_dunType_clicked();
-
-    void on_genMine_clicked();
-
-    void on_genGate_clicked();
 
     void on_wanderingMonster_clicked();
 
@@ -42,6 +33,8 @@ private slots:
     void on_underMonst_clicked();
 
     void on_genCombo_clicked();
+
+    void on_genAdventure_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -438,6 +438,41 @@ QString AllTables::adventureHook()
     table.addEntry("a troublesome agent challenges or attacks the party, bearing the adventure hook on his body");
     table.addEntry("A suspicious person is making a drop, not noticing he is being watched, he removes a loose brick and places a small scroll inside and leaves. A little while later, another person arrives and checks the wrong loose brick. Scratching his head and a little irritated, he leaves. The scroll contains the hook or a lead to the hook.");
     table.addEntry("An inscription on an item, wall, or piece of furniture. May start the quest directly, or direct the party to someone who does.");
+    table.addEntry("Faction or guild agent looking for adventurers");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::dungeonGoals()
+{
+    RandomTable table;
+
+    table.addEntry("Stop the dungeon's monsterous inhabitants from "
+                   "raiding the surface world.");
+    // Todo: random villain
+    table.addEntry("Foil a villain's evil scheme.");
+    table.addEntry("Destroy a magical threat inside the dungeon");
+    table.addEntry("Acquire treasure");
+    table.addEntry("Find a particular item for a specific purpose");
+    table.addEntry("Retreive a stolen item hidden in the dungeon");
+    table.addEntry("Find information needed for a special purpose");
+    table.addEntry("Rescure a captive");
+    table.addEntry("Discover the fate of a previous adventuring party");
+    table.addEntry("Find an NPC who disappeared in the area");
+    table.addEntry("Slay a dragon or some other challenging monster");
+    table.addEntry("Discover the nature and origin of a strange location "
+                   "or phenomenon");
+    table.addEntry("Pursue fleeing foes taking refuge in the dungeon");
+    table.addEntry("Escape from captivity in the dungeon");
+    table.addEntry("Clear a ruin so it can be rebuilt and reoccupied");
+    // Todo: villain
+    table.addEntry("Discover why a villain is interested in the dungeon");
+    table.addEntry("Win a bet or complete a rite of passage by surviving in "
+                   "the dungeon for a certain amount of time");
+    // Todo: villain
+    table.addEntry("Parley with a villain in the dungeon");
+    table.addEntry("Hide from a threat outside the dungeon");
+    //table.addEntry(dungeonGoals() + " and " + dungeonGoals());
 
     return table.getRollTableEntry();
 }
@@ -446,48 +481,59 @@ QString AllTables::generateRandomAdventure(int tier)
 {
     QString desc;
     desc = "HOOK: " + adventureHook() + "\n";
+    desc += "GOAL: " + dungeonGoals() + "\n";
     QString type = dungeonType();
-    desc += "TYPE: " + type + "\n";
+    // todo adventure goals tables
+    desc += "DUNGEON TYPE: " + type + "\n";
     desc += "LOCATION: " + dungeonLocation() + "\n";
     desc += "CREATOR: " + dungeonCreator() + "\n";
     desc += "HISTORY: " + dungeonHistory() + "\n";
+    desc += "CURRENT CONTROLLERS: " + dungeonMonster(tier) + "\n";
     int layout = roll(1,10);
-    desc += "Layout #: " + QString::number(layout) + "\n";
+    desc += "LAYOUT #: " + QString::number(layout) + "\n";
     desc += "\n";
     int numRooms = (layout <= 3) ? 4 : 5;
+    int entranceRoom = roll(1, numRooms);
+    int goalRoom = roll(1, numRooms);
 
     // generate rooms
     for (int roomNumber = 1; roomNumber <= numRooms; ++roomNumber) {
-        desc += "ROOM " + QString::number(roomNumber) + ":\n";
-        if (type == "General") {
-            desc += roller.generateGeneralRoom(tier);
+        QString enter = (roomNumber == entranceRoom) ? " (ENTRANCE) " : "";
+        QString goal = (goalRoom == roomNumber) ? " (GOAL) " : "";
+        desc += "ROOM " + QString::number(roomNumber) + enter + goal + ":\n";
+
+        if (type == "General Dungeon") {
+            desc += generateGeneralRoom(tier);
         }
-        else if (type == "Death Trap") {
-            desc += roller.generateDeathTrapRoom(tier);
+        else if (type == "Death Trap Dungeon") {
+            desc += generateDeathTrapRoom(tier);
         }
         else if (type == "Lair") {
-            desc += roller.generateLairRoom(tier);
+            desc += generateLairRoom(tier);
         }
         else if (type == "Maze") {
-            desc += roller.generateMazeRoomType(tier);
+            desc += generateMazeRoomType(tier);
         }
         else if (type == "Planar Gate") {
-            desc += roller.generatePlanarGateRoom(tier);
+            desc += generatePlanarGateRoom(tier);
         }
         else if (type == "Stronghold") {
-            desc += roller.generateStrongholdRoom(tier);
+            desc += generateStrongholdRoom(tier);
         }
         else if (type == "Temple") {
-            desc += roller.generateTempleRoom(tier);
+            desc += generateTempleRoom(tier);
         }
         else if (type == "Tomb") {
-            desc += roller.generateToomb(tier);
+            desc += generateToomb(tier);
         }
         else if (type == "Treasure Vault") {
-            desc += roller.generateTreasureVault(tier);
+            desc += generateTreasureVault(tier);
+        }
+        else if (type == "Mine") {
+            desc += generateMineRoom(tier);
         }
         else {
-            desc = "Unknown dungeon type.";
+            desc = "Unknown dungeon type: " + type;
         }
 
         desc += "\n";
@@ -496,9 +542,32 @@ QString AllTables::generateRandomAdventure(int tier)
     // generate halls
     for (int hall=0; hall < 7; ++hall) {
         char hallId = hall + 97;
-        desc += "HALL: " + QString::fromLocal8Bit(hallId) + "\n";
-        desc += generateHallwayContents(tier);
+        RandomTable hallType;
+        hallType.addEntry("Archway access", 4);
+        hallType.addEntry("Archway access with stairs up one level", 3);
+        hallType.addEntry("Archway access with stairs down one level", 3);
+        hallType.addEntry("Archway access with short stairs down", 3);
+        hallType.addEntry("Archway access with short stairs up", 3);
+        hallType.addEntry("Door access", 5);
+        hallType.addEntry("Door access with stairs up one level", 3);
+        hallType.addEntry("Door access with stairs down one level", 3);
+        hallType.addEntry("Door access with short stairs down", 3);
+        hallType.addEntry("Door access with short stairs up", 3);
+        hallType.addEntry("Ladder up", 2);
+        hallType.addEntry("Ladder down", 2);
+        hallType.addEntry("Hatch, floor");
+        hallType.addEntry("Hatch, ceiling");
+        hallType.addEntry("Open shute/pit, down");
+        hallType.addEntry("Open shute/pit, up");
+        hallType.addEntry("Trap door connecting rooms, floor");
+
+        desc += "HALL " + QString(hallId) + " " +hallType.getRollTableEntry() +":\n";
+
+
+        desc += generateHallwayContents(tier) + "\n\n";
     }
+
+    return desc;
 
 }
 
