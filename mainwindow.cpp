@@ -18,42 +18,64 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->typeSelect->addItem("Tomb");
     ui->typeSelect->addItem("Treasure Vault");
     ui->typeSelect->addItem("Hallway");
+
+    ui->biomeSelect->addItem("Underdark");
+    ui->biomeSelect->addItem("Undermountain");
+    ui->biomeSelect->addItem("Urban");
 }
 
 void MainWindow::on_genCombo_clicked()
 {
+    int tier = 1;
     if (ui->typeSelect->currentText() == "General") {
-        ui->resultArea->setPlainText(roller.generateGeneralRoom(1));
+        ui->resultArea->setPlainText(roller.generateGeneralRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Death Trap") {
-        ui->resultArea->setPlainText(roller.generateDeathTrapRoom(1));
+        ui->resultArea->setPlainText(roller.generateDeathTrapRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Lair") {
-        ui->resultArea->setPlainText(roller.generateLairRoom(1));
+        ui->resultArea->setPlainText(roller.generateLairRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Maze") {
-        ui->resultArea->setPlainText(roller.generateMazeRoomType(1));
+        ui->resultArea->setPlainText(roller.generateMazeRoomType(tier));
     }
     else if (ui->typeSelect->currentText() == "Planar Gate") {
-        ui->resultArea->setPlainText(roller.generatePlanarGateRoom(1));
+        ui->resultArea->setPlainText(roller.generatePlanarGateRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Stronghold") {
-        ui->resultArea->setPlainText(roller.generateStrongholdRoom(1));
+        ui->resultArea->setPlainText(roller.generateStrongholdRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Temple") {
-        ui->resultArea->setPlainText(roller.generateTempleRoom(1));
+        ui->resultArea->setPlainText(roller.generateTempleRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Tomb") {
-        ui->resultArea->setPlainText(roller.generateToomb(1));
+        ui->resultArea->setPlainText(roller.generateToomb(tier));
     }
     else if (ui->typeSelect->currentText() == "Treasure Vault") {
-        ui->resultArea->setPlainText(roller.generateTreasureVault(1));
+        ui->resultArea->setPlainText(roller.generateTreasureVault(tier));
     }
     else if (ui->typeSelect->currentText() == "Hallway") {
-        ui->resultArea->setPlainText(roller.generateHallwayContents(1));
+        ui->resultArea->setPlainText(roller.generateHallwayContents(tier));
     }
     else {
         ui->resultArea->setPlainText("Unknown dungeon type.");
+    }
+}
+
+void MainWindow::on_wanderingMonster_clicked()
+{
+    int tier = 1;
+    if (ui->biomeSelect->currentText() == "Underdark") {
+        ui->resultArea->setPlainText(roller.checkForWanderingMonsters(tier));
+    }
+    else if (ui->biomeSelect->currentText() == "Undermountain") {
+        ui->resultArea->setPlainText(roller.undermountainMonster(tier));
+    }
+    else if (ui->biomeSelect->currentText() == "Urban") {
+        ui->resultArea->setPlainText(roller.generateUrbanEncounter(tier));
+    }
+    else {
+        ui->resultArea->setPlainText("Unknown biome type");
     }
 }
 
@@ -62,11 +84,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_genRoom_clicked()
-{
-    QString result = roller.generateGeneralRoom(1);
-    ui->resultArea->setPlainText(result);
-}
 
 void MainWindow::on_genTrap_clicked()
 {
@@ -74,34 +91,10 @@ void MainWindow::on_genTrap_clicked()
     ui->resultArea->setPlainText(result);
 }
 
-void MainWindow::on_genDeath_clicked()
-{
-    ui->resultArea->setPlainText(roller.generateDeathTrapRoom(1));
-}
-
-void MainWindow::on_genLair_clicked()
-{
-    ui->resultArea->setPlainText(roller.generateLairRoom(1));
-}
 
 void MainWindow::on_dunType_clicked()
 {
     ui->resultArea->setPlainText(roller.dungeonType());
-}
-
-void MainWindow::on_genMine_clicked()
-{
-    ui->resultArea->setPlainText(roller.generateMineRoom(1));
-}
-
-void MainWindow::on_genGate_clicked()
-{
-    ui->resultArea->setPlainText(roller.generatePlanarGateRoom(1));
-}
-
-void MainWindow::on_wanderingMonster_clicked()
-{
-    ui->resultArea->setPlainText(roller.checkForWanderingMonsters(1));
 }
 
 void MainWindow::on_genAct_clicked()

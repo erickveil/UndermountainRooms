@@ -1635,23 +1635,33 @@ QString AllTables::creatureAttacksUrban()
 QString AllTables::generateUrbanEncounter(int tier)
 {
     // 1 on 1d6 during the day, 2 during the night.
+
     int encounterType = roll(1,100);
     QString encounter;
     if (encounterType < 50) {
         encounter = urbanEncountersUnique();
         encounter += "\n";
-        bool isNormal = roll(1,6);
-        encounter += (isNormal) ? "Innocuous" : "Nefarius";
+        bool isNormal = roll(1,6) < 4;
+        encounter += (isNormal) ? "- Innocuous" : "- Nefarius";
     }
     else if (encounterType < 75) {
         encounter = urbanEncounterXge(tier);
+        encounter += "\n- Intellegent motive: " + humanoidAttacksUrban() + "\n";
+        encounter += "- Creature motive: " + creatureAttacksUrban() + "\n";
+        encounter += "- Friendly motive: " + friendlyHumanoidUrbanActivity() + "\n";
+        encounter += (roll(1,6) < 4) ? "(friendly)" : "(hostile)";
+
     }
     else if (encounterType < 85) {
         encounter = "Town Crier with news or hook";
     }
-    else if (encounterType < 90) {
+    //else if (encounterType < 90) {
+    else {
         encounter = "City Landmark";
     }
+    return encounter;
+
+    /*
     else if (encounterType < 95) {
         // NPC/watch/guard needs help/hostile
     }
@@ -1661,7 +1671,28 @@ QString AllTables::generateUrbanEncounter(int tier)
     else {
         encounter = "Neighborhood Adventure.";
     }
+    */
 
+}
+
+QString AllTables::friendlyHumanoidUrbanActivity()
+{
+    RandomTable table;
+
+    table.addEntry("Trying to avoid enemy that is looking for them.");
+    table.addEntry("Fighting enemy and winning");
+    table.addEntry("Fighting enmy and losing");
+    table.addEntry("Looking for someone");
+    table.addEntry("Investigating a case/crime");
+    table.addEntry("Looking to hire adventurers");
+    table.addEntry("Looking for directions (headded party's way)");
+    table.addEntry("Looking to be hired");
+    table.addEntry("Needs a favor");
+    table.addEntry("Simple greeting");
+    table.addEntry("Passing on a rumor or news");
+    table.addEntry("New in town, looking for companions");
+
+    return table.getRollTableEntry();
 }
 
 

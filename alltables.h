@@ -88,6 +88,7 @@ public:
     QString creatureAttacksUrban();
 
     QString generateUrbanEncounter(int tier);
+    QString friendlyHumanoidUrbanActivity();
 
 
 
