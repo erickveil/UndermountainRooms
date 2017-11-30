@@ -96,19 +96,6 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="genAct">
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Creature Activity</string>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="0">
       <widget class="QPushButton" name="wanderingMonster">
        <property name="minimumSize">
@@ -129,6 +116,26 @@
          <width>200</width>
          <height>0</height>
         </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="genAct">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Creature Activity</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="genAdventure">
+       <property name="text">
+        <string>Adventure</string>
        </property>
       </widget>
      </item>

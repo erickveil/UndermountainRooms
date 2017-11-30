@@ -17,11 +17,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->typeSelect->addItem("Temple");
     ui->typeSelect->addItem("Tomb");
     ui->typeSelect->addItem("Treasure Vault");
+    ui->typeSelect->addItem("Mine");
     ui->typeSelect->addItem("Hallway");
 
     ui->biomeSelect->addItem("Underdark");
     ui->biomeSelect->addItem("Undermountain");
     ui->biomeSelect->addItem("Urban");
+    ui->biomeSelect->addItem("Sewer");
 }
 
 void MainWindow::on_genCombo_clicked()
@@ -57,6 +59,9 @@ void MainWindow::on_genCombo_clicked()
     else if (ui->typeSelect->currentText() == "Hallway") {
         ui->resultArea->setPlainText(roller.generateHallwayContents(tier));
     }
+    else if (ui->typeSelect->currentText() == "Mine") {
+        ui->resultArea->setPlainText(roller.generateMineRoom(tier));
+    }
     else {
         ui->resultArea->setPlainText("Unknown dungeon type.");
     }
@@ -74,6 +79,8 @@ void MainWindow::on_wanderingMonster_clicked()
     else if (ui->biomeSelect->currentText() == "Urban") {
         ui->resultArea->setPlainText(roller.generateUrbanEncounter(tier));
     }
+    else if (ui->biomeSelect->currentData() == "Sewer") {
+    }
     else {
         ui->resultArea->setPlainText("Unknown biome type");
     }
@@ -84,13 +91,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_genTrap_clicked()
 {
     QString result = roller.generateTrap();
     ui->resultArea->setPlainText(result);
 }
-
 
 void MainWindow::on_dunType_clicked()
 {
@@ -113,4 +118,7 @@ void MainWindow::on_underMonst_clicked()
 }
 
 
-
+void MainWindow::on_genAdventure_clicked()
+{
+    ui->resultArea->setPlainText(roller.generateRandomAdventure(1));
+}

@@ -34,6 +34,8 @@ private slots:
 
     void on_genCombo_clicked();
 
+    void on_genAdventure_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
