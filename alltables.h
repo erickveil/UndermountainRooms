@@ -111,6 +111,9 @@ public:
 
     QString guardianFoe(int dungeonLevel);
 
+    QString generateSpellbook(int tier);
+    QString wizardSpells(int level);
+
     // 1st edition dmg
     /*
     QString treasureContainer();
