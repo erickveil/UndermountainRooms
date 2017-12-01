@@ -477,6 +477,7 @@ QString AllTables::dungeonGoals()
     return table.getRollTableEntry();
 }
 
+
 QString AllTables::generateRandomAdventure(int tier)
 {
     QString desc;
@@ -2616,6 +2617,85 @@ QString AllTables::urbanEncountersUnique()
     table.addEntry("The ground shakes. Buildings sway and commoners scramble for cover. After a long handful of seconds, the earthquake stops. Shortly after, there is a loud creak and a crash as a building collapses nearby. There may be survivors.");
     table.addEntry("The Gray Hands are involved in a battle with a giant demon from the Abyss in the middle of the street! Commoners flee in every direction, and fireball blasts topple buildings. A mage flies around the creature, battering it with magic missiles. A hulking warrior strikes at it with mighty blows. A cleric heals the wounded. You will definitely be hearing about this for days to come.");
     table.addEntry("The Gray Hands parade down the street. The crowd gathers to cheer them on. Confetti is everywhere. Asking around, the party will learn that the heroes have thwarted yet another powerful threat to the city.");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::sewerEncounter(int tier)
+{
+    RandomTable table;
+
+    QString qty;
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " Bat swarm");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " Carrion crawler");
+
+    qty = QString::number(roll(1,6,1));
+    table.addEntry("1 leader of the Cellarers' and Plumbers' (noble) Guild and "
+                   + qty + " members (commoners), on a maitenance run");
+
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " centipede swarms");
+
+    table.addEntry("1 gray ooze");
+
+    table.addEntry("1 Mimic");
+
+    table.addEntry("1 Ochre Jelly");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " Shadows");
+
+    qty = QString::number(roll(1,12));
+    table.addEntry(qty + " Rat swams");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " shreikers");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " Spider swarms");
+
+    qty = QString::number(roll(1,4,4));
+    table.addEntry(qty + " Stirges");
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(qty + " bandits");
+
+    table.addEntry("1 Violet fungi");
+
+    qty = QString::number(roll(1,4,1));
+    table.addEntry(qty + " wererats");
+
+    qty = QString::number(roll(2,6));
+    table.addEntry(qty + " giant rats");
+
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " chuul");
+
+    qty = QString::number(roll(1,6));
+    table.addEntry(qty + " crocodiles");
+
+    qty = QString::number(roll(1,6));
+    table.addEntry(qty + " darkmantles");
+
+    table.addEntry("1 Gibbering Mouther");
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(qty + " bandits of the Eye with 1 Thief leader escorting "
+                         "some commoner captives to the slave markets below");
+
+    table.addEntry("1 otyugh");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(qty + " wights");
+
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " will o wisps");
+
+    qty = QString::number(roll(1,2));
+    table.addEntry(qty + " wraiths");
 
     return table.getRollTableEntry();
 }

@@ -105,6 +105,7 @@ public:
     QString undermountainMonster(int tier);
     QString urbanEncounterXge(int tier);
     QString urbanEncountersUnique();
+    QString sewerEncounter(int tier);
 
     QString intellegentFoeUnderdark(int dungeonLevel);
 
