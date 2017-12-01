@@ -62,13 +62,6 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="wanderingMonster">
-       <property name="text">
-        <string>Wandering Monster</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="0">
       <widget class="QPushButton" name="genTrap">
        <property name="minimumSize">
@@ -89,19 +82,6 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="genAct">
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Creature Activity</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="1">
       <widget class="QComboBox" name="typeSelect">
        <property name="currentText">
@@ -113,6 +93,42 @@
       <widget class="QPushButton" name="genCombo">
        <property name="text">
         <string>Generate Room</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="wanderingMonster">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Random Encounter</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QComboBox" name="biomeSelect">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="genAct">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Creature Activity</string>
        </property>
       </widget>
      </item>

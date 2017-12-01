@@ -93,6 +93,7 @@ public:
     QString creatureAttacksUrban();
 
     QString generateUrbanEncounter(int tier);
+    QString friendlyHumanoidUrbanActivity();
 
 
 
@@ -110,6 +111,9 @@ public:
     QString intellegentFoeUnderdark(int dungeonLevel);
 
     QString guardianFoe(int dungeonLevel);
+
+    QString generateSpellbook(int tier);
+    QString wizardSpells(int level);
 
     // 1st edition dmg
     /*
