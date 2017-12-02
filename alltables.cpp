@@ -1567,6 +1567,7 @@ QString AllTables::trick()
                    "rhymes, singing, spellcasting, or screaming");
     table.addEntry("Teleports characters to another place");
     table.addEntry("Swaps two or more characters' minds");
+    table.addEntry("Cursed Magic Item");
 
     return table.getRollTableEntry();
 }
@@ -3284,13 +3285,13 @@ QString AllTables::minorCommonMagicItems()
     table.addEntry("Pole of collapsing");
     table.addEntry("Pot of awakening");
     table.addEntry("Potion of climbing");
-    table.addEntry("Potion of healing");
+    table.addEntry("Potion of healing", 5);
     table.addEntry("Rope of mending");
     table.addEntry("Ruby of the war mage");
     table.addEntry("Shield of expression");
     table.addEntry("Smoldering armor");
-    table.addEntry("Spell scroll: " + wizardSpells(0));
-    table.addEntry("Spell scroll: " + wizardSpells(1));
+    table.addEntry("Spell scroll: " + wizardSpells(0), 2);
+    table.addEntry("Spell scroll: " + wizardSpells(1), 2);
     table.addEntry("Staff of adornment");
     table.addEntry("Staff of birdcalls");
     table.addEntry("Staff of flowers");
@@ -3335,21 +3336,379 @@ QString AllTables::minorUncommonMagicItems()
     table.addEntry("Philter of love");
     table.addEntry("Potion of animal friendship");
     table.addEntry("Potion of fire breath");
-    table.addEntry("Potion of greater healing");
+    table.addEntry("Potion of greater healing", 5);
     table.addEntry("Potion of growth");
     table.addEntry("Potion of hill giant strength");
-    table.addEntry("Potion of poison");
+    table.addEntry("Potion of poison", 3);
     table.addEntry("Potion of resistance");
-    table.addEntry("Potion of water breathing");
+    table.addEntry("Potion of water breathing", 2);
     table.addEntry("Ring os swimming");
     table.addEntry("Robe of useful items");
     table.addEntry("Rope of climbing");
     table.addEntry("Saddle of the cavalier");
     table.addEntry("Sending stones");
-    table.addEntry("Spell Scroll: " + wizardSpells(2));
-    table.addEntry("Spell Scroll: " + wizardSpells(3));
+    table.addEntry("Spell Scroll: " + wizardSpells(2), 2);
+    table.addEntry("Spell Scroll: " + wizardSpells(3), 2);
     table.addEntry("Wand of magic detection");
     table.addEntry("Wand of secrets");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::minorRareMagicIterms()
+{
+    RandomTable table;
+
+    table.addEntry("Ammunition +2");
+    table.addEntry("Bag of beans");
+    table.addEntry("Bead of force");
+    table.addEntry("Chime of opening");
+    table.addEntry("Elixer of health");
+    table.addEntry("Folding boat");
+    table.addEntry("Heward's handy haversack");
+    table.addEntry("Horseshoes of speed");
+    table.addEntry("Necklace of fireballs");
+    table.addEntry("Oil of etherealness");
+    table.addEntry("Portable hole");
+    table.addEntry("Potion of clairvoyance");
+    table.addEntry("Potion of diminution");
+    table.addEntry("Potion of fire giant strength");
+    table.addEntry("Potion of frost giant strength");
+    table.addEntry("Potion of gaseous form");
+    table.addEntry("Potion of heroism");
+    table.addEntry("Potion of invulnerability");
+    table.addEntry("Potion of mind reading");
+    table.addEntry("Potion of stone giant strength");
+    table.addEntry("Potion of superior healing", 3);
+    table.addEntry("Quaal's feather token");
+    table.addEntry("Scroll of protection", 2);
+    table.addEntry("Spell scroll: " + wizardSpells(4), 2);
+    table.addEntry("Spell scroll: " + wizardSpells(5), 2);
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::minorVeryRareMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Ammunition +3");
+    table.addEntry("Arrow of slaying");
+    table.addEntry("Bag of devouring");
+    table.addEntry("Horseshoes of a zephyr");
+    table.addEntry("Nolzur's marvelous pigments");
+    table.addEntry("Oil of sharpness");
+    table.addEntry("Potion of cloud giant strength");
+    table.addEntry("Potion of flying");
+    table.addEntry("Potion of invisibility");
+    table.addEntry("Potion of longevity");
+    table.addEntry("Potion of speed");
+    table.addEntry("Potion of supreme healing");
+    table.addEntry("Potion of vitality");
+    table.addEntry("Spell scroll: " + wizardSpells(6));
+    table.addEntry("Spell scroll: " + wizardSpells(7));
+    table.addEntry("Spell scroll: " + wizardSpells(8));
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::minorLegendaryMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Potion of storm giant strength");
+    table.addEntry("Sovereign glue");
+    table.addEntry("Spell scroll: " + wizardSpells(9));
+    table.addEntry("Universal solvent");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::majorUncommonMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Adamantine armor");
+    table.addEntry("Amulet of proof against detection and location");
+    table.addEntry("Bag of tricks");
+    table.addEntry("Boots of elvenkind");
+    table.addEntry("Boots of striding and springing");
+    table.addEntry("Boots of the winterlands");
+    table.addEntry("Bracers of archery");
+    table.addEntry("Brooch of shielding");
+    table.addEntry("Broom of flying");
+    table.addEntry("Circlet of blasting");
+    table.addEntry("Cloak of elvenkind");
+    table.addEntry("Cloak of protection");
+    table.addEntry("Deck of illusions");
+    table.addEntry("Eversmoking bottle");
+    table.addEntry("Eyes of charming");
+    table.addEntry("Eyes of the eagle");
+    table.addEntry("Figurine of wonderous power (silver raven)");
+    table.addEntry("Gauntlets of ogre power");
+    table.addEntry("Gem of brightness");
+    table.addEntry("Gloves of missile sharing");
+    table.addEntry("Gloves of swimming and climbing");
+    table.addEntry("Gloves of thievery");
+    table.addEntry("Hat of disguise");
+    table.addEntry("Headband of intellect");
+    table.addEntry("Helm of telepathy");
+    table.addEntry("Instrument of the bards (Doss lute)");
+    table.addEntry("Instrument of the bards (Fochlucan bandore)");
+    table.addEntry("Instrument of the bards (Mac-Fulmidh cittern)");
+    table.addEntry("Javelin of lightning");
+    table.addEntry("Medallion of thoughts");
+    table.addEntry("Necklace of adaptation");
+    table.addEntry("Pearl of power");
+    table.addEntry("Periapt of wound closure");
+    table.addEntry("Pipes of haunting");
+    table.addEntry("Pipes of the sewers");
+    table.addEntry("Quiver of Ehlonna");
+    table.addEntry("Ring of jumping");
+    table.addEntry("Ring of mind shielding");
+    table.addEntry("Ring of warmth");
+    table.addEntry("Ring of water walking");
+    table.addEntry("Rod of the pact keeper +1");
+    table.addEntry("Sentinel shield");
+    table.addEntry("Shield +1", 3);
+    table.addEntry("Slippers of spider climbing");
+    table.addEntry("Staff of the adder");
+    table.addEntry("Staff of the python");
+    table.addEntry("Stone of good luck (luckstone)");
+    table.addEntry("Sword of vengeance");
+    table.addEntry("Trident of fish command");
+    table.addEntry("Wand of magic missiles");
+    table.addEntry("Wand of the war mage +1");
+    table.addEntry("Wand of web");
+    table.addEntry("Weapon of warning");
+    table.addEntry("Weapon +1", 4);
+    table.addEntry("Wind fan");
+    table.addEntry("Winged boots");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::majorRareMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Amulet of health");
+    table.addEntry("Armor of resistance");
+    table.addEntry("Armor of vulnerability");
+    table.addEntry("Armor +1", 4);
+    table.addEntry("Arrow-catching shield");
+    table.addEntry("Belt of dwarvenkind");
+    table.addEntry("Belt of hill giant strength");
+    table.addEntry("Berserker axe");
+    table.addEntry("Boots of levitation");
+    table.addEntry("Boots of speed");
+    table.addEntry("Bowl of commanding water elementals");
+    table.addEntry("Bracers of defense");
+    table.addEntry("Brazier of commanding fire elementals");
+    table.addEntry("Cape of the mountainbank");
+    table.addEntry("Censer of controlling air elementals");
+    table.addEntry("Cloak of displacement");
+    table.addEntry("Cloak of the bat");
+    table.addEntry("Cube of force");
+    table.addEntry("Daern's instant fortress");
+    table.addEntry("Dagger of venom");
+    table.addEntry("Dimensional shackles");
+    table.addEntry("Dragon slayer");
+    table.addEntry("Elven chain");
+
+    RandomTable figureTable;
+    figureTable.addEntry("bronze griffon");
+    figureTable.addEntry("ebony fly");
+    figureTable.addEntry("golden lion");
+    figureTable.addEntry("evory goats");
+    figureTable.addEntry("marble elephant");
+    figureTable.addEntry("onyx dog");
+    figureTable.addEntry("serpentine owl");
+
+    QString figure = table.getRollTableEntry();
+
+    table.addEntry("Figurine of wonderous power (" + figure + ")");
+    table.addEntry("Flame tongue");
+    table.addEntry("Gem of seeing");
+    table.addEntry("Giant slayer");
+    table.addEntry("Glamoured studded leather");
+    table.addEntry("Helm of teleportation");
+    table.addEntry("Horn of blasting");
+    table.addEntry("Horn of Valhalla, Silver");
+    table.addEntry("Horn of Valhalla, Brass");
+    table.addEntry("Instrument of the bards (Cli lyrre)");
+    table.addEntry("Instrument of the bards (Canaith mandolin)");
+    table.addEntry("Ioun stone (awareness)");
+    table.addEntry("Ioun stone (protection)");
+    table.addEntry("Ioun stone (sustenance)");
+    table.addEntry("Ioun stone (reserve)");
+    table.addEntry("Ioun bands of Bilarro");
+    table.addEntry("Mace of disruption");
+    table.addEntry("Mace of smiting");
+    table.addEntry("Mace of terror");
+    table.addEntry("Mantle of spell resistance");
+    table.addEntry("Necklace of prayer beads");
+    table.addEntry("Periapt of proof aginst poison");
+    table.addEntry("Ring of animal influence");
+    table.addEntry("Ring of evasion");
+    table.addEntry("Ring of feather falling");
+    table.addEntry("Ring of free aciton");
+    table.addEntry("Ring of protection");
+    table.addEntry("Ring of resistance");
+    table.addEntry("Ring of spell storing");
+    table.addEntry("Ring of the ram");
+    table.addEntry("Ring of X-ray vision");
+    table.addEntry("Robe of eyes");
+    table.addEntry("Rod of rulership");
+    table.addEntry("Rod of the pact keeper +2");
+    table.addEntry("Rope of entanglement");
+    table.addEntry("Shield of missile attraction");
+    table.addEntry("Shield +2", 3);
+    table.addEntry("Staff of charming");
+    table.addEntry("Staff of healing");
+    table.addEntry("Staff of swarming insects");
+    table.addEntry("Staff of the woodlands");
+    table.addEntry("Staff of withering");
+    table.addEntry("Stone of controlling earth elementals");
+    table.addEntry("Sun blade");
+    table.addEntry("Sword of life stealing");
+    table.addEntry("Sword of wounding");
+    table.addEntry("Tentacle rod");
+    table.addEntry("Vicious weapon");
+    table.addEntry("Wand of binding");
+    table.addEntry("Wand of enemy detection");
+    table.addEntry("Wand of fear");
+    table.addEntry("Wand of fireballs");
+    table.addEntry("Wand of lightning bolts");
+    table.addEntry("Wand of paralysis");
+    table.addEntry("Wand of the war mage +2");
+    table.addEntry("Wand of wonder");
+    table.addEntry("Weapon +2", 4);
+    table.addEntry("Wings of flying");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::majorVeryRareMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Amulet of the planes");
+    table.addEntry("Animated shield");
+    table.addEntry("Armor +2", 4);
+    table.addEntry("Belt of fire giant strength");
+    table.addEntry("Belt of frost giant strength");
+    table.addEntry("Belt of stone giant strength");
+    table.addEntry("Candle of invocation");
+    table.addEntry("Carpet of flying");
+    table.addEntry("Cloak of arachnida");
+    table.addEntry("Crystal ball (very rare)");
+    table.addEntry("Dancing sword");
+    table.addEntry("Demon armor");
+    table.addEntry("Dragon scale mail");
+    table.addEntry("Dwarven plate");
+    table.addEntry("Dwarven thrower");
+    table.addEntry("Efreeti bottle");
+    table.addEntry("Figurine of wondrous power (obsidian steed)");
+    table.addEntry("Frost brand");
+    table.addEntry("Helm of brilliance");
+    table.addEntry("Horn of Valhalla (bronze)");
+    table.addEntry("Instrument of the bards (Anstruth harp)");
+
+    RandomTable iounTable;
+
+    iounTable.addEntry("absorption");
+    iounTable.addEntry("agility");
+    iounTable.addEntry("fortitude");
+    iounTable.addEntry("insight");
+    iounTable.addEntry("intellect");
+    iounTable.addEntry("leadership");
+    iounTable.addEntry("strength");
+
+    QString ioun = iounTable.getRollTableEntry();
+
+    table.addEntry("Ioun stone (" + ioun + ")", 4);
+    table.addEntry("Manual of bodily health");
+    table.addEntry("Manual of gainful exercise");
+    table.addEntry("Manual of golems");
+    table.addEntry("Manual of quickness of action");
+    table.addEntry("Mirror of life trapping");
+    table.addEntry("Nine lives stealer");
+    table.addEntry("Oathbow");
+    table.addEntry("Ring of regenration");
+    table.addEntry("Ring of shooting stars");
+    table.addEntry("Ring of telekinesis");
+    table.addEntry("Robe of scintillating colors");
+    table.addEntry("Robe of stars");
+    table.addEntry("Rod of absorption");
+    table.addEntry("Rod of alertness");
+    table.addEntry("Rod of security");
+    table.addEntry("Rod of the pact keeper +3");
+    table.addEntry("Scimitar of speed");
+    table.addEntry("Shield +3", 4);
+    table.addEntry("Spellguard shield");
+    table.addEntry("Staff of fire");
+    table.addEntry("Staff of fire");
+    table.addEntry("Staff of frost");
+    table.addEntry("Staff of power");
+    table.addEntry("Staff of striking");
+    table.addEntry("Staff of thunder and lightning");
+    table.addEntry("Sword of sharpness");
+    table.addEntry("Tome of clear thought");
+    table.addEntry("Tome of leadership and influence");
+    table.addEntry("Tome of understanding");
+    table.addEntry("Wand of plymorph");
+    table.addEntry("Wand of the war mage +3");
+    table.addEntry("Weapon +3", 4);
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::majorLegendaryMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Apparatus of Kwalish");
+    table.addEntry("Armor of invulnerability");
+    table.addEntry("Armor +3", 4);
+    table.addEntry("Belt of cloud giant strength");
+    table.addEntry("Belt of storm giant strength");
+    table.addEntry("Cloak of invisibility");
+    table.addEntry("Crystal ball (legendary)");
+    table.addEntry("Cubic gate");
+    table.addEntry("Deck of many things");
+    table.addEntry("Defender");
+    table.addEntry("Efreeti chain");
+    table.addEntry("Hammer of thunderbolts");
+    table.addEntry("Holy avenger");
+    table.addEntry("Horn of Valhalla (Iron)");
+    table.addEntry("Instrument of the bards (Ollamh harp)");
+    table.addEntry("Ioun stone (mastery)");
+    table.addEntry("Ioun stone (regeneration)");
+    table.addEntry("Iron flask");
+    table.addEntry("Luck blade");
+    table.addEntry("Plate armor of etherealness");
+    table.addEntry("Ring of air elemental command");
+    table.addEntry("Ring of djinni summoning");
+    table.addEntry("Ring of earth elemental command");
+    table.addEntry("Ring of fire elemental command");
+    table.addEntry("Ring of invisibility");
+    table.addEntry("Ring of spell turning");
+    table.addEntry("Ring of three wishes ");
+    table.addEntry("Ring of water elemental command");
+    table.addEntry("Robe of the archmagi");
+    table.addEntry("Rod of lordly might");
+    table.addEntry("Rod of resurrection");
+    table.addEntry("Scarab of protection");
+    table.addEntry("Sphere of annihilation");
+    table.addEntry("Staff of the magi");
+    table.addEntry("Sword of answering");
+    table.addEntry("Talisman of pure good");
+    table.addEntry("Talisman of the sphere");
+    table.addEntry("Talisman of ultimate evil");
+    table.addEntry("Tome of the stilled tongue");
+    table.addEntry("Vorpal sword");
+    table.addEntry("Well of many worlds");
 
     return table.getRollTableEntry();
 }

@@ -117,6 +117,14 @@ public:
 
     QString minorCommonMagicItems();
     QString minorUncommonMagicItems();
+    QString minorRareMagicIterms();
+    QString minorVeryRareMagicItems();
+    QString minorLegendaryMagicItems();
+
+    QString majorUncommonMagicItems();
+    QString majorRareMagicItems();
+    QString majorVeryRareMagicItems();
+    QString majorLegendaryMagicItems();
 
 
     // 1st edition dmg
