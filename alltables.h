@@ -115,6 +115,10 @@ public:
     QString generateSpellbook(int tier);
     QString wizardSpells(int level);
 
+    QString minorCommonMagicItems();
+    QString minorUncommonMagicItems();
+
+
     // 1st edition dmg
     /*
     QString treasureContainer();

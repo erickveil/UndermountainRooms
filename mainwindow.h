@@ -36,6 +36,8 @@ private slots:
 
     void on_genAdventure_clicked();
 
+    void on_genSpellbook_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

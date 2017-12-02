@@ -2808,10 +2808,15 @@ QString AllTables::generateSpellbook(int tier)
         for (int i = 0; i < qty; ++i) {
             spells += wizardSpells(1) + ", ";
         }
-        qty = roll(1,2) - 1;
-        if (qty < 1) { return spells; }
+        qty = roll(1,100);
+        if (qty < 50) { return spells; }
         spells += "\n2nd Level: \n";
         spells += wizardSpells(2);
+
+        qty = roll(1,100);
+        if (qty < 75) { return spells; }
+        spells += "\n3rd Level: \n";
+        spells += wizardSpells(3);
 
         return spells;
     }
@@ -2836,10 +2841,15 @@ QString AllTables::generateSpellbook(int tier)
 
         spells += "\n4th Level:\n" +wizardSpells(4) + "\n";
 
-        qty = roll(1,2) - 1;
-        if (qty < 1) { return spells; }
+        qty = roll(1,100);
+        if (qty < 50) { return spells; }
         spells += "\n5th Level: \n";
         spells += wizardSpells(5);
+
+        qty = roll(1,100);
+        if (qty < 75) { return spells; }
+        spells += "\n6th Level: \n";
+        spells += wizardSpells(6);
 
         return spells;
     }
@@ -2871,7 +2881,8 @@ QString AllTables::generateSpellbook(int tier)
         spells += "\n7th Level:\n" +wizardSpells(7) + "\n";
 
         qty = roll(1,2) - 1;
-        if (qty < 1) { return spells; }
+        qty = roll(1,100);
+        if (qty < 50) { return spells; }
         spells += "\n8th Level: \n";
         spells += wizardSpells(8);
 
@@ -2904,8 +2915,8 @@ QString AllTables::generateSpellbook(int tier)
 
         spells += "\n8th Level:\n" +wizardSpells(8) + "\n";
 
-        qty = roll(1,2) - 1;
-        if (qty < 1) { return spells; }
+        qty = roll(1,100);
+        if (qty < 50) { return spells; }
         spells += "\n9th Level: \n";
         spells += wizardSpells(9);
 
@@ -2934,6 +2945,15 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Ray of Frost");
         table.addEntry("Shocking Grasp");
         table.addEntry("True Strike");
+        table.addEntry("Control Flames (XGE)");
+        table.addEntry("Create bonfire (XGE)");
+        table.addEntry("Frostbite (XGE)");
+        table.addEntry("Gust (XGE)");
+        table.addEntry("Infestation (XGE)");
+        table.addEntry("Mold earth (XGE)");
+        table.addEntry("Shape Water (XGE)");
+        table.addEntry("Thunderclap (XGE)");
+        table.addEntry("Toll the Dead (XGE)");
     }
     else if (level ==1) {
         table.addEntry("Alarm");
@@ -2942,7 +2962,7 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Chromatic Orb");
         table.addEntry("Color Spray");
         table.addEntry("Comprehend Languages");
-        table.addEntry("Detect Magic");
+        table.addEntry("Detect Magic", 3);
         table.addEntry("Disguise Self");
         table.addEntry("Expedius Retreat");
         table.addEntry("False Life");
@@ -2950,7 +2970,7 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Find Familiar");
         table.addEntry("Fog Cloud");
         table.addEntry("Grease");
-        table.addEntry("Identify");
+        table.addEntry("Identify", 3);
         table.addEntry("Illusory Script");
         table.addEntry("Jump");
         table.addEntry("Logstrider");
@@ -2966,6 +2986,12 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Thunderwave");
         table.addEntry("Unseen Servant");
         table.addEntry("Witch Bolt");
+        table.addEntry("Absorb Elements (XGE)");
+        table.addEntry("Catapult (XGE)");
+        table.addEntry("Cause Fear (XGE)");
+        table.addEntry("Earth tremor (XGE)");
+        table.addEntry("Ice Knife (XGE)");
+        table.addEntry("Snare (XGE)");
     }
     else if (level == 2) {
         table.addEntry("Alter Self");
@@ -3002,6 +3028,17 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Spider Climb");
         table.addEntry("Suggestion");
         table.addEntry("Web");
+        table.addEntry("Aganazzar's Scorcher (XGE)");
+        table.addEntry("Dragon's Breath (XGE)");
+        table.addEntry("Dust Devil (XGE)");
+        table.addEntry("Earthbind (XGE)");
+        table.addEntry("Maximilian's Earthen Grasp (XGE)");
+        table.addEntry("Mind Spike (XGE)");
+        table.addEntry("Pyrotechnics (XGE)");
+        table.addEntry("Shadow Blade (XGE)");
+        table.addEntry("Skywrite (XGE)");
+        table.addEntry("Snilloc's Snowball Swarm (XGE)");
+        table.addEntry("Warding Wind (XGE)");
     }
     else if (level == 3) {
         table.addEntry("Animate Dead");
@@ -3033,6 +3070,18 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Tongues");
         table.addEntry("Vampiric Touch");
         table.addEntry("Water Breathing");
+        table.addEntry("Catnap (XGE)");
+        table.addEntry("Enemies Abound (XGE)");
+        table.addEntry("Erupting Earth (XGE)");
+        table.addEntry("Flame Arrows (XGE)");
+        table.addEntry("Life Transference (XGE)");
+        table.addEntry("Melf's Minute Meteors (XGE)");
+        table.addEntry("Summon Lesser Demons (XGE)");
+        table.addEntry("Thunder Step (XGE)");
+        table.addEntry("Tidal Wave (XGE)");
+        table.addEntry("Tiny Servant (XGE)");
+        table.addEntry("Wall of Sand (XGE)");
+        table.addEntry("Wall of Water (XGE)");
     }
     else if (level == 4) {
         table.addEntry("Arcane Eye");
@@ -3058,6 +3107,13 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Stone Shape");
         table.addEntry("Stoneskin");
         table.addEntry("Wall of Fire");
+        table.addEntry("Charm Monster (XGE)");
+        table.addEntry("Elemental Bane (XGE)");
+        table.addEntry("Sickening Radiance (XGE)");
+        table.addEntry("Storm Sphere (XGE)");
+        table.addEntry("Summon Greater Demon (XGE)");
+        table.addEntry("Vitrolic Sphere (XGE)");
+        table.addEntry("Watery Sphere (XGE)");
     }
     else if (level == 5) {
 
@@ -3084,6 +3140,19 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Teleportation Circle");
         table.addEntry("Wall of Force");
         table.addEntry("Wall of Stone");
+        table.addEntry("Control Winds (XGE)");
+        table.addEntry("Danse Macabre (XGE)");
+        table.addEntry("Dawn (XGE)");
+        table.addEntry("Enervation (XGE)");
+        table.addEntry("Far Step (XGE)");
+        table.addEntry("Immolation (XGE)");
+        table.addEntry("Infernal Calling (XGE)");
+        table.addEntry("Negative Energy Flood (XGE)");
+        table.addEntry("Skill Empowerment (XGE)");
+        table.addEntry("Steel Wind Strike (XGE)");
+        table.addEntry("Synaptic Static (XGE)");
+        table.addEntry("Transmute Rock (XGE)");
+        table.addEntry("Wall of Light (XGE)");
     }
     else if (level == 6) {
 
@@ -3107,6 +3176,15 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Sunbeam");
         table.addEntry("True Seeing");
         table.addEntry("Wall of Ice");
+        table.addEntry("Create Homonuculus (XGE)");
+        table.addEntry("Investiture of Flame (XGE)");
+        table.addEntry("Investiture of Ice (XGE)");
+        table.addEntry("Investiture of Stone (XGE)");
+        table.addEntry("Investiture of Wind (XGE)");
+        table.addEntry("Mental Prison (XGE)");
+        table.addEntry("Scatter (XGE)");
+        table.addEntry("Soul Cage (XGE)");
+        table.addEntry("Tenser's Transformation (XGE)");
     }
     else if (level == 7) {
         table.addEntry("Delayed Blast Fireball");
@@ -3124,6 +3202,9 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Simulacrum");
         table.addEntry("Symbol");
         table.addEntry("Teleport");
+        table.addEntry("Crown of Stars (XGE)");
+        table.addEntry("Power Word Pain (XGE)");
+        table.addEntry("Whirlwind (XGE)");
     }
     else if (level == 8) {
         table.addEntry("Antimagic Field");
@@ -3140,6 +3221,10 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("Sunburst");
         table.addEntry("Telepathy");
         table.addEntry("Trap the Soul");
+        table.addEntry("Abi-Dalzim's Horrid Wilting (XGE)");
+        table.addEntry("Illusory Dragon (XGE)");
+        table.addEntry("Maddening Darkness (XGE)");
+        table.addEntry("Mighty Fortress (XGE)");
     }
     else {
         table.addEntry("Astral Projection");
@@ -3154,7 +3239,117 @@ QString AllTables::wizardSpells(int level)
         table.addEntry("True Polymorph");
         table.addEntry("Weird");
         table.addEntry("Wish");
+        table.addEntry("Invulnerability (XGE)");
+        table.addEntry("Mass Polymorph (XGE)");
+        table.addEntry("Psychic Scream (XGE)");
     }
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::minorCommonMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Armor of gleaming");
+    table.addEntry("Bead of nourishment");
+    table.addEntry("Bead of refreshment");
+    table.addEntry("Boots of false tracks");
+    table.addEntry("Candle of the deep");
+    table.addEntry("Cast-off armor");
+    table.addEntry("Charlatan's die");
+    table.addEntry("Cloak of billowing");
+    table.addEntry("Cloak of many fashions");
+    table.addEntry("Clockwork amulet");
+    table.addEntry("Clothes of mending");
+    table.addEntry("Dark shard amulet");
+    table.addEntry("Dread helm");
+    table.addEntry("Ear horn of hearing");
+    table.addEntry("Enduring spellbook");
+    table.addEntry("Ersatz eye");
+    table.addEntry("Hat of vermin");
+    table.addEntry("Hat of wizardry");
+    table.addEntry("Heward's handy spice pouch");
+    table.addEntry("Horn of silent alarm");
+    table.addEntry("Instrument of illusions");
+    table.addEntry("Instrument of scribing");
+    table.addEntry("Lock of trickery");
+    table.addEntry("Moon-touched sword");
+    table.addEntry("Mystery key");
+    table.addEntry("Orb of direction");
+    table.addEntry("Orb of time");
+    table.addEntry("Perfume of bewitching");
+    table.addEntry("Pipe of smoke monsters");
+    table.addEntry("Pole of angling");
+    table.addEntry("Pole of collapsing");
+    table.addEntry("Pot of awakening");
+    table.addEntry("Potion of climbing");
+    table.addEntry("Potion of healing");
+    table.addEntry("Rope of mending");
+    table.addEntry("Ruby of the war mage");
+    table.addEntry("Shield of expression");
+    table.addEntry("Smoldering armor");
+    table.addEntry("Spell scroll: " + wizardSpells(0));
+    table.addEntry("Spell scroll: " + wizardSpells(1));
+    table.addEntry("Staff of adornment");
+    table.addEntry("Staff of birdcalls");
+    table.addEntry("Staff of flowers");
+    table.addEntry("Talking doll");
+    table.addEntry("Tankard of sobriety");
+    table.addEntry("Unbreakable arrow");
+    table.addEntry("Veteran's cane");
+    table.addEntry("Walloping ammunition");
+    table.addEntry("Wand of conducting");
+    table.addEntry("Wand of pyrotechnics");
+    table.addEntry("Wand of scowls");
+    table.addEntry("Wand of smiles");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::minorUncommonMagicItems()
+{
+    RandomTable table;
+
+    table.addEntry("Alchemy jug");
+    table.addEntry("Ammunition +1");
+    table.addEntry("Bag of holding");
+    table.addEntry("Cap of water breathing");
+    table.addEntry("Cloak of the manta ray");
+    table.addEntry("Decanter of endless water");
+    table.addEntry("Driftglobe");
+    table.addEntry("Dust of disappearance");
+    table.addEntry("Dust of dryness");
+    table.addEntry("Dust of sneezing and choking");
+    table.addEntry("Elemental gem");
+    table.addEntry("Eyes of minute seeing");
+    table.addEntry("Goggles of night");
+    table.addEntry("Helm of comprehending languages");
+    table.addEntry("Immovable rod");
+    table.addEntry("Keoghtom's ointment");
+    table.addEntry("Lantern of revealing");
+    table.addEntry("Mariner's armor");
+    table.addEntry("Mithral armor");
+    table.addEntry("Oil of slipperiness");
+    table.addEntry("Periapt of health");
+    table.addEntry("Philter of love");
+    table.addEntry("Potion of animal friendship");
+    table.addEntry("Potion of fire breath");
+    table.addEntry("Potion of greater healing");
+    table.addEntry("Potion of growth");
+    table.addEntry("Potion of hill giant strength");
+    table.addEntry("Potion of poison");
+    table.addEntry("Potion of resistance");
+    table.addEntry("Potion of water breathing");
+    table.addEntry("Ring os swimming");
+    table.addEntry("Robe of useful items");
+    table.addEntry("Rope of climbing");
+    table.addEntry("Saddle of the cavalier");
+    table.addEntry("Sending stones");
+    table.addEntry("Spell Scroll: " + wizardSpells(2));
+    table.addEntry("Spell Scroll: " + wizardSpells(3));
+    table.addEntry("Wand of magic detection");
+    table.addEntry("Wand of secrets");
 
     return table.getRollTableEntry();
 }

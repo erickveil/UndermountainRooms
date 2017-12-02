@@ -69,20 +69,22 @@ void MainWindow::on_genCombo_clicked()
 
 void MainWindow::on_wanderingMonster_clicked()
 {
+    QString biome = ui->biomeSelect->currentText();
     int tier = 1;
-    if (ui->biomeSelect->currentText() == "Underdark") {
+    if (biome == "Underdark") {
         ui->resultArea->setPlainText(roller.checkForWanderingMonsters(tier));
     }
-    else if (ui->biomeSelect->currentText() == "Undermountain") {
+    else if (biome == "Undermountain") {
         ui->resultArea->setPlainText(roller.undermountainMonster(tier));
     }
-    else if (ui->biomeSelect->currentText() == "Urban") {
+    else if (biome == "Urban") {
         ui->resultArea->setPlainText(roller.generateUrbanEncounter(tier));
     }
-    else if (ui->biomeSelect->currentData() == "Sewer") {
+    else if (biome == "Sewer") {
+        ui->resultArea->setPlainText(roller.sewerEncounter(tier));
     }
     else {
-        ui->resultArea->setPlainText("Unknown biome type");
+        ui->resultArea->setPlainText("Unknown biome type: " + biome );
     }
 }
 
@@ -121,4 +123,10 @@ void MainWindow::on_underMonst_clicked()
 void MainWindow::on_genAdventure_clicked()
 {
     ui->resultArea->setPlainText(roller.generateRandomAdventure(1));
+}
+
+void MainWindow::on_genSpellbook_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.generateSpellbook(tier));
 }
