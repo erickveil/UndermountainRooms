@@ -96,8 +96,6 @@ public:
     QString friendlyHumanoidUrbanActivity();
 
 
-
-
     // monster tables
 
     //QString generateInhabitants(int dungionLevel);
@@ -125,6 +123,8 @@ public:
     QString majorRareMagicItems();
     QString majorVeryRareMagicItems();
     QString majorLegendaryMagicItems();
+
+    QString itemCreator();
 
 
     // 1st edition dmg

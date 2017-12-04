@@ -2302,6 +2302,13 @@ QString AllTables::undermountainMonster(int tier)
     table.addEntry("A wererat rogue of the Sewer Rats tails the party, hoping "
                    "to pilfer some gear. A second one might cause a "
                    "distraction, giving him advantage.");
+    table.addEntry("A guard, leading commoner 'adventurers' on an expedition "
+                   "for the Wyvernroost", 2);
+    table.addEntry("A group of bandits looking for plunder", 3);
+    table.addEntry("An 'adventuring party' made up of an apprentice, a "
+                   "commoner, a bandit, and a thug", 2);
+    table.addEntry("A commoner prisoner being led by thugs or bandits to sell "
+                   "as slaves to the bloodfist goblins", 2);
 
     return table.getRollTableEntry();
 }
@@ -3709,6 +3716,84 @@ QString AllTables::majorLegendaryMagicItems()
     table.addEntry("Tome of the stilled tongue");
     table.addEntry("Vorpal sword");
     table.addEntry("Well of many worlds");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::itemCreator()
+{
+    RandomTable table;
+
+    table.addEntry("Aberration. The item was created by aberrations "
+                   "in ancient times, possibly for hte use of favored "
+                   "humanoid thralls. When seen from the corner of "
+                   "the eye, the item seems to be moving.");
+    table.addEntry("Human. The item was created during the heyday of "
+                   "a fallen human kingdom, or it is tied to a human of "
+                   "legend. It might hold writing in a forgotten tongue "
+                   "or symbols whose significance is lost to the ages.",
+                   3);
+    table.addEntry("Celestial. The weapon is half the normal weight "
+                   "and inscribed with feathered wings, suns, and "
+                   "other symbols of good. Fiends find the item's "
+                   "presence repulsive.");
+    table.addEntry("Dragon. This item is made from scales and talons "
+                   "shed by a dragon. Perhaps it incorporates precious "
+                   "metals and gems from the dragon's hoard. It grows "
+                   "slightly warm when within 120 feet of a dragon.");
+    table.addEntry("Drow. The item is half the normal weight. It is "
+                   "black and inscribed with spiders and webs in honor "
+                   "of Lolth. It might function poorly, or disintegrate, if "
+                   "exposed to sunlight for 1 minute or more.");
+    table.addEntry("Dwarf. The item is durable and has Dwarven runes "
+                   "worked into its design. It might be associated with "
+                   "a clan that would like to see it returned to their "
+                   "ancestral halls.", 2);
+    table.addEntry("Elemental Air. The item is half the normal weight "
+                   "and feels hollow. If it's made of fabric, it is "
+                   "diaphanous.");
+    table.addEntry("Elemental Earth. The item might be crafted from stone. "
+                   "Any cloth or leather elements are studded with finely "
+                   "polished rock.");
+    table.addEntry("Elemental fire. This item is warm to the touch, "
+                   "and any metal parts are crafted from black iron. "
+                   "Sigils of flames cover its surface. Shades of red and "
+                   "orange are the prominent colors.");
+    table.addEntry("Elemental Water. Lustrou fish scales replace "
+                   "leather or cloth on this item, and metal portions "
+                   "are instead crafted from seashells and worked coral "
+                   "as hard as any metal.");
+    table.addEntry("Elf, The item is half the normal weight. It is "
+                   "adorned with symbols of nature: leaves, vines, stars, and "
+                   "the like.", 2);
+    table.addEntry("Fey. The item is exquisitely crafted from the "
+                   "finest materials and glows with a pale radieance in "
+                   "moonlight, shedding dim light in a 5-foot radius. "
+                   "Any metal in the item is silver or mithral, rather "
+                   "than iron or steel.");
+    table.addEntry("Fiend. The item is made of black iron or horn "
+                   "inscribed with runes, and any cloth of leather "
+                   "components are crafted from the hide of fiends. It "
+                   "is warm to the touch and features leering faces or "
+                   "vile runes engraved on its surface. Celestials find the "
+                   "item's presence repulsive.");
+    table.addEntry("Giant. The item is larger than normal and was "
+                   "crafter by giants for use by their smaller allies.");
+    table.addEntry("Gnome. The item is crafted to appear ordinary and "
+                   "it might look worn. It could also incorporate gears "
+                   "and mechanical components, even if these aren't "
+                   "essential to the item's function.");
+    table.addEntry("Undead. The item incorporates imagery of death, "
+                   "such a bones and skulls, and it might be crafted from "
+                   "parts of corpses. It feels cold to the touch.");
+    table.addEntry("Modern. The item is forged of exceptional quality and "
+                   "craftsmanship. It bears a maker's mark. Research would "
+                   "lead one to a master craftsman, who created the item for "
+                   "a wizard to enchant. This wizard might be interested to "
+                   "learn the fate of the item they created.");
+    table.addEntry("Nondescript. The item looks like any other mundane item "
+                   "of its type. Only when it is put to use is its nature "
+                   "exposed.");
 
     return table.getRollTableEntry();
 }
