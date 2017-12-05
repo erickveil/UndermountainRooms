@@ -24,11 +24,65 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->biomeSelect->addItem("Undermountain");
     ui->biomeSelect->addItem("Urban");
     ui->biomeSelect->addItem("Sewer");
+    ui->biomeSelect->addItem("Guardian");
+
+    ui->itemType->addItem("By Tier");
+    ui->itemType->addItem("Minor Common");
+    ui->itemType->addItem("Minor Uncommon");
+    ui->itemType->addItem("Minor Rare");
+    ui->itemType->addItem("Minor Very Rare");
+    ui->itemType->addItem("Minor Legendary");
+    ui->itemType->addItem("Major Uncommon");
+    ui->itemType->addItem("Major Rare");
+    ui->itemType->addItem("Major Very Rare");
+    ui->itemType->addItem("Major Legenary");
+}
+
+void MainWindow::on_genMagicItem_clicked()
+{
+    int tier = ui->tierSelect->value();
+    QString type = ui->itemType->currentText();
+    QString item;
+    if (type == "Minor Common") {
+        item = roller.minorCommonMagicItems();
+    }
+    else if (type == "Minor Uncommon") {
+        item = roller.minorUncommonMagicItems();
+    }
+    else if (type == "Minor Rare") {
+        item = roller.minorRareMagicIterms();
+    }
+    else if (type == "Minor Very Rare") {
+        item = roller.minorVeryRareMagicItems();
+    }
+    else if (type == "Minor Legendary") {
+        item = roller.minorLegendaryMagicItems();
+    }
+    else if (type == "Major Uncommon") {
+        item = roller.majorUncommonMagicItems();
+    }
+    else if (type == "Major Rare") {
+        item = roller.majorRareMagicItems();
+    }
+    else if (type == "Major Very Rare") {
+        item = roller.majorVeryRareMagicItems();
+    }
+    else if (type == "Major Legendary") {
+        item = roller.majorLegendaryMagicItems();
+    }
+    else if (type == "By Tier") {
+        item = roller.selectMagicItemByTier(tier);
+    }
+    else {
+        item = "Unfamiliar item type: " + type;
+    }
+
+    ui->resultArea->setPlainText(item);
 }
 
 void MainWindow::on_genCombo_clicked()
 {
-    int tier = 1;
+    int tier = ui->tierSelect->value();
     if (ui->typeSelect->currentText() == "General") {
         ui->resultArea->setPlainText(roller.generateGeneralRoom(tier));
     }
@@ -70,7 +124,8 @@ void MainWindow::on_genCombo_clicked()
 void MainWindow::on_wanderingMonster_clicked()
 {
     QString biome = ui->biomeSelect->currentText();
-    int tier = 1;
+    int tier = ui->tierSelect->value();
+
     if (biome == "Underdark") {
         ui->resultArea->setPlainText(roller.checkForWanderingMonsters(tier));
     }
@@ -82,6 +137,9 @@ void MainWindow::on_wanderingMonster_clicked()
     }
     else if (biome == "Sewer") {
         ui->resultArea->setPlainText(roller.sewerEncounter(tier));
+    }
+    else if (biome == "Guardian") {
+        ui->resultArea->setPlainText(roller.guardianFoe(tier));
     }
     else {
         ui->resultArea->setPlainText("Unknown biome type: " + biome );

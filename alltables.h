@@ -123,8 +123,10 @@ public:
     QString majorRareMagicItems();
     QString majorVeryRareMagicItems();
     QString majorLegendaryMagicItems();
+    QString selectMagicItemByTier(int tier);
 
     QString itemCreator();
+    QString itemHistory();
 
 
     // 1st edition dmg

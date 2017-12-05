@@ -3292,13 +3292,13 @@ QString AllTables::minorCommonMagicItems()
     table.addEntry("Pole of collapsing");
     table.addEntry("Pot of awakening");
     table.addEntry("Potion of climbing");
-    table.addEntry("Potion of healing", 5);
+    table.addEntry("Potion of healing", 10);
     table.addEntry("Rope of mending");
     table.addEntry("Ruby of the war mage");
     table.addEntry("Shield of expression");
     table.addEntry("Smoldering armor");
-    table.addEntry("Spell scroll: " + wizardSpells(0), 2);
-    table.addEntry("Spell scroll: " + wizardSpells(1), 2);
+    table.addEntry("Spell scroll: " + wizardSpells(0), 4);
+    table.addEntry("Spell scroll: " + wizardSpells(1), 4);
     table.addEntry("Staff of adornment");
     table.addEntry("Staff of birdcalls");
     table.addEntry("Staff of flowers");
@@ -3312,7 +3312,7 @@ QString AllTables::minorCommonMagicItems()
     table.addEntry("Wand of scowls");
     table.addEntry("Wand of smiles");
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (minor, common)";
 }
 
 QString AllTables::minorUncommonMagicItems()
@@ -3343,23 +3343,23 @@ QString AllTables::minorUncommonMagicItems()
     table.addEntry("Philter of love");
     table.addEntry("Potion of animal friendship");
     table.addEntry("Potion of fire breath");
-    table.addEntry("Potion of greater healing", 5);
+    table.addEntry("Potion of greater healing", 10);
     table.addEntry("Potion of growth");
     table.addEntry("Potion of hill giant strength");
-    table.addEntry("Potion of poison", 3);
+    table.addEntry("Potion of poison", 6);
     table.addEntry("Potion of resistance");
-    table.addEntry("Potion of water breathing", 2);
+    table.addEntry("Potion of water breathing", 4);
     table.addEntry("Ring os swimming");
     table.addEntry("Robe of useful items");
     table.addEntry("Rope of climbing");
     table.addEntry("Saddle of the cavalier");
     table.addEntry("Sending stones");
-    table.addEntry("Spell Scroll: " + wizardSpells(2), 2);
-    table.addEntry("Spell Scroll: " + wizardSpells(3), 2);
+    table.addEntry("Spell Scroll: " + wizardSpells(2), 4);
+    table.addEntry("Spell Scroll: " + wizardSpells(3), 4);
     table.addEntry("Wand of magic detection");
     table.addEntry("Wand of secrets");
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (minor, uncommon)";
 }
 
 QString AllTables::minorRareMagicIterms()
@@ -3386,13 +3386,13 @@ QString AllTables::minorRareMagicIterms()
     table.addEntry("Potion of invulnerability");
     table.addEntry("Potion of mind reading");
     table.addEntry("Potion of stone giant strength");
-    table.addEntry("Potion of superior healing", 3);
+    table.addEntry("Potion of superior healing", 6);
     table.addEntry("Quaal's feather token");
-    table.addEntry("Scroll of protection", 2);
-    table.addEntry("Spell scroll: " + wizardSpells(4), 2);
-    table.addEntry("Spell scroll: " + wizardSpells(5), 2);
+    table.addEntry("Scroll of protection", 4);
+    table.addEntry("Spell scroll: " + wizardSpells(4), 4);
+    table.addEntry("Spell scroll: " + wizardSpells(5), 4);
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (minor, Rare)";
 }
 
 QString AllTables::minorVeryRareMagicItems()
@@ -3416,7 +3416,7 @@ QString AllTables::minorVeryRareMagicItems()
     table.addEntry("Spell scroll: " + wizardSpells(7));
     table.addEntry("Spell scroll: " + wizardSpells(8));
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (minor, very rare)";
 }
 
 QString AllTables::minorLegendaryMagicItems()
@@ -3428,7 +3428,7 @@ QString AllTables::minorLegendaryMagicItems()
     table.addEntry("Spell scroll: " + wizardSpells(9));
     table.addEntry("Universal solvent");
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (minor, legendary)";
 }
 
 QString AllTables::majorUncommonMagicItems()
@@ -3477,7 +3477,7 @@ QString AllTables::majorUncommonMagicItems()
     table.addEntry("Ring of water walking");
     table.addEntry("Rod of the pact keeper +1");
     table.addEntry("Sentinel shield");
-    table.addEntry("Shield +1", 3);
+    table.addEntry("Shield +1", 8);
     table.addEntry("Slippers of spider climbing");
     table.addEntry("Staff of the adder");
     table.addEntry("Staff of the python");
@@ -3488,11 +3488,11 @@ QString AllTables::majorUncommonMagicItems()
     table.addEntry("Wand of the war mage +1");
     table.addEntry("Wand of web");
     table.addEntry("Weapon of warning");
-    table.addEntry("Weapon +1", 4);
+    table.addEntry("Weapon +1", 8);
     table.addEntry("Wind fan");
     table.addEntry("Winged boots");
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (major, uncommon)";
 }
 
 QString AllTables::majorRareMagicItems()
@@ -3502,7 +3502,7 @@ QString AllTables::majorRareMagicItems()
     table.addEntry("Amulet of health");
     table.addEntry("Armor of resistance");
     table.addEntry("Armor of vulnerability");
-    table.addEntry("Armor +1", 4);
+    table.addEntry("Armor +1", 8);
     table.addEntry("Arrow-catching shield");
     table.addEntry("Belt of dwarvenkind");
     table.addEntry("Belt of hill giant strength");
@@ -3570,7 +3570,7 @@ QString AllTables::majorRareMagicItems()
     table.addEntry("Rod of the pact keeper +2");
     table.addEntry("Rope of entanglement");
     table.addEntry("Shield of missile attraction");
-    table.addEntry("Shield +2", 3);
+    table.addEntry("Shield +2", 8);
     table.addEntry("Staff of charming");
     table.addEntry("Staff of healing");
     table.addEntry("Staff of swarming insects");
@@ -3590,10 +3590,10 @@ QString AllTables::majorRareMagicItems()
     table.addEntry("Wand of paralysis");
     table.addEntry("Wand of the war mage +2");
     table.addEntry("Wand of wonder");
-    table.addEntry("Weapon +2", 4);
+    table.addEntry("Weapon +2", 8);
     table.addEntry("Wings of flying");
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (major, rare)";
 }
 
 QString AllTables::majorVeryRareMagicItems()
@@ -3602,7 +3602,7 @@ QString AllTables::majorVeryRareMagicItems()
 
     table.addEntry("Amulet of the planes");
     table.addEntry("Animated shield");
-    table.addEntry("Armor +2", 4);
+    table.addEntry("Armor +2", 8);
     table.addEntry("Belt of fire giant strength");
     table.addEntry("Belt of frost giant strength");
     table.addEntry("Belt of stone giant strength");
@@ -3652,7 +3652,7 @@ QString AllTables::majorVeryRareMagicItems()
     table.addEntry("Rod of security");
     table.addEntry("Rod of the pact keeper +3");
     table.addEntry("Scimitar of speed");
-    table.addEntry("Shield +3", 4);
+    table.addEntry("Shield +3", 8);
     table.addEntry("Spellguard shield");
     table.addEntry("Staff of fire");
     table.addEntry("Staff of fire");
@@ -3666,9 +3666,9 @@ QString AllTables::majorVeryRareMagicItems()
     table.addEntry("Tome of understanding");
     table.addEntry("Wand of plymorph");
     table.addEntry("Wand of the war mage +3");
-    table.addEntry("Weapon +3", 4);
+    table.addEntry("Weapon +3", 8);
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + " (major, very rare)";
 }
 
 QString AllTables::majorLegendaryMagicItems()
@@ -3677,7 +3677,7 @@ QString AllTables::majorLegendaryMagicItems()
 
     table.addEntry("Apparatus of Kwalish");
     table.addEntry("Armor of invulnerability");
-    table.addEntry("Armor +3", 4);
+    table.addEntry("Armor +3", 8);
     table.addEntry("Belt of cloud giant strength");
     table.addEntry("Belt of storm giant strength");
     table.addEntry("Cloak of invisibility");
@@ -3717,7 +3717,50 @@ QString AllTables::majorLegendaryMagicItems()
     table.addEntry("Vorpal sword");
     table.addEntry("Well of many worlds");
 
+    return table.getRollTableEntry() + " (major, legendary)";
+}
+
+QString AllTables::selectMagicItemByTier(int tier)
+{
+    RandomTable table;
+
+    if (tier == 1) {
+        table.addEntry(minorCommonMagicItems(), 24); // A
+        table.addEntry(minorUncommonMagicItems(), 15); // B
+        table.addEntry(minorRareMagicIterms(), 10); // C
+        table.addEntry(majorUncommonMagicItems(), 12); // F
+        table.addEntry(majorRareMagicItems(), 3); // G
+    }
+    else if (tier == 2) {
+        table.addEntry(minorCommonMagicItems(), 16); // A
+        table.addEntry(minorUncommonMagicItems(), 19); // B
+        table.addEntry(minorRareMagicIterms(), 11); // C
+        table.addEntry(minorVeryRareMagicItems(), 6); // D
+        table.addEntry(majorUncommonMagicItems(), 14); // F
+        table.addEntry(majorRareMagicItems(), 4); // G
+        table.addEntry(majorVeryRareMagicItems(), 2); // H
+    }
+    else if (tier == 3) {
+        table.addEntry(minorCommonMagicItems(), 14); // A
+        table.addEntry(minorUncommonMagicItems(), 14); // B
+        table.addEntry(minorRareMagicIterms(), 21); // C
+        table.addEntry(minorVeryRareMagicItems(), 11); // D
+        table.addEntry(minorLegendaryMagicItems(), 8); // E
+        table.addEntry(majorRareMagicItems(), 8); // G
+        table.addEntry(majorVeryRareMagicItems(), 10); // H
+        table.addEntry(majorLegendaryMagicItems(), 8); // I
+    }
+    else {
+        table.addEntry(minorRareMagicIterms(), 12); // C
+        table.addEntry(minorVeryRareMagicItems(), 31); // D
+        table.addEntry(minorLegendaryMagicItems(), 22); // E
+        table.addEntry(majorRareMagicItems(), 3); // G
+        table.addEntry(majorVeryRareMagicItems(), 8); // H
+        table.addEntry(majorLegendaryMagicItems(), 20); // I
+    }
+
     return table.getRollTableEntry();
+
 }
 
 QString AllTables::itemCreator()
@@ -3794,6 +3837,48 @@ QString AllTables::itemCreator()
     table.addEntry("Nondescript. The item looks like any other mundane item "
                    "of its type. Only when it is put to use is its nature "
                    "exposed.");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::itemHistory()
+{
+    RandomTable table;
+
+    table.addEntry("Arcane. This item was created for an ancient order "
+                   "of spellcasters and bears the order's symbol.");
+    table.addEntry("Bane. This item was created by the foes of a "
+                   "particular culture or kind of creature. if the culture "
+                   "or creatures are still around, they might recognize "
+                   "the item and single out the bearer as an enemy.");
+    table.addEntry("Heroic. A great hero once wielded this item. "
+                   "Anyone who's familiar with the item's history "
+                   "expects great deeds from the new owner.");
+    table.addEntry("Ornament. The item was created to honor a special "
+                   "occasion. Inset gemstones, gold or platinum "
+                   "inlays, and gold or silver filigree adorn its surface.");
+    table.addEntry("Prophecy. The item features in a prophecy: its "
+                   "bearer is destined to play a key role in future "
+                   "events. Someone wles who wants to play that role "
+                   "might try to steal the item, or someone who wnats "
+                   "to prevent the prophecy from being fulfilled might "
+                   "try to kill the item's bearer.");
+    table.addEntry("Religious. This item was used in religious "
+                   "ceremonies dedicated to a particular deity. It has "
+                   "holy symbols worked into it. The god's followers "
+                   "might try to persuade its owner to donate it to a "
+                   "temple, steal the tiem for themselves, or celebrate "
+                   "its use by a cleric or paladin of the same deity.");
+    table.addEntry("Sinister. This item is linked to a deed of great evil, "
+                   "such as a massacre or an assassination. It might have a "
+                   "name or be closely associated with a villain "
+                   "who used it. Anyone familiar with the item's history "
+                   "is likely to treat it an its owner with suspicion.");
+    table.addEntry("Symbol of Power. This item was once used as part "
+                   "of royal regalia or as a badge of high office. Its "
+                   "former owner or that paerson's descendants might "
+                   "desire it, or someone might mistakenly assume its "
+                   "new owner is the item's legitimate inheritor.");
 
     return table.getRollTableEntry();
 }

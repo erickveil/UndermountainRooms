@@ -38,6 +38,8 @@ private slots:
 
     void on_genSpellbook_clicked();
 
+    void on_genMagicItem_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
