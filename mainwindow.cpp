@@ -153,7 +153,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_genTrap_clicked()
 {
-    QString result = roller.generateTrap();
+    int tier = ui->tierSelect->value();
+    QString result = roller.generateTrap(tier);
     ui->resultArea->setPlainText(result);
 }
 
@@ -174,13 +175,15 @@ void MainWindow::on_disarm_clicked()
 
 void MainWindow::on_underMonst_clicked()
 {
-    ui->resultArea->setPlainText(roller.undermountainMonster(1));
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.undermountainMonster(tier));
 }
 
 
 void MainWindow::on_genAdventure_clicked()
 {
-    ui->resultArea->setPlainText(roller.generateRandomAdventure(1));
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.generateRandomAdventure(tier));
 }
 
 void MainWindow::on_genSpellbook_clicked()

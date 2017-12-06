@@ -195,7 +195,7 @@ QString AllTables::generateHallwayContents(int tier)
     QString obstacle = obstacles();
     table.addEntry("OBSTACLE: " + obstacle, 5);
 
-    QString trap = generateTrap();
+    QString trap = generateTrap(tier);
     table.addEntry("TRAP: " + trap, 10);
     table.addEntry("TRAP protecting treasure: " + trap, 3);
 
@@ -1003,7 +1003,7 @@ QString AllTables::chamberContents(int tier)
     QString obstacle = obstacles();
     table.addEntry("OBSTACLE: " + obstacle, 5);
 
-    QString trap = generateTrap();
+    QString trap = generateTrap(tier);
     table.addEntry("TRAP: " + trap, 10);
     table.addEntry("TRAP protecting treasure: " + trap, 3);
 
@@ -1127,34 +1127,75 @@ QString AllTables::trapSeverity(int tier)
     QString dc;
     QString att;
     QString damage;
+    QString spell;
 
     dc = QString::number(randomNumber(10, 11));
     att = QString::number(randomNumber(3, 5));
-    if (tier == 1) { damage = "1d10";}
-    else if (tier == 2) { damage = "2d10"; }
-    else if (tier == 3) { damage = "4d10"; }
-    else { damage = "10d10"; }
-    QString detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage;
+    if (tier == 1) {
+        damage = "1d10";
+        spell = wizardSpells(0) + " or " + wizardSpells(0);
+    }
+    else if (tier == 2) {
+        damage = "2d10";
+        spell = wizardSpells(1) + " or " + wizardSpells(1);
+    }
+    else if (tier == 3) {
+        damage = "4d10";
+        spell = wizardSpells(3) + " or " + wizardSpells(3);
+    }
+    else {
+        damage = "10d10";
+        spell = wizardSpells(6) + " or " + wizardSpells(6);
+    }
+    QString detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage
+            + "\nSPELL EFFECT: " + spell;
 
     table.addEntry("Setback" + detail, 2);
 
     dc = QString::number(randomNumber(12, 15));
     att = QString::number(randomNumber(6, 8));
-    if (tier == 1) { damage = "2d10";}
-    else if (tier == 2) { damage = "4d10"; }
-    else if (tier == 3) { damage = "10d10"; }
-    else { damage = "18d10"; }
-    detail = " DC: " + dc + ", attk: +" + att + ", dmg: " + damage;
+    if (tier == 1) {
+        damage = "2d10";
+        spell = wizardSpells(1) + " or " + wizardSpells(1);
+    }
+    else if (tier == 2) {
+        damage = "4d10";
+        spell = wizardSpells(3) + " or " + wizardSpells(3);
+    }
+    else if (tier == 3) {
+        damage = "10d10";
+        spell = wizardSpells(6) + " or " + wizardSpells(6);
+    }
+    else {
+        damage = "18d10";
+        spell = wizardSpells(9) + " or " + wizardSpells(9);
+    }
+    detail = " DC: " + dc + ", attk: +" + att + ", dmg: " + damage
+            + "\nSPELL EFFECT: " + spell;
 
     table.addEntry("Dangerous" + detail, 3);
 
     dc = QString::number(randomNumber(16, 20));
     att = QString::number(randomNumber(9, 12));
-    if (tier == 1) { damage = "4d10";}
-    else if (tier == 2) { damage = "10d10"; }
-    else if (tier == 3) { damage = "18d10"; }
-    else { damage = "24d10"; }
-    detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage;
+    if (tier == 1) {
+        damage = "4d10";
+        spell = wizardSpells(2) + " or " + wizardSpells(2);
+    }
+    else if (tier == 2) {
+        damage = "10d10";
+        spell = wizardSpells(6) + " or " + wizardSpells(6);
+    }
+    else if (tier == 3) {
+        damage = "18d10";
+        spell = wizardSpells(9) + " or " + wizardSpells(9);
+    }
+    else {
+        damage = "24d10";
+        spell = wizardSpells(9) + " and " + wizardSpells(5) + " or "
+                + wizardSpells(9) + " and " + wizardSpells(5);
+    }
+    detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage
+            + "\nSPELL EFFECT: " + spell;
 
     table.addEntry("Deadly" + detail);
 
