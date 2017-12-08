@@ -67,10 +67,10 @@ public:
     QString trickObject();
     QString trick();
 
-    /*
     QString noises();
-    QString airDressing();
     QString odors();
+    /*
+    QString airDressing();
     QString generalFeatures();
     */
 
@@ -93,6 +93,7 @@ public:
     QString creatureAttacksUrban();
 
     QString generateUrbanEncounter(int tier);
+    QString generateUrbanEncounterNight(int tier);
     QString friendlyHumanoidUrbanActivity();
 
 

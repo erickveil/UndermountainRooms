@@ -29,6 +29,8 @@ QString AllTables::generateGeneralRoom(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier)
             + ".\n";
@@ -43,6 +45,8 @@ QString AllTables::generateDeathTrapRoom(int dungeonLevel)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(dungeonLevel)
             + ".\n";
@@ -57,6 +61,8 @@ QString AllTables::generateLairRoom(int dungeonLevel)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(dungeonLevel)
             + ".\n";
@@ -71,6 +77,8 @@ QString AllTables::generateMineRoom(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:/n" + chamberContents(tier) + ".\n";
 
@@ -85,6 +93,8 @@ QString AllTables::generatePlanarGateRoom(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
@@ -99,6 +109,8 @@ QString AllTables::generateMazeRoomType(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
@@ -114,6 +126,8 @@ QString AllTables::generateStrongholdRoom(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
@@ -128,6 +142,8 @@ QString AllTables::generateTempleRoom(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
@@ -142,6 +158,8 @@ QString AllTables::generateToomb(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
@@ -156,6 +174,8 @@ QString AllTables::generateTreasureVault(int tier)
     description += "DOORS: " + doorType() + ".\n";
     description += "LIGHT: " + lighting() + ".\n";
     description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
@@ -1613,6 +1633,92 @@ QString AllTables::trick()
     return table.getRollTableEntry();
 }
 
+QString AllTables::noises()
+{
+    RandomTable table;
+
+    table.addEntry("Bang or slam");
+    table.addEntry("Bellowing");
+    table.addEntry("Buzzing");
+    table.addEntry("Chanting");
+    table.addEntry("Chiming");
+    table.addEntry("Chirping");
+    table.addEntry("Clanking");
+    table.addEntry("Clashing");
+    table.addEntry("Clicking");
+    table.addEntry("Coughing");
+    table.addEntry("Creaking");
+    table.addEntry("Drumming");
+    table.addEntry("Footsteps ahead");
+    table.addEntry("Footsteps approaching");
+    table.addEntry("Footsteps behind");
+    table.addEntry("Footsteps receding");
+    table.addEntry("Footsteps to the side");
+    table.addEntry("Faint Giggling");
+    table.addEntry("Gong");
+    table.addEntry("Grating");
+    table.addEntry("Groaning");
+    table.addEntry("Grunting");
+    table.addEntry("Hissing");
+    table.addEntry("Horn or trumpet sounding");
+    table.addEntry("Howling");
+    table.addEntry("Humming");
+    table.addEntry("Jingling");
+    table.addEntry("Knocking");
+    table.addEntry("Laughter");
+    table.addEntry("Moaning");
+    table.addEntry("Murmuring");
+    table.addEntry("Music");
+    table.addEntry("Rattling");
+    table.addEntry("Ringing");
+    table.addEntry("Rustling");
+    table.addEntry("Scratching or scrabbling");
+    table.addEntry("Screaming");
+    table.addEntry("Scuttling");
+    table.addEntry("Shuffling");
+    table.addEntry("Slithering");
+    table.addEntry("Snapping");
+    table.addEntry("Sneezing");
+    table.addEntry("Sobbing");
+    table.addEntry("Splashing");
+    table.addEntry("Splintering");
+    table.addEntry("Squeaking");
+    table.addEntry("Squealing");
+    table.addEntry("Tapping");
+    table.addEntry("Thud");
+    table.addEntry("Thumping");
+    table.addEntry("Tinkling");
+    table.addEntry("Twanging");
+    table.addEntry("Whining");
+    table.addEntry("Whispering");
+    table.addEntry("Whistling");
+
+    return table.getRollTableEntry();
+
+}
+
+QString AllTables::odors()
+{
+    RandomTable table;
+
+    table.addEntry("Acrid");
+    table.addEntry("Chlorine");
+    table.addEntry("Dank or moldy");
+    table.addEntry("Earthy");
+    table.addEntry("Manure");
+    table.addEntry("Metallic");
+    table.addEntry("Ozone");
+    table.addEntry("Putrid");
+    table.addEntry("Rotting vegetation");
+    table.addEntry("Salty and wet");
+    table.addEntry("Smoky");
+    table.addEntry("Stale");
+    table.addEntry("Sulfurous");
+    table.addEntry("Urine");
+
+    return table.getRollTableEntry();
+}
+
 QString AllTables::primaryFeature()
 {
     RandomTable table;
@@ -1687,6 +1793,101 @@ QString AllTables::primaryFeature()
     table.addEntry("Large skull");
     table.addEntry("Giant hourglass");
     table.addEntry("Mirror");
+    table.addEntry("Two copper pipes along one wall from floor to ceiling, one steaming, one frosty.");
+    table.addEntry("A large stone pipe opening in wall drips greenish fluid onto floor.");
+    table.addEntry("A large stone wheel set on one wall, clicks when turned.");
+    table.addEntry("A stone sundial in center of room under ceiling painted to look like the sky.");
+    table.addEntry("The walls are lined with stone flower boxes filled with unsettling-scented green and purple flowers.");
+    table.addEntry("A natural spring in the center of the room surrounded by glowing mushrooms.");
+    table.addEntry("Several 4'-long rose-quartz outcroppings from the ceiling.");
+    table.addEntry("The floor is covered in upright, magnetized needles (10d10).");
+    table.addEntry("An alcove on one wall is filled with neatly-stacked, empty wooden mugs.");
+    table.addEntry("A giant red 'X' has been sloppily painted in the center of the floor.");
+    table.addEntry("'Chog loves Jessika' is scratched in charcoal on one wall.");
+    table.addEntry("The ceiling is covered in upside-down furniture, bolted to the stone.");
+    table.addEntry("One wall has been painted to look like three windows looking out into a lovely garden.");
+    table.addEntry("The skeleton of a small dog is curled forlornly around a well-gnawed scorpion tail.");
+    table.addEntry("A pale white pine tree sprouts from the floor in one corner.");
+    table.addEntry("The skeleton of a monkey lies in a far corner, its hand in a ceramic jar wrapped around a gem.");
+    table.addEntry("A brass lever is set into the middle of one wall. 'Do not pull' is scrawled next to it.");
+    table.addEntry("A stone frame in the ceiling hangs above a pile of broken pieces of mirror.");
+    table.addEntry("A comfy chair sits in one corner with a table beside it. On the table are a pair of broken spectacles and a book called 'For Doom, the Fell Trolls'.");
+    table.addEntry("An unlit chandelier hangs from the ceiling. It holds thirteen black candles and is creepy as hell.");
+    table.addEntry("A brass hookah is here, surrounded by seven overstuffed ottomans.");
+    table.addEntry("A massive gong in the center of the room with a bone striker.");
+    table.addEntry("Bloody footprints lead from the entrance of the room to stop at a seemingly blank wall.");
+    table.addEntry("Three big wooden buckets filled with smashed grapes sit on one side of the room.");
+    table.addEntry("Bloated, pale vines hang from the dirt ceiling here.");
+    table.addEntry("A pair of human eyes float in a jar left in a corner of the room. Did they just move!?");
+    table.addEntry("The hilt and 6 inches of the blade of a sword jut from the solid stone floor of the room.");
+    table.addEntry("An intricate water clock has been installed on one side of this room. Instead of water, it appears to have been filled with vinegar.");
+    table.addEntry("One wall of this room appears to be made entirely of smoky quartz, and shapes seem to writhe and twist within it.");
+    table.addEntry("A small stone pyramid is built into the ceiling, pointing down.");
+    table.addEntry("This room is choked with stinging, prickly weeds.");
+    table.addEntry("The hollow carapace of a great beetle nearly fills this room. A doorway appears to have been cut into its side.");
+    table.addEntry("Plaintive music seems to come from somewhere beyond the ceiling of this room.");
+    table.addEntry("A large, black, wood-and-hide drum sits in the middle of the room.");
+    table.addEntry("A porcelain bathtub, filled with steaming water, sits invitingly in the corner.");
+    table.addEntry("A strange hole in one wall, no more than 5 inches wide, emits an odd odor.");
+    table.addEntry("Three dead kobolds, dressed as human children, lay side-by-side in front of a smoldering fireplace.");
+    table.addEntry("An empty bookcase has been smashed to bits in this room.");
+    table.addEntry("A tiny door, only 2' tall, is set into one wall of this room.");
+    table.addEntry("A dartboard hangs on one wall, full of manticore spines.");
+    table.addEntry("A small hibachi sizzles merrily on a stout oak table.");
+    table.addEntry("Three tiny alcoves set high on the wall near the ceiling each containing a grinning imp sculpture.");
+    table.addEntry("A large roll of black silk lies in one corner. If unrolled, a human corpse falls out.");
+    table.addEntry("A massive harp, with strings all broken, sits by a stool in the center of the room.");
+    table.addEntry("A small bar with several stools sits on one side of the room.");
+    table.addEntry("A broken birdcage lies in a corner. A copious amount of blood has been splashed on the walls of this room.");
+    table.addEntry("A still-smoking pipe sits in an ashtray on a small table here.");
+    table.addEntry("A nest containing three purple eggs sits on a high ledge near the ceiling.");
+    table.addEntry("An extensive set of wooden toy blocks has been set up on the floor of this room. The layout vaguely reminds you of your home town, but a hideous stone idol squats in the main square.");
+    table.addEntry("A stinking pile of refuse is heaped in front of the entrance to this room. Ugh!");
+    table.addEntry("A torn bag of sand has been scattered around the room. Huge footsteps are visible in it here and there.");
+    table.addEntry("A marble pedestal sits in the center of the room, with a hand-shaped depression in its center.");
+    table.addEntry("A stack of hand-written papers sits in a corner, 200 sheets in all, with the words 'This is not the way' written over and over again on them.");
+    table.addEntry("A mannequin hangs from a noose in this room. It is crawling with flies!");
+    table.addEntry("Something that leaves a slimy trail has dug a 3' wide tunnel into the floor of this room.");
+    table.addEntry("Two stone dogs sit at attention on either side of the entrance of this room. One has a struggling mouse beneath one supposedly-immobile stone paw.");
+    table.addEntry("A giant mousetrap, 6' x 3', sits in the center of the room with a human arm on the trigger.");
+    table.addEntry("Half a human face, and one limp hand, jut from the solid stone wall of this room.");
+    table.addEntry("The odor of brimstone hangs in the air of this room. A magic circle has been inscribed on the floor with salt.");
+    table.addEntry("A filthy torn dress lies on the floor, along with a silver holy symbol on a chain.");
+    table.addEntry("An iron cage sits in the room. A skeleton lies half in and half out of it between the bars.");
+    table.addEntry("A red rune has been painted in the ceiling of the room. An empty wardrobe sits beneath a white sheet with several weird symbols burned into it.");
+    table.addEntry("A drooping potted plant sits in one corner with a single glossy red fruit.");
+    table.addEntry("A fishbowl sits on a wooden pedestal with three piranha floating lazily within it.");
+    table.addEntry("A ledge near the ceiling is crowded with noisy pigeons.");
+    table.addEntry("A mannequin stands in one corner wearing a surcoat made from fresh meat.");
+    table.addEntry("A stained oak box, 4' to a side, sits in the center of the room. It is carved with grinning imps and has no visible lid or opening.");
+    table.addEntry("A stack of wooden doors, each with a brass knocker shaped like a hand, sits along one wall.");
+    table.addEntry("A small canvas tent has been set up in this room. Inside is clothing, food, and other personal effects.");
+    table.addEntry("A circular glass plate, like a window, is set into one wall, but nothing but stone is visible beyond it.");
+    table.addEntry("The walls, floor, and ceiling of this room are covered in frost. Its freezing in here!");
+    table.addEntry("The corners of this room seem to be off. Trying to figure out these unnatural angles is nauseating!");
+    table.addEntry("A black hole, 5' across, yawns in the center of the room, with no bottom in sight.");
+    table.addEntry("A marble head, as if broken off a statue, lies on the floor here. The room stinks of urine.");
+    table.addEntry("A crushed halfling, looking for all the world like a mouse regurgitated by some huge owl, lies on the floor.");
+    table.addEntry("Five red, wooden, creepy, horned masks, hang on the wall here.");
+    table.addEntry("A barrel of stagnant water sits in a corner. Something moves within it!");
+    table.addEntry("A human foot, still wearing a blue velvet slipper, lies on the floor, covered in ants.");
+    table.addEntry("A quivering chunk of Gelatinous Cube sits on a ceramic plate on a small wooden table with a knife and fork beside it.");
+    table.addEntry("A framed painting of a trio of dancing nymphs in a garden adorns one wall. A dark face is barely visible in the foliage behind them, ripe with evil intent.");
+    table.addEntry("A massive granite sphynx lies on its side in this room. A narrow stair descends into the floor where it used to sit.");
+    table.addEntry("A ring of pale green toadstools grows in the center of the floor here.");
+    table.addEntry("The rough stone figurine of a leering frog-deity lies in an empty, stained tub.");
+    table.addEntry("The rank mold growing on one wall gives off scorching heat.");
+    table.addEntry("A pool of blood spreads on the floor, fed by a slow dripping from the ceiling above.");
+    table.addEntry("A fireplace on one wall has been stuffed with defaced books.");
+    table.addEntry("Four lit incense burners swing from chains fixed to the ceiling.");
+    table.addEntry("An icy copper bell hangs from a wooden frame on one wall. It is numbing to the touch.");
+    table.addEntry("A deep throbbing, like a heartbeat, can be felt in the floor here.");
+    table.addEntry("A dome of black glass rises from the center of the room. Viewing it fills you with a sense of dread.");
+    table.addEntry("A mage's star-adorned pointy hat has been pinned to the wall with a dagger here.");
+    table.addEntry("A maiden lies in an unnatural slumber on a divan here, wearing the gauzy dress of a harem girl.");
+    table.addEntry("A pair of ridiculous clown-like shoes sits by the doorway.");
+    table.addEntry("A rude collection of hand-drawn orc erotica has been hidden behind a loose stone.");
+    table.addEntry("A crystal ball floats at eye-level in the center of the room, giving off intermittent flashes of red and green light.");
 
     return table.getRollTableEntry();
 }
@@ -2017,6 +2218,14 @@ QString AllTables::generateUrbanEncounter(int tier)
     }
     */
 
+}
+
+QString AllTables::generateUrbanEncounterNight(int tier)
+{
+        QString encounter = urbanEncounterXge(tier);
+        encounter += "\n- Intellegent motive: " + humanoidAttacksUrban() + "\n";
+        encounter += "- Creature motive: " + creatureAttacksUrban() + "\n";
+        return encounter;
 }
 
 QString AllTables::friendlyHumanoidUrbanActivity()
@@ -2431,7 +2640,7 @@ QString AllTables::urbanEncounterXge(int tier)
     table.addEntry(qty +" winged kobolds");
 
     table.addEntry("A wagon loaded with apples that has a broken wheel and "
-                   "holds up traffic", 5);
+                   "holds up traffic (add 30 minutes to travel time)", 5);
 
     table.addEntry("1 crocodile");
 
@@ -2535,8 +2744,48 @@ QString AllTables::urbanEncounterXge(int tier)
 
     table.addEntry("1 assassin");
 
+    qty = QString::number(roll(2,4));
+    table.addEntry(" darklings (XGE)");
+
+    qty = QString::number(roll(2,3));
+    table.addEntry("1 Darkling Elder and " + qty + " darklings (XGE)");
+
+    qty = QString::number(roll(1,3));
+    table.addEntry("1 Noble with " + qty + " Guard drakes on a leash (XGE)");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " shadow mastiff (xge)");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " slithering trackers (xge)");
+
+    qty = QString::number(roll(1,6));
+    table.addEntry(qty + " vargouilles (xge)");
+
+    qty = QString::number(roll(2,3));
+    table.addEntry(qty + " apprentice mages (xge)");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(qty + " meenlocks (xge)");
+
+    table.addEntry("1 Archer (xge)");
+
+    table.addEntry("1 Bard (xge)");
+
+    table.addEntry("1 Enchanter (xge)");
+    table.addEntry("1 Illusionist (xge)");
+
+    table.addEntry("1 Martial Arts Adepts (xge)");
+
+    table.addEntry("1 Master Thief (xge)", 3);
+    table.addEntry("1 Swashbuckler (xge)", 3);
+    table.addEntry("1 Warlock of the Archfey (xge)");
+
+
+
     return table.getRollTableEntry();
 }
+
 /* Possibilities:
  * XGE monster table
  * unique encounter table - not what it seems/exactly what it looks like (day only)
@@ -3799,8 +4048,12 @@ QString AllTables::selectMagicItemByTier(int tier)
         table.addEntry(majorVeryRareMagicItems(), 8); // H
         table.addEntry(majorLegendaryMagicItems(), 20); // I
     }
+    QString creator = itemCreator();
+    QString history = itemHistory();
+    QString item = table.getRollTableEntry();
 
-    return table.getRollTableEntry();
+    return "MAGIC ITEM: " + item + "\n" + creator + "\n" + history;
+
 
 }
 
@@ -3920,6 +4173,8 @@ QString AllTables::itemHistory()
                    "former owner or that paerson's descendants might "
                    "desire it, or someone might mistakenly assume its "
                    "new owner is the item's legitimate inheritor.");
+    table.addEntry("Brand new. This item was recently created, and hasn't "
+                   "seen much in the way of action.");
 
     return table.getRollTableEntry();
 }

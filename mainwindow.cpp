@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->biomeSelect->addItem("Underdark");
     ui->biomeSelect->addItem("Undermountain");
     ui->biomeSelect->addItem("Urban");
+    ui->biomeSelect->addItem("Urban Night");
     ui->biomeSelect->addItem("Sewer");
     ui->biomeSelect->addItem("Guardian");
 
@@ -134,6 +135,9 @@ void MainWindow::on_wanderingMonster_clicked()
     }
     else if (biome == "Urban") {
         ui->resultArea->setPlainText(roller.generateUrbanEncounter(tier));
+    }
+    else if (biome == "Urban Night") {
+        ui->resultArea->setPlainText(roller.generateUrbanEncounterNight(tier));
     }
     else if (biome == "Sewer") {
         ui->resultArea->setPlainText(roller.sewerEncounter(tier));
