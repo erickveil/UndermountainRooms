@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>429</width>
-    <height>616</height>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>220</y>
+      <y>270</y>
       <width>411</width>
       <height>391</height>
      </rect>
@@ -28,7 +28,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>190</y>
+      <y>240</y>
       <width>200</width>
       <height>25</height>
      </rect>
@@ -49,13 +49,13 @@
      <string>Dungeon Type</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>220</x>
       <y>10</y>
       <width>202</width>
-      <height>182</height>
+      <height>213</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -140,15 +140,22 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="genNpcParty">
+       <property name="text">
+        <string>NPC Party</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>40</y>
       <width>202</width>
-      <height>151</height>
+      <height>182</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -214,9 +221,16 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="genNPC">
+       <property name="text">
+        <string>NPC</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>

@@ -40,6 +40,10 @@ private slots:
 
     void on_genMagicItem_clicked();
 
+    void on_genNPC_clicked();
+
+    void on_genNpcParty_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

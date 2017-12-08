@@ -96,7 +96,6 @@ public:
     QString generateUrbanEncounterNight(int tier);
     QString friendlyHumanoidUrbanActivity();
 
-
     // monster tables
 
     //QString generateInhabitants(int dungionLevel);
@@ -106,8 +105,6 @@ public:
     QString urbanEncounterXge(int tier);
     QString urbanEncountersUnique();
     QString sewerEncounter(int tier);
-
-    QString intellegentFoeUnderdark(int dungeonLevel);
 
     QString guardianFoe(int dungeonLevel);
 
@@ -128,6 +125,15 @@ public:
 
     QString itemCreator();
     QString itemHistory();
+
+    QString adventuringParty(int tier);
+    QString AdventurerRace();
+    QString AdventurerClass(int tier);
+    QString adventurerPackage(int tier);
+    QString generateAdventurer(int tier);
+    QString commonRace();
+    QString uncommonRace();
+    QString rareRace();
 
 
     // 1st edition dmg

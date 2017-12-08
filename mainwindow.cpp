@@ -195,3 +195,16 @@ void MainWindow::on_genSpellbook_clicked()
     int tier = ui->tierSelect->value();
     ui->resultArea->setPlainText(roller.generateSpellbook(tier));
 }
+
+void MainWindow::on_genNPC_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.generateAdventurer(tier));
+}
+
+void MainWindow::on_genNpcParty_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.adventuringParty(tier));
+
+}
