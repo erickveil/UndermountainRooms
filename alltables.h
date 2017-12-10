@@ -126,6 +126,16 @@ public:
     QString itemCreator();
     QString itemHistory();
 
+    QString gem(int tier);
+    QString art(int tier);
+    QString hoardCoins(int tier);
+
+    QString treasureContainer();
+    QString treasureHiddenBy();
+
+    QString generateTreasureHorde(int tier);
+    QString generateIndividualTreasure(int tier);
+
     QString adventuringParty(int tier);
     QString AdventurerRace();
     QString AdventurerClass(int tier);

@@ -44,6 +44,10 @@ private slots:
 
     void on_genNpcParty_clicked();
 
+    void on_hordTreas_clicked();
+
+    void on_intiTreas_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

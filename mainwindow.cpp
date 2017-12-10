@@ -208,3 +208,15 @@ void MainWindow::on_genNpcParty_clicked()
     ui->resultArea->setPlainText(roller.adventuringParty(tier));
 
 }
+
+void MainWindow::on_hordTreas_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.generateTreasureHorde(tier));
+}
+
+void MainWindow::on_intiTreas_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(roller.generateIndividualTreasure(tier));
+}

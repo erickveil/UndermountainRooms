@@ -185,9 +185,14 @@ QString AllTables::generateTreasureVault(int tier)
 
 QString AllTables::generateHallwayContents(int tier)
 {
+    QString sound = (roll(1,8) == 1) ? "SOUND: " + noises() + "\n": "";
+    QString smell = (roll(1,8) == 1) ? "SMELL: " + odors() + "\n": "";
+    QString feature = (roll(1,8) == 1) ? "FEATURE: " + primaryFeature() + "\n"
+                                       : "";
+
     bool isEncounter = roll(1, 6) == 1;
     if (!isEncounter) {
-        return "Hallway all clear.";
+        return "Hallway all clear.\n" + sound +  smell + feature;
     }
 
     RandomTable table;
@@ -199,30 +204,34 @@ QString AllTables::generateHallwayContents(int tier)
     QString activity = generateActivity();
     QString hazard = dungeonHazards();
 
+
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ")"
                    + motivation + "\n"
-                   + activity, 8);
+                   + activity
+                   + sound +  smell + feature, 8);
     table.addEntry("MONSTER (pet or allied creature): "
                    + monster
                    + motivation + "\n"
-                   + activity, 12);
+                   + activity
+                   + sound +  smell + feature, 12);
     table.addEntry("MONSTER (random): "
                    + monster
                    + motivation + "\n"
-                   + activity, 9);
+                   + activity
+                   + sound +  smell + feature, 9);
 
     QString obstacle = obstacles();
-    table.addEntry("OBSTACLE: " + obstacle, 5);
+    table.addEntry("OBSTACLE: " + obstacle + sound +  smell + feature, 5);
 
     QString trap = generateTrap(tier);
-    table.addEntry("TRAP: " + trap, 10);
-    table.addEntry("TRAP protecting treasure: " + trap, 3);
+    table.addEntry("TRAP: " + trap + sound +  smell + feature, 10);
 
     QString trick = generateTrick();
-    table.addEntry("TRICK: " + trick, 4);
+    table.addEntry("TRICK: " + trick + sound +  smell + feature, 4);
 
-    table.addEntry("HAZARD: " + hazard, 6);
+    table.addEntry("HAZARD: " + hazard + sound +  smell + feature, 6);
+
 
     return table.getRollTableEntry();
 
@@ -992,6 +1001,7 @@ QString AllTables::chamberContents(int tier)
     QString monster = dungeonMonster(tier);
     QString guard = guardianFoe(tier);
     QString activity = generateActivity();
+    QString treasure = generateTreasureHorde(tier);
 
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ")"
@@ -1000,39 +1010,44 @@ QString AllTables::chamberContents(int tier)
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ") with treasure"
                    + motivation + "\n"
-                   + activity, 7);
+                   + activity + "\n"
+                   + treasure, 7);
     table.addEntry("MONSTER (pet or allied creature): "
                    + monster
                    + motivation + "\n"
                    + activity, 12);
     table.addEntry("MONSTER (pet or allied creature) guarding treasure: "
                    + guard + "\n"
-                   + activity, 6);
+                   + activity + "\n"
+                   + treasure, 6);
     table.addEntry("MONSTER (random): "
                    + monster
                    + motivation + "\n"
                    + activity, 9);
     table.addEntry("MONSTER (random) with treasure: "
                    + monster
-                   + motivation + "\n" + activity, 8);
+                   + motivation + "\n"
+                   + activity + "\n"
+                   + treasure, 8);
 
     QString hazard = dungeonHazards();
-    table.addEntry("HAZARD (" + hazard + ") with incidental treasure",
-                   7);
+    table.addEntry("HAZARD (" + hazard + ") with incidental treasure\n"
+                   + generateIndividualTreasure(tier), 7);
 
     QString obstacle = obstacles();
     table.addEntry("OBSTACLE: " + obstacle, 5);
 
     QString trap = generateTrap(tier);
     table.addEntry("TRAP: " + trap, 10);
-    table.addEntry("TRAP protecting treasure: " + trap, 3);
+    table.addEntry("TRAP protecting treasure: " + trap + "\n"
+                   + treasure, 3);
 
     QString trick = generateTrick();
     table.addEntry("TRICK: " + trick, 4);
 
     table.addEntry("EMPTY ROOM", 8);
     table.addEntry("HAZARD: " + hazard, 6);
-    table.addEntry("TREASURE", 6);
+    table.addEntry(treasure, 6);
 
     return table.getRollTableEntry();
 }
@@ -4173,6 +4188,406 @@ QString AllTables::itemHistory()
                    "seen much in the way of action.");
 
     return table.getRollTableEntry();
+}
+
+QString AllTables::gem(int tier)
+{
+   RandomTable table;
+   if (tier == 1) {
+
+       QString value = " (10 gp)";
+
+       table.addEntry("Azurite (opaque mottled deep blue)" + value);
+       table.addEntry("Banded agate (translucent striped brown, blue, white or red)" + value);
+       table.addEntry("Blue quartz (transparent pale blue)" + value);
+       table.addEntry("Eye agate (translucent circles of gray, white, brown, blue, or green)" + value);
+       table.addEntry("Hematite (opaque gray-black)" + value);
+       table.addEntry("Lapis lazuli (opaque light and ddark blue with yellow flecks)" + value);
+       table.addEntry("Malachite (opaque striated light and dark green)" + value);
+       table.addEntry("Moss agate (translucent pink or yellow-white with mossy gray or green markings)" + value);
+       table.addEntry("Obsidian (opaque black)" + value);
+       table.addEntry("Rhodochrosite (opaque light pink)" + value);
+       table.addEntry("Tiger eye (translucent brown with golden center)" + value);
+       table.addEntry("Turquoise (opaque light blue-green)" + value);
+   }
+
+   if (tier == 1 || tier == 2) {
+
+       QString value = " (50 gp)";
+
+       table.addEntry("Bloodstone (opaque dark gray with red flecks)" + value);
+       table.addEntry("Carnelian (opaque orange to red-brown)" + value);
+       table.addEntry("Chalcedony (opaque white)" + value);
+       table.addEntry("Citrine (transparent pale yellow-brown)" + value);
+       table.addEntry("Moonstone (translucent white with pale blue glow)" + value);
+       table.addEntry("Onyx (opaque bands of black and white, or pure black or white)" + value);
+       table.addEntry("Quartz (transparent white, smoky gray, or yellow)" + value);
+       table.addEntry("Sardonyx (opaque bands of red and white)" + value);
+       table.addEntry("Star rose quartz (translucent rosy stone with white star-shabed center)" + value);
+       table.addEntry("Zicron (transparent pale blue-green)" + value);
+   }
+
+   if (tier == 2) {
+
+       QString value = " (100 gp)";
+
+       table.addEntry("Amber (transparent watery gold to rich gold)" + value);
+       table.addEntry("Amethyst (transparent deep purple)" + value);
+       table.addEntry("Chrysoberyl (transparent yellow-green to pale green)" + value);
+       table.addEntry("Coral (opaque crimson)" + value);
+       table.addEntry("Garnet (transparent red, brown-green, or violet)" + value);
+       table.addEntry("Jade (translucent light green, deep green, or white)" + value);
+       table.addEntry("Jet (opaque deep black)" + value);
+       table.addEntry("Pearl (opaque lustrous white, yellow, or pink)" + value);
+       table.addEntry("Spinel (transparent red, red-brown, or deep green)" + value);
+       table.addEntry("Tourmaline (tranparent pale green, blue, brown, or red)" + value);
+   }
+
+   if (tier == 3) {
+
+       QString value = " (500 gp)";
+
+       table.addEntry("Alexandrite (transparent dark green)" + value);
+       table.addEntry("Aquamarine (transparent pale blue-green)" + value);
+       table.addEntry("Black pearl (opaque pure black)" + value);
+       table.addEntry("Blue spinel (transparent deep blue)" + value);
+       table.addEntry("Peridot (transparent rich olive green)" + value);
+       table.addEntry("Topaz (transparent golden yellow)" + value);
+   }
+
+   if (tier == 3 || tier == 4) {
+
+       QString value = " (1000 gp)";
+
+       table.addEntry("Black opal (translucent dark green with black mottling and golden flecks)" + value);
+       table.addEntry("Blue sapphire (transparent blue-white to medium blue)" + value);
+       table.addEntry("Emerald (transparent deep bright green)" + value);
+       table.addEntry("Fire opal (translucent firey red)" + value);
+       table.addEntry("Opal (translucent pale blue with green and golden mottling)" + value);
+       table.addEntry("Star ruby (translucent ruby with white star-shaped center)" + value);
+       table.addEntry("Star sapphire (translucent blue sapphire with white star-shaped cenger)" + value);
+       table.addEntry("Yellow sapphire (transparent fiery yellow or yellow green)" + value);
+   }
+
+   if (tier == 4) {
+
+       QString value = " (5000 gp)";
+
+       table.addEntry("Black sapphire (translucent lustrous black with glowing highlights)" + value);
+       table.addEntry("Diamond (transparent blue-white, canary, pink, brown, or blue)" + value);
+       table.addEntry("Jacinth (transparent firey orange)" + value);
+       table.addEntry("Ruby (transparent clear red to deep crimson)" + value);
+   }
+
+   return table.getRollTableEntry();
+}
+
+QString AllTables::art(int tier)
+{
+    RandomTable table;
+
+    if (tier == 1 || tier == 2) {
+        QString value = " (25 gp)";
+
+        table.addEntry("Selver ewer" + value);
+        table.addEntry("Carved bone statuette" + value);
+        table.addEntry("Small gold bracelet" + value);
+        table.addEntry("Cloth-of-gold vestments" + value);
+        table.addEntry("Black velvet mask stitched with silver thread" + value);
+        table.addEntry("Copper chalice with silver filigree" + value);
+        table.addEntry("Pair of engraved bone dice" + value);
+        table.addEntry("Small mirror set in a painted wooden frame" + value);
+        table.addEntry("Embroidered silk handkerchief" + value);
+        table.addEntry("Gold locket with a painted portrait inside" + value);
+    }
+
+    if (tier == 2 || tier == 3) {
+        QString value = " (250 gp)";
+
+        table.addEntry("Gold ring set with bloodstones" + value);
+        table.addEntry("Carved ivory statuette" + value);
+        table.addEntry("Large gold bracelet" + value);
+        table.addEntry("Silver necklace with a gemstone pendant" + value);
+        table.addEntry("Bronze crown" + value);
+        table.addEntry("Silk robe with gold embroidery" + value);
+        table.addEntry("Large well-made tapestry" + value);
+        table.addEntry("Brass mug with jade inlay" + value);
+        table.addEntry("Box of turquoise animal figurines" + value);
+        table.addEntry("Gold bird cage with electrum filigree" + value);
+    }
+
+    if (tier == 3) {
+        QString value = " (750 gp)";
+
+        table.addEntry("Silver chalice set with moonstones" + value);
+        table.addEntry("Silver-plated steel longsword with jet set in hilt" + value);
+        table.addEntry("Carved harp of exotic wood with ivory inlay and zicron gems" + value);
+        table.addEntry("Small gold idol" + value);
+        table.addEntry("Gold dragon comb set with red garnets as eyes" + value);
+        table.addEntry("Bottle stopper cork embossed with gold leaf and set with amethysts" + value);
+        table.addEntry("Ceremonial electrum dagger with a black pearl in the pommel" + value);
+        table.addEntry("Silver and gold brooch" + value);
+        table.addEntry("Obsidian statuette with gold fittings and inlay" + value);
+        table.addEntry("Painted gold war mask" + value);
+    }
+
+    if (tier == 4) {
+        QString value = " (2500 gp)";
+
+        table.addEntry("Fine gold chain set with a fire opal" + value);
+        table.addEntry("Old masterpiece painting" + value);
+        table.addEntry("Embroidered silk and velvet mantle set with numerous moonstones" + value);
+        table.addEntry("Platinum bracelet set with a sapphire" + value);
+        table.addEntry("Embroidered glove set with jewel chips" + value);
+        table.addEntry("Jeweled anklet" + value);
+        table.addEntry("Gold music box" + value);
+        table.addEntry("Gold circlet set with four aquamarines" + value);
+        table.addEntry("Eye patch with a mock eye set in blue sapphire and moonstone" + value);
+        table.addEntry("A necklace string of small pink pearls" + value);
+    }
+
+    if (tier == 4) {
+        QString value = " (7500 gp)";
+
+        table.addEntry("jeweled gold crown" + value);
+        table.addEntry("jeweled platinum ring" + value);
+        table.addEntry("Small gold statuette set with rubies" + value);
+        table.addEntry("Gold cup set with emeralds" + value);
+        table.addEntry("Gold jewelry box with platinum filigree" + value);
+        table.addEntry("Painted gold child's sarcophagus" + value);
+        table.addEntry("Jade game board with solid gold playing pieces" + value);
+        table.addEntry("Bejeweled ivory drinking horn with gold filigree" + value);
+    }
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::hoardCoins(int tier)
+{
+    bool lowHauls = false;
+    int cp;
+    int sp;
+    int ep;
+    int gp;
+    int pp;
+
+    if (tier == 1) {
+        cp = roll(6,6) * 100;
+        sp = roll(3, 6) * 100;
+        gp = roll(2, 6) * 10;
+        if (lowHauls) {
+            return QString::number((cp/10)+sp) + " cp, "
+                + QString::number(gp) + " sp";
+        }
+        return QString::number(cp) + " cp, " + QString::number(sp) + " sp, "
+                + QString::number(gp) + " gp";
+    }
+    else if (tier == 2) {
+        cp = roll(2, 6) * 100;
+        sp = roll(2, 6) * 1000;
+        gp = roll(6, 6) * 100;
+        pp = roll(3, 6) * 10;
+        if (lowHauls) {
+            return QString::number((cp/10)+sp) + " cp, "
+                    + QString::number(gp) + " sp, "
+                    + QString::number(pp) + " gp";
+        }
+        return QString::number(cp) + " cp, " + QString::number(sp) + " sp, "
+                + QString::number(gp) + " gp, " + QString::number(pp) + " pp";
+    }
+    else if (tier == 3) {
+        gp = roll(4, 6) * 1000;
+        pp = roll(5, 6) * 100;
+        return QString::number(gp) + " gp, " + QString::number(pp) + " pp";
+    }
+    else {
+        gp = roll(12, 6) * 1000;
+        pp = roll(8, 6) * 1000;
+        return QString::number(gp) + " gp, " + QString::number(pp) + " pp";
+    }
+
+}
+
+QString AllTables::treasureContainer()
+{
+    RandomTable table;
+
+    table.addEntry("Bags");
+    table.addEntry("Sacks");
+    table.addEntry("Small coffers");
+    table.addEntry("Chests");
+    table.addEntry("Huge chests");
+    table.addEntry("Pottery jars");
+    table.addEntry("Metal urns");
+    table.addEntry("Stone containers");
+    table.addEntry("Iron trunks");
+    table.addEntry("Loose");
+    table.addEntry("Crates");
+    table.addEntry("Barrels");
+    table.addEntry("Coffins");
+    table.addEntry("Display cases");
+    table.addEntry("Hollow statues");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::treasureHiddenBy()
+{
+    RandomTable table;
+
+    table.addEntry("Invisibility");
+    table.addEntry("Illusion to change appearance");
+    table.addEntry("Secret space under container");
+    table.addEntry("Secret compartment in container");
+    table.addEntry("Inside ordinary container");
+    table.addEntry("Disguised to appear as something else");
+    table.addEntry("Under a heap of trash/dung");
+    table.addEntry("Under a loose stone in the floor");
+    table.addEntry("Behind a loose stone int the wall");
+    table.addEntry("In a secret room nearby");
+    table.addEntry("Nothing", 10);
+
+    return table.getRollTableEntry();
+
+}
+
+QString AllTables::generateTreasureHorde(int tier)
+{
+    QString coin = hoardCoins(tier);
+
+    bool hasGems;
+    bool hasArt;
+    bool hasMagic;
+    int numGems;
+    int numArt;
+    int numMagic;
+
+    QString treasure;
+    treasure = "TREASURE: \nCONTAINER: " + treasureContainer() + "\n"
+            + "HIDEN BY: " + treasureHiddenBy() + "\n"
+            + "COIN: " + coin + "\n\n";
+
+    if (tier == 1) {
+        hasGems = roll(1,100) < 53;
+        hasArt = roll(1,100) < 41;
+        hasMagic = roll(1,100) < 100-37;
+        numGems = hasGems ? roll(2,6) : 0;
+        numArt = hasArt ? roll(2,4) : 0;
+        numMagic = hasMagic ? roll(1,6) : 0;
+    }
+    else if (tier == 2) {
+        hasGems = roll(1,100) < 40;
+        hasArt = roll(1,100) < 56;
+        hasMagic = roll(1,100) < 100-29;
+        numGems = hasGems ? roll(3,6) : 0;
+        numArt = hasArt ? roll(2,4) : 0;
+        numMagic = hasMagic ? roll(1,6) : 0;
+    }
+    else if (tier == 3) {
+        hasGems = roll(1,100) < 47;
+        hasArt = roll(1,100) < 50;
+        hasMagic = roll(1,100) < 100-29;
+        numGems = hasGems ? roll(3,6) : 0;
+        numArt = hasArt ? roll(2,4) : 0;
+        numMagic = hasMagic ? roll(1,6) : 0;
+    }
+    else {
+        hasGems = roll(1,100) < 42;
+        hasArt = roll(1,100) < 56;
+        hasMagic = roll(1,100) < 98;
+        numGems = hasGems ? roll(3,6) : 0;
+        numArt = hasArt ? roll(1,10) : 0;
+        numMagic = hasMagic ? roll(1,8) : 0;
+    }
+
+    for (int i = 0; i < numArt; ++i) { treasure += art(tier) + "\n\n"; }
+    for (int i = 0; i < numGems; ++i) { treasure += gem(tier) + "\n\n"; }
+    for (int i = 0; i < numMagic; ++i) {
+        treasure += selectMagicItemByTier(tier) + "\n\n";
+    }
+
+    return treasure;
+}
+
+QString AllTables::generateIndividualTreasure(int tier)
+{
+    int cp = 0;
+    int sp = 0;
+    int ep = 0;
+    int gp = 0;
+    int pp = 0;
+    int chance = roll(1,100);
+    QString treasure = "LOOT: ";
+
+    if (tier == 1) {
+        if (chance < 31) { cp = roll(5,6); }
+        else if (chance < 61) { sp = roll(4,6); }
+        else if (chance < 71) { ep = roll(3,6); }
+        else if (chance < 96) { gp = roll(3,6); }
+        else { pp = roll(1,6); }
+    }
+    if (tier == 2) {
+        if (chance < 31) {
+            cp = roll(4,6) * 100;
+            ep = roll(1, 6) * 10;
+        }
+        else if (chance < 61) {
+            sp = roll(6,6) * 10;
+            gp = roll(2,6) * 10;
+        }
+        else if (chance < 71) {
+            ep = roll(3,6) * 10;
+            gp = roll(2,6) * 10;
+        }
+        else if (chance < 96) {
+            gp = roll(4,6) * 10;
+        }
+        else {
+            gp = roll(2,6) * 10;
+            pp = roll(3,6);
+        }
+    }
+    if (tier == 3) {
+        if (chance < 21) {
+            sp = roll(4,6) * 100;
+            gp = roll(1,6) * 100;
+        }
+        else if (chance < 36) {
+            ep = roll(1,6) * 100;
+            gp = roll(1,6) * 100;
+        }
+        else if (chance < 76) {
+            gp = roll(2,6) * 100;
+            pp = roll(1,6) * 10;
+        }
+        else {
+            gp = roll(2,6) * 100;
+            pp = roll(2,6) * 10;
+        }
+    }
+    if (tier == 4) {
+        if (chance < 16) {
+            ep = roll(2,6) * 1000;
+            gp = roll(8,6) * 100;
+        }
+        else if (chance < 56) {
+            gp = roll(1,6) * 1000;
+            pp = roll(1,6) * 100;
+        }
+        else {
+            gp = roll(1,6) * 1000;
+            pp = roll(2,6) * 100;
+        }
+    }
+
+    treasure = ((cp==0) ? "" : QString::number(cp) + " cp, ")
+            + ((sp==0) ? "" : QString::number(sp) + " sp, ")
+            + ((ep==0) ? "" : QString::number(ep) + " ep, ")
+            + ((gp==0) ? "" : QString::number(gp) + " gp, ")
+            + ((pp==0) ? "" : QString::number(pp) + " pp, ");
+
+    return treasure;
+
 }
 
 QString AllTables::adventuringParty(int tier)
