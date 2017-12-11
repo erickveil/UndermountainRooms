@@ -1064,6 +1064,16 @@ QString AllTables::dungeonHazards()
     table.addEntry("Yellow mold", 3);
     table.addEntry("Russet Mold (VGM vegegympy)", 1);
 
+    RandomTable gasTable;
+    gasTable.addEntry("Only effect is to obscure vision when passing through.");
+    gasTable.addEntry("Blinds for 1d6 turns after passing through.");
+    gasTable.addEntry("Fear: Con save vs DC 10 or run back 120 feet");
+    gasTable.addEntry("Sleep: party sound asleep for 1d6 turns (sleep spell)");
+    gasTable.addEntry("Strength: adds 1d6 points of strength for 1 to 10 hours.");
+    gasTable.addEntry("Sickness: Add 2 levels of exhaustion.");
+
+    table.addEntry("Gas hazard: " + gasTable.getRollTableEntry(), 3);
+
     return table.getRollTableEntry();
 }
 
@@ -1570,7 +1580,17 @@ QString AllTables::trapDisarm()
 QString AllTables::generateTrick()
 {
     QString object = trickObject();
-    return object + " that " + trick();
+    QString random = object + " that " + trick();
+
+    RandomTable table;
+    table.addEntry(random, 10);
+    QString turns = QString::number(roll(1,20) + 40);
+    table.addEntry("Wall 10' behind slides across passage, blocking it for "
+                   + turns + " turns.");
+    table.addEntry("Oil (equal to one flask) pours on random person from hole "
+                   "in ceiling, followed by flaming cinder (2-12 hp damage, "
+                   "Dex save DC 10 for 1-3 damage from splash)");
+    table.addEntry("Door falls outward, causing 1d10 damage.");
 }
 
 QString AllTables::trickObject()
@@ -1778,6 +1798,7 @@ QString AllTables::primaryFeature()
     table.addEntry("Large idol");
     table.addEntry("Painting");
     table.addEntry("Pedestal");
+    table.addEntry("Pool");
     table.addEntry("Rug");
     table.addEntry("Shrine");
     table.addEntry("Statue");
@@ -3592,8 +3613,8 @@ QString AllTables::minorCommonMagicItems()
     table.addEntry("Pole of angling");
     table.addEntry("Pole of collapsing");
     table.addEntry("Pot of awakening");
-    table.addEntry("Potion of climbing");
-    table.addEntry("Potion of healing", 10);
+    table.addEntry("Potion of climbing (" + potionDescription() + ")");
+    table.addEntry("Potion of healing (" + potionDescription() + ")", 10);
     table.addEntry("Rope of mending");
     table.addEntry("Ruby of the war mage");
     table.addEntry("Shield of expression");
@@ -3642,14 +3663,14 @@ QString AllTables::minorUncommonMagicItems()
     table.addEntry("Oil of slipperiness");
     table.addEntry("Periapt of health");
     table.addEntry("Philter of love");
-    table.addEntry("Potion of animal friendship");
-    table.addEntry("Potion of fire breath");
-    table.addEntry("Potion of greater healing", 10);
-    table.addEntry("Potion of growth");
-    table.addEntry("Potion of hill giant strength");
-    table.addEntry("Potion of poison", 6);
-    table.addEntry("Potion of resistance");
-    table.addEntry("Potion of water breathing", 4);
+    table.addEntry("Potion of animal friendship (" + potionDescription() + ")");
+    table.addEntry("Potion of fire breath(" + potionDescription() + ")");
+    table.addEntry("Potion of greater healing (" + potionDescription() + ")", 10);
+    table.addEntry("Potion of growth (" + potionDescription() + ")");
+    table.addEntry("Potion of hill giant strength (" + potionDescription() + ")");
+    table.addEntry("Potion of poison (" + potionDescription() + ")", 6);
+    table.addEntry("Potion of resistance (" + potionDescription() + ")");
+    table.addEntry("Potion of water breathing (" + potionDescription() + ")", 4);
     table.addEntry("Ring os swimming");
     table.addEntry("Robe of useful items");
     table.addEntry("Rope of climbing");
@@ -3678,16 +3699,16 @@ QString AllTables::minorRareMagicIterms()
     table.addEntry("Necklace of fireballs");
     table.addEntry("Oil of etherealness");
     table.addEntry("Portable hole");
-    table.addEntry("Potion of clairvoyance");
-    table.addEntry("Potion of diminution");
-    table.addEntry("Potion of fire giant strength");
-    table.addEntry("Potion of frost giant strength");
-    table.addEntry("Potion of gaseous form");
-    table.addEntry("Potion of heroism");
-    table.addEntry("Potion of invulnerability");
-    table.addEntry("Potion of mind reading");
-    table.addEntry("Potion of stone giant strength");
-    table.addEntry("Potion of superior healing", 6);
+    table.addEntry("Potion of clairvoyance (" + potionDescription() + ")");
+    table.addEntry("Potion of diminution (" + potionDescription() + ")");
+    table.addEntry("Potion of fire giant strength (" + potionDescription() + ")");
+    table.addEntry("Potion of frost giant strength (" + potionDescription() + ")");
+    table.addEntry("Potion of gaseous form (" + potionDescription() + ")");
+    table.addEntry("Potion of heroism (" + potionDescription() + ")");
+    table.addEntry("Potion of invulnerability (" + potionDescription() + ")");
+    table.addEntry("Potion of mind reading (" + potionDescription() + ")");
+    table.addEntry("Potion of stone giant strength (" + potionDescription() + ")");
+    table.addEntry("Potion of superior healing (" + potionDescription() + ")", 6);
     table.addEntry("Quaal's feather token");
     table.addEntry("Scroll of protection", 4);
     table.addEntry("Spell scroll: " + wizardSpells(4), 4);
@@ -3706,13 +3727,13 @@ QString AllTables::minorVeryRareMagicItems()
     table.addEntry("Horseshoes of a zephyr");
     table.addEntry("Nolzur's marvelous pigments");
     table.addEntry("Oil of sharpness");
-    table.addEntry("Potion of cloud giant strength");
-    table.addEntry("Potion of flying");
-    table.addEntry("Potion of invisibility");
-    table.addEntry("Potion of longevity");
-    table.addEntry("Potion of speed");
-    table.addEntry("Potion of supreme healing");
-    table.addEntry("Potion of vitality");
+    table.addEntry("Potion of cloud giant strength (" + potionDescription() + ")");
+    table.addEntry("Potion of flying (" + potionDescription() + ")");
+    table.addEntry("Potion of invisibility (" + potionDescription() + ")");
+    table.addEntry("Potion of longevity (" + potionDescription() + ")");
+    table.addEntry("Potion of speed (" + potionDescription() + ")");
+    table.addEntry("Potion of supreme healing (" + potionDescription() + ")");
+    table.addEntry("Potion of vitality (" + potionDescription() + ")");
     table.addEntry("Spell scroll: " + wizardSpells(6));
     table.addEntry("Spell scroll: " + wizardSpells(7));
     table.addEntry("Spell scroll: " + wizardSpells(8));
@@ -3724,7 +3745,7 @@ QString AllTables::minorLegendaryMagicItems()
 {
     RandomTable table;
 
-    table.addEntry("Potion of storm giant strength");
+    table.addEntry("Potion of storm giant strength (" + potionDescription() + ")");
     table.addEntry("Sovereign glue");
     table.addEntry("Spell scroll: " + wizardSpells(9));
     table.addEntry("Universal solvent");
@@ -4188,6 +4209,113 @@ QString AllTables::itemHistory()
                    "seen much in the way of action.");
 
     return table.getRollTableEntry();
+}
+
+QString AllTables::potionDescription()
+{
+    RandomTable consistencyTable;
+    consistencyTable.addEntry("bubbling");
+    consistencyTable.addEntry("cloudy");
+    consistencyTable.addEntry("effervescent");
+    consistencyTable.addEntry("fuming");
+    consistencyTable.addEntry("oily");
+    consistencyTable.addEntry("smoky");
+    consistencyTable.addEntry("syrupy");
+    consistencyTable.addEntry("vaporous");
+    consistencyTable.addEntry("viscous");
+    consistencyTable.addEntry("watery");
+
+    RandomTable transpearencyTable;
+    transpearencyTable.addEntry("clear");
+    transpearencyTable.addEntry("flecked");
+    transpearencyTable.addEntry("layered");
+    transpearencyTable.addEntry("luminous");
+    transpearencyTable.addEntry("glowing");
+    transpearencyTable.addEntry("phosphorescent");
+    transpearencyTable.addEntry("rainbowed");
+    transpearencyTable.addEntry("ribboned");
+    transpearencyTable.addEntry("translucent");
+    transpearencyTable.addEntry("varegated");
+
+    RandomTable colorTable;
+    colorTable.addEntry("brassy");
+    colorTable.addEntry("bronze");
+    colorTable.addEntry("coppery");
+    colorTable.addEntry("gold");
+    colorTable.addEntry("silvery");
+    colorTable.addEntry("steely");
+    colorTable.addEntry("fuchsia");
+    colorTable.addEntry("heliotrope");
+    colorTable.addEntry("lake");
+    colorTable.addEntry("lavender");
+    colorTable.addEntry("lilac");
+    colorTable.addEntry("magenta");
+    colorTable.addEntry("mauve");
+    colorTable.addEntry("plum");
+    colorTable.addEntry("puce");
+    colorTable.addEntry("purple");
+    colorTable.addEntry("bone-white");
+    colorTable.addEntry("colorless");
+    colorTable.addEntry("ivory");
+    colorTable.addEntry("pearl");
+    colorTable.addEntry("amber");
+    colorTable.addEntry("buff");
+    colorTable.addEntry("citrine");
+    colorTable.addEntry("cream");
+    colorTable.addEntry("fallow");
+    colorTable.addEntry("flaxen");
+    colorTable.addEntry("ochre");
+    colorTable.addEntry("peach");
+    colorTable.addEntry("saffron");
+    colorTable.addEntry("straw");
+    colorTable.addEntry("dove");
+    colorTable.addEntry("dun");
+    colorTable.addEntry("neutral");
+    colorTable.addEntry("carmine");
+    colorTable.addEntry("cerise");
+    colorTable.addEntry("cherry");
+    colorTable.addEntry("cinnabar");
+    colorTable.addEntry("coral");
+    colorTable.addEntry("crimson");
+    colorTable.addEntry("madder");
+    colorTable.addEntry("maroon");
+    colorTable.addEntry("pink");
+    colorTable.addEntry("rose");
+    colorTable.addEntry("ruby");
+    colorTable.addEntry("russet");
+    colorTable.addEntry("rust");
+    colorTable.addEntry("sanguine");
+    colorTable.addEntry("scarlet");
+    colorTable.addEntry("vermillion");
+    colorTable.addEntry("chocolate");
+    colorTable.addEntry("ecru");
+    colorTable.addEntry("fawn");
+    colorTable.addEntry("mahogany");
+    colorTable.addEntry("tan");
+    colorTable.addEntry("terra cotta");
+    colorTable.addEntry("aquamarine");
+    colorTable.addEntry("emerald");
+    colorTable.addEntry("olive");
+    colorTable.addEntry("azure");
+    colorTable.addEntry("cerulean");
+    colorTable.addEntry("indigo");
+    colorTable.addEntry("sapphire");
+    colorTable.addEntry("turquoise");
+    colorTable.addEntry("ultramarine");
+    colorTable.addEntry("ebony");
+    colorTable.addEntry("inky");
+    colorTable.addEntry("pitchy");
+    colorTable.addEntry("sable");
+    colorTable.addEntry("sooty");
+    colorTable.addEntry("apricot");
+    colorTable.addEntry("flame");
+    colorTable.addEntry("golden");
+    colorTable.addEntry("salmon");
+    colorTable.addEntry("tawny");
+
+    return consistencyTable.getRollTableEntry() + ", "
+            + transpearencyTable.getRollTableEntry() + ", "
+            + colorTable.getRollTableEntry();
 }
 
 QString AllTables::gem(int tier)

@@ -125,6 +125,7 @@ public:
 
     QString itemCreator();
     QString itemHistory();
+    QString potionDescription();
 
     QString gem(int tier);
     QString art(int tier);
