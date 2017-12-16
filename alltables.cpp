@@ -4408,6 +4408,17 @@ QString AllTables::hoardCoins(int tier)
 
 }
 
+QString AllTables::miscTreasure(int tier)
+{
+    /* TODO:
+     * spellbooks
+     * non-liquid treasures
+     * stores of common items
+     * stores of craft items
+     */
+
+}
+
 QString AllTables::treasureContainer()
 {
     RandomTable table;
