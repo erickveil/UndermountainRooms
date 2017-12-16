@@ -203,23 +203,31 @@ QString AllTables::generateHallwayContents(int tier)
     QString guard = guardianFoe(tier);
     QString activity = generateActivity();
     QString hazard = dungeonHazards();
+    QString monster_loot = generateIndividualTreasure(tier);
 
 
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ")"
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity
-                   + sound +  smell + feature, 8);
+                   + sound +  smell + feature
+                   , 8);
+
     table.addEntry("MONSTER (pet or allied creature): "
                    + monster
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity
-                   + sound +  smell + feature, 12);
+                   + sound +  smell + feature
+                   , 12);
     table.addEntry("MONSTER (random): "
                    + monster
+                   + "\nLoot: + monster_loot"
                    + motivation + "\n"
                    + activity
-                   + sound +  smell + feature, 9);
+                   + sound +  smell + feature
+                   , 9);
 
     QString obstacle = obstacles();
     table.addEntry("OBSTACLE: " + obstacle + sound +  smell + feature, 5);
@@ -1002,30 +1010,37 @@ QString AllTables::chamberContents(int tier)
     QString guard = guardianFoe(tier);
     QString activity = generateActivity();
     QString treasure = generateTreasureHorde(tier);
+    QString monster_loot = generateIndividualTreasure(tier);
 
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ")"
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity, 8);
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ") with treasure"
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity + "\n"
                    + treasure, 7);
     table.addEntry("MONSTER (pet or allied creature): "
                    + monster
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity, 12);
     table.addEntry("MONSTER (pet or allied creature) guarding treasure: "
                    + guard + "\n"
+                   + "\nLoot: " + monster_loot
                    + activity + "\n"
                    + treasure, 6);
     table.addEntry("MONSTER (random): "
                    + monster
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity, 9);
     table.addEntry("MONSTER (random) with treasure: "
                    + monster
+                   + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity + "\n"
                    + treasure, 8);
@@ -1591,6 +1606,8 @@ QString AllTables::generateTrick()
                    "in ceiling, followed by flaming cinder (2-12 hp damage, "
                    "Dex save DC 10 for 1-3 damage from splash)");
     table.addEntry("Door falls outward, causing 1d10 damage.");
+
+    return table.getRollTableEntry();
 }
 
 QString AllTables::trickObject()

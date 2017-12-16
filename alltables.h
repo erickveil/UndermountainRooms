@@ -98,8 +98,6 @@ public:
 
     // monster tables
 
-    //QString generateInhabitants(int dungionLevel);
-
     QString dungeonMonster(int tier);
     QString undermountainMonster(int tier);
     QString urbanEncounterXge(int tier);
