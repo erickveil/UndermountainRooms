@@ -128,7 +128,7 @@ void MainWindow::on_wanderingMonster_clicked()
     int tier = ui->tierSelect->value();
 
     if (biome == "Underdark") {
-        ui->resultArea->setPlainText(roller.checkForWanderingMonsters(tier));
+        ui->resultArea->setPlainText(roller.dungeonMonster(tier));
     }
     else if (biome == "Undermountain") {
         ui->resultArea->setPlainText(roller.undermountainMonster(tier));

@@ -2392,7 +2392,7 @@ QString AllTables::dungeonMonster(int tier)
     table.addEntry(qty + " giant spiders");
 
     qty = QString::number(roll(3,6));
-    table.addEntry(qty + "kuo-toa");
+    table.addEntry(qty + " kuo-toa");
 
     qty = QString::number(roll(2,4));
     table.addEntry("1 goblin boss with " + qty + " goblins");
@@ -2560,6 +2560,7 @@ QString AllTables::dungeonMonster(int tier)
     table.addEntry(qty + " Swarm of Rot Grubs (VGM)");
 
     table.addEntry(adventuringParty(tier));
+    table.addEntry(generateAdventurer(tier));
 
     return table.getRollTableEntry();
 }
@@ -2589,8 +2590,6 @@ QString AllTables::undermountainMonster(int tier)
     table.addEntry("A guard, leading commoner 'adventurers' on an expedition "
                    "for the Wyvernroost", 2);
     table.addEntry("A group of bandits looking for plunder", 3);
-    table.addEntry("An 'adventuring party' made up of an apprentice, a "
-                   "commoner, a bandit, and a thug", 2);
     table.addEntry("A commoner prisoner being led by thugs or bandits to sell "
                    "as slaves to the bloodfist goblins", 2);
 
@@ -2792,6 +2791,7 @@ QString AllTables::urbanEncounterXge(int tier)
     table.addEntry(qty + " slithering trackers (xge)");
 
     table.addEntry(adventuringParty(tier));
+    table.addEntry(generateAdventurer(tier));
 
     qty = QString::number(roll(1,6));
     table.addEntry(qty + " vargouilles (xge)");
@@ -3061,6 +3061,7 @@ QString AllTables::sewerEncounter(int tier)
     table.addEntry(qty + " wraiths");
 
     table.addEntry(adventuringParty(tier));
+    table.addEntry(generateAdventurer(tier));
 
     return table.getRollTableEntry();
 }
