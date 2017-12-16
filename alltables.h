@@ -136,6 +136,7 @@ public:
 
     QString generateTreasureHorde(int tier);
     QString generateIndividualTreasure(int tier);
+    QString miscTreasure(int tier);
 
     QString adventuringParty(int tier);
     QString AdventurerRace();
