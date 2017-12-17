@@ -126,24 +126,43 @@ void MainWindow::on_wanderingMonster_clicked()
 {
     QString biome = ui->biomeSelect->currentText();
     int tier = ui->tierSelect->value();
+    QString loot = roller.generateIndividualTreasure(tier);
 
     if (biome == "Underdark") {
-        ui->resultArea->setPlainText(roller.dungeonMonster(tier));
+        ui->resultArea->setPlainText(
+                    roller.dungeonMonster(tier)
+                    + "\nLoot: " + loot
+                    );
     }
     else if (biome == "Undermountain") {
-        ui->resultArea->setPlainText(roller.undermountainMonster(tier));
+        ui->resultArea->setPlainText(
+                    roller.undermountainMonster(tier)
+                    + "\nLoot: " + loot
+                    );
     }
     else if (biome == "Urban") {
-        ui->resultArea->setPlainText(roller.generateUrbanEncounter(tier));
+        ui->resultArea->setPlainText(
+                    roller.generateUrbanEncounter(tier)
+                    + "\nLoot: " + loot
+                    );
     }
     else if (biome == "Urban Night") {
-        ui->resultArea->setPlainText(roller.generateUrbanEncounterNight(tier));
+        ui->resultArea->setPlainText(
+                    roller.generateUrbanEncounterNight(tier)
+                    + "\nLoot: " + loot
+                    );
     }
     else if (biome == "Sewer") {
-        ui->resultArea->setPlainText(roller.sewerEncounter(tier));
+        ui->resultArea->setPlainText(
+                    roller.sewerEncounter(tier)
+                    + "\nLoot: " + loot
+                    );
     }
     else if (biome == "Guardian") {
-        ui->resultArea->setPlainText(roller.guardianFoe(tier));
+        ui->resultArea->setPlainText(
+                    roller.guardianFoe(tier)
+                    + "\nLoot: " + loot
+                    );
     }
     else {
         ui->resultArea->setPlainText("Unknown biome type: " + biome );

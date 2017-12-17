@@ -106,6 +106,8 @@ public:
 
     QString guardianFoe(int dungeonLevel);
 
+    // loot
+
     QString generateSpellbook(int tier);
     QString wizardSpells(int level);
 
@@ -135,12 +137,15 @@ public:
     QString generateTreasureHorde(int tier);
     QString generateIndividualTreasure(int tier);
     QString miscTreasure(int tier);
+    QString mundaneHorde(int tier);
 
+    // NPC
+
+    QString generateAdventurer(int tier);
     QString adventuringParty(int tier);
     QString AdventurerRace();
     QString AdventurerClass(int tier);
     QString adventurerPackage(int tier);
-    QString generateAdventurer(int tier);
     QString commonRace();
     QString uncommonRace();
     QString rareRace();

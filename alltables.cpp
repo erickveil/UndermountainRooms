@@ -1,4 +1,4 @@
-﻿#include "alltables.h"
+#include "alltables.h"
 
 AllTables::AllTables()
 {
@@ -1004,7 +1004,7 @@ QString AllTables::chamberContents(int tier)
 {
     RandomTable table;
 
-    QString motivation = "\nMOTIVATION: " + monsterMotivation();
+    QString motivation = "MOTIVATION: " + monsterMotivation();
 
     QString monster = dungeonMonster(tier);
     QString guard = guardianFoe(tier);
@@ -1014,33 +1014,33 @@ QString AllTables::chamberContents(int tier)
 
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ")"
-                   + "\nLoot: " + monster_loot
+                   + "\nLoot: " + monster_loot + "\n"
                    + motivation + "\n"
                    + activity, 8);
     table.addEntry("MONSTER (dominant inhabitant or "
                    + monster + ") with treasure"
-                   + "\nLoot: " + monster_loot
+                   + "\nLoot: " + monster_loot + "\n"
                    + motivation + "\n"
                    + activity + "\n"
                    + treasure, 7);
     table.addEntry("MONSTER (pet or allied creature): "
                    + monster
-                   + "\nLoot: " + monster_loot
+                   + "\nLoot: " + monster_loot + "\n"
                    + motivation + "\n"
                    + activity, 12);
     table.addEntry("MONSTER (pet or allied creature) guarding treasure: "
                    + guard + "\n"
-                   + "\nLoot: " + monster_loot
+                   + "Loot: " + monster_loot + "\n"
                    + activity + "\n"
                    + treasure, 6);
     table.addEntry("MONSTER (random): "
                    + monster
-                   + "\nLoot: " + monster_loot
+                   + "\nLoot: " + monster_loot + "\n"
                    + motivation + "\n"
                    + activity, 9);
     table.addEntry("MONSTER (random) with treasure: "
                    + monster
-                   + "\nLoot: " + monster_loot
+                   + "\nLoot: " + monster_loot + "\n"
                    + motivation + "\n"
                    + activity + "\n"
                    + treasure, 8);
@@ -2251,7 +2251,8 @@ QString AllTables::generateUrbanEncounter(int tier)
 
     }
     else if (encounterType < 85) {
-        encounter = "Town Crier with news or hook";
+        encounter = "Town Crier with news or hook (Generate Adventure or use"
+                    " prepared news or hook)";
     }
     //else if (encounterType < 90) {
     else {
@@ -4557,12 +4558,126 @@ QString AllTables::hoardCoins(int tier)
 QString AllTables::miscTreasure(int tier)
 {
     /* TODO:
-     * spellbooks
-     * non-liquid treasures
+     * spellbook
      * stores of common items
      * stores of craft items
      */
 
+}
+
+QString AllTables::mundaneHorde(int tier)
+{
+    int totalValue;
+    if (tier == 1) {
+        totalValue = roll(1,100) + 100;
+    }
+    else if (tier == 2) {
+        totalValue = roll(1, 100) + 250;
+    }
+    else if (tier == 3) {
+        totalValue = roll(1, 100) + 500;
+    }
+    else {
+        totalValue = roll(1,100) + 1000;
+    }
+
+    int numPieces = roll(3,10);
+    int pieceValue = (totalValue * 0.75) / numPieces;
+    bool isFullSet = roll(1, 100) < 50;
+    QString value;
+    if (isFullSet) {
+        value = QString::number(numPieces) + " pieces at "
+                + QString::number(pieceValue)
+                + " gp each, or a total of "
+                + QString::number(totalValue) + " gp as a full set.";
+    }
+    else {
+        int partial = numPieces * 0.25;
+        int remainder = numPieces - partial;
+        value = "Incomplete set of " + QString::number(partial)
+                + " pieces out of " + QString::number(remainder)
+                + " valued at "
+                + QString::number(pieceValue) + " gp each.";
+    }
+
+    RandomTable natureTable;
+    natureTable.addEntry("New, never released");
+    natureTable.addEntry("Unique");
+    natureTable.addEntry("Antique");
+    natureTable.addEntry("Masterwork");
+    natureTable.addEntry("Limited edition");
+    natureTable.addEntry("Crafted by a famous craftsman");
+    natureTable.addEntry("Used by a famous person");
+    natureTable.addEntry("Historical");
+    natureTable.addEntry("Rare");
+    natureTable.addEntry("Mint condition");
+    natureTable.addEntry("Useful to the right tradesman or collector");
+    QString nature = natureTable.getRollTableEntry();
+
+    RandomTable itemTable;
+    itemTable.addEntry("Paintings");
+    itemTable.addEntry("Statues");
+    itemTable.addEntry("Furniture");
+    itemTable.addEntry("Tapestries");
+    itemTable.addEntry("Spices");
+    itemTable.addEntry("Books, scrolls, knowledge, written in a dead language "
+                       "only knowable by certain sages.");
+    itemTable.addEntry("Tools for a trade");
+    itemTable.addEntry("Outfits and clothing");
+    itemTable.addEntry("Raw or smelted ore");
+    itemTable.addEntry("Deeds and titles for far away properties");
+    itemTable.addEntry("Fine China");
+    itemTable.addEntry("Stained Glass");
+    itemTable.addEntry("Food Stores");
+    itemTable.addEntry("Relics of non-valuable materials, but archaeological worth");
+    itemTable.addEntry("Old wines, ale casks, or bourbons");
+    itemTable.addEntry("A strange variety of non-precious crystals");
+    itemTable.addEntry("Maps of unfamiliar lands");
+    itemTable.addEntry("Expertly etched or enamled arms, armor, and/or weapons not practical for actual use");
+    itemTable.addEntry("Stone tablets, etched with ancient symbols and runes");
+    itemTable.addEntry("Cataloged bones of extint animals");
+    itemTable.addEntry("A colleciton of non-magical tinctures, remedies, snake-oils, ingredents");
+    itemTable.addEntry("Animal or monster parts, preserved in jars");
+    itemTable.addEntry("Taxidermy collection");
+    itemTable.addEntry("Private zoo of exotic animals or caged experiment subjects");
+    itemTable.addEntry("Collection of intricately designed fabrige eggs");
+    itemTable.addEntry("Clocks, or clockworks collection");
+    itemTable.addEntry("Bills of debt that might or might not be honored with payment if the players present them for collection.");
+    itemTable.addEntry("Sea navigation documents: extremely valuable to pilots who keep them like wizards to their spellbooks.");
+    itemTable.addEntry("Treatises on magic fundamentals that would be valuable to sages or any wizard's school.");
+    itemTable.addEntry("Current merchant house routes and schedules that would be valuable to anyone who wants to intercept a shipment.");
+    itemTable.addEntry("Preserved severed heads, or shrunken heads, or skulls of humanoids.");
+    itemTable.addEntry("Commemorative plates, limited edition. Collector's pieces.");
+    itemTable.addEntry("Wargame miniatures. Possibly with a well-crafted miniature tabletop in the form of the surrounding region");
+    itemTable.addEntry("Fancy wardrobe of high-quality clothing for nobles. Possibly from a few generations ago and so might only be of value to a collector. Otherwise the latest styles that will sell well among socialites after minor alterations from their family tailor.");
+    itemTable.addEntry("Collection of elaborately decorated boxes and chests. All empty, but valuable in themselves.");
+    itemTable.addEntry("Extremely intricate locks and their keys/combinations, all crafted by a master locksmith of this or a past age.");
+    itemTable.addEntry("Normal arms or armor, but stamped with the forge symbol of a world renowned dwarven smith, which increases their value significantly to those who know what to look for.");
+    itemTable.addEntry("Masterwork quality tools for a particular trade.");
+    itemTable.addEntry("Vault of unreleased music or private work of a world famous and recently deceased bard or composer.");
+    itemTable.addEntry("The private notes and journal of a world renowned genius (Lenoardo DaVinci level), artist, inventor, scientist, wizard, or craftsman.");
+    itemTable.addEntry("A mural or ceiling fresco of a famous artist, but it's part of the walls.");
+    itemTable.addEntry("A library of fiction books, normally mundane, but it's value comes from the fact that the library was owned by a famous author when they were alive.");
+    itemTable.addEntry("Reams of paper and a whole store of stacks of blank parchment. Vats of black ink. Valuable to the scribe guild who would buy the log, or simply when sold at retail, a unit at a time.");
+    itemTable.addEntry("Barrels of gunpowder (Watch those torches!) Unmarked barrels with no other instruments of use around containing the rare, black powder of distinct odor.");
+    itemTable.addEntry("Copper or iron pipes in various shapes. Could be sold for scrap metal if no plumbers guild exists.");
+    itemTable.addEntry("Various floating globes of colored light. Used as magical interior illumination in wealthier parts of the realms where they are more accustomed to whimsical magic use.");
+    itemTable.addEntry("Mechanical Turk. Plays chess poorly or submits a truly random fortune. Might be wind-up or copper coin operated.");
+    itemTable.addEntry("A collection of wind-up ladies' music boxes.");
+    itemTable.addEntry("A collection of snow globes of all the cities in the north. A common thing in our world, but in the fantasy world, it's a rare and difficult to craft curiosity.");
+    itemTable.addEntry("A large collection of children's' toys.");
+    itemTable.addEntry("An orchestra's worth of musical instruments. Alternatively, a small collection of extremely well crafted instruments that only a musician can appreciate. To the rest of us, the distinction is lost.");
+    itemTable.addEntry("Trappings of a long forgotten religion.");
+    itemTable.addEntry("Various types of incense.");
+    itemTable.addEntry("Bins of salt rocks. Important, not just for spicing up a giant meal, but for preservation of meats. Salt mines are distant, and salt is heavy to transport, so a store of it would bring a classy copper from the right slaughterhouse or meat packer.");
+    itemTable.addEntry("Blocks of ice. Food spoils quickly in the summer, and if you can keep your ice in ice form, you can sell it fairly quickly. These blocks should be tightly packed together in crates, and kept in a cool cellar to prevent them melting. Once they are removed, they will not last long.");
+    itemTable.addEntry("A collection of religious relics made of wood or stone, which would only be valuable to the church they belong to.");
+    itemTable.addEntry(" collection of various items that emit a strong, magical aura when detection is cast. These devices are ancient and mysterious. What they do or how to access their power is not apparent and is unknown to even to most well-read sage of wizardry in the party. However, these items would be of particular interest to a traveling magic collector from Halruaa -- if one could be found. They travel the world in disguise, in search of such items. If the party puts out word, one is bound to come searching, but also will thieves. The devices themselves might not do much of value to anyone outside a magical society.");
+
+    QString treasure = itemTable.getRollTableEntry() + "\n" + value + "\n"
+            + nature;
+
+    return treasure;
 }
 
 QString AllTables::treasureContainer()
@@ -4618,6 +4733,7 @@ QString AllTables::generateTreasureHorde(int tier)
     int numGems;
     int numArt;
     int numMagic;
+    bool hasMundane;
 
     QString treasure;
     treasure = "TREASURE: \nCONTAINER: " + treasureContainer() + "\n"
@@ -4631,6 +4747,8 @@ QString AllTables::generateTreasureHorde(int tier)
         numGems = hasGems ? roll(2,6) : 0;
         numArt = hasArt ? roll(2,4) : 0;
         numMagic = hasMagic ? roll(1,6) : 0;
+        hasMundane = roll(1,100) < 35;
+
     }
     else if (tier == 2) {
         hasGems = roll(1,100) < 40;
@@ -4639,6 +4757,7 @@ QString AllTables::generateTreasureHorde(int tier)
         numGems = hasGems ? roll(3,6) : 0;
         numArt = hasArt ? roll(2,4) : 0;
         numMagic = hasMagic ? roll(1,6) : 0;
+        hasMundane = roll(1,100) < 45;
     }
     else if (tier == 3) {
         hasGems = roll(1,100) < 47;
@@ -4647,6 +4766,7 @@ QString AllTables::generateTreasureHorde(int tier)
         numGems = hasGems ? roll(3,6) : 0;
         numArt = hasArt ? roll(2,4) : 0;
         numMagic = hasMagic ? roll(1,6) : 0;
+        hasMundane = roll(1,100) < 55;
     }
     else {
         hasGems = roll(1,100) < 42;
@@ -4655,12 +4775,17 @@ QString AllTables::generateTreasureHorde(int tier)
         numGems = hasGems ? roll(3,6) : 0;
         numArt = hasArt ? roll(1,10) : 0;
         numMagic = hasMagic ? roll(1,8) : 0;
+        hasMundane = roll(1,100) < 65;
     }
 
     for (int i = 0; i < numArt; ++i) { treasure += art(tier) + "\n\n"; }
     for (int i = 0; i < numGems; ++i) { treasure += gem(tier) + "\n\n"; }
     for (int i = 0; i < numMagic; ++i) {
         treasure += selectMagicItemByTier(tier) + "\n\n";
+    }
+
+    if (hasMundane) {
+        treasure += mundaneHorde(tier) + "\n\n";
     }
 
     return treasure;
@@ -4742,6 +4867,18 @@ QString AllTables::generateIndividualTreasure(int tier)
             + ((ep==0) ? "" : QString::number(ep) + " ep, ")
             + ((gp==0) ? "" : QString::number(gp) + " gp, ")
             + ((pp==0) ? "" : QString::number(pp) + " pp, ");
+
+    int magicChance = tier * 5;
+    bool hasMagic = roll(1,100) < magicChance;
+    int jewelChance = tier * 10;
+    bool hasJewel = roll(1,100) < magicChance;
+
+    if (hasMagic) {
+        treasure += "\n" + selectMagicItemByTier(tier);
+    }
+    if (hasJewel) {
+        treasure += "\n" + art(tier);
+    }
 
     return treasure;
 
@@ -4881,13 +5018,33 @@ QString AllTables::adventurerPackage(int tier)
 QString AllTables::generateAdventurer(int tier)
 {
     RandomTable table;
-    QString composite = AdventurerClass(tier) + " (" + AdventurerRace() + ")";
+    QString advClass = AdventurerClass(tier);
+    QString composite = advClass + " (" + AdventurerRace() + ")";
     QString package = adventurerPackage(tier);
+    QString loot = generateIndividualTreasure(tier);
 
     table.addEntry(composite, 6);
     table.addEntry(package);
+    int spellbookChance = 5;
+    bool isCaster = (
+                advClass == "Apprentice Wizard (vge)"
+                || advClass == "Enchanter (vge)"
+                || advClass == "Transmuter (vge)"
+                || advClass == "Mage"
+                || advClass == "Conjurer (vge)"
+                || advClass == "Diviner (vge)"
+                || advClass == "Abjurer (vge)"
+                || advClass == "Evoker (vge)"
+                || advClass == "Necromancer (vge)"
+                || advClass == "Archmage"
+                );
+    if (isCaster) spellbookChance = 30;
+    bool hasSpellbook = roll(1,100) < spellbookChance;
+    if (hasSpellbook) {
+         loot += "\nSpellbook:\n" + generateSpellbook(tier);
+    }
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + "\nLoot: " + loot;
 }
 
 QString AllTables::commonRace()
