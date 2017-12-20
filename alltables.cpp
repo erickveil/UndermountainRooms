@@ -4446,6 +4446,13 @@ QString AllTables::art(int tier)
         table.addEntry("Small mirror set in a painted wooden frame" + value);
         table.addEntry("Embroidered silk handkerchief" + value);
         table.addEntry("Gold locket with a painted portrait inside" + value);
+        table.addEntry("Silver ring set with " + gem(1) + value);
+        table.addEntry("Plain gold pendant" + value);
+        table.addEntry("Small marble statuette" + value);
+        table.addEntry("Large silver bracelet" + value);
+        table.addEntry("Copper circlet" + value);
+        table.addEntry("Box of expertly crafted, mahogany game pieces" + value);
+        table.addEntry("Antique copper sword, etched with old runes" + value);
     }
 
     if (tier == 2 || tier == 3) {
