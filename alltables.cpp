@@ -4342,7 +4342,7 @@ QString AllTables::gem(int tier)
    RandomTable table;
    if (tier == 1) {
 
-       QString value = " (10 gp)";
+       QString value =  (_lowHauls)? " (10 sp)" : " (10 gp)";
 
        table.addEntry("Azurite (opaque mottled deep blue)" + value);
        table.addEntry("Banded agate (translucent striped brown, blue, white or red)" + value);
@@ -4360,7 +4360,7 @@ QString AllTables::gem(int tier)
 
    if (tier == 1 || tier == 2) {
 
-       QString value = " (50 gp)";
+       QString value =  (_lowHauls)? " (50 sp)" : " (50 gp)";
 
        table.addEntry("Bloodstone (opaque dark gray with red flecks)" + value);
        table.addEntry("Carnelian (opaque orange to red-brown)" + value);
@@ -4376,7 +4376,7 @@ QString AllTables::gem(int tier)
 
    if (tier == 2) {
 
-       QString value = " (100 gp)";
+       QString value =  (_lowHauls)? " (100 sp)" : " (100 gp)";
 
        table.addEntry("Amber (transparent watery gold to rich gold)" + value);
        table.addEntry("Amethyst (transparent deep purple)" + value);
@@ -4392,7 +4392,7 @@ QString AllTables::gem(int tier)
 
    if (tier == 3) {
 
-       QString value = " (500 gp)";
+       QString value =  (_lowHauls)? " (500 sp)" : " (500 gp)";
 
        table.addEntry("Alexandrite (transparent dark green)" + value);
        table.addEntry("Aquamarine (transparent pale blue-green)" + value);
@@ -4404,7 +4404,7 @@ QString AllTables::gem(int tier)
 
    if (tier == 3 || tier == 4) {
 
-       QString value = " (1000 gp)";
+       QString value =  (_lowHauls)? " (1000 sp)" : " (1000 gp)";
 
        table.addEntry("Black opal (translucent dark green with black mottling and golden flecks)" + value);
        table.addEntry("Blue sapphire (transparent blue-white to medium blue)" + value);
@@ -4418,7 +4418,7 @@ QString AllTables::gem(int tier)
 
    if (tier == 4) {
 
-       QString value = " (5000 gp)";
+       QString value =  (_lowHauls)? " (5000 sp)" : " (5000 gp)";
 
        table.addEntry("Black sapphire (translucent lustrous black with glowing highlights)" + value);
        table.addEntry("Diamond (transparent blue-white, canary, pink, brown, or blue)" + value);
@@ -4434,7 +4434,7 @@ QString AllTables::art(int tier)
     RandomTable table;
 
     if (tier == 1 || tier == 2) {
-        QString value = " (25 gp)";
+        QString value = (_lowHauls)? " (25 sp)" : " (25 gp)";
 
         table.addEntry("Selver ewer" + value);
         table.addEntry("Carved bone statuette" + value);
@@ -4449,7 +4449,7 @@ QString AllTables::art(int tier)
     }
 
     if (tier == 2 || tier == 3) {
-        QString value = " (250 gp)";
+        QString value = (_lowHauls)? " (250 sp)" : " (250 gp)";
 
         table.addEntry("Gold ring set with bloodstones" + value);
         table.addEntry("Carved ivory statuette" + value);
@@ -4464,7 +4464,7 @@ QString AllTables::art(int tier)
     }
 
     if (tier == 3) {
-        QString value = " (750 gp)";
+        QString value =(_lowHauls)? " (750 sp)" :  " (750 gp)";
 
         table.addEntry("Silver chalice set with moonstones" + value);
         table.addEntry("Silver-plated steel longsword with jet set in hilt" + value);
@@ -4479,7 +4479,7 @@ QString AllTables::art(int tier)
     }
 
     if (tier == 4) {
-        QString value = " (2500 gp)";
+        QString value = (_lowHauls)? " (2500 sp)" : " (2500 gp)";
 
         table.addEntry("Fine gold chain set with a fire opal" + value);
         table.addEntry("Old masterpiece painting" + value);
@@ -4494,7 +4494,7 @@ QString AllTables::art(int tier)
     }
 
     if (tier == 4) {
-        QString value = " (7500 gp)";
+        QString value = (_lowHauls)? " (7500 sp)" : " (7500 gp)";
 
         table.addEntry("jeweled gold crown" + value);
         table.addEntry("jeweled platinum ring" + value);
@@ -4511,7 +4511,6 @@ QString AllTables::art(int tier)
 
 QString AllTables::hoardCoins(int tier)
 {
-    bool lowHauls = false;
     int cp;
     int sp;
     int ep;
@@ -4522,7 +4521,7 @@ QString AllTables::hoardCoins(int tier)
         cp = roll(6,6) * 100;
         sp = roll(3, 6) * 100;
         gp = roll(2, 6) * 10;
-        if (lowHauls) {
+        if (_lowHauls) {
             return QString::number((cp/10)+sp) + " cp, "
                 + QString::number(gp) + " sp";
         }
@@ -4534,7 +4533,7 @@ QString AllTables::hoardCoins(int tier)
         sp = roll(2, 6) * 1000;
         gp = roll(6, 6) * 100;
         pp = roll(3, 6) * 10;
-        if (lowHauls) {
+        if (_lowHauls) {
             return QString::number((cp/10)+sp) + " cp, "
                     + QString::number(gp) + " sp, "
                     + QString::number(pp) + " gp";
@@ -4862,11 +4861,21 @@ QString AllTables::generateIndividualTreasure(int tier)
         }
     }
 
-    treasure = ((cp==0) ? "" : QString::number(cp) + " cp, ")
+    if (_lowHauls) {
+        treasure =
+              ((sp==0) ? "" : QString::number(sp + (cp/10)) + " cp, ")
+            + ((ep==0) ? "" : QString::number(ep) + " sp, ")
+            + ((gp==0) ? "" : QString::number(gp) + " ep, ")
+            + ((pp==0) ? "" : QString::number(pp) + " gp, ");
+    }
+    else {
+        treasure =
+              ((cp==0) ? "" : QString::number(cp) + " cp, ")
             + ((sp==0) ? "" : QString::number(sp) + " sp, ")
             + ((ep==0) ? "" : QString::number(ep) + " ep, ")
             + ((gp==0) ? "" : QString::number(gp) + " gp, ")
             + ((pp==0) ? "" : QString::number(pp) + " pp, ");
+    }
 
     int magicChance = tier * 5;
     bool hasMagic = roll(1,100) < magicChance;

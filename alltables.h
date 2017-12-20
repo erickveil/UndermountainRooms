@@ -7,6 +7,8 @@
 
 class AllTables
 {
+    bool _lowHauls = true;
+
 public:
     AllTables();
 
