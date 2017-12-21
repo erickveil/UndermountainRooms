@@ -18,13 +18,15 @@ SOURCES += main.cpp\
     randomtable.cpp \
     alltables.cpp \
     monsterentry.cpp \
-    monstertable.cpp
+    monstertable.cpp \
+    hexcrawltables.cpp
 
 HEADERS  += mainwindow.h \
     tableentry.h \
     randomtable.h \
     alltables.h \
     monsterentry.h \
-    monstertable.h
+    monstertable.h \
+    hexcrawltables.h
 
 FORMS    += mainwindow.ui

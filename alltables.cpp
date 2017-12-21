@@ -2,6 +2,7 @@
 
 AllTables::AllTables()
 {
+    _lowHauls = true;
     qsrand(QDateTime::currentMSecsSinceEpoch());
 }
 
@@ -10,7 +11,7 @@ int AllTables::randomNumber(int min, int max)
     return qrand() % (max - min) + min;
 }
 
-int AllTables::roll(int number, int sides, int mod = 0)
+int AllTables::roll(int number, int sides, int mod)
 {
     int total = 0;
     for (int i = 0; i < number; ++i) {
@@ -3085,7 +3086,7 @@ QString AllTables::sewerEncounter(int tier)
 }
 
 
-QString AllTables::guardianFoe(int dungeonLevel)
+QString AllTables::guardianFoe(int tier)
 {
     RandomTable table;
 
@@ -4520,7 +4521,7 @@ QString AllTables::hoardCoins(int tier)
 {
     int cp;
     int sp;
-    int ep;
+    //int ep;
     int gp;
     int pp;
 
@@ -4569,6 +4570,7 @@ QString AllTables::miscTreasure(int tier)
      * stores of craft items
      */
 
+    return "Undefined method: miscTreasure";
 }
 
 QString AllTables::mundaneHorde(int tier)
@@ -4887,7 +4889,7 @@ QString AllTables::generateIndividualTreasure(int tier)
     int magicChance = tier * 5;
     bool hasMagic = roll(1,100) < magicChance;
     int jewelChance = tier * 10;
-    bool hasJewel = roll(1,100) < magicChance;
+    bool hasJewel = roll(1,100) < jewelChance;
 
     if (hasMagic) {
         treasure += "\n" + selectMagicItemByTier(tier);

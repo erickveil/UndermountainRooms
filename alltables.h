@@ -7,13 +7,13 @@
 
 class AllTables
 {
-    bool _lowHauls = true;
+    bool _lowHauls;
 
 public:
     AllTables();
 
     int randomNumber(int min, int max);
-    int roll(int number, int sides, int mod);
+    int roll(int number, int sides, int mod = 0);
 
     QString generateGeneralRoom(int tier);
     QString generateDeathTrapRoom(int dungeonLevel);
@@ -106,7 +106,7 @@ public:
     QString urbanEncountersUnique();
     QString sewerEncounter(int tier);
 
-    QString guardianFoe(int dungeonLevel);
+    QString guardianFoe(int tier);
 
     // loot
 
