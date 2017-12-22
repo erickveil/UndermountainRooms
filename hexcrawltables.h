@@ -15,15 +15,24 @@ public:
     QString randomEcnounter(int tier);
 
     QString mainFeature(int tier);
-    QString wanderingEncounter();
-    QString miningResource();
-    QString terrain();
-    QString tracks();
-    QString lair();
+    QString wanderingEncounter(int tier);
 
     QString remoteStructure(int tier);
     QString ruinedStructure(int tier);
     QString naturalStructure(int tier);
+    QString remarkableEvent(int tier);
+    QString lair(int tier);
+    QString pastEvent(int tier);
+    QString npcEncounter(int tier);
+    QString currentEvent(int tier);
+    QString lostItem(int tier);
+    QString animalHerd();
+
+    QString minorItemChance();
+    QString itemAndBanditChance();
+
+    QString tracks();
+
     QString statue();
 };
 

@@ -41,6 +41,8 @@ public:
     QString dungeonGoals();
     QString generateRandomAdventure(int tier);
 
+    QString determineAlignment();
+
     QString generalDungeonRoomType();
     QString deathTrapRoomType();
     QString lairRoomType();

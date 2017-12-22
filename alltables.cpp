@@ -392,17 +392,6 @@ QString AllTables::dungeonCreator()
     table.addEntry("Giants");
     table.addEntry("Hobgoblins");
 
-    RandomTable alignment;
-    alignment.addEntry("Lawful good");
-    alignment.addEntry("Neutral good");
-    alignment.addEntry("Chaotic good");
-    alignment.addEntry("Lawful neutral");
-    alignment.addEntry("Neutral");
-    alignment.addEntry("Chaotic neutral");
-    alignment.addEntry("Lawful evil");
-    alignment.addEntry("Neutral evil");
-    alignment.addEntry("Chaotic evil");
-
     RandomTable npcClass;
     npcClass.addEntry("Barbarian");
     npcClass.addEntry("Bard");
@@ -417,7 +406,7 @@ QString AllTables::dungeonCreator()
     npcClass.addEntry("Warlock");
     npcClass.addEntry("Wizard");
 
-    table.addEntry("Humans: " + alignment.getRollTableEntry() + ", "
+    table.addEntry("Humans: " + determineAlignment() + ", "
                    + npcClass.getRollTableEntry(), 4);
     table.addEntry("Kuo-toa");
     table.addEntry("Lich");
@@ -608,6 +597,21 @@ QString AllTables::generateRandomAdventure(int tier)
 
     return desc;
 
+}
+
+QString AllTables::determineAlignment()
+{
+    RandomTable alignment;
+    alignment.addEntry("Lawful good");
+    alignment.addEntry("Neutral good");
+    alignment.addEntry("Chaotic good");
+    alignment.addEntry("Lawful neutral");
+    alignment.addEntry("Neutral");
+    alignment.addEntry("Chaotic neutral");
+    alignment.addEntry("Lawful evil");
+    alignment.addEntry("Neutral evil");
+    alignment.addEntry("Chaotic evil");
+    return alignment.getRollTableEntry();
 }
 
 QString AllTables::generalDungeonRoomType()
