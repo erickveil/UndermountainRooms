@@ -162,7 +162,7 @@
       <x>10</x>
       <y>40</y>
       <width>202</width>
-      <height>213</height>
+      <height>244</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -239,6 +239,13 @@
       <widget class="QPushButton" name="intiTreas">
        <property name="text">
         <string>Individual Treasure</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="keyHex">
+       <property name="text">
+        <string>Hex Contents</string>
        </property>
       </widget>
      </item>

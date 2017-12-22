@@ -239,3 +239,9 @@ void MainWindow::on_intiTreas_clicked()
     int tier = ui->tierSelect->value();
     ui->resultArea->setPlainText(roller.generateIndividualTreasure(tier));
 }
+
+void MainWindow::on_keyHex_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(hexTables.keyHex(tier));
+}

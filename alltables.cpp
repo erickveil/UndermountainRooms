@@ -4921,7 +4921,7 @@ QString AllTables::AdventurerRace()
 {
     RandomTable table;
 
-    table.addEntry(commonRace(), 4);
+    table.addEntry(commonRace(), 8);
     table.addEntry(uncommonRace(), 2);
     table.addEntry(rareRace());
 
@@ -5093,8 +5093,9 @@ QString AllTables::commonRace()
     human.addEntry("Shaaran");
     human.addEntry("Tuigan");
     human.addEntry("Ulutiun");
-    table.addEntry("Regional or human - " + human.getRollTableEntry(), 2);
-    table.addEntry("Human - " + human.getRollTableEntry());
+
+    table.addEntry("Regional or human - " + human.getRollTableEntry(), 5);
+    table.addEntry("Human - " + human.getRollTableEntry(),3);
 
     RandomTable elf;
     elf.addEntry("High");

@@ -11,6 +11,8 @@ class HexcrawlTables
 public:
     HexcrawlTables();
 
+    QString keyHex(int tier);
+
     QString pregenHex(int tier);
     QString randomEcnounter(int tier);
 
@@ -34,6 +36,9 @@ public:
     QString tracks();
 
     QString statue();
+
+    QString mineralResource();
+    QString gemMine();
 };
 
 #endif // HEXCRAWLTABLES_H

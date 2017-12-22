@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "alltables.h"
+#include "hexcrawltables.h"
 
 namespace Ui {
 class MainWindow;
@@ -13,6 +14,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
     AllTables roller;
+    HexcrawlTables hexTables;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -47,6 +49,8 @@ private slots:
     void on_hordTreas_clicked();
 
     void on_intiTreas_clicked();
+
+    void on_keyHex_clicked();
 
 private:
     Ui::MainWindow *ui;
