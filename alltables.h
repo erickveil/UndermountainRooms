@@ -37,7 +37,10 @@ public:
     QString dungeonLocation();
     QString dungeonCreator();
     QString dungeonHistory();
+
     QString adventureHook();
+    QString adventureHookMethod();
+
     QString dungeonGoals();
     QString generateRandomAdventure(int tier);
 
@@ -148,11 +151,14 @@ public:
     QString generateAdventurer(int tier);
     QString adventuringParty(int tier);
     QString AdventurerRace();
+    QString commonerRace();
     QString AdventurerClass(int tier);
     QString adventurerPackage(int tier);
     QString commonRace();
     QString uncommonRace();
     QString rareRace();
+    QString npcGender();
+    QString npcDisposition();
 
 
     // 1st edition dmg

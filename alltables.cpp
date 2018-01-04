@@ -470,6 +470,40 @@ QString AllTables::adventureHook()
     return table.getRollTableEntry();
 }
 
+QString AllTables::adventureHookMethod()
+{
+    RandomTable table;
+
+    table.addEntry(" has paid a Town Crier to deliver hook");
+    table.addEntry(" has posted hook to Billboard");
+    table.addEntry(" approaches party as a mysterious stranger with a hook");
+    table.addEntry(" sends a Messenger boy to party with hook");
+    table.addEntry(" places an Ad in paper");
+    table.addEntry(" is spreading a rumor, overheard by the party");
+    table.addEntry(" is a Wild eyed person looking for help");
+    table.addEntry(" leads a Press gang");
+    table.addEntry(" causes a Commotion outside");
+    table.addEntry(" drafts the party as an official capacity for the Watch or authorities.");
+    table.addEntry(" is a Recruiter for an organization");
+    table.addEntry(" shouts a Nearby cry for help");
+    table.addEntry(" recognizes the party as adventurous");
+    table.addEntry(" delivers a hidden note");
+    table.addEntry(" is acting suspicious");
+    table.addEntry(" delivers a Secret code in rot13. Investigation check reveals the code method.");
+    table.addEntry(" commits a Failed attempt to rob PCs and robber turns out to be desperate and in need of help");
+    table.addEntry(" related to One of the PCs professions is needed for a task specific to it");
+    table.addEntry(" is an acquaintance of the party seeks them out for aid");
+    table.addEntry(" is searching all the usual spots for an adventuring party to hire");
+    table.addEntry(" acts as an old kook that nobody believes tells a wild tale of adventure to be had.");
+    table.addEntry(" challenges or attacks the party, bearing the adventure hook on his body");
+    table.addEntry(" is a suspicious person is making a drop, not noticing he is being watched, he removes a loose brick and places a small scroll inside and leaves. A little while later, another person arrives and checks the wrong loose brick. Scratching his head and a little irritated, he leaves. The scroll contains the hook or a lead to the hook.");
+    table.addEntry(" is a Faction or guild agent looking for adventurers");
+
+    return table.getRollTableEntry();
+
+
+}
+
 QString AllTables::dungeonGoals()
 {
     RandomTable table;
@@ -2249,15 +2283,13 @@ QString AllTables::generateUrbanEncounter(int tier)
     }
     else if (encounterType < 75) {
         encounter = urbanEncounterXge(tier);
+        /*
         encounter += "\n- Intellegent motive: " + humanoidAttacksUrban() + "\n";
         encounter += "- Creature motive: " + creatureAttacksUrban() + "\n";
         encounter += "- Friendly motive: " + friendlyHumanoidUrbanActivity() + "\n";
         encounter += (roll(1,6) < 4) ? "(friendly)" : "(hostile)";
+        */
 
-    }
-    else if (encounterType < 85) {
-        encounter = "Town Crier with news or hook (Generate Adventure or use"
-                    " prepared news or hook)";
     }
     //else if (encounterType < 90) {
     else {
@@ -2282,8 +2314,10 @@ QString AllTables::generateUrbanEncounter(int tier)
 QString AllTables::generateUrbanEncounterNight(int tier)
 {
         QString encounter = urbanEncounterXge(tier);
+        /*
         encounter += "\n- Intellegent motive: " + humanoidAttacksUrban() + "\n";
         encounter += "- Creature motive: " + creatureAttacksUrban() + "\n";
+        */
         return encounter;
 }
 
@@ -2303,6 +2337,7 @@ QString AllTables::friendlyHumanoidUrbanActivity()
     table.addEntry("Simple greeting");
     table.addEntry("Passing on a rumor or news");
     table.addEntry("New in town, looking for companions");
+    table.addEntry("Adventure hook:" + adventureHook(), 3);
 
     return table.getRollTableEntry();
 }
@@ -2623,220 +2658,288 @@ QString AllTables::urbanEncounterXge(int tier)
 {
     RandomTable table;
 
+    QString animalMotive = " - " + animalDowntime();
+    QString creatureMotive = " - " + creatureAttacksUrban();
+    QString humanoidMotive = " - " + humanoidAttacksUrban();
+
 
     QString qty;
     QString qty2;
     qty = QString::number(roll(1,6));
-    table.addEntry(qty +" cats");
-
-    qty = QString::number(roll(1,6));
-    table.addEntry("1 commoner with " + qty +" goats", 2);
+    table.addEntry(qty +" cats" + animalMotive);
 
     qty = QString::number(roll(2,10));
-    table.addEntry(qty +" rats", 2);
+    table.addEntry(qty +" rats" + creatureMotive, 2);
 
     table.addEntry("1 raven perched on a signpost");
-
-    table.addEntry("1 commoner on a draft horse");
 
     qty = QString::number(roll(2,4));
     table.addEntry(qty +" mastiffs");
 
-    qty = QString::number(roll(1,2));
-    qty2 = QString::number(roll(1,4));
-    table.addEntry(qty +" commoners leading " + qty2 + " mules or ponies.");
-
-    table.addEntry("1 pseudodragon");
-
-    table.addEntry("1 spy");
-
-    qty = QString::number(roll(1,8,1));
-    table.addEntry(qty +" acolytes", 2);
+    table.addEntry("1 pseudodragon" + creatureMotive);
 
     qty = QString::number(roll(1,6,6));
-    table.addEntry(qty +" flying snakes");
+    table.addEntry(qty +" flying snakes" + creatureMotive);
 
     qty = QString::number(roll(3,6));
-    table.addEntry(qty +" kobolds");
+    table.addEntry(qty +" kobolds" + humanoidMotive);
 
     qty = QString::number(roll(2,4));
-    table.addEntry(qty +" giant centipedes");
+    table.addEntry(qty +" giant centipedes" + creatureMotive);
 
     qty = QString::number(roll(1,8,1));
-    table.addEntry(qty +" skeletons");
+    table.addEntry(qty +" skeletons" + creatureMotive);
 
     qty = QString::number(roll(1,6,2));
-    table.addEntry(qty +" swarms of rats", 2);
+    table.addEntry(qty +" swarms of rats" + creatureMotive, 2);
 
     qty = QString::number(roll(1,12));
-    table.addEntry(qty +" zombies");
+    table.addEntry(qty +" zombies" + creatureMotive);
 
-    table.addEntry("1 giant wasp");
+    table.addEntry("1 giant wasp" + creatureMotive);
 
-    table.addEntry("1 warhorse", 2);
-
-    qty = QString::number(roll(2,8));
-    table.addEntry(qty +" cultists");
+    table.addEntry("1 warhorse" + animalMotive, 2);
 
     qty = QString::number(roll(3,4));
-    table.addEntry(qty +" giant rats", 2);
+    table.addEntry(qty +" giant rats" + creatureMotive, 2);
 
     qty = QString::number(roll(2,8));
-    table.addEntry(qty +" stirges");
+    table.addEntry(qty +" stirges" + creatureMotive);
 
     qty = QString::number(roll(1,3,2));
-    table.addEntry(qty +" giant poisonous snakes");
+    table.addEntry(qty +" giant poisonous snakes" + creatureMotive);
 
     qty = QString::number(roll(1,4,2));
-    table.addEntry(qty +" swarms of bats");
+    table.addEntry(qty +" swarms of bats" + animalMotive);
 
     qty = QString::number(roll(2,4));
-    table.addEntry(qty +" winged kobolds");
+    table.addEntry(qty +" winged kobolds" + humanoidMotive);
 
-    table.addEntry("A wagon loaded with apples that has a broken wheel and "
-                   "holds up traffic (add 30 minutes to travel time)", 5);
+    table.addEntry("1 crocodile" + creatureMotive);
 
-    table.addEntry("1 crocodile");
-
-    table.addEntry("1 swarm of insects");
-
-    qty = QString::number(roll(3,6));
-    table.addEntry(qty +" bandits", 2);
-
-    qty = QString::number(roll(1,3,2));
-    qty2 = QString::number(roll(1,10));
-    table.addEntry(qty +" nobles on riding horses with an escort of " + qty2
-                   + " guards", 2);
+    table.addEntry("1 swarm of insects" + creatureMotive);
 
     qty = QString::number(roll(2,4));
-    table.addEntry(qty +" kenku");
+    table.addEntry(qty +" kenku" + humanoidMotive);
 
     qty = QString::number(roll(1,6,2));
-    table.addEntry(qty +" smoke mephits");
+    table.addEntry(qty +" smoke mephits" + creatureMotive);
 
     qty = QString::number(roll(1,8,1));
-    table.addEntry(qty +" swarms of ravens");
-
-    table.addEntry("1 wererat", 2);
-
-    qty = QString::number(roll(1,3));
-    table.addEntry(qty +" half ogres");
+    table.addEntry(qty +" swarms of ravens" + animalMotive);
 
     table.addEntry("1 mimic", 2);
 
     qty = QString::number(roll(1,4));
-    table.addEntry(qty +" ghouls", 2);
+    table.addEntry(qty +" ghouls" + creatureMotive, 2);
 
     qty = QString::number(roll(1,4));
-    table.addEntry(qty +" spectres", 2);
+    table.addEntry(qty +" spectres" + creatureMotive, 2);
 
     qty = QString::number(roll(1,10));
-    table.addEntry(qty +" shadows", 2);
+    table.addEntry(qty +" shadows" + creatureMotive, 2);
 
-    table.addEntry("1 ghast", 2);
+    table.addEntry("1 ghast" + creatureMotive, 2);
 
-    table.addEntry("1 priest", 2);
-
-    table.addEntry("1 will-o-wisp", 2);
+    table.addEntry("1 will-o-wisp" + creatureMotive, 2);
 
     qty = QString::number(roll(1,3));
-    table.addEntry(qty +" giant spiders");
+    table.addEntry(qty +" giant spiders" + creatureMotive);
 
-    qty = QString::number(roll(1,4));
-    table.addEntry(qty +" yuan-ti purebloods", 2);
+    table.addEntry("1 cambion" + humanoidMotive);
 
-    qty = QString::number(roll(2,4));
-    table.addEntry(qty +" thugs", 2);
+    table.addEntry("1 couatl" + creatureMotive);
 
-    table.addEntry("A doomsayer who preaches the end of the world from a "
-                   "street corner", 3);
-
-    table.addEntry("1 cambion");
-
-    table.addEntry("1 vampire spawn");
-
-    table.addEntry("1 couatl");
-
-    table.addEntry("1 ghost");
-
-    table.addEntry("1 succubus/incubus");
-
-    qty = QString::number(roll(3,6));
-    table.addEntry("1 bandit captain with " + qty + " bandits");
-
-    qty = QString::number(roll(1,4,1));
-    table.addEntry(qty +" cult fanatics");
-
-    table.addEntry("1 knight");
-
-    table.addEntry("1 veteran");
-
-    table.addEntry("1 water wierd");
-
-    table.addEntry("1 wight");
-
-    table.addEntry("1 mage");
-
-    table.addEntry("1 shield guardian");
-
-    table.addEntry("1 gladiator");
-
-    table.addEntry("1 revenant");
+    table.addEntry("1 revenant" + creatureMotive);
 
     qty = QString::number(roll(2,4));
-    table.addEntry(qty +" gargoyles");
+    table.addEntry(qty +" gargoyles" + creatureMotive);
 
-    qty = QString::number(roll(1,4));
-    table.addEntry(qty +" dopplegangers");
-
-    table.addEntry("1 oni");
-
-    table.addEntry("1 invisible stalker");
+    table.addEntry("1 invisible stalker" + creatureMotive);
 
     qty = QString::number(roll(1,8,1));
-    table.addEntry(qty +" phase spiders");
-
-    table.addEntry("1 assassin");
-
-    qty = QString::number(roll(2,4));
-    table.addEntry(" darklings (XGE)");
-
-    qty = QString::number(roll(2,3));
-    table.addEntry("1 Darkling Elder and " + qty + " darklings (XGE)");
-
-    qty = QString::number(roll(1,3));
-    table.addEntry("1 Noble with " + qty + " Guard drakes on a leash (XGE)");
+    table.addEntry(qty +" phase spiders" + creatureMotive);
 
     qty = QString::number(roll(1,4));
-    table.addEntry(qty + " shadow mastiff (xge)");
+    table.addEntry(qty + " shadow mastiff (xge) " + creatureMotive);
 
     qty = QString::number(roll(1,4));
-    table.addEntry(qty + " slithering trackers (xge)");
-
-    table.addEntry(adventuringParty(tier));
-    table.addEntry(generateAdventurer(tier));
+    table.addEntry(qty + " slithering trackers (xge)" + creatureMotive);
 
     qty = QString::number(roll(1,6));
-    table.addEntry(qty + " vargouilles (xge)");
-
-    qty = QString::number(roll(2,3));
-    table.addEntry(qty + " apprentice mages (xge)");
+    table.addEntry(qty + " vargouilles (xge)" + creatureMotive);
 
     qty = QString::number(roll(1,4));
-    table.addEntry(qty + " meenlocks (xge)");
+    table.addEntry(qty + " meenlocks (xge)" + creatureMotive);
 
-    table.addEntry("1 Archer (xge)");
 
-    table.addEntry("1 Bard (xge)");
+    table.addEntry("1 water wierd" + creatureMotive);
 
-    table.addEntry("1 Enchanter (xge)");
-    table.addEntry("1 Illusionist (xge)");
+    table.addEntry("1 wight" + creatureMotive);
 
-    table.addEntry("1 Martial Arts Adepts (xge)");
+    // Urban NPCs
+    QString npc = "NPCs: ";
+    QString npcRace = commonerRace();
+    QString gender = npcGender();
+    QString disposition = npcDisposition();
+    if (disposition == "friendly") {
+        disposition += " -" + friendlyHumanoidUrbanActivity();
+    }
+    else {
+        disposition += " -" + humanoidAttacksUrban();
+    }
 
-    table.addEntry("1 Master Thief (xge)", 3);
-    table.addEntry("1 Swashbuckler (xge)", 3);
-    table.addEntry("1 Warlock of the Archfey (xge)");
+    table.addEntry(adventuringParty(tier) + "\n" + disposition);
+    table.addEntry(generateAdventurer(tier) + " " + disposition);
+
+
+    table.addEntry("1 shield guardian " + disposition);
+
+    qty = QString::number(roll(1,6));
+    table.addEntry(npc + "1 " + gender + " " + npcRace + " commoner with "
+                   + qty +" goats " + disposition, 2);
+
+    table.addEntry("1 " + gender + " " + npcRace
+                   + " commoner on a draft horse (" + disposition + ")");
+
+    qty = QString::number(roll(1,2));
+    qty2 = QString::number(roll(1,4));
+    table.addEntry(npc + qty + " " + gender + " " + npcRace
+                   + " commoners leading " + qty2 + " mules or ponies." + "("
+                   + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace + " spy" + "("
+                   + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace  + " Archer (xge)"
+                   + "(" + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace  + " Bard (xge)"
+                   + "(" + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace
+                   + " Enchanter (xge)" + "(" + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace
+                   + " Illusionist (xge)" + "(" + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace
+                   + " Martial Arts Adepts (xge)" + "(" + disposition + ")");
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace
+                   + " Master Thief (xge)" + "(" + disposition + ")", 3);
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace
+                   + " Swashbuckler (xge)" + "(" + disposition + ")", 3);
+
+    table.addEntry(npc + "1 " + " " + gender + " " + npcRace
+                   + " Warlock of the Archfey (xge)" + "(" + disposition + ")");
+
+    qty = QString::number(roll(1,8,1));
+    table.addEntry(npc + qty +" " + " " + gender + " " + npcRace
+                   + " acolytes" + "(" + disposition + ")", 2);
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(npc + qty +" " + " " + gender + " " + npcRace
+                   + " bandits " + humanoidMotive, 2);
+
+    qty = QString::number(roll(1,3,2));
+    qty2 = QString::number(roll(1,10));
+    table.addEntry(npc + qty + " " + gender
+                   + " nobles on riding horses with an escort of " + qty2
+                   + " guards" + "(" + disposition + ")", 2);
+
+    table.addEntry(npc + "1" + " " + gender + " wererat" + humanoidMotive, 2);
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(npc + qty + " " + gender + "  half ogres" + "("
+                   + disposition + ")");
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " priest" + "("
+                   + disposition + ")", 2);
+
+    table.addEntry(npc + "1 " + gender + " vampire spawn" + humanoidMotive);
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " ghost"
+                   + disposition);
+
+    table.addEntry(npc + "1 " + gender + " " + " succubus/incubus"
+                   + humanoidMotive);
+
+    qty = QString::number(roll(3,6));
+    table.addEntry(npc + "1 " + gender + " " + npcRace
+                   + " bandit captain with " + qty + " bandits"
+                   + humanoidMotive);
+
+    qty = QString::number(roll(1,4,1));
+    table.addEntry(npc + qty + " " + gender + " " + npcRace
+                   + " cult fanatics" + humanoidMotive);
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " knight" + "("
+                   + disposition + ")");
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " veteran" + "("
+                   + disposition + ")");
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " mage" + "("
+                   + disposition + ")");
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " gladiator" + "("
+                   + disposition + ")");
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(npc + qty +" " + gender + " " + npcRace
+                   + " yuan-ti purebloods" + humanoidMotive, 2);
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(npc + qty +" " + gender + " " + npcRace  + " thugs", 2);
+
+    table.addEntry(npc + "A " + gender + " " + npcRace
+                   + " doomsayer who preaches the end of the world from a "
+                   "street corner", 3);
+
+    qty = QString::number(roll(1,4));
+    table.addEntry(npc + qty +" dopplegangers (" + npcRace  + ", " + gender
+                   + ")" + humanoidMotive);
+
+    table.addEntry(npc + "1 " + gender + " oni" + humanoidMotive);
+
+    table.addEntry(npc + "1 " + gender + " " + npcRace  + " assassin"
+                   + humanoidMotive);
+
+    qty = QString::number(roll(2,4));
+    table.addEntry(npc + qty + " " + gender + " " + " darklings (XGE)"
+                   + humanoidMotive);
+
+    qty = QString::number(roll(2,3));
+    table.addEntry(npc + "1 " + gender + " Darkling Elder and " + qty
+                   + " darklings (XGE)" + humanoidMotive);
+
+    qty = QString::number(roll(1,3));
+    table.addEntry(npc + "1 " + gender + " Noble with " + qty + " "
+                   + guardianFoe(tier) + "(" + disposition + ")");
+
+    qty = QString::number(roll(2,3));
+    table.addEntry(npc + qty + " " + gender + " " + npcRace
+                   + " apprentice mages (xge)" + "(" + disposition + ")");
+
+    qty = QString::number(roll(2,8));
+    table.addEntry(npc + qty +" " + gender + " " + npcRace  + " cultists"
+                   + humanoidMotive);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4875,14 +4978,14 @@ QString AllTables::generateIndividualTreasure(int tier)
     }
 
     if (_lowHauls) {
-        treasure =
+        treasure +=
               ((sp==0) ? "" : QString::number(sp + (cp/10)) + " cp, ")
             + ((ep==0) ? "" : QString::number(ep) + " sp, ")
             + ((gp==0) ? "" : QString::number(gp) + " ep, ")
             + ((pp==0) ? "" : QString::number(pp) + " gp, ");
     }
     else {
-        treasure =
+        treasure +=
               ((cp==0) ? "" : QString::number(cp) + " cp, ")
             + ((sp==0) ? "" : QString::number(sp) + " sp, ")
             + ((ep==0) ? "" : QString::number(ep) + " ep, ")
@@ -4926,6 +5029,14 @@ QString AllTables::AdventurerRace()
     table.addEntry(rareRace());
 
     return table.getRollTableEntry();
+}
+
+QString AllTables::commonerRace()
+{
+    RandomTable raceTable;
+    raceTable.addEntry(commonRace(), 2);
+    raceTable.addEntry(uncommonRace());
+    return raceTable.getRollTableEntry();
 }
 
 QString AllTables::AdventurerClass(int tier)
@@ -5001,24 +5112,24 @@ QString AllTables::adventurerPackage(int tier)
     RandomTable table;
 
     table.addEntry("Kobold Inventor (vge)"); // 1/4
-    table.addEntry("Half-ogre"); // 1
-    table.addEntry("Yuan-ti Pureblood"); // 1
+    table.addEntry(npcGender() + " Half-ogre"); // 1
+    table.addEntry(npcGender() + "Yuan-ti Pureblood"); // 1
     table.addEntry("Kuo-toa Whip"); // 1
     table.addEntry("Kobold Dragonshield (vge)"); // 1
     table.addEntry("Kobold Scale Sorcerer"); // 1
 
     if (tier > 1) {
-        table.addEntry("Githzerai Monk"); // 2
+        table.addEntry(npcGender() + "Githzerai Monk"); // 2
         table.addEntry("Lizardfolk Shaman"); // 2
         table.addEntry("Orc Eye of Gruumsh"); // 2
         table.addEntry("Quaggoth"); // 2
-        table.addEntry("Hobgoblin Iron Shadow (vge)"); // 2
+        table.addEntry(npcGender() + "Hobgoblin Iron Shadow (vge)"); // 2
         table.addEntry("Orc Claw of Luthic (vge)"); // 2
         table.addEntry("Orc Hand of Yurtrus (vge)"); // 2
     }
 
     else if (tier > 2) {
-        table.addEntry("Githyanki Warrior"); // 3
+        table.addEntry(npcGender() + "Githyanki Warrior"); // 3
         table.addEntry("Orc Red Fang of Shargaas (vge)"); // 3
         table.addEntry("Orc War Chief"); // 4
         table.addEntry("Hobgoblin Devastator (vge)"); // 4
@@ -5026,12 +5137,12 @@ QString AllTables::adventurerPackage(int tier)
     }
 
     else if (tier > 3){
-        table.addEntry("Drow Elite Warrior"); // 5
-        table.addEntry("Githzerai Zerth"); // 6
+        table.addEntry(npcGender() + "Drow Elite Warrior"); // 5
+        table.addEntry(npcGender() + "Githzerai Zerth"); // 6
         table.addEntry("Kuo-toa Priest"); // 6
         table.addEntry("Drow Mage"); // 7
         table.addEntry("Drow Priestess of Lolth"); // 8
-        table.addEntry("Githyanki Knight"); // 8
+        table.addEntry(npcGender() + "Githyanki Knight"); // 8
     }
 
     return table.getRollTableEntry();
@@ -5040,8 +5151,9 @@ QString AllTables::adventurerPackage(int tier)
 QString AllTables::generateAdventurer(int tier)
 {
     RandomTable table;
+    QString gender = npcGender();
     QString advClass = AdventurerClass(tier);
-    QString composite = advClass + " (" + AdventurerRace() + ")";
+    QString composite = gender + " " + advClass + " (" + AdventurerRace() + ")";
     QString package = adventurerPackage(tier);
     QString loot = generateIndividualTreasure(tier);
 
@@ -5184,6 +5296,22 @@ QString AllTables::rareRace()
     table.addEntry(element.getRollTableEntry() + " Gensai (EE)");
     table.addEntry("Goliath (EE)");
 
+    return table.getRollTableEntry();
+}
+
+QString AllTables::npcGender()
+{
+    RandomTable table;
+    table.addEntry("Male");
+    table.addEntry("Female");
+    return table.getRollTableEntry();
+}
+
+QString AllTables::npcDisposition()
+{
+    RandomTable table;
+    table.addEntry("friendly");
+    table.addEntry("hostile");
     return table.getRollTableEntry();
 }
 
