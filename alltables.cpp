@@ -539,12 +539,12 @@ QString AllTables::dungeonGoals()
 }
 
 
-QString AllTables::generateRandomAdventure(int tier)
+QString AllTables::generateRandomAdventure(int tier, QString type)
 {
     QString desc;
     desc = "HOOK: " + adventureHook() + "\n";
     desc += "GOAL: " + dungeonGoals() + "\n";
-    QString type = dungeonType();
+    //QString type = dungeonType();
     // todo adventure goals tables
     desc += "DUNGEON TYPE: " + type + "\n";
     desc += "LOCATION: " + dungeonLocation() + "\n";
@@ -564,10 +564,10 @@ QString AllTables::generateRandomAdventure(int tier)
         QString goal = (goalRoom == roomNumber) ? " (GOAL) " : "";
         desc += "ROOM " + QString::number(roomNumber) + enter + goal + ":\n";
 
-        if (type == "General Dungeon") {
+        if (type == "General") {
             desc += generateGeneralRoom(tier);
         }
-        else if (type == "Death Trap Dungeon") {
+        else if (type == "Death Trap") {
             desc += generateDeathTrapRoom(tier);
         }
         else if (type == "Lair") {

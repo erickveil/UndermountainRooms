@@ -42,7 +42,7 @@ public:
     QString adventureHookMethod();
 
     QString dungeonGoals();
-    QString generateRandomAdventure(int tier);
+    QString generateRandomAdventure(int tier, QString type);
 
     QString determineAlignment();
 

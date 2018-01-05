@@ -206,7 +206,8 @@ void MainWindow::on_underMonst_clicked()
 void MainWindow::on_genAdventure_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.generateRandomAdventure(tier));
+    QString type = ui->typeSelect->currentText();
+    ui->resultArea->setPlainText(roller.generateRandomAdventure(tier, type));
 }
 
 void MainWindow::on_genSpellbook_clicked()
