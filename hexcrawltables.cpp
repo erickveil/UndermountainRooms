@@ -41,10 +41,10 @@ QString HexcrawlTables::wanderingEncounter(int tier)
 {
     RandomTable table;
 
-    table.addEntry("NPC: " + npcEncounter(tier));
-    table.addEntry("Animal Herd: " + animalHerd());
+    table.addEntry("NPC: " + npcEncounter(tier), 2);
+    table.addEntry("Animal Herd: " + animalHerd(), 2);
     // TODO: Biome monster tables
-    table.addEntry("Wandering Monster");
+    table.addEntry("Wandering Monster", 5);
     table.addEntry("Past event: " + pastEvent(tier));
     table.addEntry("Current event: " + currentEvent(tier));
     table.addEntry("Lost item: " + lostItem(tier));
@@ -491,11 +491,14 @@ QString HexcrawlTables::npcEncounter(int tier)
                              : "")
                    + " (only if on road"
                    + ")");
+
     num = _dice.roll(1,4);
     table.addEntry(race + " Hunting party of " + QString::number(num));
+
     num = _dice.roll(1,3);
     table.addEntry(QString::number(num) + " " + race + " Explorers"
                    + ((isChance) ? " on mounts" : ""));
+
     chance = 80;
     isChance = _dice.roll(1,100) < chance;
     table.addEntry(QString((isChance) ? "Mounted " : "") + "Adventuring party:\n"

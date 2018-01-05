@@ -149,6 +149,7 @@ public:
     // NPC
 
     QString generateAdventurer(int tier);
+    QString generateMotivatedAdventurer(int tier);
     QString adventuringParty(int tier);
     QString AdventurerRace();
     QString commonerRace();

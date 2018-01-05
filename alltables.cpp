@@ -2927,22 +2927,6 @@ QString AllTables::urbanEncounterXge(int tier)
     table.addEntry(npc + qty +" " + gender + " " + npcRace  + " cultists"
                    + humanoidMotive);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return table.getRollTableEntry();
 }
 
@@ -5182,6 +5166,16 @@ QString AllTables::generateAdventurer(int tier)
     }
 
     return table.getRollTableEntry() + "\nLoot: " + loot;
+}
+
+QString AllTables::generateMotivatedAdventurer(int tier)
+{
+    QString npc = generateAdventurer(tier);
+    QString disposition = npcDisposition();
+    if (disposition == "friendly") {
+        disposition += " -" + friendlyHumanoidUrbanActivity();
+    }
+    return npc + "\n(" + disposition + ")";
 }
 
 QString AllTables::commonRace()
