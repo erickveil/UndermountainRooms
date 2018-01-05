@@ -131,37 +131,37 @@ void MainWindow::on_wanderingMonster_clicked()
     if (biome == "Underdark") {
         ui->resultArea->setPlainText(
                     roller.dungeonMonster(tier)
-                    + "\nLoot: " + loot
+                    + "\n" + loot
                     );
     }
     else if (biome == "Undermountain") {
         ui->resultArea->setPlainText(
                     roller.undermountainMonster(tier)
-                    + "\nLoot: " + loot
+                    + "\n" + loot
                     );
     }
     else if (biome == "Urban") {
         ui->resultArea->setPlainText(
                     roller.generateUrbanEncounter(tier)
-                    + "\nLoot: " + loot
+                    + "\n" + loot
                     );
     }
     else if (biome == "Urban Night") {
         ui->resultArea->setPlainText(
                     roller.generateUrbanEncounterNight(tier)
-                    + "\nLoot: " + loot
+                    + "\n" + loot
                     );
     }
     else if (biome == "Sewer") {
         ui->resultArea->setPlainText(
                     roller.sewerEncounter(tier)
-                    + "\nLoot: " + loot
+                    + "\n" + loot
                     );
     }
     else if (biome == "Guardian") {
         ui->resultArea->setPlainText(
                     roller.guardianFoe(tier)
-                    + "\nLoot: " + loot
+                    + "\n" + loot
                     );
     }
     else {
