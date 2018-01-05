@@ -4231,6 +4231,9 @@ QString AllTables::itemHistory()
                    "new owner is the item's legitimate inheritor.");
     table.addEntry("Brand new. This item was recently created, and hasn't "
                    "seen much in the way of action.");
+    table.addEntry("Formula for creating the item, instead of the item itself. "
+                   "The formula is written in a manuscript that reflects the "
+                   "language and traits of the creator.");
 
     return table.getRollTableEntry();
 }
