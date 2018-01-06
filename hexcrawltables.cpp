@@ -340,9 +340,9 @@ QString HexcrawlTables::remarkableEvent(int tier)
     table.addEntry("Earth quake - small crack opens in ground", 5);
     table.addEntry("Meteor strike on the horizon", 5);
     table.addEntry("Arcane diffusement - off pitch hum causes 20% spell failure "
-                   "and cannot use higher level spell slots for 1 day.", 30);
+                   "and cannot use higher level spell slots for 1 day.",1);
     table.addEntry("Arcane enrichment - low pich hum: spell DCs +5, spells "
-                   "treated as spell slot +1 for 1 day.", 30);
+                   "treated as spell slot +1 for 1 day.", 1);
     return table.getRollTableEntry();
 }
 
