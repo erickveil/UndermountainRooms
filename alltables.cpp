@@ -8,7 +8,7 @@ AllTables::AllTables()
 
 int AllTables::randomNumber(int min, int max)
 {
-    return qrand() % (max - min) + min;
+    return qRound(((double)(qrand() % (max+1 - min)) + (double)min));
 }
 
 int AllTables::roll(int number, int sides, int mod)
@@ -1192,14 +1192,133 @@ QString AllTables::obstacles()
 QString AllTables::generateTrap(int tier)
 {
     QString description;
-    description = trapEffects()
+    QString severity = trapSeverityLevel(tier);
+    QString effects = trapSeverityStats(severity, tier);
+    description = trapEffects(severity, tier)
             + ",\nTRIGGER: " + trapTrigger()
-            + ".\nSEVERITY: " + trapSeverity(tier)
+            + ".\nSEVERITY: " + severity + " " + effects;
             + ".\nDISARM: " + trapDisarm();
 
     return description;
-
 }
+
+QString AllTables::trapSeverityLevel(int tier)
+{
+    RandomTable table;
+    table.addEntry("Setback", 2);
+    table.addEntry("Dangerous", 3);
+    table.addEntry("Deadly");
+    return table.getRollTableEntry();
+}
+
+QString AllTables::trapSeverityStats(QString severity, int tier)
+{
+    QString dc;
+    QString att;
+    QString damage;
+    QString detail;
+
+    if (severity == "Setback") {
+        dc = QString::number(randomNumber(10, 11));
+        att = QString::number(randomNumber(3, 5));
+
+        if (tier == 1) { damage = "1d10"; }
+        else if (tier == 2) { damage = "2d10"; }
+        else if (tier == 3) { damage = "4d10"; }
+        else { damage = "10d10"; }
+
+        detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage;
+        return detail;
+    }
+
+    else if (severity == "Dangerous") {
+        dc = QString::number(randomNumber(12, 15));
+        att = QString::number(randomNumber(6, 8));
+
+        if (tier == 1) { damage = "2d10"; }
+        else if (tier == 2) { damage = "4d10"; }
+        else if (tier == 3) { damage = "10d10"; }
+        else { damage = "18d10"; }
+
+        detail = " DC: " + dc + ", attk: +" + att + ", dmg: " + damage;
+        return detail;
+    }
+
+    else {
+        dc = QString::number(randomNumber(16, 20));
+        att = QString::number(randomNumber(9, 12));
+
+        if (tier == 1) { damage = "4d10"; }
+        else if (tier == 2) { damage = "10d10"; }
+        else if (tier == 3) { damage = "18d10"; }
+        else { damage = "24d10"; }
+
+        detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage;
+        return detail;
+    }
+}
+
+QString AllTables::trapSpell(QString severity, int tier)
+{
+    QString spell;
+    QString detail;
+
+    if (severity == "Setback") {
+        if (tier == 1) {
+            spell = wizardSpells(0) + " or " + wizardSpells(0);
+        }
+        else if (tier == 2) {
+            spell = wizardSpells(1) + " or " + wizardSpells(1);
+        }
+        else if (tier == 3) {
+            spell = wizardSpells(3) + " or " + wizardSpells(3);
+        }
+        else {
+            spell = wizardSpells(6) + " or " + wizardSpells(6);
+        }
+        detail = "Spell effect: " + spell;
+
+        return detail;
+    }
+
+    else if (severity == "Dangerous") {
+        if (tier == 1) {
+            spell = wizardSpells(1) + " or " + wizardSpells(1);
+        }
+        else if (tier == 2) {
+            spell = wizardSpells(3) + " or " + wizardSpells(3);
+        }
+        else if (tier == 3) {
+            spell = wizardSpells(6) + " or " + wizardSpells(6);
+        }
+        else {
+            spell = wizardSpells(9) + " or " + wizardSpells(9);
+        }
+        detail = "Spell effect: " + spell;
+
+        return detail;
+    }
+
+    else {
+        if (tier == 1) {
+            spell = wizardSpells(2) + " or " + wizardSpells(2);
+        }
+        else if (tier == 2) {
+            spell = wizardSpells(6) + " or " + wizardSpells(6);
+        }
+        else if (tier == 3) {
+            spell = wizardSpells(9) + " or " + wizardSpells(9);
+        }
+        else {
+            spell = wizardSpells(9) + " and " + wizardSpells(5) + " or "
+            + wizardSpells(9) + " and " + wizardSpells(5);
+        }
+        detail = "Spell effect: " + spell;
+
+        return detail;
+    }
+}
+
 
 QString AllTables::trapTrigger()
 {
@@ -1216,12 +1335,19 @@ QString AllTables::trapTrigger()
     table.addEntry("disturbing spider webs");
     table.addEntry("breaking beam of light");
     table.addEntry("pulling the wrong lever");
+    table.addEntry("living being enters the area");
+    table.addEntry("touching or dispelling the illusionary treasure");
+    table.addEntry("attacking the illusionary monster");
 
     return table.getRollTableEntry();
 }
 
 QString AllTables::trapSeverity(int tier)
 {
+    QString severity = trapSeverityLevel(tier);
+    QString effects = trapSeverityStats(severity, tier);
+    return severity + ": " + effects;
+    /*
     RandomTable table;
     QString dc;
     QString att;
@@ -1299,11 +1425,14 @@ QString AllTables::trapSeverity(int tier)
     table.addEntry("Deadly" + detail);
 
     return table.getRollTableEntry();
+    */
 }
 
-QString AllTables::trapEffects()
+QString AllTables::trapEffects(QString severity, int tier)
 {
     RandomTable table;
+
+    table.addEntry(trapSpell(severity, tier), 4);
 
     table.addEntry("Magic missiles shoot from a statue or object", 4);
     table.addEntry("Collapsing staircase creates a ramp that deposits "
@@ -1444,6 +1573,45 @@ QString AllTables::trapEffects()
 
     table.addEntry(symbolType + " Symbol spell", 3);
     table.addEntry("Walls slide together", 3);
+    table.addEntry("Whirling blades make an attack agains each creature in the "
+                   "area");
+    table.addEntry("Crushing pillars require dex save. On failure, take damage "
+                   "and knocked prone. On success, take half damage and avoid "
+                   "being knocked prone.");
+    table.addEntry("Rune of fear: Wis save each round. Failure must use "
+                   "reaction and immediately move its speed away and cannot "
+                   "approach until it succeeds a save.");
+    table.addEntry("Specific nodes become highly magnetic for 1 round then "
+                   "release for 1 round. Anyone in metal armor is pulled to "
+                   "them (Dex save or take bludgeoning damage) and stuck in "
+                   "place. Str save to hold onto weapons - fail more than 5 "
+                   "and lose the weapon, fail less than 5 and be pulled to the "
+                   "nearest node, succeed and attack with disadvantage.");
+    table.addEntry("Gravity reverses each round. Take falling damage each time "
+                   "unless a Dex save is made to hold onto the iron bars on "
+                   "the walls and/or floor/ceilings");
+    table.addEntry("One or more monsters are added to the room through a "
+                   "portal, gate, or well.");
+    table.addEntry("1d4 Portals open in the floor under random occupants' "
+                   "feet. Dex save or fall in, and exit out a portal on the "
+                   "ceiling elsewhere, dropping for falling damage and "
+                   "changing their position.");
+    table.addEntry("Occupants are teleported to different locations in the "
+                   "room or dungeon.");
+    table.addEntry("A section of the wall rapidly slides across the room, "
+                   "smashing anyone caught in it. The section is from the "
+                   "floor, up to 1d6 feet high (different each round). PCs "
+                   "must make a standing high jump movement check to get on "
+                   "top of it. It recedes the next round.");
+    table.addEntry("A chain that stretches from one end of the room to the "
+                   "other rapidly moves across the room, tripping or catching "
+                   "occupants. Chain is 1d4 feet off the ground. Dex Save to "
+                   "drop prone to the floor under it at least 2 feet high, or "
+                   "standing high jump movement to get over it. Fail more than "
+                   "5 and get caught in the chain and pinned to the far wall "
+                   "behind it for damage. Fail for less than 5 and knocked "
+                   "prone. Chain moves back in the opposite direction next "
+                   "round.");
 
     return table.getRollTableEntry();
 
@@ -1454,6 +1622,10 @@ QString AllTables::trapDisarm()
 {
     RandomTable table;
 
+    table.addEntry("Three successful castings of dispel magic disables the "
+                   "device.");
+    table.addEntry("PC may make an Intelegence (Arcana) check as an action to "
+                   "disable the magic that operates the device.");
     table.addEntry("Rusty chains snake across the ceiling, disappearing "
                    "into holes on either wall.");
     table.addEntry("Three brass floor plates, nearly invisible beneath the "

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "alltables.h"
 #include "hexcrawltables.h"
+#include "complextrap.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow
 
     AllTables roller;
     HexcrawlTables hexTables;
+    complexTrap complexTrapTables;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -51,6 +53,8 @@ private slots:
     void on_intiTreas_clicked();
 
     void on_keyHex_clicked();
+
+    void on_butComplexTrap_clicked();
 
 private:
     Ui::MainWindow *ui;

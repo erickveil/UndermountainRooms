@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>429</width>
-    <height>707</height>
+    <height>713</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
    <widget class="QPushButton" name="dunType">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>220</x>
       <y>290</y>
       <width>200</width>
       <height>25</height>
@@ -55,7 +55,7 @@
       <x>220</x>
       <y>10</y>
       <width>202</width>
-      <height>244</height>
+      <height>275</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -128,6 +128,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="genNPC">
+       <property name="text">
+        <string>NPC</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="genNpcParty">
        <property name="text">
         <string>NPC Party</string>
@@ -162,7 +169,7 @@
       <x>10</x>
       <y>40</y>
       <width>202</width>
-      <height>244</height>
+      <height>275</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -203,6 +210,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="butComplexTrap">
+       <property name="text">
+        <string>Complex Trap</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="disarm">
        <property name="minimumSize">
         <size>
@@ -212,13 +226,6 @@
        </property>
        <property name="text">
         <string>Disarm Trap</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="genNPC">
-       <property name="text">
-        <string>NPC</string>
        </property>
       </widget>
      </item>

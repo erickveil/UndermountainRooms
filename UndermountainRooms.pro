@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     alltables.cpp \
     monsterentry.cpp \
     monstertable.cpp \
-    hexcrawltables.cpp
+    hexcrawltables.cpp \
+    complextrap.cpp
 
 HEADERS  += mainwindow.h \
     tableentry.h \
@@ -27,6 +28,7 @@ HEADERS  += mainwindow.h \
     alltables.h \
     monsterentry.h \
     monstertable.h \
-    hexcrawltables.h
+    hexcrawltables.h \
+    complextrap.h
 
 FORMS    += mainwindow.ui

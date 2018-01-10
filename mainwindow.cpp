@@ -246,3 +246,10 @@ void MainWindow::on_keyHex_clicked()
     int tier = ui->tierSelect->value();
     ui->resultArea->setPlainText(hexTables.keyHex(tier));
 }
+
+void MainWindow::on_butComplexTrap_clicked()
+{
+    int tier = ui->tierSelect->value();
+    ui->resultArea->setPlainText(complexTrapTables.generateTrap(tier));
+
+}

@@ -3,6 +3,7 @@
 
 #include "randomtable.h"
 #include <QDateTime>
+#include <QtGlobal>
 
 
 class AllTables
@@ -64,9 +65,14 @@ public:
     QString obstacles();
 
     QString generateTrap(int tier = 1);
-    QString trapTrigger();
+
+    QString trapSeverityLevel(int tier);
+    QString trapSeverityStats(QString severity, int tier);
     QString trapSeverity(int tier);
-    QString trapEffects();
+    QString trapSpell(QString severity, int tier);
+
+    QString trapTrigger();
+    QString trapEffects(QString severity, int tier);
     QString trapDisarm();
 
 
