@@ -28,15 +28,35 @@ QString complexTrap::effectDivision()
                    + " rounds after the last one. Some countdown or clockwork "
                      "builds the tension.");
     table.addEntry("Each effect is seperated in its own, visually identifiable "
-                   "area of the room.");
+                   "area of the room and are active only if their area is "
+                   "occupied.");
     table.addEntry("Each effect begins after the previous one is defeated.");
     table.addEntry("The trap cycles through each effect each time it is "
                    "triggered.");
     table.addEntry("A red hering disarm procedure is presented, which actually "
                    "triggers the next effect.");
-    table.addEntry("All effects go off at once.");
+    table.addEntry("All effects go off at once, but are segregated to their own "
+                   "area.");
     table.addEntry("Each effect takes place after a barrier is passed that makes"
                    " the party think they've gotten through the trap.");
+    table.addEntry("Heavy objects must be pushed onto the correct floor switches "
+                   "in order to proceed. Incorrect switches trigger traps. "
+                   "The swithces are marked with symbols: 3 symbols for each "
+                   "correct switch, and one for each trap effect. There are "
+                   "multiple of each switch.");
+    table.addEntry("Heavy objects must be pushed onto the correct floor switches "
+                   "in order to proceed. Incorrect switches trigger traps. "
+                   "The swithces are marked with symbols with multiples of "
+                   "each, but the symbols themselves mean nothing. Each symbol"
+                   "is a different color: One for each correct switch, and one"
+                   "color for each trap effect. Each symbol has one of each "
+                   "color.");
+    table.addEntry("Three wheels with three symbols on them each form 27 possible "
+                   "combinations. Any wrong combination sets off a trap effect.");
+    table.addEntry("Instead of one room, the trap takes place in a series of "
+                   "connected rooms and corridors with one trap element in "
+                   "each, but the solution in the wrong room");
+
     return table.getRollTableEntry();
 }
 
@@ -158,11 +178,35 @@ QString complexTrap::ConstantElements(QString severity, int tier)
     table.addEntry("High gust of wind circles inside the room, making ranged "
                    "attacks impossible.");
     // Todo: add effect
+    QString trapEffect = _dice.trapEffects(severity, tier) + "("
+            + _dice.trapSeverityStats(severity, tier) + ")";
     table.addEntry("Sand in an hourglass takes 1d3 rounds to empty into the "
                    "lower chamber. The glass is fixed to an immobile base and "
                    "cannot be broken. It is on a hinge and can be turned. "
                    "It must not be allowed to run out or a trap effect takes "
-                   "place.");
+                   "place. Trap effect: " + trapEffect);
+    table.addEntry("Portals in the room must be traversed to access otherwise "
+                   "inaccessible parts of the room. The portals are fixed to "
+                   "movable frames, and need to be configured to solve the "
+                   "room.");
+    table.addEntry("Heavy objects must be pushed onto the correct floor "
+                   "switches. Incorrect floor switch combinations trigger a "
+                   "random trap effect: " + trapEffect);
+    table.addEntry("Trap solutions are at the bottom of 60' deep pits filled "
+                   "to the top with water.");
+    table.addEntry("Series of chains suspended over a 'bottomless' pit must "
+                   "be swung on to interact with anything in the room. The "
+                   "chains are only 10' long and not nearly long enough to "
+                   "reach the bottom. Some of the chains are trap triggers "
+                   "when weight is put on them.");
+    table.addEntry("Stepping stones suspended in deep water are the only way "
+                   "to traverse the room. Dex save each effect to remain "
+                   "standing on one. 25% chance any new one stepped on is "
+                   "fake and just floating there.");
+    table.addEntry("Room appears to be a bridge over lava, but the lava is"
+                   "an illusion and the traps are centered on the bridge.");
+    table.addEntry("Room is a bridge over lava.");
+
 
     return table.getRollTableEntry();
 }

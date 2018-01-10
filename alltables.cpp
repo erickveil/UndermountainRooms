@@ -1196,7 +1196,7 @@ QString AllTables::generateTrap(int tier)
     QString effects = trapSeverityStats(severity, tier);
     description = trapEffects(severity, tier)
             + ",\nTRIGGER: " + trapTrigger()
-            + ".\nSEVERITY: " + severity + " " + effects;
+            + ".\nSEVERITY: " + severity + " " + effects
             + ".\nDISARM: " + trapDisarm();
 
     return description;
@@ -1432,7 +1432,7 @@ QString AllTables::trapEffects(QString severity, int tier)
 {
     RandomTable table;
 
-    table.addEntry(trapSpell(severity, tier), 4);
+    table.addEntry(trapSpell(severity, tier), 8);
 
     table.addEntry("Magic missiles shoot from a statue or object", 4);
     table.addEntry("Collapsing staircase creates a ramp that deposits "
