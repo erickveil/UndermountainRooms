@@ -796,6 +796,7 @@ QString AllTables::fullAdventureGen()
     QString desc;
 
     desc  = "PATRON: " + hookSource() + "\n";
+    desc += "DELIVERY: " + adventureHook() + "\n";
     desc += "MISSION: " + hookMission() + "\n";
     desc += "LOCATION: " + dungeonLocation() + "\n";
     desc += "VILLAIN: " + hookVillains() + "\n";
