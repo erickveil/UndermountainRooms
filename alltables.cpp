@@ -504,6 +504,307 @@ QString AllTables::adventureHookMethod()
 
 }
 
+QString AllTables::hookSource()
+{
+    // friendly npc adventurer
+    // friendly adventuring party
+    // guild member
+    // faction member
+    // random encounter result
+    // noble
+    // town guard
+    // merchant
+    // hires mercenaries
+    // mercenary crew
+    // intellegent monsters
+    RandomTable table;
+
+    table.addEntry("Retired adventurer");
+    table.addEntry("Local ruler");
+    table.addEntry("Military officer");
+    table.addEntry("Temple official");
+    table.addEntry("Sage");
+    table.addEntry("Respected elder");
+    table.addEntry("Deity or celestial");
+    table.addEntry("Mysterious fey");
+    table.addEntry("Old friend");
+    table.addEntry("Former teacher");
+    table.addEntry("Parent or other family member");
+    table.addEntry("Desperate commoner");
+    table.addEntry("Embattled merchant");
+    table.addEntry("Villain posing as a patron");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::hookMission()
+{
+    RandomTable table;
+
+    // dungeon goals
+    table.addEntry("Stop the dungeon's inhabitants from raiding the "
+                   "surface world.");
+    table.addEntry("Foil a villain's evil scheme.");
+    table.addEntry("Destroy a magical threat inside a dungeon.");
+    table.addEntry("Acquire treasure.");
+    table.addEntry("Find a particular item for a specific purpose.");
+    table.addEntry("Retrieve a stolen item hidden in the dungeon.");
+    table.addEntry("Find information needed for a special purpose.");
+    table.addEntry("Rescue a captive.");
+    table.addEntry("Discover the fate of a previous adventuring party.");
+    table.addEntry("Find an NPC who disappeared in the area.");
+    table.addEntry("Slay a dragon or other challenging monster.");
+    table.addEntry("Discover the nature and origin of a strange location "
+                   "or phenomenon.");
+    table.addEntry("Pursue fleeing foes taking refuge in the dungeon.");
+    table.addEntry("Escape from captivity in the dungeon");
+    table.addEntry("Clear a ruin so it can be rebuilt and reoccupied.");
+    table.addEntry("Discover why a villain is interested in a dungeon.");
+    table.addEntry("Parley with a villain in the dungeon.");
+
+    // wilderness goals
+    table.addEntry("Locate a dungeon or other site of interest");
+    table.addEntry("Assess the scope of a natual or unatural disaster");
+    table.addEntry("Escort an NPC to a destination");
+    table.addEntry("Arrive at a destination without being seen by the "
+                   "villain's forces");
+    table.addEntry("Stop monsters from raiding caravans and farms.");
+    table.addEntry("Establish trade with a distant town.");
+    table.addEntry("Protect a caravan traveling to a distant town.");
+    table.addEntry("Map a new land.");
+    table.addEntry("Find a place to establish a colony.");
+    table.addEntry("Find a natural resource.");
+    table.addEntry("Hunt a specific monster.");
+    table.addEntry("Obtain information from a reclusive hermit.");
+    table.addEntry("Find an object that was lost in the wilds");
+    table.addEntry("Discover the fate of a missing group of wilderness "
+                   "explorers");
+    table.addEntry("Pursue fleeing foes over land");
+    table.addEntry("Assess the size of an approaching army.");
+    table.addEntry("Protect a wilderness site from attackers.");
+
+    // other goals
+    table.addEntry("Sieze control of a fortified location such as a "
+                   "fortress, town, or ship");
+    table.addEntry("Defend a location from attackers");
+    table.addEntry("Retrieve an object from inside a secure location in "
+                   "a settlement");
+    table.addEntry("Retrieve an object from a caravan");
+    table.addEntry("Salvage an object or goods from a lost vessel or caravan");
+    table.addEntry("Break a prisoner out of a jail or prison camp");
+    table.addEntry("Escape from a jail or prison camp");
+    table.addEntry("Infiltrate a fortified location");
+    table.addEntry("Find the source of strange occurrences in a haunted "
+                   "house or other location.");
+    table.addEntry("Interfere with the operation of a business");
+    table.addEntry("Rescue a character, monster, or object from a "
+                   "natural or unnatural disaster.");
+
+    // event based goals
+    table.addEntry("Bring a villain to justice");
+    table.addEntry("Clear the name of an innocent NPC");
+    table.addEntry("Protect or hide an NPC");
+    table.addEntry("Protect an object");
+    table.addEntry("Discover the nature and origin of a strange "
+                   "phenomenon that might be the villain's doing");
+    table.addEntry("Find a wanted fugitive");
+    table.addEntry("Overthrow a tyrant");
+    table.addEntry("Uncover a conspiracy to overthrow a ruler");
+    table.addEntry("Negotiate peace between enemy nations or feuding "
+                   "families");
+    table.addEntry("Secure aid from a ruler or council");
+    table.addEntry("Help a villain find redemption");
+    table.addEntry("Parley with a villain");
+    table.addEntry("Smuggle weapons to rebel forces");
+    table.addEntry("Stop a band of smugglers");
+    table.addEntry("Gather intellegence on an enemy force");
+    table.addEntry("Determine the villain's identity");
+    table.addEntry("Locate a stolen item");
+    table.addEntry("Make sure a wedding goes off without a hitch");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::hookVillains()
+{
+    RandomTable table;
+
+    // todo: moar detail
+    table.addEntry("Beast or monstrosity with no particular agenda");
+    table.addEntry("Aberration bent on corruption or domination");
+    table.addEntry("Fiend bent on corruption or destrucion");
+    table.addEntry("Dragon bent on domination and plunder");
+    table.addEntry("Giant bent on plunder");
+    table.addEntry("Undead with any agenda");
+    table.addEntry("Fey with a mysterious goal");
+    table.addEntry("Humanoid cultist");
+    table.addEntry("Humanoid seeking revenge");
+    table.addEntry("Humanoid schemer seeking to rule");
+    table.addEntry("Humanoid criminal mastermind");
+    table.addEntry("Humanoid raider or ravager");
+    table.addEntry("Humanoid under a curse");
+    table.addEntry("Misguided humanoid zealot");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::villainScheme()
+{
+    RandomTable table;
+
+    table.addEntry("Acquire a legendary item to prolong life");
+    table.addEntry("Ascend to godhood");
+    table.addEntry("Become undead or obtain a younger body");
+    table.addEntry("Steal a planar creature's essence to gain immortality");
+    table.addEntry("Seize a postion of power or title");
+    table.addEntry("Win a contest or tournament");
+    table.addEntry("Place a pawn in a position of power");
+    table.addEntry("Obtain an ancient artifact");
+    table.addEntry("Build a construct or magical device");
+    table.addEntry("Carry out a deity's wishes");
+    table.addEntry("Offer sacrifices to a deity");
+    table.addEntry("Contact a lost deity or power");
+    table.addEntry("Open a gate to another world");
+    table.addEntry("Fulfill an apocalyptic prophecy");
+    table.addEntry("Enact the vengeful will of a god or patron");
+    table.addEntry("Spread a vile contagion");
+    table.addEntry("Overthrow a government");
+    table.addEntry("Trigger a natural disaster");
+    table.addEntry("Utterly destroy a bloodline or clan");
+    table.addEntry("Prolong the life of a loved one");
+    table.addEntry("Prove worthy of another person's love");
+    table.addEntry("Raise or restore a dead loved one");
+    table.addEntry("Destroy rivals for another person's affection");
+    table.addEntry("Conquer a region or incite a rebellion");
+    table.addEntry("Seize control of an army");
+    table.addEntry("Become the power behind the throne");
+    table.addEntry("Gain the favor of a ruler");
+    table.addEntry("Avenge a past humiliation or insult");
+    table.addEntry("Avenge a past imprisonment or injury");
+    table.addEntry("Avenge the death of a loved one");
+    table.addEntry("Retrieve stolen property and punish the thief");
+    table.addEntry("Control natural resources or trade");
+    table.addEntry("Marry into wealth");
+    table.addEntry("Plunder ancient ruins");
+    table.addEntry("Steal land, goods, or money");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::villainMethods()
+{
+    RandomTable table;
+
+    table.addEntry("Agricultural blight");
+    table.addEntry("Crop failure");
+    table.addEntry("Drought");
+    table.addEntry("Famine");
+    table.addEntry("Assault or beatings");
+    table.addEntry("Bounty hunting or assassination");
+    table.addEntry("Bribery");
+    table.addEntry("Enticement");
+    table.addEntry("Eviction");
+    table.addEntry("Imprisonment");
+    table.addEntry("Kidnapping");
+    table.addEntry("Legal intimidation");
+    table.addEntry("Press gangs");
+    table.addEntry("Shackling");
+    table.addEntry("Slavery");
+    table.addEntry("Threats or harassment");
+    table.addEntry("Breach of contract");
+    table.addEntry("Cheating");
+    table.addEntry("Fast talking");
+    table.addEntry("Fine print");
+    table.addEntry("Fraud or swindling");
+    table.addEntry("Quackery or tricks");
+    table.addEntry("Framing");
+    table.addEntry("Gossiping or slander");
+    table.addEntry("Humiliation");
+    table.addEntry("Libel or insults");
+    table.addEntry("Dueling");
+    table.addEntry("Beheading");
+    table.addEntry("Burning at the stake");
+    table.addEntry("Burying alive");
+    table.addEntry("Crucifixion");
+    table.addEntry("Drawing and quartering");
+    table.addEntry("Hanging");
+    table.addEntry("Impalement");
+    table.addEntry("Living Sacrifice");
+    table.addEntry("Impersonation or disguise");
+    table.addEntry("Lying or purjury");
+    table.addEntry("Hauntings");
+    table.addEntry("Illusions");
+    table.addEntry("Infernal bargains");
+    table.addEntry("Mind control");
+    table.addEntry("Petrificaiton");
+    table.addEntry("Raising or animating the dead");
+    table.addEntry("Summoning monsters");
+    table.addEntry("Weather control");
+    table.addEntry("Assassination");
+    table.addEntry("Cannibalism");
+    table.addEntry("Dismemberment");
+    table.addEntry("Drowning");
+    table.addEntry("Electrocution");
+    table.addEntry("Disease");
+    table.addEntry("Poisoning");
+    table.addEntry("Stabbing");
+    table.addEntry("Strangulation or suffocation");
+    table.addEntry("Neglect");
+    table.addEntry("Political Betrayal or treason");
+    table.addEntry("Conspiracy");
+    table.addEntry("Espionage or spying");
+    table.addEntry("Genocide");
+    table.addEntry("Opression");
+    table.addEntry("Raising taxes");
+    table.addEntry("Curses");
+    table.addEntry("Desecration");
+    table.addEntry("False gods");
+    table.addEntry("Heresy or cults");
+    table.addEntry("Stalking");
+    table.addEntry("Arson");
+    table.addEntry("Blackmail or extortion");
+    table.addEntry("Burglury");
+    table.addEntry("Counterfeiting");
+    table.addEntry("Highway robbery");
+    table.addEntry("Looting");
+    table.addEntry("Mugging");
+    table.addEntry("Poaching");
+    table.addEntry("Seizing property");
+    table.addEntry("Smuggling");
+    table.addEntry("Acid torture");
+    table.addEntry("Blinding");
+    table.addEntry("Branding");
+    table.addEntry("Torture: racking");
+    table.addEntry("Thumbscrew torture");
+    table.addEntry("Whipping");
+    table.addEntry("Adultry");
+    table.addEntry("Drugs or alcohol");
+    table.addEntry("Gambling");
+    table.addEntry("Seduction");
+    table.addEntry("Ambush");
+    table.addEntry("Invasion");
+    table.addEntry("Massacre");
+    table.addEntry("Mercinaries");
+    table.addEntry("Rebellion");
+    table.addEntry("Terrorism");
+
+    return table.getRollTableEntry();
+}
+
+QString AllTables::fullAdventureGen()
+{
+    QString desc;
+
+    desc  = "PATRON: " + hookSource() + "\n";
+    desc += "MISSION: " + hookMission() + "\n";
+    desc += "LOCATION: " + dungeonLocation() + "\n";
+    desc += "VILLAIN: " + hookVillains() + "\n";
+    desc += "SCHEME: " + villainScheme() + "\n";
+    desc += "METHODS: " + villainMethods() + "\n";
+
+    return desc;
+}
+
 QString AllTables::dungeonGoals()
 {
     RandomTable table;

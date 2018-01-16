@@ -253,3 +253,8 @@ void MainWindow::on_butComplexTrap_clicked()
     ui->resultArea->setPlainText(complexTrapTables.generateTrap(tier));
 
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->resultArea->setPlainText(roller.fullAdventureGen());
+}

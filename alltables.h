@@ -42,6 +42,15 @@ public:
     QString adventureHook();
     QString adventureHookMethod();
 
+    // new hook generation
+    QString hookSource();
+    QString hookMission();
+    QString hookVillains();
+    QString villainScheme();
+    QString villainMethods();
+    QString fullAdventureGen();
+
+
     QString dungeonGoals();
     QString generateRandomAdventure(int tier, QString type);
 

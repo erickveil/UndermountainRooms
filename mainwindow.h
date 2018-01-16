@@ -56,6 +56,8 @@ private slots:
 
     void on_butComplexTrap_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
