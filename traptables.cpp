@@ -635,6 +635,7 @@ QString TrapTables::generateTrick()
                    "in ceiling, followed by flaming cinder (2-12 hp damage, "
                    "Dex save DC 10 for 1-3 damage from splash)");
     table.addEntry("Door falls outward, causing 1d10 damage.");
+    table.addEntry("Loadstone exerts magnetic force on all metal items in the room");
 
     return table.getRollTableEntry();
 }
