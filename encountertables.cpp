@@ -128,6 +128,12 @@ QString EncounterTables::monsterDowntime()
                    "coming soon");
     table.addEntry("Reading name tags aloud from lost hats");
     table.addEntry("Playing board or card game");
+    table.addEntry("Torturing a captive");
+    table.addEntry("Fending off an invader and winning");
+    table.addEntry("Fending off an invader and losing");
+    table.addEntry("Escorting a prisoner");
+    table.addEntry("Training a pet");
+    table.addEntry("Teaching a child");
 
     return table.getRollTableEntry();
 }
