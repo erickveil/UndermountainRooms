@@ -1324,6 +1324,7 @@ QString LootTables::art(int tier)
         table.addEntry("Copper circlet" + value);
         table.addEntry("Box of expertly crafted, mahogany game pieces" + value);
         table.addEntry("Antique copper sword, etched with old runes" + value);
+        table.addEntry("Silver arrow or bolt");
     }
 
     if (tier == 2 || tier == 3) {
@@ -1339,6 +1340,7 @@ QString LootTables::art(int tier)
         table.addEntry("Brass mug with jade inlay" + value);
         table.addEntry("Box of turquoise animal figurines" + value);
         table.addEntry("Gold bird cage with electrum filigree" + value);
+        table.addEntry("Silvered Dagger");
     }
 
     if (tier == 3) {
@@ -1354,6 +1356,8 @@ QString LootTables::art(int tier)
         table.addEntry("Silver and gold brooch" + value);
         table.addEntry("Obsidian statuette with gold fittings and inlay" + value);
         table.addEntry("Painted gold war mask" + value);
+        table.addEntry("Silvered short sword");
+        table.addEntry("Quiver of 20 silvered arrows or bolts");
     }
 
     if (tier == 4) {
@@ -1369,6 +1373,8 @@ QString LootTables::art(int tier)
         table.addEntry("Gold circlet set with four aquamarines" + value);
         table.addEntry("Eye patch with a mock eye set in blue sapphire and moonstone" + value);
         table.addEntry("A necklace string of small pink pearls" + value);
+        table.addEntry("Silvered long sword");
+        table.addEntry("Silvered hand axe");
     }
 
     if (tier == 4) {
@@ -1382,6 +1388,8 @@ QString LootTables::art(int tier)
         table.addEntry("Painted gold child's sarcophagus" + value);
         table.addEntry("Jade game board with solid gold playing pieces" + value);
         table.addEntry("Bejeweled ivory drinking horn with gold filigree" + value);
+        table.addEntry("Silvered great sword");
+        table.addEntry("Silvered great axe");
     }
 
     return table.getRollTableEntry();
