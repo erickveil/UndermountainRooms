@@ -45,34 +45,34 @@ void MainWindow::on_genMagicItem_clicked()
     QString type = ui->itemType->currentText();
     QString item;
     if (type == "Minor Common") {
-        item = roller.minorCommonMagicItems();
+        item = LootTables::minorCommonMagicItems();
     }
     else if (type == "Minor Uncommon") {
-        item = roller.minorUncommonMagicItems();
+        item = LootTables::minorUncommonMagicItems();
     }
     else if (type == "Minor Rare") {
-        item = roller.minorRareMagicIterms();
+        item = LootTables::minorRareMagicIterms();
     }
     else if (type == "Minor Very Rare") {
-        item = roller.minorVeryRareMagicItems();
+        item = LootTables::minorVeryRareMagicItems();
     }
     else if (type == "Minor Legendary") {
-        item = roller.minorLegendaryMagicItems();
+        item = LootTables::minorLegendaryMagicItems();
     }
     else if (type == "Major Uncommon") {
-        item = roller.majorUncommonMagicItems();
+        item = LootTables::majorUncommonMagicItems();
     }
     else if (type == "Major Rare") {
-        item = roller.majorRareMagicItems();
+        item = LootTables::majorRareMagicItems();
     }
     else if (type == "Major Very Rare") {
-        item = roller.majorVeryRareMagicItems();
+        item = LootTables::majorVeryRareMagicItems();
     }
     else if (type == "Major Legendary") {
-        item = roller.majorLegendaryMagicItems();
+        item = LootTables::majorLegendaryMagicItems();
     }
     else if (type == "By Tier") {
-        item = roller.selectMagicItemByTier(tier);
+        item = LootTables::selectMagicItemByTier(tier);
     }
     else {
         item = "Unfamiliar item type: " + type;
@@ -85,37 +85,37 @@ void MainWindow::on_genCombo_clicked()
 {
     int tier = ui->tierSelect->value();
     if (ui->typeSelect->currentText() == "General") {
-        ui->resultArea->setPlainText(roller.generateGeneralRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateGeneralRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Death Trap") {
-        ui->resultArea->setPlainText(roller.generateDeathTrapRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateDeathTrapRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Lair") {
-        ui->resultArea->setPlainText(roller.generateLairRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateLairRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Maze") {
-        ui->resultArea->setPlainText(roller.generateMazeRoomType(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateMazeRoomType(tier));
     }
     else if (ui->typeSelect->currentText() == "Planar Gate") {
-        ui->resultArea->setPlainText(roller.generatePlanarGateRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generatePlanarGateRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Stronghold") {
-        ui->resultArea->setPlainText(roller.generateStrongholdRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateStrongholdRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Temple") {
-        ui->resultArea->setPlainText(roller.generateTempleRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateTempleRoom(tier));
     }
     else if (ui->typeSelect->currentText() == "Tomb") {
-        ui->resultArea->setPlainText(roller.generateToomb(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateToomb(tier));
     }
     else if (ui->typeSelect->currentText() == "Treasure Vault") {
-        ui->resultArea->setPlainText(roller.generateTreasureVault(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateTreasureVault(tier));
     }
     else if (ui->typeSelect->currentText() == "Hallway") {
-        ui->resultArea->setPlainText(roller.generateHallwayContents(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateHallwayContents(tier));
     }
     else if (ui->typeSelect->currentText() == "Mine") {
-        ui->resultArea->setPlainText(roller.generateMineRoom(tier));
+        ui->resultArea->setPlainText(RandomChambers::generateMineRoom(tier));
     }
     else {
         ui->resultArea->setPlainText("Unknown dungeon type.");
@@ -126,41 +126,41 @@ void MainWindow::on_wanderingMonster_clicked()
 {
     QString biome = ui->biomeSelect->currentText();
     int tier = ui->tierSelect->value();
-    QString loot = roller.generateIndividualTreasure(tier);
+    QString loot = LootTables::generateIndividualTreasure(tier);
 
     if (biome == "Underdark") {
         ui->resultArea->setPlainText(
-                    roller.dungeonMonster(tier)
+                    MonsterTable::dungeonMonster(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Undermountain") {
         ui->resultArea->setPlainText(
-                    roller.undermountainMonster(tier)
+                    MonsterTable::undermountainMonster(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Urban") {
         ui->resultArea->setPlainText(
-                    roller.generateUrbanEncounter(tier)
+                    MonsterTable::generateUrbanEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Urban Night") {
         ui->resultArea->setPlainText(
-                    roller.generateUrbanEncounterNight(tier)
+                    MonsterTable::generateUrbanEncounterNight(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Sewer") {
         ui->resultArea->setPlainText(
-                    roller.sewerEncounter(tier)
+                    MonsterTable::sewerEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Guardian") {
         ui->resultArea->setPlainText(
-                    roller.guardianFoe(tier)
+                    MonsterTable::guardianFoe(tier)
                     + "\n" + loot
                     );
     }
@@ -177,29 +177,29 @@ MainWindow::~MainWindow()
 void MainWindow::on_genTrap_clicked()
 {
     int tier = ui->tierSelect->value();
-    QString result = roller.generateTrap(tier);
+    QString result = TrapTables::generateTrap(tier);
     ui->resultArea->setPlainText(result);
 }
 
 void MainWindow::on_dunType_clicked()
 {
-    ui->resultArea->setPlainText(roller.dungeonType());
+    ui->resultArea->setPlainText(DungeonTables::dungeonType());
 }
 
 void MainWindow::on_genAct_clicked()
 {
-    ui->resultArea->setPlainText(roller.generateActivity());
+    ui->resultArea->setPlainText(MonsterTable::generateActivity());
 }
 
 void MainWindow::on_disarm_clicked()
 {
-    ui->resultArea->setPlainText(roller.trapDisarm());
+    ui->resultArea->setPlainText(TrapTables::trapDisarm());
 }
 
 void MainWindow::on_underMonst_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.undermountainMonster(tier));
+    ui->resultArea->setPlainText(MonsterTable::undermountainMonster(tier));
 }
 
 
@@ -207,38 +207,38 @@ void MainWindow::on_genAdventure_clicked()
 {
     int tier = ui->tierSelect->value();
     QString type = ui->typeSelect->currentText();
-    ui->resultArea->setPlainText(roller.generateRandomAdventure(tier, type));
+    ui->resultArea->setPlainText(AdventureTables::generateRandomAdventure(tier, type));
 }
 
 void MainWindow::on_genSpellbook_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.generateSpellbook(tier));
+    ui->resultArea->setPlainText(LootTables::generateSpellbook(tier));
 }
 
 void MainWindow::on_genNPC_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.generateMotivatedAdventurer(tier));
+    ui->resultArea->setPlainText(NpcTables::generateMotivatedAdventurer(tier));
 }
 
 void MainWindow::on_genNpcParty_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.adventuringParty(tier));
+    ui->resultArea->setPlainText(NpcTables::adventuringParty(tier));
 
 }
 
 void MainWindow::on_hordTreas_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.generateTreasureHorde(tier));
+    ui->resultArea->setPlainText(LootTables::generateTreasureHorde(tier));
 }
 
 void MainWindow::on_intiTreas_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(roller.generateIndividualTreasure(tier));
+    ui->resultArea->setPlainText(LootTables::generateIndividualTreasure(tier));
 }
 
 void MainWindow::on_keyHex_clicked()
@@ -256,5 +256,5 @@ void MainWindow::on_butComplexTrap_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->resultArea->setPlainText(roller.fullAdventureGen());
+    ui->resultArea->setPlainText(AdventureTables::fullAdventureGen());
 }

@@ -2,6 +2,7 @@
 #define ALLTABLES_H
 
 #include "randomtable.h"
+//#include "complextrap.h"
 #include <QDateTime>
 #include <QtGlobal>
 
@@ -16,6 +17,10 @@ public:
     int randomNumber(int min, int max);
     int roll(int number, int sides, int mod = 0);
 
+    // unused
+    QString checkForWanderingMonsters(int tier);
+
+    // rooms
     QString generateGeneralRoom(int tier);
     QString generateDeathTrapRoom(int dungeonLevel);
     QString generateLairRoom(int dungeonLevel);
@@ -28,33 +33,9 @@ public:
     QString generateTreasureVault(int tier);
     QString generateHallwayContents(int tier);
 
-    QString checkForWanderingMonsters(int tier);
     QString hallCheck(int tier);
 
-    // 5e dmg
     QString doorType();
-
-    QString dungeonType();
-    QString dungeonLocation();
-    QString dungeonCreator();
-    QString dungeonHistory();
-
-    QString adventureHook();
-    QString adventureHookMethod();
-
-    // new hook generation
-    QString hookSource();
-    QString hookMission();
-    QString hookVillains();
-    QString villainScheme();
-    QString villainMethods();
-    QString fullAdventureGen();
-
-
-    QString dungeonGoals();
-    QString generateRandomAdventure(int tier, QString type);
-
-    QString determineAlignment();
 
     QString generalDungeonRoomType();
     QString deathTrapRoomType();
@@ -73,6 +54,60 @@ public:
     QString monsterMotivation();
     QString obstacles();
 
+    QString noises();
+    QString odors();
+
+    QString primaryFeature();
+    QString lighting();
+
+
+    // ------
+
+    // dungeons
+
+    QString dungeonType();
+    QString dungeonLocation();
+    QString dungeonCreator();
+    QString dungeonHistory();
+
+    // ----------
+    // adventures
+
+    QString adventureHook();
+    QString adventureHookMethod();
+
+    QString hookSource();
+    QString hookMission();
+    QString hookVillains();
+    QString villainScheme();
+    QString villainMethods();
+    QString fullAdventureGen();
+
+    QString dungeonGoals();
+    QString generateRandomAdventure(int tier, QString type);
+
+    // -------------
+
+    // NPC
+
+
+    QString generateAdventurer(int tier);
+    QString generateMotivatedAdventurer(int tier);
+    QString adventuringParty(int tier);
+    QString AdventurerRace();
+    QString commonerRace();
+    QString AdventurerClass(int tier);
+    QString adventurerPackage(int tier);
+    QString commonRace();
+    QString uncommonRace();
+    QString rareRace();
+    QString npcGender();
+    QString npcDisposition();
+    QString determineAlignment();
+
+
+    // -------------
+    // traps and tricks
     QString generateTrap(int tier = 1);
 
     QString trapSeverityLevel(int tier);
@@ -84,21 +119,14 @@ public:
     QString trapEffects(QString severity, int tier);
     QString trapDisarm();
 
-
     QString generateTrick();
     QString trickObject();
     QString trick();
 
-    QString noises();
-    QString odors();
     /*
     QString airDressing();
     QString generalFeatures();
     */
-
-    QString primaryFeature();
-    QString lighting();
-
     /*
     QString generalFurnishings();
     QString religiousFurnishings();
@@ -107,6 +135,10 @@ public:
     QString containerContents();
     QString booksScrolls();
     */
+
+    // -------------
+
+    // encounters
 
     QString generateActivity();
     QString monsterDowntime();
@@ -118,6 +150,7 @@ public:
     QString generateUrbanEncounterNight(int tier);
     QString friendlyHumanoidUrbanActivity();
 
+    // --------------
     // monster tables
 
     QString dungeonMonster(int tier);
@@ -128,6 +161,7 @@ public:
 
     QString guardianFoe(int tier);
 
+    // --------------
     // loot
 
     QString generateSpellbook(int tier);
@@ -160,22 +194,6 @@ public:
     QString generateIndividualTreasure(int tier);
     QString miscTreasure(int tier);
     QString mundaneHorde(int tier);
-
-    // NPC
-
-    QString generateAdventurer(int tier);
-    QString generateMotivatedAdventurer(int tier);
-    QString adventuringParty(int tier);
-    QString AdventurerRace();
-    QString commonerRace();
-    QString AdventurerClass(int tier);
-    QString adventurerPackage(int tier);
-    QString commonRace();
-    QString uncommonRace();
-    QString rareRace();
-    QString npcGender();
-    QString npcDisposition();
-
 
     // 1st edition dmg
     /*

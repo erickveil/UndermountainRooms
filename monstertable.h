@@ -5,6 +5,12 @@
 #include "tableentry.h"
 #include "randomtable.h"
 #include "monsterentry.h"
+#include "dice.h"
+#include "npctables.h"
+#include "adventuretables.h"
+#include "loottables.h"
+#include "traptables.h"
+#include "complextrap.h"
 
 
 
@@ -19,6 +25,25 @@ public:
                   Intellect intellect = Civilized, int qty=1);
     TableEntry rollTable(int tier = ANY_TIER, Biome biome = Any);
     QString getRollTableEntry(int tier = ANY_TIER, Biome biome = Any);
+
+    static QString dungeonMonster(int tier);
+    static QString undermountainMonster(int tier);
+    static QString urbanEncounterXge(int tier);
+    static QString urbanEncountersUnique();
+    static QString sewerEncounter(int tier);
+
+    static QString guardianFoe(int tier);
+
+    static QString generateActivity();
+    static QString monsterDowntime();
+    static QString animalDowntime();
+    static QString humanoidAttacksUrban();
+    static QString creatureAttacksUrban();
+
+    static QString generateUrbanEncounter(int tier);
+    static QString generateUrbanEncounterNight(int tier);
+    static QString friendlyHumanoidUrbanActivity();
+
 };
 
 #endif // MONSTERTABLE_H

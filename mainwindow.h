@@ -2,9 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "alltables.h"
 #include "hexcrawltables.h"
 #include "complextrap.h"
+#include "loottables.h"
+#include "randomchambers.h"
+#include "monstertable.h"
 
 namespace Ui {
 class MainWindow;

@@ -3,25 +3,24 @@
 
 #include "randomtable.h"
 #include "alltables.h"
-
+#include "traptables.h"
 
 class complexTrap
 {
-    AllTables _dice;
 
 public:
     complexTrap();
 
-    QString generateTrap(int tier);
+    static QString generateTrap(int tier);
 
-    QString effectDivision();
-    QString trigger(int tier);
-    QString initiative(int tier);
-    QString ActiveElements(QString severity, int tier);
-    QString DynamicElements(int tier);
-    QString ConstantElements(QString severity, int tier);
-    QString Countermeasures(int tier);
-    QString Experience(int tier);
+    static QString effectDivision();
+    static QString trigger(int tier);
+    static QString initiative(int tier);
+    static QString ActiveElements(QString severity, int tier);
+    static QString DynamicElements(int tier);
+    static QString ConstantElements(QString severity, int tier);
+    static QString Countermeasures(int tier);
+    static QString Experience(int tier);
 };
 
 #endif // COMPLEXTRAP_H

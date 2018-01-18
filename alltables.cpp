@@ -1405,6 +1405,12 @@ QString AllTables::chamberContents(int tier)
     table.addEntry("HAZARD: " + hazard, 6);
     table.addEntry(treasure, 6);
 
+    /*
+    complexTrap complexTrapGen;
+    QString complexTrap = complexTrapGen.generateTrap(tier);
+    table.addEntry("COMPLEX TRAP:\n" + complexTrap);
+    */
+
     return table.getRollTableEntry();
 }
 

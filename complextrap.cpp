@@ -7,7 +7,7 @@ complexTrap::complexTrap()
 
 QString complexTrap::generateTrap(int tier)
 {
-    QString severity = _dice.trapSeverityLevel(tier);
+    QString severity = TrapTables::trapSeverityLevel(tier);
     QString desc = "COMPLEX TRAP:\n"
                    "Threat level: ";
     desc += severity
@@ -23,7 +23,7 @@ QString complexTrap::generateTrap(int tier)
 QString complexTrap::effectDivision()
 {
     RandomTable table;
-    QString time = QString::number(_dice.roll(1,4));
+    QString time = QString::number(Dice::roll(1,4));
     table.addEntry("Each effect begins " + time
                    + " rounds after the last one. Some countdown or clockwork "
                      "builds the tension.");
@@ -62,7 +62,7 @@ QString complexTrap::effectDivision()
 
 QString complexTrap::trigger(int tier)
 {
-    return _dice.trapTrigger();
+    return TrapTables::trapTrigger();
 }
 
 QString complexTrap::initiative(int tier)
@@ -76,12 +76,12 @@ QString complexTrap::initiative(int tier)
 
 QString complexTrap::ActiveElements(QString severity, int tier)
 {
-    int numEffects = _dice.roll(1, 4) + tier;
+    int numEffects = Dice::roll(1, 4) + tier;
     QString effects;
     for (int i = 0; i < numEffects; ++i) {
         effects += "Effect " + QString::number(i+1) + ":\n";
-        effects += _dice.trapEffects(severity, tier)
-                + "\n" + _dice.trapSeverityStats(severity, tier)
+        effects += TrapTables::trapEffects(severity, tier)
+                + "\n" + TrapTables::trapSeverityStats(severity, tier)
                 + "\nDynamics: " + DynamicElements(tier)
                 + "\nCountermeasure: " + Countermeasures(tier)
 
@@ -93,9 +93,9 @@ QString complexTrap::ActiveElements(QString severity, int tier)
 QString complexTrap::DynamicElements(int tier)
 {
     RandomTable table;
-    int increase = _dice.roll(1,4);
-    int increase2 = _dice.roll(1,4);
-    int increase3 = _dice.roll(1,4);
+    int increase = Dice::roll(1,4);
+    int increase2 = Dice::roll(1,4);
+    int increase3 = Dice::roll(1,4);
     QString dangerIncrease = QString("Attack rolls increase by +")
             + QString::number(increase)
             + " each instance, DC increases +"
@@ -106,7 +106,7 @@ QString complexTrap::DynamicElements(int tier)
     table.addEntry("The element becomes more dangerous each round it remains "
                    "active. " + dangerIncrease);
 
-    bool succeedOrFail = _dice.roll(1, 100) < 50;
+    bool succeedOrFail = Dice::roll(1, 100) < 50;
     RandomTable target;
     target.addEntry("this element");
     target.addEntry("other elements");
@@ -125,8 +125,8 @@ QString complexTrap::ConstantElements(QString severity, int tier)
     RandomTable table;
     table.addEntry("Active elements also affect anyone ending their turn "
                    "while within the active area.");
-    QString trap = _dice.trapEffects(severity, tier) + "\n"
-            + _dice.trapSeverityStats(severity, tier);
+    QString trap = TrapTables::trapEffects(severity, tier) + "\n"
+            + TrapTables::trapSeverityStats(severity, tier);
     table.addEntry("Additional trap effect on anyone ending their turn within "
                    "a marked area: " + trap);
     table.addEntry("Entries close and lock, sealing anyone in until disarm "
@@ -177,9 +177,8 @@ QString complexTrap::ConstantElements(QString severity, int tier)
                    "each round.");
     table.addEntry("High gust of wind circles inside the room, making ranged "
                    "attacks impossible.");
-    // Todo: add effect
-    QString trapEffect = _dice.trapEffects(severity, tier) + "("
-            + _dice.trapSeverityStats(severity, tier) + ")";
+    QString trapEffect = TrapTables::trapEffects(severity, tier) + "("
+            + TrapTables::trapSeverityStats(severity, tier) + ")";
     table.addEntry("Sand in an hourglass takes 1d3 rounds to empty into the "
                    "lower chamber. The glass is fixed to an immobile base and "
                    "cannot be broken. It is on a hinge and can be turned. "
@@ -215,8 +214,8 @@ QString complexTrap::Countermeasures(int tier)
 {
     RandomTable table;
 
-    QString standard = _dice.trapDisarm();
-    table.addEntry(standard);
+    QString standard = TrapTables::trapDisarm();
+    table.addEntry(standard, 2);
     table.addEntry("Intelegence (Investigation) check as an action allows "
                    "PC to anticipate the trap and avoid it. Effect gets "
                    "disadvantage to hit, or PC gets advantage to DC rolls.");

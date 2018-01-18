@@ -20,7 +20,16 @@ SOURCES += main.cpp\
     monsterentry.cpp \
     monstertable.cpp \
     hexcrawltables.cpp \
-    complextrap.cpp
+    complextrap.cpp \
+    randomchambers.cpp \
+    randomdungeons.cpp \
+    dice.cpp \
+    npctables.cpp \
+    adventuretables.cpp \
+    loottables.cpp \
+    traptables.cpp \
+    encountertables.cpp \
+    dungeontables.cpp
 
 HEADERS  += mainwindow.h \
     tableentry.h \
@@ -29,6 +38,15 @@ HEADERS  += mainwindow.h \
     monsterentry.h \
     monstertable.h \
     hexcrawltables.h \
-    complextrap.h
+    complextrap.h \
+    randomchambers.h \
+    randomdungeons.h \
+    dice.h \
+    npctables.h \
+    adventuretables.h \
+    loottables.h \
+    traptables.h \
+    encountertables.h \
+    dungeontables.h
 
 FORMS    += mainwindow.ui
