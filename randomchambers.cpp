@@ -792,6 +792,77 @@ QString RandomChambers::obstacles()
     return table.getRollTableEntry();
 }
 
+QString RandomChambers::poolEffects()
+{
+    RandomTable attribute;
+    attribute.addEntry("Strength");
+    attribute.addEntry("Dexterity");
+    attribute.addEntry("Constitution");
+    attribute.addEntry("Intellegence");
+    attribute.addEntry("Wisdom");
+    attribute.addEntry("Charisma");
+
+    RandomTable table;
+
+    table.addEntry("Mundane", 10);
+    table.addEntry("Heals 2d8 hp.");
+    table.addEntry("Drains 2d8 hp.");
+    table.addEntry("Makes bather 2d8 years younger");
+    table.addEntry("Makes bather 2d8 years older");
+    table.addEntry("Changes gender (only works once on each bather)");
+    table.addEntry("Add 1 point to " + attribute.getRollTableEntry() + " for 1 day");
+    table.addEntry("Add 1 level to all spells cast for 1 day");
+    table.addEntry("Add 1 AC for day");
+    table.addEntry("Drain 1 point from " + attribute.getRollTableEntry() + " for 1 day");
+    table.addEntry("All spells cast as 1 level lower for 1 day.");
+    table.addEntry("Removes all exhaustion");
+    table.addEntry("Adds 1 level of exhaustion");
+    table.addEntry("Adds poisoned state");
+    table.addEntry("Bather glows with faerie fire for 1 day");
+    table.addEntry("Weapons dipped in pool act as magical +1 for a day");
+    table.addEntry("Actually a gate to another place");
+    table.addEntry("Gate to the plane of water");
+    table.addEntry("Bather gains Poisoned condition");
+    table.addEntry("Bather gains inspiration");
+    table.addEntry("Anything placed in the pool is mended and cleaned, bathers are made immediately clean.");
+    table.addEntry("Anything placed in the pool becomes soiled and smells of sewage. Bathers increase wandering monster checks.");
+
+    return table.getRollTableEntry();
+}
+
+QString RandomChambers::poolContents()
+{
+    RandomTable table;
+
+    table.addEntry("Empty (needs to be filled to gain effect.)", 5);
+    table.addEntry("Clean Water", 10);
+    table.addEntry("Blood");
+    table.addEntry("Dirty Water", 10);
+    table.addEntry("Green slime");
+    table.addEntry("Black pudding");
+    table.addEntry("Gelatinous cube settled to look like water unless examined");
+    table.addEntry("Muddy water");
+    table.addEntry("Thick mud");
+    table.addEntry("Boiling water");
+    table.addEntry("Ale");
+    table.addEntry("Wine");
+    table.addEntry("Bubbling hot mud");
+    table.addEntry("Ofal, guts");
+    table.addEntry("Oil (cool)");
+    table.addEntry("Boiling oil");
+    table.addEntry("Lava");
+    table.addEntry("Green water (algae)");
+    table.addEntry("Harmless, opaque, colored slime");
+    table.addEntry("Feces and urine");
+    table.addEntry("A shimmering, liquid-like energy");
+    table.addEntry("An inpenetrable dark, cold fluid");
+    table.addEntry("Frozen solid ice");
+    table.addEntry("Molten adamantine (looks like lava, and cools to a permanent solid in 1d6 rounds if removed)");
+    table.addEntry("Mercury (bathers float on top unless pushed down with force)");
+
+    return table.getRollTableEntry();
+}
+
 
 QString RandomChambers::noises()
 {
@@ -883,7 +954,9 @@ QString RandomChambers::primaryFeature()
 {
     RandomTable table;
 
-    table.addEntry("None", 20);
+    table.addEntry("None", 80);
+    table.addEntry("Pool of " + poolContents() + ". Effect on bathers: "
+                   + poolEffects(), 32);
     table.addEntry("Chains hang from ceiling");
     table.addEntry("Cobwebs");
     table.addEntry("Ceiling cracks");

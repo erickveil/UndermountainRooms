@@ -3,11 +3,12 @@
 
 
 #include "randomtable.h"
-#include "alltables.h"
+#include "dice.h"
+#include "traptables.h"
+#include "dungeontables.h"
 
 class HexcrawlTables
 {
-    AllTables _dice;
 public:
     HexcrawlTables();
 

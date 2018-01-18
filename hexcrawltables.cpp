@@ -7,8 +7,8 @@ HexcrawlTables::HexcrawlTables()
 
 QString HexcrawlTables::keyHex(int tier)
 {
-    int trackMod = 11 - _dice.roll(1, 21);
-    int lairMod = 11 - _dice.roll(1, 21);
+    int trackMod = 11 - Dice::roll(1, 21);
+    int lairMod = 11 - Dice::roll(1, 21);
     int trackChance = 50 + trackMod;
     int lairChance = 21 + lairMod;
     QString key = "Main Feature:\n";
@@ -60,20 +60,20 @@ QString HexcrawlTables::remoteStructure(int tier)
     RandomTable houseTable;
     houseTable.addEntry("Hermit");
     houseTable.addEntry("Single Family");
-    int numFamilies = _dice.roll(3,4) + 1;
+    int numFamilies = Dice::roll(3,4) + 1;
     houseTable.addEntry("Commune - " + QString::number(numFamilies)
                         + " Families");
     houseTable.addEntry("Druid");
     houseTable.addEntry("Herbalist");
     houseTable.addEntry("Witch");
     houseTable.addEntry("Werecreature");
-    int numCultists = _dice.roll(1,3);
+    int numCultists = Dice::roll(1,3);
     houseTable.addEntry(QString::number(numCultists) + " Cultists");
     houseTable.addEntry("Hunter");
     houseTable.addEntry("Bandit/Criminal");
 
     int outpostChance = 50;
-    bool isOutpost = _dice.roll(1,100) < outpostChance;
+    bool isOutpost = Dice::roll(1,100) < outpostChance;
     if (isOutpost) {
         table.addEntry("Single House (" + houseTable.getRollTableEntry()
                        + ") or Outpost if on road", 9);
@@ -100,13 +100,13 @@ QString HexcrawlTables::remoteStructure(int tier)
     towerTable.addEntry("Isolated fighters' guild", 19);
     towerTable.addEntry("Mage", 30-20);
 
-    int numMounts = _dice.roll(1,4,6);
+    int numMounts = Dice::roll(1,4,6);
     towerTable.addEntry("Small watch tower (10 guards & "
                         + QString::number(numMounts) + " mounts)", 50-30);
 
     towerTable.addEntry("Religious Commune (NPCs - Acolytes/Priest)", 90-50);
 
-    int numSages = _dice.roll(3,4) + 1;
+    int numSages = Dice::roll(3,4) + 1;
     towerTable.addEntry("Isolated Library (" + QString::number(numSages)
                         + " researchers)", 100-90);
     table.addEntry("Tower - " + towerTable.getRollTableEntry(), 55-50);
@@ -135,13 +135,12 @@ QString HexcrawlTables::remoteStructure(int tier)
     table.addEntry("Working mine - " + minerTable.getRollTableEntry()
                    + ", " + mineralResource(), 83-79);
 
-    AllTables trapTable;
     int trapChance = 10;
-    bool isTrapped = _dice.roll(1,100) < trapChance;
+    bool isTrapped = Dice::roll(1,100) < trapChance;
     table.addEntry("Stone altar"
                    + minorItemChance()
                    + QString((isTrapped)
-                             ? ", trapped:\n" + trapTable.generateTrap(tier)
+                             ? ", trapped:\n" + TrapTables::generateTrap(tier)
                              : ""),
                    87-83);
 
@@ -160,7 +159,7 @@ QString HexcrawlTables::ruinedStructure(int tier)
     table.addEntry("Ancient stone pillars", 10-5);
     table.addEntry("Collapsed and half walls", 15-10);
     table.addEntry("Scattered stone blocks", 5);
-    int num = _dice.roll(1,4);
+    int num = Dice::roll(1,4);
     table.addEntry(QString::number(num) + " Fallen statues - " + statue(), 5);
     table.addEntry("Small ruins", 35-25);
     table.addEntry("Runined building", 44-35);
@@ -168,40 +167,39 @@ QString HexcrawlTables::ruinedStructure(int tier)
     table.addEntry("Abandoned mine", 50-44);
 
     int cellarChance = 25;
-    bool hasCellar = _dice.roll(1,100) < cellarChance;
+    bool hasCellar = Dice::roll(1,100) < cellarChance;
     table.addEntry("Ruined small house" + (hasCellar) ? " with cellar" : "", 5);
 
     int dungeonChance = 50;
-    bool hasDungeon = _dice.roll(1,100) < dungeonChance;
+    bool hasDungeon = Dice::roll(1,100) < dungeonChance;
     table.addEntry("Ruined small tower" + (hasDungeon) ? " with dungeon" : "",
                    5);
 
     dungeonChance = 75;
-    hasDungeon = _dice.roll(1,100) < dungeonChance;
+    hasDungeon = Dice::roll(1,100) < dungeonChance;
     table.addEntry("Ruined small keep" + (hasDungeon) ? " with dungeon" : "",
                    5);
 
     table.addEntry("Ruined stone walls and stairs into small dungeon", 5);
     table.addEntry("Abandoned and dusty cottage. Belongings still there", 5);
 
-    num = _dice.roll(1,3);
+    num = Dice::roll(1,3);
     table.addEntry(QString::number(num) + " Massive (30' high) statues of "
                    + statue() + " - still standing - Ancient", 3);
 
     int hauntedChance = 30;
-    bool isHaunted = _dice.roll(1,100) < hauntedChance;
+    bool isHaunted = Dice::roll(1,100) < hauntedChance;
     table.addEntry("Large ruins" + (isHaunted) ? " (haunted)" : "", 96-79);
 
     RandomTable cryptTable;
     cryptTable.addEntry("Empty", 19);
     int itemChance = 50;
-    bool hasItem = _dice.roll(1,100) < itemChance;
+    bool hasItem = Dice::roll(1,100) < itemChance;
     cryptTable.addEntry("Dead body" + (hasItem) ? " - random item" : "", 90-20);
 
     itemChance = 30;
-    hasItem = _dice.roll(1,100) < itemChance;
-    AllTables magicItemTable;
-    QString magicItem = magicItemTable.selectMagicItemByTier(tier);
+    hasItem = Dice::roll(1,100) < itemChance;
+    QString magicItem = LootTables::selectMagicItemByTier(tier);
     cryptTable.addEntry("Undead" + (hasItem) ? " - magic item:\n"
                                                + magicItem : "" , 10);
     table.addEntry("Ancient Mausoleum: " + cryptTable.getRollTableEntry(), 4);
@@ -217,9 +215,9 @@ QString HexcrawlTables::naturalStructure(int tier)
     caveTable.addEntry("Empty",9);
 
     int featureChance = 30;
-    bool hasFeature = _dice.roll(1,100) < featureChance;
+    bool hasFeature = Dice::roll(1,100) < featureChance;
     caveTable.addEntry("Small cave"
-                       + (hasFeature) ? " - " + _dice.primaryFeature() : "", 50);
+                       + (hasFeature) ? " - " + RandomChambers::primaryFeature() : "", 50);
 
     caveTable.addEntry("Animals", 10);
     caveTable.addEntry("Bandits", 10);
@@ -227,32 +225,32 @@ QString HexcrawlTables::naturalStructure(int tier)
     caveTable.addEntry("Old straw bed and tattered blanket/clothes", 8);
 
     int trappedChance = 50;
-    bool isTrapped = _dice.roll(1,100) < trappedChance;
+    bool isTrapped = Dice::roll(1,100) < trappedChance;
     int emptyChance = 50;
-    bool isEmpty = _dice.roll(1,100) < emptyChance;
+    bool isEmpty = Dice::roll(1,100) < emptyChance;
     QString treasure;
     if (isTrapped) {
-        treasure += "(trapped)\n" + _dice.generateTrap(tier);
+        treasure += "(trapped)\n" + TrapTables::generateTrap(tier);
     }
     treasure += "\n"
-            + (isEmpty) ? "Chest is Empty!" : _dice.generateTreasureHorde(1);
+            + (isEmpty) ? "Chest is Empty!" : LootTables::generateTreasureHorde(1);
     caveTable.addEntry("Locked chest: " + treasure);
 
     caveTable.addEntry("Dug mound - buried sack with "
-                       + _dice.selectMagicItemByTier(tier));
+                       + LootTables::selectMagicItemByTier(tier));
     table.addEntry("Cave into ground with small number of caverns: "
                    + caveTable.getRollTableEntry());
 
     table.addEntry("Glowing fungus found (worth 50 sp to a herbalist)", 2);
     table.addEntry("Animal graveyard - lots of bones of many large animals", 3);
 
-    int num = _dice.roll(1,4);
+    int num = Dice::roll(1,4);
     table.addEntry("Animal nest (in tree/bush) - " + QString::number(num)
                    + " large rare eggs worth 20 sp each", 4);
 
     table.addEntry("Large pond (or oaisis if desert)", 4);
 
-    num = _dice.roll(1,3);
+    num = Dice::roll(1,3);
     RandomTable fruitTable;
     fruitTable.addEntry("berries");
     fruitTable.addEntry("apples");
@@ -272,7 +270,7 @@ QString HexcrawlTables::naturalStructure(int tier)
     // TODO: wilderness dressing by biome
     //table.addEntry("Dressing", 35);
 
-    num = _dice.roll(1,3) * 100;
+    num = Dice::roll(1,3) * 100;
     table.addEntry("Ancient massive crater, " + QString::number(num)
                    + " feet across", 5);
 
@@ -317,7 +315,7 @@ QString HexcrawlTables::remarkableEvent(int tier)
     effectTable4.addEntry("Gates in random creature", 10);
     effectTable4.addEntry("Random ability score increase +1 for 1d6 days", 10);
     effectTable4.addEntry("Random ability score decrease -1 for 1d4 days", 10);
-    effectTable4.addEntry("Changed alignment: " + _dice.determineAlignment(),
+    effectTable4.addEntry("Changed alignment: " + NpcTables::determineAlignment(),
                           2);
     effectTable4.addEntry("Random magical item appears", 5);
     effect = effectTable4.getRollTableEntry();
@@ -369,26 +367,26 @@ QString HexcrawlTables::lair(int tier)
     lairTypeTable.addEntry("Tower");
     QString lairType = lairTypeTable.getRollTableEntry();
 
-    int num = _dice.roll(1,4) * 10;
+    int num = Dice::roll(1,4) * 10;
     table.addEntry(QString::number(num) + " Bugbears" + " in " + lairType, 8);
-    num = _dice.roll(2,4) * 10;
+    num = Dice::roll(2,4) * 10;
     table.addEntry(QString::number(num) + " Gnolls" + " in " + lairType, 8);
-    num = _dice.roll(5,3) * 10;
+    num = Dice::roll(5,3) * 10;
     table.addEntry(QString::number(num) + " Goblins" + " in " + lairType, 8);
-    num = _dice.roll(2,4) * 10;
+    num = Dice::roll(2,4) * 10;
     table.addEntry(QString::number(num) + " Hobgoblins" + " in " + lairType, 8);
-    num = _dice.roll(3,4) * 10;
+    num = Dice::roll(3,4) * 10;
     table.addEntry(QString::number(num) + " Kobolds" + " in " + lairType, 8);
-    num = _dice.roll(2,4) * 10;
+    num = Dice::roll(2,4) * 10;
     table.addEntry(QString::number(num) + " Lizardfolk" + " in " + lairType, 8);
-    num = _dice.roll(2,4) * 10;
+    num = Dice::roll(2,4) * 10;
     table.addEntry(QString::number(num) + " Orcs" + " in " + lairType, 8);
-    num = _dice.roll(1,4, 1)/2 * 10;
+    num = Dice::roll(1,4, 1)/2 * 10;
     table.addEntry(QString::number(num) + " Ankhegs" + " in " + lairType, 4);
     num = 1;
     table.addEntry(QString::number(num) + " Troll" + " in " + lairType, 4);
     table.addEntry(QString::number(num) + " Roc" + " in " + lairType, 4);
-    num = _dice.roll(2,4, 1)/2 * 10;
+    num = Dice::roll(2,4, 1)/2 * 10;
     table.addEntry(QString::number(num) + " Yuan-ti" + " in " + lairType, 4);
     num = 1;
     table.addEntry(QString::number(num) + " Aboleth" + " in " + lairType
@@ -436,7 +434,7 @@ QString HexcrawlTables::pastEvent(int tier)
     symbolTable.addEntry("invoking a good god or summoning");
     symbolTable.addEntry("protective ward - no longer active");
 
-    int num = _dice.roll(1,6) / 3;
+    int num = Dice::roll(1,6) / 3;
 
     table.addEntry(QString::number(num) + " Dead body: "
                    + freshnessTable.getRollTableEntry() + ", "
@@ -450,10 +448,10 @@ QString HexcrawlTables::pastEvent(int tier)
                    + minorItemChance());
 
     int trapChance = 10;
-    bool isTrapped = _dice.roll(1,100) < trapChance;
+    bool isTrapped = Dice::roll(1,100) < trapChance;
 
     table.addEntry("Altar with bloody body"
-                   + (isTrapped) ? ", trapped:\n" + _dice.generateTrap(tier)
+                   + (isTrapped) ? ", trapped:\n" + TrapTables::generateTrap(tier)
                                  : "");
     table.addEntry("Campsite with smoldering fire, a few hours old"
                    + minorItemChance());
@@ -479,10 +477,10 @@ QString HexcrawlTables::npcEncounter(int tier)
 {
     RandomTable table;
     int chance = 50;
-    bool isChance = _dice.roll(1,100) < chance;
-    int num = _dice.roll(1,6) / 3;
+    bool isChance = Dice::roll(1,100) < chance;
+    int num = Dice::roll(1,6) / 3;
 
-    QString race = _dice.AdventurerRace();
+    QString race = NpcTables::AdventurerRace();
 
     // TODO: cannot recursive populate table
     table.addEntry("Traveling " + race + " merchant wagon"
@@ -492,43 +490,43 @@ QString HexcrawlTables::npcEncounter(int tier)
                    + " (only if on road"
                    + ")");
 
-    num = _dice.roll(1,4);
+    num = Dice::roll(1,4);
     table.addEntry(race + " Hunting party of " + QString::number(num));
 
-    num = _dice.roll(1,3);
+    num = Dice::roll(1,3);
     table.addEntry(QString::number(num) + " " + race + " Explorers"
                    + ((isChance) ? " on mounts" : ""));
 
     chance = 80;
-    isChance = _dice.roll(1,100) < chance;
+    isChance = Dice::roll(1,100) < chance;
     table.addEntry(QString((isChance) ? "Mounted " : "") + "Adventuring party:\n"
-                   + _dice.adventuringParty(tier)
-                   + ", " + _dice.determineAlignment());
+                   + NpcTables::adventuringParty(tier)
+                   + ", " + NpcTables::determineAlignment());
 
     table.addEntry(QString((isChance) ? "Mounted " : "") + "Adventurer:\n"
-                   + _dice.generateAdventurer(tier)
-                   + ", " + _dice.determineAlignment());
+                   + NpcTables::generateAdventurer(tier)
+                   + ", " + NpcTables::determineAlignment());
 
-    num = _dice.roll(3,4, 1)/2;
+    num = Dice::roll(3,4, 1)/2;
     // TODO: cannot recursive populate table
     table.addEntry("Goods wagon train with " + QString::number(num)
                    + " " + race + " guards"
                    + " (only if on road"
                    + ")");
 
-    num = _dice.roll(1,3);
+    num = Dice::roll(1,3);
     table.addEntry(QString::number(num)
                    + " " + race + " Pilgrims, can offer healing (Acolyte)");
 
     chance = 50;
-    isChance = _dice.roll(1,100) < chance;
+    isChance = Dice::roll(1,100) < chance;
     table.addEntry("Suspicious character, " + race
                    + QString((isChance) ? ", mounted" : "")
-                   + ", " + _dice.determineAlignment());
+                   + ", " + NpcTables::determineAlignment());
 
     RandomTable victim;
-    victim.addEntry("Adventurer: " + _dice.generateAdventurer(tier) + ", "
-                    + _dice.determineAlignment());
+    victim.addEntry("Adventurer: " + NpcTables::generateAdventurer(tier) + ", "
+                    + NpcTables::determineAlignment());
     victim.addEntry(race + " Merchant");
     victim.addEntry(race + " Commoner");
     victim.addEntry(race + "Evil Humanoid");
@@ -537,7 +535,7 @@ QString HexcrawlTables::npcEncounter(int tier)
 
     table.addEntry("Mysterious seated " + race + " wizard, reading a book "
                                                  "(NPC Mage)");
-    num = _dice.roll(4,4);
+    num = Dice::roll(4,4);
     table.addEntry(QString::number(num) + " travelling " + race
                    + " gypsies on a wagon");
     table.addEntry("Lost " + race
@@ -556,7 +554,7 @@ QString HexcrawlTables::npcEncounter(int tier)
     table.addEntry("Naked woman swimming in water");
     table.addEntry("Naked woman swimming in water (succubus)");
 
-    num = _dice.roll(2,3);
+    num = Dice::roll(2,3);
     RandomTable watch;
     watch.addEntry("On general patrol");
     watch.addEntry("Looking for escaped prisoner");
@@ -576,12 +574,12 @@ QString HexcrawlTables::currentEvent(int tier)
     RandomTable body;
     RandomTable flying;
 
-    int num = _dice.roll(1,4, 1)/2;
-    int num2 = (_dice.roll(1,4, 1)/2);
+    int num = Dice::roll(1,4, 1)/2;
+    int num2 = (Dice::roll(1,4, 1)/2);
     int chance = 50;
-    bool isChance = _dice.roll(1,100) < chance;
-    QString race = _dice.AdventurerRace();
-    QString race2 = _dice.AdventurerRace();
+    bool isChance = Dice::roll(1,100) < chance;
+    QString race = NpcTables::AdventurerRace();
+    QString race2 = NpcTables::AdventurerRace();
 
     animals.addEntry(QString::number(num) + " Wolves");
     animals.addEntry(QString::number(num) + " Black Bear");
@@ -614,7 +612,7 @@ QString HexcrawlTables::currentEvent(int tier)
     body.addEntry("Goblin");
     body.addEntry("Kobold");
     body.addEntry("Human");
-    body.addEntry(_dice.AdventurerRace() + " adventurer");
+    body.addEntry(NpcTables::AdventurerRace() + " adventurer");
 
     flying.addEntry("Chimera");
     flying.addEntry("Wyvern");
@@ -625,9 +623,9 @@ QString HexcrawlTables::currentEvent(int tier)
     flying.addEntry("Manticore");
     flying.addEntry("Young green dragon");
 
-    num = _dice.roll(1,6);
+    num = Dice::roll(1,6);
     chance = 50;
-    isChance = _dice.roll(1,100) < chance;
+    isChance = Dice::roll(1,100) < chance;
 
     table.addEntry("Fire covering " + QString::number(num) + " "
                    + QString((isChance) ? "miles" : "yards")
@@ -652,17 +650,17 @@ QString HexcrawlTables::currentEvent(int tier)
                                                 "body in mouth: "
                    + body.getRollTableEntry());
     table.addEntry("Mage duel - two spell casters attacking each other");
-    num = _dice.roll(1,3) + 4;
+    num = Dice::roll(1,3) + 4;
     table.addEntry("Naked female tied on altar. "
                    + QString::number(num) + " cultists around");
-    num = (_dice.roll(1,4, 1)/2) + 2;
+    num = (Dice::roll(1,4, 1)/2) + 2;
     table.addEntry("Prisoner being chased by " + QString::number(num)
                    + " guards");
 
-    num = _dice.roll(1,3,2);
+    num = Dice::roll(1,3,2);
     table.addEntry(QString::number(num) + " thugs digging up stolen treasure "
                                           "(sacks in ground):\n"
-                   + _dice.generateTreasureHorde(1));
+                   + LootTables::generateTreasureHorde(1));
 
     return table.getRollTableEntry();
 }
@@ -673,9 +671,9 @@ QString HexcrawlTables::lostItem(int tier)
 
     table.addEntry("Random weapon");
     table.addEntry("Clothing - robe/shirt/pants/boot/glove");
-    table.addEntry(_dice.generateIndividualTreasure(1));
+    table.addEntry(LootTables::generateIndividualTreasure(1));
     table.addEntry("Random utensil (fork/knife/cup)");
-    table.addEntry(_dice.art(tier));
+    table.addEntry(LootTables::art(tier));
     table.addEntry("Storage - backpack, sack, puch");
     table.addEntry("Random trinket");
     table.addEntry("Diary - leather bound - trivial entries");
@@ -687,21 +685,21 @@ QString HexcrawlTables::animalHerd()
 {
     RandomTable table;
 
-    int num = _dice.roll(4,4);
+    int num = Dice::roll(4,4);
     table.addEntry(QString::number(num) + " Wolves");
-    num = _dice.roll(3,4);
+    num = Dice::roll(3,4);
     table.addEntry(QString::number(num) + " Boars");
     table.addEntry(QString::number(num) + " Axe Beaks");
-    num = _dice.roll(5,4);
+    num = Dice::roll(5,4);
     table.addEntry(QString::number(num) + " Deers");
-    num = _dice.roll(4,4);
+    num = Dice::roll(4,4);
     table.addEntry(QString::number(num) + " Wild horses");
-    num = _dice.roll(5,4);
+    num = Dice::roll(5,4);
     table.addEntry(QString::number(num) + " Elk");
-    num = _dice.roll(5,3);
+    num = Dice::roll(5,3);
     table.addEntry(QString::number(num) + " Hyena");
     table.addEntry(QString::number(num) + " Jakal");
-    num = _dice.roll(4,3);
+    num = Dice::roll(4,3);
     table.addEntry(QString::number(num) + " Elephants");
 
     return table.getRollTableEntry();
@@ -710,28 +708,28 @@ QString HexcrawlTables::animalHerd()
 QString HexcrawlTables::minorItemChance()
 {
     int chance = 10;
-    bool hasMinorItem = _dice.roll(1,100) < chance;
+    bool hasMinorItem = Dice::roll(1,100) < chance;
     if (!hasMinorItem) {
         return "";
     }
 
     RandomTable table;
-    table.addEntry(_dice.generateIndividualTreasure(1));
-    table.addEntry(_dice.gem(1));
-    table.addEntry(_dice.art(1));
-    table.addEntry(_dice.minorCommonMagicItems());
+    table.addEntry(LootTables::generateIndividualTreasure(1));
+    table.addEntry(LootTables::gem(1));
+    table.addEntry(LootTables::art(1));
+    table.addEntry(LootTables::minorCommonMagicItems());
     return " with minor item: " + table.getRollTableEntry();
 }
 
 QString HexcrawlTables::itemAndBanditChance()
 {
     int chance = 20;
-    bool hasMinorItem = _dice.roll(1,100) < chance;
+    bool hasMinorItem = Dice::roll(1,100) < chance;
     if (!hasMinorItem) {
         return "";
     }
 
-    int num = _dice.roll(1,4) + 4;
+    int num = Dice::roll(1,4) + 4;
 
     return ". Also, " + QString::number(num) + " bandits with minor item: "
             + minorItemChance();

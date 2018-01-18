@@ -16,7 +16,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     tableentry.cpp \
     randomtable.cpp \
-    alltables.cpp \
     monsterentry.cpp \
     monstertable.cpp \
     hexcrawltables.cpp \
@@ -34,7 +33,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     tableentry.h \
     randomtable.h \
-    alltables.h \
     monsterentry.h \
     monstertable.h \
     hexcrawltables.h \

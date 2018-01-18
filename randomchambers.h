@@ -44,6 +44,9 @@ public:
     static QString monsterMotivation();
     static QString obstacles();
 
+    static QString poolEffects();
+    static QString poolContents();
+
     static QString noises();
     static QString odors();
     static QString primaryFeature();

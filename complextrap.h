@@ -2,7 +2,6 @@
 #define COMPLEXTRAP_H
 
 #include "randomtable.h"
-#include "alltables.h"
 #include "traptables.h"
 
 class complexTrap

@@ -16,7 +16,6 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    AllTables roller;
     HexcrawlTables hexTables;
     complexTrap complexTrapTables;
 
