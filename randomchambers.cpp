@@ -230,6 +230,21 @@ QString RandomChambers::generateHallwayContents(int tier)
 
 }
 
+QString RandomChambers::generateLibraryRoom(int tier)
+{
+    QString description;
+    description = "ROOM: " + libraryRoom() + ".\n";
+    description += "DOORS: " + doorType() + ".\n";
+    description += "LIGHT: " + lighting() + ".\n";
+    description += "FEATURE: " + primaryFeature() + ".\n";
+    description += "SOUND: " + noises() + "\n";
+    description += "SMELL: " + odors() + "\n";
+    description += "STATE: " + currentChamberState() + ".\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+
+    return description;
+}
+
 QString RandomChambers::generalDungeonRoomType()
 {
     RandomTable table;
@@ -598,6 +613,38 @@ QString RandomChambers::treasureVaultRoom()
                    "intruders");
     table.addEntry("Trap or other trick designed to kill or capture "
                    "creatures that enter the dungeon");
+
+    return table.getRollTableEntry();
+}
+
+QString RandomChambers::libraryRoom()
+{
+    RandomTable table;
+
+    table.addEntry("Circulation desk");
+    table.addEntry("Maze of shelves");
+    table.addEntry("Classroom");
+    table.addEntry("Summoning room");
+    table.addEntry("Divination room");
+    table.addEntry("Reference books");
+    table.addEntry("Rare and restricted books");
+    table.addEntry("Book sorting");
+    table.addEntry("Archives");
+    table.addEntry("Journals");
+    table.addEntry("Directory");
+    table.addEntry("Break room for librarians");
+    table.addEntry("Activities room");
+    table.addEntry("Museum room");
+    table.addEntry("Artifact display");
+    table.addEntry("Themed display presentation");
+    table.addEntry("Guard room for secure section of library");
+    table.addEntry("Guard barraks");
+    table.addEntry("Study");
+    table.addEntry("Alchemy lab");
+    table.addEntry("Bedroom");
+    table.addEntry("Cell or jail for those who break library rules");
+    table.addEntry("Conference room");
+    table.addEntry("Ballroom");
 
     return table.getRollTableEntry();
 }

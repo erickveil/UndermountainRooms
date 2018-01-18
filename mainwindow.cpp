@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->typeSelect->addItem("Tomb");
     ui->typeSelect->addItem("Treasure Vault");
     ui->typeSelect->addItem("Mine");
+    ui->typeSelect->addItem("Library");
     ui->typeSelect->addItem("Hallway");
 
     ui->biomeSelect->addItem("Underdark");
@@ -116,6 +117,9 @@ void MainWindow::on_genCombo_clicked()
     }
     else if (ui->typeSelect->currentText() == "Mine") {
         ui->resultArea->setPlainText(RandomChambers::generateMineRoom(tier));
+    }
+    else if (ui->typeSelect->currentText() == "Library") {
+        ui->resultArea->setPlainText(RandomChambers::generateLibraryRoom(tier));
     }
     else {
         ui->resultArea->setPlainText("Unknown dungeon type.");
