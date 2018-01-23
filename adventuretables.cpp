@@ -468,6 +468,9 @@ QString AdventureTables::generateRandomAdventure(int tier, QString type)
         else if (type == "Library") {
             desc += RandomChambers::generateLibraryRoom(tier);
         }
+        else if (type == "Caverns") {
+            desc += RandomChambers::generateCavernRoom(tier);
+        }
         else {
             desc = "Unknown dungeon type: " + type;
         }

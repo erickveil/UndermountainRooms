@@ -64,7 +64,7 @@ QString RandomChambers::generateMineRoom(int tier)
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:/n" + chamberContents(tier) + ".\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
 
     return description;
 
@@ -226,8 +226,6 @@ QString RandomChambers::generateHallwayContents(int tier)
 
 
     return table.getRollTableEntry();
-
-
 }
 
 QString RandomChambers::generateLibraryRoom(int tier)
@@ -241,6 +239,24 @@ QString RandomChambers::generateLibraryRoom(int tier)
     description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + ".\n";
     description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+
+    return description;
+}
+
+QString RandomChambers::generateCavernRoom(int tier)
+{
+    QString description;
+    bool isNetwork = Dice::roll(1,100) < 40;
+    description = "ROOM: " + cavern() + ".\n";
+
+    if (isNetwork) {
+        description += "This is a network of caves.\n";
+    }
+    else {
+        description += "SOUND: " + noises() + "\n";
+        description += "SMELL: " + odors() + "\n";
+        description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    }
 
     return description;
 }

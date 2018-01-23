@@ -25,6 +25,7 @@ public:
     static QString generateTreasureVault(int tier);
     static QString generateHallwayContents(int tier);
     static QString generateLibraryRoom(int tier);
+    static QString generateCavernRoom(int tier);
 
     static QString generalDungeonRoomType();
     static QString deathTrapRoomType();
