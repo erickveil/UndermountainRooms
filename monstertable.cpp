@@ -844,51 +844,67 @@ QString MonsterTable::guardianFoe(int tier)
 {
     RandomTable table;
 
-    // 0
-    table.addEntry("Shreiker - cr0", 15);
-    // 1/8
-    table.addEntry("Mastiff - cr1/8", 14);
-    table.addEntry("Guard - cr1/8", 14);
-    // 1/4
-    table.addEntry("Skeleton - cr1/4", 13);
-    table.addEntry("Zombie - cr1/4", 13);
-    table.addEntry("Flying Sword - cr1/4", 13);
-    // 1
-    table.addEntry("Animated Armor - cr1", 12);
-    // 2
-    table.addEntry("Gargoyle - cr2", 11);
-    table.addEntry("Shadow Mastiff (VGE) - cr2", 11);
-    table.addEntry("Rug of Smothering - cr2", 11);
-    table.addEntry("Mimic - cr2", 11);
-    table.addEntry("Minotaur Skeleton - cr2", 11);
-    table.addEntry("Gibbering Mouther - cr2", 11);
-    table.addEntry("Ogre Zombie - cr2", 11);
-    table.addEntry("Guard Drake (VGE) - cr2", 11);
-    // 3
-    table.addEntry("Spectator Beholder - cr3", 10);
-    table.addEntry("Hell Hound - cr3", 10);
-    table.addEntry("Basilisk - cr3", 10);
-    // 4
-    table.addEntry("Flameskull - cr4", 9);
-    table.addEntry("Helmed Horror - cr4", 9);
-    // 5
-    table.addEntry("Flesh Golem - cr5", 8);
-    table.addEntry("Otyug - cr5", 8);
-    // 6
-    table.addEntry("Galeb Duhr - cr6", 7);
-    // 7
-    table.addEntry("Shield Guardian - cr7", 6);
-    // 9
-    table.addEntry("Clay Golem - cr9", 5);
-    // 10
-    table.addEntry("Stone Golem - cr10", 4);
-    // 11
-    table.addEntry("Gynosphynx - cr11", 3);
-    // 16
-    table.addEntry("Iron Golem - cr16", 2);
-    // 17
-    table.addEntry("Androsphynx - cr17");
+    if (tier == 1) {
+        // tier 1
+        // 0
+        table.addEntry("Shreiker - cr0", 15);
+        // 1/8
+        table.addEntry("Mastiff - cr1/8", 14);
+        table.addEntry("Guard - cr1/8", 14);
+        // 1/4
+        table.addEntry("Skeleton - cr1/4", 13);
+        table.addEntry("Zombie - cr1/4", 13);
+        table.addEntry("Flying Sword - cr1/4", 13);
+        // 1
+        table.addEntry("Animated Armor - cr1", 12);
+        // 2
+        table.addEntry("Gargoyle - cr2", 11);
+        table.addEntry("Shadow Mastiff (VGE) - cr2", 11);
+        table.addEntry("Rug of Smothering - cr2", 11);
+        table.addEntry("Mimic - cr2", 11);
+        table.addEntry("Minotaur Skeleton - cr2", 11);
+        table.addEntry("Gibbering Mouther - cr2", 11);
+        table.addEntry("Ogre Zombie - cr2", 11);
+        table.addEntry("Guard Drake (VGE) - cr2", 11);
+    }
+    if (tier == 1 || tier == 2) {
+        // 3
+        table.addEntry("Spectator Beholder - cr3", 10);
+        table.addEntry("Hell Hound - cr3", 10);
+        table.addEntry("Basilisk - cr3", 10);
+    }
+    if (tier == 2) {
+        // 4
+        table.addEntry("Flameskull - cr4", 9);
+        table.addEntry("Helmed Horror - cr4", 9);
 
+        // tier 2
+        // 5
+        table.addEntry("Flesh Golem - cr5", 8);
+        table.addEntry("Otyug - cr5", 8);
+        // 6
+        table.addEntry("Galeb Duhr - cr6", 7);
+        // 7
+        table.addEntry("Shield Guardian - cr7", 6);
+    }
+    if (tier == 2 || tier == 3) {
+        // 9
+        table.addEntry("Clay Golem - cr9", 5);
+        // 10
+        table.addEntry("Stone Golem - cr10", 4);
+
+        // tier 3
+        // 11
+        table.addEntry("Gynosphynx - cr11", 3);
+    }
+    if (tier == 3 || tier == 4) {
+        // 16
+        table.addEntry("Iron Golem - cr16", 2);
+        // 17
+        table.addEntry("Androsphynx - cr17");
+    }
+
+    // tier 4
 
     return table.getRollTableEntry();
 }

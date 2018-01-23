@@ -21,6 +21,7 @@ QString TrapTables::generateTrap(int tier)
 
 QString TrapTables::trapSeverityLevel(int tier)
 {
+    ++tier;
     RandomTable table;
     table.addEntry("Setback", 2);
     table.addEntry("Dangerous", 3);

@@ -1440,17 +1440,6 @@ QString LootTables::hoardCoins(int tier)
 
 }
 
-QString LootTables::miscTreasure(int tier)
-{
-    /* TODO:
-     * spellbook
-     * stores of common items
-     * stores of craft items
-     */
-
-    return "Undefined method: miscTreasure";
-}
-
 QString LootTables::mundaneHorde(int tier)
 {
     int totalValue;

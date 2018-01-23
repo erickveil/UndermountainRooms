@@ -62,11 +62,13 @@ QString complexTrap::effectDivision()
 
 QString complexTrap::trigger(int tier)
 {
+    ++tier;
     return TrapTables::trapTrigger();
 }
 
 QString complexTrap::initiative(int tier)
 {
+    ++tier;
     RandomTable table;
     table.addEntry("initiative count 10");
     table.addEntry("initiative count 20");
@@ -92,6 +94,7 @@ QString complexTrap::ActiveElements(QString severity, int tier)
 
 QString complexTrap::DynamicElements(int tier)
 {
+    tier++;
     RandomTable table;
     int increase = Dice::roll(1,4);
     int increase2 = Dice::roll(1,4);
@@ -212,6 +215,7 @@ QString complexTrap::ConstantElements(QString severity, int tier)
 
 QString complexTrap::Countermeasures(int tier)
 {
+    ++tier;
     RandomTable table;
 
     QString standard = TrapTables::trapDisarm();

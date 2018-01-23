@@ -280,6 +280,7 @@ QString HexcrawlTables::naturalStructure(int tier)
 QString HexcrawlTables::remarkableEvent(int tier)
 {
     RandomTable table;
+    tier = tier+1;
 
     RandomTable effectTable;
     effectTable.addEntry("Feather fall", 60);
@@ -346,6 +347,7 @@ QString HexcrawlTables::remarkableEvent(int tier)
 
 QString HexcrawlTables::lair(int tier)
 {
+    tier = tier+1;
     RandomTable table;
     RandomTable lairTypeTable;
     lairTypeTable.addEntry("Caves");
@@ -567,6 +569,7 @@ QString HexcrawlTables::npcEncounter(int tier)
 
 QString HexcrawlTables::currentEvent(int tier)
 {
+    ++tier;
     RandomTable table;
     RandomTable animals;
     RandomTable robbers;
