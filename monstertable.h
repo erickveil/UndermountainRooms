@@ -17,14 +17,9 @@
 class MonsterTable
 {
     const static int ANY_TIER = -1;
-    QList<MonsterEntry> _possibleEntries;
 
 public:
     MonsterTable();
-    void addEntry(QString name, QList<int> tier, QList<Biome> biome,
-                  Intellect intellect = Civilized, int qty=1);
-    TableEntry rollTable(int tier = ANY_TIER, Biome biome = Any);
-    QString getRollTableEntry(int tier = ANY_TIER, Biome biome = Any);
 
     static QString dungeonMonster(int tier);
     static QString undermountainMonster(int tier);

@@ -37,6 +37,7 @@ public:
     static QString tombRoom();
     static QString treasureVaultRoom();
     static QString libraryRoom();
+    static QString cavern();
 
     static QString doorType();
 

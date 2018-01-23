@@ -649,6 +649,57 @@ QString RandomChambers::libraryRoom()
     return table.getRollTableEntry();
 }
 
+QString RandomChambers::cavern()
+{
+    RandomTable table;
+
+    table.addEntry("Stelagtites and Stelagmites");
+    table.addEntry("Fungal forrest");
+    table.addEntry("Crystal clusters (OotA, p. 26)");
+    table.addEntry("Subterranian sea or lake");
+    table.addEntry("Submerged caves");
+    table.addEntry("Dungeon entrance");
+    table.addEntry("Lair or den of subterranian creatures");
+    table.addEntry("Ancient ruins");
+    table.addEntry("Inhabited region");
+    table.addEntry("Faerzress: a region of dim, glowing light with other abilities (OotA, p. 21)");
+    table.addEntry("Boneyard (OotA, p. 25)");
+    QString depth = QString::number(Dice::roll(2,4) * 100);
+    table.addEntry("Gorge, " + depth + " feet deep.");
+    depth = QString::number(Dice::roll(2,6) * 10);
+    table.addEntry("High ledge that skirts a ravine " + depth + " feet deep");
+    table.addEntry("Lava cave");
+    table.addEntry("Muck Pit - 3 foot deep muck fills the cavern");
+    table.addEntry("Unstable cavern, falling rocks");
+    QString width= QString::number(Dice::roll(2,4) * 10);
+    depth = QString::number(Dice::roll(2,4) * 10);
+    table.addEntry("Rope bridge over ravine that is " + width + " feet wide and "
+                   + depth + " feet deep");
+    table.addEntry("Dry cave that is easily defended. Long rest possible");
+    table.addEntry("Sinhole");
+    table.addEntry("Slime of moldy cave");
+    table.addEntry("Poison gas caves");
+    table.addEntry("Steam vents");
+    table.addEntry("Underground stream");
+    table.addEntry("Web-filled cave");
+    table.addEntry("Stelagmite and column forrest");
+    table.addEntry("Mine");
+    table.addEntry("Fungal growth - knee high. Sometimes grazed by subterranian animals");
+    table.addEntry("Abandoned battlefield");
+    table.addEntry("Active battlefield");
+    table.addEntry("Outpost");
+    table.addEntry("Driftlight caves");
+    table.addEntry("Purple worm or ankheg tunnels");
+    table.addEntry("Carved tunnels");
+    table.addEntry("Large, cathedral caverns");
+    table.addEntry("Sunken swamp");
+    table.addEntry("Vortex to an elemental plane");
+    table.addEntry("Windy caverns");
+    table.addEntry("Abandoned remanents of an ancient society");
+
+    return table.getRollTableEntry();
+}
+
 QString RandomChambers::doorType()
 {
     RandomTable table;
