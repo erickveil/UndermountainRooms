@@ -28,14 +28,11 @@ public:
     static QString sewerEncounter(int tier);
     static QString coastalEncounter(int tier);
     static QString forestEncounter(int tier);
+    static QString grasslandsEncounter(int tier);
+    static QString hillEncounter(int tier);
+    static QString mountainEncounter(int tier);
 
     static QString guardianFoe(int tier);
-
-    static QString generateActivity();
-    static QString monsterDowntime();
-    static QString animalDowntime();
-    static QString humanoidAttacksUrban();
-    static QString creatureAttacksUrban();
 
     static QString generateUrbanEncounter(int tier);
     static QString generateUrbanEncounterNight(int tier);

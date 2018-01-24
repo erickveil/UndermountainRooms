@@ -17,6 +17,7 @@ public:
     static QString animalDowntime();
     static QString humanoidAttacksUrban();
     static QString creatureAttacksUrban();
+    static QString motivation();
 
     static QString generateUrbanEncounter(int tier);
     static QString generateUrbanEncounterNight(int tier);

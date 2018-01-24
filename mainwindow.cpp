@@ -28,6 +28,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->biomeSelect->addItem("Urban Night");
     ui->biomeSelect->addItem("Sewer");
     ui->biomeSelect->addItem("Guardian");
+    ui->biomeSelect->addItem("Coastal");
+    ui->biomeSelect->addItem("Forest");
+    ui->biomeSelect->addItem("Grasslands");
+    ui->biomeSelect->addItem("Hill");
+    ui->biomeSelect->addItem("Mountain");
 
     ui->itemType->addItem("By Tier");
     ui->itemType->addItem("Minor Common");
@@ -172,6 +177,37 @@ void MainWindow::on_wanderingMonster_clicked()
                     + "\n" + loot
                     );
     }
+    else if (biome == "Coastal") {
+        ui->resultArea->setPlainText(
+                    MonsterTable::coastalEncounter(tier)
+                    + "\n" + loot
+                    );
+    }
+    else if (biome == "Forest") {
+        ui->resultArea->setPlainText(
+                    MonsterTable::forestEncounter(tier)
+                    + "\n" + loot
+                    );
+    }
+    else if (biome == "Grasslands") {
+        ui->resultArea->setPlainText(
+                    MonsterTable::grasslandsEncounter(tier)
+                    + "\n" + loot
+                    );
+    }
+    else if (biome == "Hill") {
+        ui->resultArea->setPlainText(
+                    MonsterTable::hillEncounter(tier)
+                    + "\n" + loot
+                    );
+    }
+    else if (biome == "Mountain") {
+        ui->resultArea->setPlainText(
+                    MonsterTable::mountainEncounter(tier)
+                    + "\n" + loot
+                    );
+    }
+
     else {
         ui->resultArea->setPlainText("Unknown biome type: " + biome );
     }
@@ -196,7 +232,7 @@ void MainWindow::on_dunType_clicked()
 
 void MainWindow::on_genAct_clicked()
 {
-    ui->resultArea->setPlainText(MonsterTable::generateActivity());
+    ui->resultArea->setPlainText(EncounterTables::generateActivity());
 }
 
 void MainWindow::on_disarm_clicked()

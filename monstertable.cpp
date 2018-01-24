@@ -321,9 +321,9 @@ QString MonsterTable::urbanEncounterXge(int tier)
 {
     RandomTable table;
 
-    QString animalMotive = " - " + animalDowntime();
-    QString creatureMotive = " - " + creatureAttacksUrban();
-    QString humanoidMotive = " - " + humanoidAttacksUrban();
+    QString animalMotive = " - " + EncounterTables::animalDowntime();
+    QString creatureMotive = " - " + EncounterTables::creatureAttacksUrban();
+    QString humanoidMotive = " - " + EncounterTables::humanoidAttacksUrban();
 
 
     QString qty;
@@ -449,7 +449,7 @@ QString MonsterTable::urbanEncounterXge(int tier)
         disposition += " -" + friendlyHumanoidUrbanActivity();
     }
     else {
-        disposition += " -" + humanoidAttacksUrban();
+        disposition += " -" + EncounterTables::humanoidAttacksUrban();
     }
 
     table.addEntry(NpcTables::adventuringParty(tier) + "\n" + disposition);
@@ -848,8 +848,8 @@ QString MonsterTable::coastalEncounter(int tier)
     QString disposition = NpcTables::npcDisposition();
     QString gender = NpcTables::npcGender();
     QString alignment = NpcTables::determineAlignment();
-    QString activity = generateActivity();
-    QString animalActivity = animalDowntime();
+    QString activity = EncounterTables::motivation();
+    QString animalActivity = EncounterTables::animalDowntime();
     QString npc = gender + " " + race + ", " + alignment + " - " + disposition
             + "(" + activity + ")";
 
@@ -950,8 +950,8 @@ QString MonsterTable::forestEncounter(int tier)
     QString disposition = NpcTables::npcDisposition();
     QString gender = NpcTables::npcGender();
     QString alignment = NpcTables::determineAlignment();
-    QString activity = generateActivity();
-    QString animalActivity = animalDowntime();
+    QString activity = EncounterTables::motivation();
+    QString animalActivity = EncounterTables::animalDowntime();
     QString npc = gender + " " + race + ", " + alignment + " - " + disposition
             + "(" + activity + ")";
 
@@ -981,43 +981,463 @@ QString MonsterTable::forestEncounter(int tier)
     num2 = QString::number(Dice::roll(1,6));
     table.addEntry(num + " tribal warriors with " + num2 + " mastiffs: "
                    + npc);
-    num2 = QString::number(Dice::roll(1,6) + 2);
+    num = QString::number(Dice::roll(1,6) + 2);
     table.addEntry(num + " giant bats");
-    num2 = QString::number(Dice::roll(2,6));
+    num = QString::number(Dice::roll(2,6));
     table.addEntry(num + " flying snakes");
     table.addEntry("1 scout: " + npc);
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry(num + " ");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
-    table.addEntry("");
+    num = QString::number(Dice::roll(2,4));
+    num2 = QString::number(Dice::roll(1,8));
+    table.addEntry(num + " guards with " + num2 + " mastiffs: " + npc);
+    num = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(num + " winged kobolds");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " constrictor snakes: " + animalActivity);
+    num = QString::number(Dice::roll(1,10) + 5);
+    table.addEntry(num + " giant rats");
+    num = QString::number(Dice::roll(2,6) + 3);
+    table.addEntry(num + " giant weasles");
+    num = QString::number(Dice::roll(1,4) + 1);
+    num2 = QString::number(Dice::roll(1,6) + 3);
+    table.addEntry(num + " needle blights with " + num2 + " twig blights");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry("A lost, wandering child. If the characters take the "
+                   "child home, the parents reward them with " + num
+                   + " healing potions");
+    num = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(num + " giant frogs");
+    num = QString::number(Dice::roll(4,4));
+    table.addEntry(num + " kobolds");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " black bears: " + animalActivity);
+    num = QString::number(Dice::roll(3,6));
+    table.addEntry(num + " stirges");
+    table.addEntry("1 satyr");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " kenku");
+    num = QString::number(Dice::roll(1,3));
+    num2= QString::number(Dice::roll(1,12));
+    table.addEntry(num + " vine blights with " + num2 + " awakened shrubs");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " swarms of ravens: " + animalActivity);
+    table.addEntry("1 faerie dragon (yellow or younger): " + disposition
+                   + ", " + activity);
+    num = QString::number(Dice::roll(1,4) + 2);
+    table.addEntry(num + " giant badgers");
+    table.addEntry("A young woodcutter (scout) racing through the forest on a "
+                   "hook.");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " blink dogs: " + animalActivity);
+    num = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(num + " sprites: " + disposition + ", " + activity);
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " elk: " + animalActivity, 3);
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " lizardfolk: " + disposition + ", " + activity);
+    num = QString::number(Dice::roll(3,6));
+    table.addEntry(num + " bandits: " + npc);
+    num = QString::number(Dice::roll(1,4) + 4);
+    table.addEntry(num + " wolves: " + animalActivity);
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " giant wolf spiders");
+    table.addEntry("1 swarm of insects");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " blood hawks");
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " pixies: " + disposition + ", " + activity);
+    table.addEntry("1 brown bear: " + animalActivity);
+    num = QString::number(Dice::roll(1,4) + 3);
+    table.addEntry(num + " goblins");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " dryads: " + disposition + ", " + activity);
+    table.addEntry("1 awakened tree: " + disposition + ", " + activity);
+    table.addEntry("1 phase spider");
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " harpies");
+    table.addEntry("1 ettercap");
+    num = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(num + " orcs");
+    num = QString::number(Dice::roll(2,6) + 1);
+    table.addEntry("1 goblin boss with " + num + " goblins");
+    table.addEntry("1 ankheg");
+    table.addEntry("1 giant constrictor snake");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " bugbears");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " hobgoblins");
+    table.addEntry("1 pegasus: " + animalActivity);
+    table.addEntry("A stream of cool clean water flowing between the trees");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " half-ogres");
+    table.addEntry("1 ogre");
+    table.addEntry("1 faerie dragon (green or older): " + disposition + ", "
+                   + activity);
+    table.addEntry("1 werewolf");
+    table.addEntry("1 druid harvesting mistletoe: " + npc);
+    table.addEntry("1 will-o-wisp");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " dire wolves");
+    table.addEntry("1 giant boar");
+    num = QString::number(Dice::roll(1,10));
+    table.addEntry(num + " giant wasps");
+    table.addEntry("1 owlbear");
+    table.addEntry("1 giant elk: " + animalActivity);
+    num = QString::number(Dice::roll(2,6));
+    table.addEntry(num + " gnolls");
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " giant toads");
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " web cocoons hanging from the branches, "
+                         "holding withered corcasses");
+    table.addEntry("1 wereboar");
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " giant spiders");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + gender + " centaurs: " + disposition + ", "
+                   + activity);
+    table.addEntry(num + " giant elk");
+    num = QString::number(Dice::roll(2,4)+2);
+    table.addEntry("1 Orc Eye of Gruumsh with " + num + " orcs");
+    table.addEntry("1 gnoll Fang of Yeenoghu");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " gricks");
+    num = QString::number(Dice::roll(2,6) + 3);
+    table.addEntry("1 bandit captain with " + num + " bandits: " + npc);
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " wererats");
+    table.addEntry("1 coutail (day) or 1 banshee (night)");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " berzerkers: " + npc);
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " veterans: " + npc);
+    num = QString::number(Dice::roll(1,3));
+    num2 = QString::number(Dice::roll(1,10) + 2);
+    table.addEntry("1 Lizardfolk shaman with " + num
+                   + " swarms of poisonous snakes and " + num2 + " lizardfolk");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " displacer beasts");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " green hags");
+    num = QString::number(Dice::roll(2,6));
+    num2 = QString::number(Dice::roll(1,4));
+    table.addEntry("1 hobgoblin captain with " + num + " hobgoblins and "
+                   + num2 + " giant boars");
+    num = QString::number(Dice::roll(1,6) + 1);
+    table.addEntry("1 yuan-ti malison with " + num + " yuan-ti purebloods");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " weretigers");
+    table.addEntry("1 gorgon");
+    table.addEntry("1 unicorn: " + animalActivity);
+    table.addEntry("1 shambling mound");
+    table.addEntry("1 yuan-ti abomination");
+
+    return table.getRollTableEntry();
+}
+
+QString MonsterTable::grasslandsEncounter(int tier)
+{
+    RandomTable table;
+
+    QString num;
+    QString num2;
+    QString race = NpcTables::commonerRace();
+    QString disposition = NpcTables::npcDisposition();
+    QString gender = NpcTables::npcGender();
+    QString alignment = NpcTables::determineAlignment();
+    QString activity = EncounterTables::motivation();
+    QString animalActivity = EncounterTables::animalDowntime();
+    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
+            + "(" + activity + ")";
+
+    num = QString::number(Dice::roll(1,4) + 1);
+    table.addEntry("1 hobgoblin captain with " + num + " hobgoblins");
+    table.addEntry("1 chimera");
+    table.addEntry("1 gorgon");
+    num = QString::number(Dice::roll(1,2));
+    table.addEntry(num + " couatls");
+    table.addEntry("1 ankylosaurus");
+    table.addEntry("1 weretiger");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " allosauruses");
+    table.addEntry(num + " elephants: " + animalActivity);
+    table.addEntry("1 phase spider");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
+    table.addEntry("1 orog");
+    table.addEntry("1 pegasus: " + animalActivity);
+    table.addEntry("1 ankheg");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " rhinoceroses: " + animalActivity);
+    table.addEntry(num + " cockatrices");
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " giant wasps");
+    num = QString::number(Dice::roll(1,4) + 3);
+    table.addEntry(num + " swarms of insects");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " jackleweres");
+    table.addEntry(num + " scouts: " + npc);
+    num = QString::number(Dice::roll(1,8));
+    table.addEntry(num + " giant goats: " + animalActivity);
+    table.addEntry(num + " worgs");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " hobgoblins");
+    table.addEntry(num + " orcs");
+    table.addEntry(num + " gnolls");
+    num = QString::number(Dice::roll(1,2));
+    table.addEntry(num + " giant poisonous snakes");
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " elk: " + animalActivity);
+    table.addEntry(num + " riding horses: " + animalActivity);
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " goblins");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " boars: " + animalActivity);
+    table.addEntry("1 panther (leopard): " + animalActivity);
+    table.addEntry("1 lion: " + animalActivity);
+    num = QString::number(Dice::roll(1,6) + 3);
+    table.addEntry(num + " goblins riding wolves");
+    num = QString::number(Dice::roll(2,6));
+    table.addEntry(num + " giant wolf spiders");
+    table.addEntry("1 giant eagle: " + animalActivity);
+    num = QString::number(Dice::roll(1,8) + 4);
+    table.addEntry(num + " pteranadons");
+    num = QString::number(Dice::roll(3,6));
+    table.addEntry(num + " wolves: " + animalActivity, 3);
+    num = QString::number(Dice::roll(2,4) + 2);
+    table.addEntry(num + " axe beaks: " + animalActivity);
+    num = QString::number(Dice::roll(1,2));
+    table.addEntry("1 giant boar");
+    table.addEntry(num + " tigers: " + animalActivity);
+    table.addEntry("1 ogre");
+    num = QString::number(Dice::roll(1,2));
+    table.addEntry(num + " bugbears");
+    table.addEntry("1 giant elk: " + animalActivity);
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
+    table.addEntry(num + " giant vultures");
+    table.addEntry(num + " hippogriphs");
+    num = QString::number(Dice::roll(1,6) + 2);
+    num2 = QString::number(Dice::roll(1,4) + 3);
+    table.addEntry("1 goblin boss with " + num + " goblins and " + num2
+                   + "wolves");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " thri-kreen");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " druids patrolling the wilds: " + npc);
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " scarecrows");
+    table.addEntry("1 wereboar");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " " + gender +" centaurs: " + disposition + ", "
+                   + activity);
+    table.addEntry(num + " griffons: " + animalActivity);
+    table.addEntry(num + " gnoll fangs of Yeenoghu");
+    num = QString::number(Dice::roll(2,4) + 1);
+    table.addEntry("Orc eye of Gruumsh with " + num + " orcs");
+    table.addEntry("1 triceratops: " + animalActivity);
+    table.addEntry("1 cyclops");
+    table.addEntry("1 bulette");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " manticores");
+    table.addEntry("1 tyranosaurus rex");
+
+    return table.getRollTableEntry();
+}
+
+QString MonsterTable::hillEncounter(int tier)
+{
+    RandomTable table;
+
+    QString num;
+    QString num2;
+    QString race = NpcTables::commonerRace();
+    QString disposition = NpcTables::npcDisposition();
+    QString gender = NpcTables::npcGender();
+    QString alignment = NpcTables::determineAlignment();
+    QString activity = EncounterTables::motivation();
+    QString animalActivity = EncounterTables::animalDowntime();
+    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
+            + "(" + activity + ")";
+
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " baboons: " + animalActivity);
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " bandits: " + npc);
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " vultures: " + animalActivity);
+    table.addEntry(num + " pegasi: " + animalActivity);
+    num = QString::number(Dice::roll(1,10));
+    table.addEntry(num + " commoners: " + npc);
+    num = QString::number(Dice::roll(2,6));
+    table.addEntry(num + " bandits: " + npc);
+    table.addEntry(num + " tribal warriors: " + npc);
+    table.addEntry("1 goblin boss with " + num + " goblins");
+    num = QString::number(Dice::roll(2,8));
+    table.addEntry(num + " goats: " + animalActivity);
+    num = QString::number(Dice::roll(1,6) + 4);
+    table.addEntry(num + " blood hawks");
+    num = QString::number(Dice::roll(1,4) + 3);
+    table.addEntry(num + " giant weasles: " + animalActivity);
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " griffons: " + animalActivity);
+    table.addEntry(num + " perytons");
+    table.addEntry(num + " trolls");
+    num2 = QString::number(Dice::roll(1,2));
+    table.addEntry(num + " guards with " + num2 + " mastiffs and 1 mule: "
+                   + npc);
+    num = QString::number(Dice::roll(1,6) + 5);
+    table.addEntry(num + " hyenas: " + animalActivity);
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " stirges");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " giant owls: " + animalActivity);
+    num = QString::number(Dice::roll(2,8));
+    table.addEntry(num + " kobolds");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " goblins");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " swarms of bats");
+    table.addEntry(num + " swarms of ravens");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " elk: " + animalActivity);
+    num2 = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " winged kobolds with " + num2 + " kobolds");
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " giant wolf spiders");
+    table.addEntry(num + " hobgoblins");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " wolves: " + animalActivity);
+    num = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(num + " axe beaks");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " boars: " + animalActivity);
+    table.addEntry(num + " dire wolves");
+    table.addEntry(num + " giant boars");
+    table.addEntry(num + " ogres");
+    table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " gnolls");
+    table.addEntry(num + " orcs");
+    table.addEntry("1 hobgoblin captain with " + num + " hobgoblins");
+    table.addEntry(num + " giant goats: " + animalActivity);
+    table.addEntry("1 bandit captain with " + num + " bandits: " + npc);
+    num = QString::number(Dice::roll(1,3) + 1);
+    table.addEntry(num + " harpies");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " half-ogres");
+    table.addEntry(num + " berzerkers: " + npc);
+    num = QString::number(Dice::roll(1,8) + 2);
+    table.addEntry("1 orc Eye of Gruumsh with " + num + " orcs");
+    table.addEntry("1 eagle: " + animalActivity);
+    table.addEntry("1 raven: " + animalActivity);
+    table.addEntry("1 poisonous snake: " + animalActivity);
+    table.addEntry("1 pseudodragon: " + disposition + ", " + activity);
+    table.addEntry("1 lion: " + animalActivity);
+    table.addEntry("1 panther (cougar): " + animalActivity);
+    table.addEntry("1 hippogriff");
+    table.addEntry("1 worg");
+    table.addEntry("1 eagle: " + animalActivity);
+    table.addEntry("An old dwarf sitting on a stump, whittling a piece of "
+                   "wood: " + npc);
+    table.addEntry("1 swarm of insects");
+    table.addEntry("1 brown bear: " + animalActivity);
+    table.addEntry("1 scout: " + npc);
+    table.addEntry("1 ogre");
+    table.addEntry("1 giant elk: " + animalActivity);
+    table.addEntry("1 werewolf");
+    table.addEntry("1 druid: " + npc);
+    table.addEntry("1 veteran: " + npc);
+    table.addEntry("The corpse of an adventurer that carries an intact "
+                   "explorers pack and lies atop a longsword");
+    table.addEntry("1 green hag");
+    table.addEntry("1 manticore");
+    table.addEntry("1 phase spider");
+    table.addEntry("A pile of droppings from a very large bird");
+    table.addEntry("1 gnoll fang of Yeenoghu");
+    table.addEntry("1 ettin");
+    table.addEntry("1 wereboar");
+    table.addEntry("1 cyclops");
+    table.addEntry("1 stone giant: " + gender + ", " + disposition + ", "
+                   + activity);
+
+    return table.getRollTableEntry();
+}
+
+QString MonsterTable::mountainEncounter(int tier)
+{
+    RandomTable table;
+
+    QString num;
+    QString num2;
+    QString race = NpcTables::commonerRace();
+    QString disposition = NpcTables::npcDisposition();
+    QString gender = NpcTables::npcGender();
+    QString alignment = NpcTables::determineAlignment();
+    QString activity = EncounterTables::motivation();
+    QString animalActivity = EncounterTables::animalDowntime();
+    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
+            + "(" + activity + ")";
+
+    table.addEntry("1 eagle: " + animalActivity);
+    table.addEntry("1 lion: " + animalActivity);
+    table.addEntry("1 giant goat: " + animalActivity);
+    table.addEntry("1 half-ogre");
+    table.addEntry("1 berzerker: " + npc);
+    table.addEntry("1 orog");
+    table.addEntry("1 hell hound");
+    table.addEntry("1 druid: " + npc);
+    table.addEntry("1 peryton");
+    table.addEntry("1 manticore");
+    table.addEntry("Enormous footprits left by a giant, which head into the "
+                   "mountain peaks");
+    table.addEntry("1 giant elk: " + animalActivity);
+    table.addEntry("1 veteran: " + npc);
+    table.addEntry("1 orc eye of Gruumsh");
+    table.addEntry("1 ogre");
+    table.addEntry("1 griffon: " + animalActivity);
+    table.addEntry("1 basilisk");
+    table.addEntry("1 saber-toothed tiger");
+    table.addEntry("1 cyclops");
+    table.addEntry("1 troll");
+    table.addEntry("1 galeb duhr");
+    table.addEntry("1 air elemental");
+    table.addEntry("1 bulette");
+    table.addEntry("1 chimera");
+    table.addEntry("1 wyvern");
+    table.addEntry("1 stone giant");
+    table.addEntry("1 frost giant");
+    num = QString::number(Dice::roll(1,2));
+    table.addEntry(num + " hippogriffs");
+    table.addEntry(num + " ettins");
+    num = QString::number(Dice::roll(1,3));
+    table.addEntry(num + " swarms of bats");
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " harpies");
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " aarakocra");
+    table.addEntry(num + " orcs");
+    num = QString::number(Dice::roll(3,4));
+    table.addEntry(num + " kobolds");
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " goats: " + animalActivity);
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " scouts: " + npc);
+    num = QString::number(Dice::roll(1,6) + 3);
+    table.addEntry(num + " pteranodons");
+    num = QString::number(Dice::roll(2,6));
+    num2 = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " dwarf soldiers (guards) with " + num2
+                   + " mules laden with iron ore");
+    num = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(num + " winged kobolds");
+    num = QString::number(Dice::roll(2,8) + 1);
+    table.addEntry(num + " blood hawks");
+    num = QString::number(Dice::roll(1,10) + 5);
+    table.addEntry(num + " tribal warriors: " + npc);
+    num = QString::number(Dice::roll(2,10));
+    table.addEntry(num + " stirges");
 
     return table.getRollTableEntry();
 }
@@ -1088,248 +1508,6 @@ QString MonsterTable::guardianFoe(int tier)
     }
 
     // tier 4
-
-    return table.getRollTableEntry();
-}
-
-
-QString MonsterTable::generateActivity()
-{
-    QString desc;
-    desc = "Intelegent activity: " + monsterDowntime() + "\n";
-    desc += "Animal activity: " + animalDowntime() + "\n";
-    return desc;
-}
-
-QString MonsterTable::monsterDowntime()
-{
-    RandomTable table;
-
-    table.addEntry("Maintaining weapons and armour");
-    table.addEntry("Sparing and training");
-    table.addEntry("Cleaning room");
-    table.addEntry("Shaving");
-    table.addEntry("Enjoying a good meal");
-    table.addEntry("Drinking beer");
-    table.addEntry("Abusing a subordinate");
-    table.addEntry("Tormenting a captive");
-    table.addEntry("Slaughtering a animal to eat");
-    table.addEntry("Gambling");
-    table.addEntry("Making small animals fight for sport and bets");
-    table.addEntry("Delousing self");
-    table.addEntry("Applying first aid");
-    table.addEntry("Cleaning boots");
-    table.addEntry("Whining about dungeon conditions and superiors");
-    table.addEntry("Punishing a subordinate");
-    table.addEntry("Smoking");
-    table.addEntry("High on shrooms");
-    table.addEntry("Playing a game of skill");
-    table.addEntry("Pranking a dorm mate");
-    table.addEntry("Lancing a boil");
-    table.addEntry("Having a brawl or wrestle");
-    table.addEntry("Throwing knives at a target (possibly tied up and alive)");
-    table.addEntry("Abusing a animal");
-    table.addEntry("Trying to read dungeon time sheet or battle plan");
-    table.addEntry("Talking about sweetheart back home (crude artwork or "
-                   "memento like hair)");
-    table.addEntry("Talking about plans to settle down after this tour of "
-                   "duty");
-    table.addEntry("Trimming toenails");
-    table.addEntry("Grooming for date or meeting with boss");
-    table.addEntry("Sitting on bed with a bucket from hangover");
-    table.addEntry("Cheering at dancer or stripper");
-    table.addEntry("Whittle a piece of wood");
-    table.addEntry("Playing dice / Playing knuckle bones");
-    table.addEntry("Arm wrestling");
-    table.addEntry("Getting a tattoo");
-    table.addEntry("Carving artwork on a monster tooth");
-    table.addEntry("Telling dirty and/or racist jokes");
-    table.addEntry("Picking teeth clean");
-    table.addEntry("Cutting hair");
-    table.addEntry("Eating a pie");
-    table.addEntry("Eating sausages");
-    table.addEntry("Eating a turnip");
-    table.addEntry("Playing music and intently listening");
-    table.addEntry("Reciting poetry");
-    table.addEntry("Singing and dancing");
-    table.addEntry("Getting drunk on rotgut grog");
-    table.addEntry("Talking over local map");
-    table.addEntry("Telling ghost stories");
-    table.addEntry("Telling battle stories");
-    table.addEntry("Eating smoked or dried fish");
-    table.addEntry("A spot of cannibalism");
-    table.addEntry("Looting a corpse");
-    table.addEntry("Braiding hair");
-    table.addEntry("Eating coarse moldy bread");
-    table.addEntry("Looking at pornographic artwork");
-    table.addEntry("Mending boots");
-    table.addEntry("Skinning a rat, cat or dog");
-    table.addEntry("Playing with pet");
-    table.addEntry("Training pet");
-    table.addEntry("Teaching a child");
-    table.addEntry("Showing off to each other with feats of strength/prowess");
-    table.addEntry("Reminiscing");
-    table.addEntry("Making fun of humans: 'no after you' 'No! after you!'");
-    table.addEntry("Disturbing grooming - removing bones or prosthetics for "
-                   "cleaning, checking for lesions");
-    table.addEntry("Posing and painting");
-    table.addEntry("Weaving, knitting, sewing and other dungeon handicrafts");
-    table.addEntry("Debugging battle plans");
-    table.addEntry("Mourning over dead comrades body");
-    table.addEntry("Teasing a huge foot long spider or scorpion");
-    table.addEntry("Kicking about a severed head");
-    table.addEntry("Consoling a comrade whose wife left him or some other "
-                   "family tragedy");
-    table.addEntry("Practicing battle cries");
-    table.addEntry("Trying to reach down a drain or air vent for something");
-    table.addEntry("Listening to instructions or pep talk from boss");
-    table.addEntry("Rolling out dough");
-    table.addEntry("Hunting, enraged, for lost keys");
-    table.addEntry("Arguing about latest dungeon roster");
-    table.addEntry("Reading aloud to illiterate comrades");
-    table.addEntry("Talking about who is best god or demon or devil or old "
-                   "one");
-    table.addEntry("Comparing trophies like ears, fingers, scalps, skulls or "
-                   "shrunken heads");
-    table.addEntry("Bathing in a barrel or tub or with sponge or with oil and "
-                   "scraper");
-    table.addEntry("Discussing alignment morality");
-    table.addEntry("Sharing recipes for food or poison");
-    table.addEntry("Brewing grog in small keg or pumpkin before returning to "
-                   "secret hiding spot");
-    table.addEntry("Telling funny stories about murder");
-    table.addEntry("Practicing drill or battle tactics or dance");
-    table.addEntry("Performing sacrifice");
-    table.addEntry("Counting coins");
-    table.addEntry("Talking about wives and girlfriends and moms");
-    table.addEntry("Planning a heist");
-    table.addEntry("Kangaroo courtroom against peer who let team down");
-    table.addEntry("Planing of stealing rival dorm idol or mascot (an ongoing "
-                   "project)");
-    table.addEntry("Hazing a new recruit");
-    table.addEntry("Impersonating boss or enemies or priest");
-    table.addEntry("Sniffing women's stolen clothing");
-    table.addEntry("Biting heads off snakes");
-    table.addEntry("Flexing muscles to see who is strongest");
-    table.addEntry("Dressing in women's clothing for dungeon revue show "
-                   "coming soon");
-    table.addEntry("Reading name tags aloud from lost hats");
-    table.addEntry("Playing board or card game");
-
-    return table.getRollTableEntry();
-}
-
-QString MonsterTable::animalDowntime()
-{
-    RandomTable table;
-
-    table.addEntry("Waiting in ambush");
-    table.addEntry("Emerging from a portal");
-    table.addEntry("Trying to hide");
-    table.addEntry("Hunting or stalking prey");
-    table.addEntry("Killing something/someone");
-    table.addEntry("Eating");
-    table.addEntry("Defecating");
-    table.addEntry("Wandering aimlessly");
-    table.addEntry("Crying out, howling, or signaling");
-    table.addEntry("Playing");
-    table.addEntry("Guarding something");
-    table.addEntry("Comming right at us!");
-    table.addEntry("Staring off into space");
-    table.addEntry("Inspecting something invisible");
-    table.addEntry("Smelling something intently");
-    table.addEntry("Drinking something");
-    table.addEntry("Taking a bath");
-    table.addEntry("Digging a hole");
-    table.addEntry("Burrying something");
-    table.addEntry("Running away from party");
-    table.addEntry("Rolling on the ground");
-    table.addEntry("Fleeing something bigger!");
-    table.addEntry("Acting wounded");
-    table.addEntry("Protecting eggs/young");
-    table.addEntry("Sleeping");
-
-    return table.getRollTableEntry();
-}
-
-QString MonsterTable::humanoidAttacksUrban()
-{
-    RandomTable table;
-
-    table.addEntry("Imagined insult");
-    table.addEntry("Mistaken identity");
-    table.addEntry("Sacrifice to their demon god");
-    table.addEntry("Hired assassin ambush");
-    table.addEntry("Party killed their friends in an earlier adventure");
-    table.addEntry("Hired mercenaries (less sneaky than the assassin approach)");
-    table.addEntry("Madness from illness or magic");
-    table.addEntry("Work for one of the party's enemies");
-    table.addEntry("Trying to prove themselves as superior and make a name for themselves");
-    table.addEntry("Disguised as beggars and the party does not pay them a coin");
-    table.addEntry("Press gang for pirate ship");
-    table.addEntry("Actually harassing someone else unless the party intervenes");
-    table.addEntry("Have the way blocked off and are extracting tolls from everyone before they can pass. (the Watch is never around when you need them).");
-    table.addEntry("This is a robbery!");
-    table.addEntry("More like an attempted mugging");
-    table.addEntry("Challenges the party to a duel");
-    table.addEntry("Need to obtain really, really fresh dead bodies in otherwise good physical health for a mage's experiment");
-    table.addEntry("Racism");
-    table.addEntry("Religious differences");
-    table.addEntry("A disagreement of political ideals");
-    table.addEntry("Philosophical differences - the party just isn't nihilistic enough for them.");
-    table.addEntry("Failure to return a slight nod with any sign of respect.");
-    table.addEntry("Having a bad day and need someone to take it out on.");
-    table.addEntry("Just looking for a fight.");
-    table.addEntry("Drunk.");
-    table.addEntry("Hypnotized/charmed into doing it.");
-    table.addEntry("Sent by one of the player's backstories to haunt them.");
-    table.addEntry("Adolescent foolishness.");
-    table.addEntry("The voices told them to.");
-    table.addEntry("Not in control of their own body and beg the party to help them the entire time they attack them.");
-    table.addEntry("They don't attack, but get the local Watch to think the party is guilty of something they did, perhaps presenting the Watch with a forged 'kill on sight' wanted poster, framing the party as dangerous criminals.");
-    table.addEntry("Attempt to lure the party into a dark alley or sewer entrance or abandoned building before attacking.");
-    table.addEntry("Don't attack but present the party with a too good to be true once in a lifetime deal that is a scam. Get mock-offended and violent if called out.");
-    table.addEntry("Minding their own business, but someone else approaches the party and offers a reward if they initiate the attack.");
-    table.addEntry("Stealing from a third party and the players witness it.");
-    table.addEntry("Actually mounted and try to run down the party and flee. Hit and run.");
-    table.addEntry("Attack from the rooftops with ranged attacks.");
-    table.addEntry("Actually just challenge the party to a friendly duel until the other side submits.");
-    table.addEntry("Pre-existing fight envelops the party.");
-    table.addEntry("Someone shouts something political and the entire street erupts into a riot around the party.");
-    table.addEntry("They spot the party, curse, and take off running! Will fight if chased around that corner.");
-    table.addEntry("Slavers need slaves.");
-    table.addEntry("Drive by shooting from the back of a horse-drawn wagon");
-    table.addEntry("They are bounty hunters that have legitimate wanted posters for the whole party. The issuer is not in this town, and the bounty hunters don't care about the party's story. Dead is easier than alive.");
-    table.addEntry("Not attacking, but tailing the party. They hang back, but keep the PCs in sight. They will wait a cross the street when the party is in a building. They will follow until provoked. They can be easily lost by trying.");
-    table.addEntry("They just don't like wizards/rogues/fighters/whatever class in their town.");
-    table.addEntry("Member of the party is in a gang's territory while inadvertently wearing the colors of rival gang.");
-    table.addEntry("Chaotic people, spreading chaos for the sake of chaos.");
-    table.addEntry("Party has stumbled into a rough part of town.");
-    table.addEntry("Strangers ain't welcome in these here parts.");
-    table.addEntry("Guerilla tactics : strike with ranged attacks, run and hide, repeat. Leading the party deeper into danger, possibly over traps.");
-    table.addEntry("Lure the party through a gate. Leads to another plane or a death trap dungeon. Party must find a way to escape.");
-
-    return table.getRollTableEntry();
-}
-
-QString MonsterTable::creatureAttacksUrban()
-{
-    RandomTable table;
-
-    table.addEntry("Crawls out of sewer");
-    table.addEntry("Springs from a dark alley");
-    table.addEntry("Escapes from a cage, container, or leash");
-    table.addEntry("Lurks in a nearby abandoned building");
-    table.addEntry("Attacking an innocent bystander");
-    table.addEntry("Magic gate just opens and deposits them");
-    table.addEntry("Summoning spell goes off. Summoner unseen.");
-    table.addEntry("People running towards party, chaced by creature.");
-    table.addEntry("Tears arround the corner suddenly, face to face with party");
-    table.addEntry("Bursts out of a building. Dead bodies inside.");
-    table.addEntry("Currently being fought by other adventurers");
-    table.addEntry("Currently being fought by the Watch or Guard");
-    table.addEntry("A nobleman watches his creatures attack with glee from afar.");
-    table.addEntry("Summoning spell gone ary.");
 
     return table.getRollTableEntry();
 }

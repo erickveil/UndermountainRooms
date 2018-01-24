@@ -181,11 +181,11 @@ QString RandomChambers::generateHallwayContents(int tier)
 
     RandomTable table;
 
-    QString motivation = "\nMOTIVATION: " + monsterMotivation();
+    QString motivation = "\nMOTIVATION: " + EncounterTables::motivation();
 
     QString monster = MonsterTable::undermountainMonster(tier);
     QString guard = MonsterTable::guardianFoe(tier);
-    QString activity = MonsterTable::generateActivity();
+    QString activity = EncounterTables::generateActivity();
     QString hazard = dungeonHazards();
     QString monster_loot = LootTables::generateIndividualTreasure(tier);
 
@@ -757,11 +757,11 @@ QString RandomChambers::chamberContents(int tier)
 {
     RandomTable table;
 
-    QString motivation = "MOTIVATION: " + monsterMotivation();
+    QString motivation = "MOTIVATION: " + EncounterTables::motivation();
 
     QString monster = MonsterTable::dungeonMonster(tier);
     QString guard = MonsterTable::guardianFoe(tier);
-    QString activity = MonsterTable::generateActivity();
+    QString activity = EncounterTables::generateActivity();
     QString treasure = LootTables::generateTreasureHorde(tier);
     QString monster_loot = LootTables::generateIndividualTreasure(tier);
 
@@ -844,22 +844,6 @@ QString RandomChambers::dungeonHazards()
     gasTable.addEntry("Sickness: Add 2 levels of exhaustion.");
 
     table.addEntry("Gas hazard: " + gasTable.getRollTableEntry(), 3);
-
-    return table.getRollTableEntry();
-}
-
-QString RandomChambers::monsterMotivation()
-{
-    RandomTable table;
-
-    table.addEntry("Find a sanctuary", 2);
-    table.addEntry("Conquer the dungeon", 3);
-    table.addEntry("Seek an item in the dungeon", 3);
-    table.addEntry("Slay a rival", 3);
-    table.addEntry("Hide from enemies", 2);
-    table.addEntry("Recover from battle", 2);
-    table.addEntry("Avoid danger", 2);
-    table.addEntry("Seek wealth", 3);
 
     return table.getRollTableEntry();
 }

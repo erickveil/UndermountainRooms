@@ -253,6 +253,22 @@ QString EncounterTables::creatureAttacksUrban()
     return table.getRollTableEntry();
 }
 
+QString EncounterTables::motivation()
+{
+    RandomTable table;
+
+    table.addEntry("Find a sanctuary", 2);
+    table.addEntry("Conquer the dungeon", 3);
+    table.addEntry("Seek an item in the dungeon", 3);
+    table.addEntry("Slay a rival", 3);
+    table.addEntry("Hide from enemies", 2);
+    table.addEntry("Recover from battle", 2);
+    table.addEntry("Avoid danger", 2);
+    table.addEntry("Seek wealth", 3);
+
+    return table.getRollTableEntry();
+}
+
 /* Possibilities:
  * neighborhood adventure
  */

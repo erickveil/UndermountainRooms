@@ -45,7 +45,6 @@ public:
     static QString currentChamberState();
     static QString chamberContents(int tier);
     static QString dungeonHazards();
-    static QString monsterMotivation();
     static QString obstacles();
 
     static QString poolEffects();
