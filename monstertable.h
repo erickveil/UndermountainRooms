@@ -31,6 +31,8 @@ public:
     static QString urbanEncounterXge(int tier);
     static QString urbanEncountersUnique();
     static QString sewerEncounter(int tier);
+    static QString coastalEncounter(int tier);
+    static QString forestEncounter(int tier);
 
     static QString guardianFoe(int tier);
 
