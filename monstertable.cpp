@@ -839,6 +839,189 @@ QString MonsterTable::sewerEncounter(int tier)
     return table.getRollTableEntry();
 }
 
+QString MonsterTable::coastalEncounter(int tier)
+{
+    RandomTable table;
+    QString num;
+    QString num2;
+    QString race = NpcTables::commonerRace();
+    QString disposition = NpcTables::npcDisposition();
+    QString gender = NpcTables::npcGender();
+    QString alignment = NpcTables::determineAlignment();
+    QString activity = generateActivity();
+    QString animalActivity = animalDowntime();
+    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
+            + "(" + activity + ")";
+
+    table.addEntry("1 pseudodragon");
+    num = QString::number(Dice::roll(2, 8));
+    table.addEntry(num + " crabs: " + animalActivity, 6-2);
+    num = QString::number(Dice::roll(2, 6));
+    table.addEntry(num + " fishers (commoners: " + npc + ")", 11-6);
+    num = QString::number(Dice::roll(1, 3));
+    table.addEntry(num + " poisonous snakes");
+    num = QString::number(Dice::roll(1, 6));
+    table.addEntry(num + " guards protecting a stranded noble", 14-12);
+    num = QString::number(Dice::roll(2, 4));
+    table.addEntry(num + " scouts: " + npc, 16-14);
+    num = QString::number(Dice::roll(2, 10));
+    table.addEntry(num + " merfolk - " + disposition);
+    num = QString::number(Dice::roll(2, 10)+2);
+    table.addEntry(num + " sahuagin", 21-19);
+    num = QString::number(Dice::roll(1, 4));
+    num2 = QString::number(Dice::roll(2, 6));
+    table.addEntry(num + " ghouls feeding on corpses aboard the wreck "
+                 "of a merchant ship. A search uncovers "
+               + LootTables::mundaneHorde(tier)
+               + " and some mundane cargo.";
+    num = QString::number(Dice::roll(1, 4));
+    num2 = QString::number(Dice::roll(1, 6) + 1);
+    table.addEntry(num + " winged kobolds with " + num2 + " kobolds", 2);
+    num = QString::number(Dice::roll(2, 6));
+    table.addEntry(num + " tribal warriors - " + npc, 2);
+    num = QString::number(Dice::roll(3, 4));
+    table.addEntry(num + " kobolds", 2);
+    num = QString::number(Dice::roll(2, 4) + 5);
+    table.addEntry(num + " blood hawks", 2);
+    num = QString::number(Dice::roll(1, 8) + 1);
+    table.addEntry(num + " pteranodons", 2);
+    table.addEntry("A few dozen baby turtles struggling to make their way "
+               "to the sea.");
+    num = QString::number(Dice::roll(1, 6) + 2);
+    table.addEntry(num + " giant lizards: " + animalActivity, 2);
+    num = QString::number(Dice::roll(1, 6) + 4);
+    table.addEntry(num + " giant crabs", 2);
+    num = QString::number(Dice::roll(2, 4));
+    table.addEntry(num + " stirges", 2);
+    num = QString::number(Dice::roll(2, 6) + 3);
+    table.addEntry(num + " bandits: " + npc, 2);
+    num = QString::number(Dice::roll(2, 4));
+    table.addEntry(num + " sahuagin", 54-49);
+    num = QString::number(Dice::roll(1, 6) + 2);
+    table.addEntry(num + " scouts: " + npc, 2);
+    table.addEntry("1 Sea Hag", 61-56);
+    table.addEntry("A momentary formation in the waves that looks like a "
+               "human face");
+    table.addEntry("1 druid: " + npc, 71-66);
+    num = QString::number(Dice::roll(1, 4));
+    table.addEntry(num + " harpies", 76-71);
+    table.addEntry("A lone hermit (acolyte) sitting on the beach, "
+               "contemplating the meaning of the multiverse (" + npc
+               + ")");
+    num = QString::number(Dice::roll(1, 4));
+    table.addEntry(num + " berserkers: " + npc);
+    num = QString::number(Dice::roll(1, 6));
+    table.addEntry(num + " giant eagles: " + animalActivity);
+    num = QString::number(Dice::roll(2, 4));
+    table.addEntry(num + " giant toads");
+    num = QString::number(Dice::roll(1, 4));
+    table.addEntry(num + " ogres or merrow", 2);
+    num = QString::number(Dice::roll(3, 6));
+    table.addEntry(num + " sahuagin");
+    num = QString::number(Dice::roll(1, 4));
+    table.addEntry(num + " veterans: " + npc);
+    num = QString::number(Dice::roll(1, 2));
+    table.addEntry(num + " plesiosauruses");
+    num = QString::number(Dice::roll(2, 6));
+    table.addEntry("1 bandit captain with " + num + " bandits");
+    num = QString::number(Dice::roll(1, 3));
+    table.addEntry(num + " manticores");
+    table.addEntry("1 banshee");
+    num = QString::number(Dice::roll(1, 4) + 3);
+    table.addEntry(num + " griffons", 2);
+    num = QString::number(Dice::roll(1, 3));
+    num2= QString::number(Dice::roll(2, 6));
+    table.addEntry("1 sahuagin priestess with " + num + " merrow and "
+               + num2 + " sahuagin", 2);
+    table.addEntry("1 sahuagin baron", 2);
+    table.addEntry("1 water elemental", 2);
+    table.addEntry("1 cyclops");
+    table.addEntry("1 young bronze dragon");
+
+    return table.getRollTableEntry();
+}
+
+QString MonsterTable::forestEncounter(int tier)
+{
+    RandomTable table;
+    QString num;
+    QString num2;
+    QString race = NpcTables::commonerRace();
+    QString disposition = NpcTables::npcDisposition();
+    QString gender = NpcTables::npcGender();
+    QString alignment = NpcTables::determineAlignment();
+    QString activity = generateActivity();
+    QString animalActivity = animalDowntime();
+    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
+            + "(" + activity + ")";
+
+    table.addEntry("1 giant owl: " + animalActivity);
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry(num + " cats: " + animalActivity);
+    num = QString::number(Dice::roll(2,4));
+    table.addEntry(num + " woodcutters (commoners): " + npc);
+    num = QString::number(Dice::roll(1,4));
+    table.addEntry("1 badger: " + animalActivity);
+    table.addEntry(num + " poisonous snakes: " + animalActivity);
+    num = QString::number(Dice::roll(2,8));
+    table.addEntry(num + " baboons: " + animalActivity);
+    num = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " hyenas: " + animalActivity);
+    table.addEntry("1 owl: " + animalActivity);
+    table.addEntry("1 pseudodragon: " + activity);
+    table.addEntry("1 panther: " + animalActivity);
+    table.addEntry("1 giant poisonous snake");
+    num = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " boars");
+    num = QString::number(Dice::roll(1,4) + 1);
+    table.addEntry(num + " giant lizards: " + animalActivity);
+    table.addEntry("1 ape");
+    table.addEntry("1 tiger");
+    num = QString::number(Dice::roll(2,6));
+    num2 = QString::number(Dice::roll(1,6));
+    table.addEntry(num + " tribal warriors with " + num2 + " mastiffs: "
+                   + npc);
+    num2 = QString::number(Dice::roll(1,6) + 2);
+    table.addEntry(num + " giant bats");
+    num2 = QString::number(Dice::roll(2,6));
+    table.addEntry(num + " flying snakes");
+    table.addEntry("1 scout: " + npc);
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry(num + " ");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+    table.addEntry("");
+
+    return table.getRollTableEntry();
+}
+
 
 QString MonsterTable::guardianFoe(int tier)
 {
