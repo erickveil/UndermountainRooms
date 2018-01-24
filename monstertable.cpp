@@ -873,7 +873,7 @@ QString MonsterTable::coastalEncounter(int tier)
     table.addEntry(num + " ghouls feeding on corpses aboard the wreck "
                  "of a merchant ship. A search uncovers "
                + LootTables::mundaneHorde(tier)
-               + " and some mundane cargo.";
+               + " and some mundane cargo.");
     num = QString::number(Dice::roll(1, 4));
     num2 = QString::number(Dice::roll(1, 6) + 1);
     table.addEntry(num + " winged kobolds with " + num2 + " kobolds", 2);
