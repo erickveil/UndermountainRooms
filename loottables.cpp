@@ -1674,7 +1674,7 @@ QString LootTables::generateIndividualTreasure(int tier)
     int gp = 0;
     int pp = 0;
     int chance = Dice::roll(1,100);
-    QString treasure = "LOOT: ";
+    QString treasure;
 
     if (tier == 1) {
         if (chance < 31) { cp = Dice::roll(5,6); }

@@ -757,68 +757,35 @@ QString RandomChambers::chamberContents(int tier)
 {
     RandomTable table;
 
-    QString motivation = "MOTIVATION: " + EncounterTables::motivation();
 
     QString monster = MonsterTable::dungeonMonster(tier);
     QString guard = MonsterTable::guardianFoe(tier);
-    QString activity = EncounterTables::generateActivity();
     QString treasure = LootTables::generateTreasureHorde(tier);
-    QString monster_loot = LootTables::generateIndividualTreasure(tier);
-
-    table.addEntry("MONSTER (dominant inhabitant or "
-                   + monster + ")"
-                   + "\nLoot: " + monster_loot + "\n"
-                   + motivation + "\n"
-                   + activity, 8);
-    table.addEntry("MONSTER (dominant inhabitant or "
-                   + monster + ") with treasure"
-                   + "\nLoot: " + monster_loot + "\n"
-                   + motivation + "\n"
-                   + activity + "\n"
-                   + treasure, 7);
-    table.addEntry("MONSTER (pet or allied creature): "
-                   + monster
-                   + "\nLoot: " + monster_loot + "\n"
-                   + motivation + "\n"
-                   + activity, 12);
-    table.addEntry("MONSTER (pet or allied creature) guarding treasure: "
-                   + guard + "\n"
-                   + "Loot: " + monster_loot + "\n"
-                   + activity + "\n"
-                   + treasure, 6);
-    table.addEntry("MONSTER (random): "
-                   + monster
-                   + "\nLoot: " + monster_loot + "\n"
-                   + motivation + "\n"
-                   + activity, 9);
-    table.addEntry("MONSTER (random) with treasure: "
-                   + monster
-                   + "\nLoot: " + monster_loot + "\n"
-                   + motivation + "\n"
-                   + activity + "\n"
-                   + treasure, 8);
-
     QString hazard = dungeonHazards();
+    QString obstacle = obstacles();
+    QString trap = TrapTables::generateTrap(tier);
+    QString trick = TrapTables::generateTrick();
+    QString complexTrap = complexTrap::generateTrap(tier);
+
+    table.addEntry("MONSTER (dominant inhabitant or " + monster + ")" , 8);
+    table.addEntry("MONSTER (dominant inhabitant or "
+                   + monster + ") with treasure" + treasure, 7);
+    table.addEntry("MONSTER (pet or allied creature): " + monster , 12);
+    table.addEntry("MONSTER (pet or allied creature) guarding treasure: "
+                   + guard + "\n" + treasure, 6);
+    table.addEntry("MONSTER (random): " + monster, 9);
+    table.addEntry("MONSTER (random) with treasure: " + monster + "\n"
+                   + treasure, 8);
     table.addEntry("HAZARD (" + hazard + ") with incidental treasure\n"
                    + LootTables::generateIndividualTreasure(tier), 7);
-
-    QString obstacle = obstacles();
     table.addEntry("OBSTACLE: " + obstacle, 5);
-
-    QString trap = TrapTables::generateTrap(tier);
     table.addEntry("TRAP: " + trap, 10);
-    table.addEntry("TRAP protecting treasure: " + trap + "\n"
-                   + treasure, 3);
-
-    QString trick = TrapTables::generateTrick();
+    table.addEntry("TRAP protecting treasure: " + trap + "\n" + treasure, 3);
     table.addEntry("TRICK: " + trick, 4);
-
     table.addEntry("EMPTY ROOM", 8);
     table.addEntry("HAZARD: " + hazard, 6);
     table.addEntry(treasure, 6);
-
-    QString complexTrap = complexTrap::generateTrap(tier);
-    table.addEntry("COMPLEX TRAP:\n" + complexTrap);
+    table.addEntry(complexTrap);
 
     return table.getRollTableEntry();
 }

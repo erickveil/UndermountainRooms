@@ -38,6 +38,22 @@ public:
     static QString generateUrbanEncounterNight(int tier);
     static QString friendlyHumanoidUrbanActivity();
 
+private:
+    // don't need race or gender
+    static QString _intellegentBlock();
+    // don't need race
+    static QString _raceBlock();
+    // only class provided
+    static QString _npcAdventurerBlock();
+    // only class provided - normal races
+    static QString _npcCommonerBlock();
+    // intelegent with motivation provided
+    static QString _motivatedBlock();
+    // animals
+    static QString _animalBlock();
+    // loot only
+    static QString _loot(int tier);
+
 };
 
 #endif // MONSTERTABLE_H

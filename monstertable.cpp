@@ -10,280 +10,170 @@ QString MonsterTable::dungeonMonster(int tier)
 {
     RandomTable table;
     QString qty;
+    QString qty2;
 
     // tier 1
-    table.addEntry("1 Mind Flayer Arcanist");
-
-    qty = QString::number(Dice::roll(1,3) + 1);
-    table.addEntry(qty + " giant poisonous snakes");
-
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " giant lizards");
-
-    qty = QString::number(Dice::roll(2,4));
-    table.addEntry(qty + " giant fire beetles");
-
-    qty = QString::number(Dice::roll(1,8) +1);
-    table.addEntry(qty + " flumphs");
-
+    table.addEntry("1 Mind Flayer Arcanist" + _intellegentBlock());
     table.addEntry("1 shreiker");
-
-    qty = QString::number(Dice::roll(1,12));
-    table.addEntry(qty + " giant rats");
-
-    qty = QString::number(Dice::roll(2,4));
-    table.addEntry(qty + " kobolds");
-
-    qty = QString::number(Dice::roll(1,8) + 1);
-    table.addEntry(qty + " stirges");
-
-    qty = QString::number(Dice::roll(2,4));
-    table.addEntry(qty + " humans (tribal warriors) seeking the way to the "
-                         "surface, fleeing thier Underdark oppressors");
-
-    qty = QString::number(Dice::roll(1,10));
-    table.addEntry(qty + " troglodytes");
+    table.addEntry("1 swarm of insects");
+    table.addEntry("1 deep gnome" + _raceBlock());
+    table.addEntry("1 rust monster" + _animalBlock());
+    table.addEntry("1 dwarf prospector (scout) looking for gold"
+                   + _motivatedBlock());
+    table.addEntry("1 carrion crawler" + _animalBlock());
+    table.addEntry("1 hell hound" + _animalBlock());
+    table.addEntry("1 ochre jelly");
+    table.addEntry("1 nothic" + _raceBlock());
+    table.addEntry("1 giant toad" + _animalBlock());
+    table.addEntry("1 Minotaur" + _animalBlock());
+    table.addEntry("1 Minotaur Skeleton");
+    table.addEntry("1 mimic");
+    table.addEntry("1 doppleganger" + _npcCommonerBlock());
+    table.addEntry("1 intellect devourer" + _animalBlock());
+    table.addEntry("1 spectator");
+    table.addEntry("1 gibbering mouther");
+    table.addEntry("1 water wierd");
+    table.addEntry("1 giant constrictor snake" + _animalBlock());
+    table.addEntry("1 chuul" + _intellegentBlock());
+    table.addEntry("1 salamander" + _intellegentBlock());
+    table.addEntry("1 ghost" + _npcCommonerBlock());
+    table.addEntry("1 flameskull");
+    table.addEntry("1 wraith");
+    table.addEntry("1 druid with 1 polar bear (cave bear)" + _npcCommonerBlock());
+    table.addEntry("1 earth elemental");
+    table.addEntry("1 black pudding");
+    table.addEntry("1 beholder zombie");
+    table.addEntry("1 bone naga");
+    table.addEntry("1 otyugh");
+    table.addEntry("1 roper");
+    table.addEntry("1 vampire spawn" + _raceBlock());
+    table.addEntry("1 chimera" + _animalBlock());
+    table.addEntry("1 mind flayer" + _intellegentBlock());
+    table.addEntry("1 spirit naga" + _intellegentBlock());
+    table.addEntry("1 Babau Demon (VGM)" + _intellegentBlock());
+    table.addEntry("1 Slithering Tracker (VGM)");
+    table.addEntry(NpcTables::adventuringParty(tier));
+    table.addEntry(NpcTables::generateAdventurer(tier));
 
     qty = QString::number(Dice::roll(1,2));
     table.addEntry(qty + " gray oozes");
-
-    qty = QString::number(Dice::roll(3,6));
-    table.addEntry(qty + " stirges");
+    table.addEntry(qty + " gargoyles");
+    table.addEntry(qty + " Cave Fishers(VGM)");
+    table.addEntry(qty + " Choldrith (VGM)" + _intellegentBlock());
+    table.addEntry(qty + " Flail snails (VGM)" + _animalBlock());
+    table.addEntry(qty + " Trappers (VGM)");
 
     qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " magma mephits");
+    table.addEntry(qty + " giant lizards" + _animalBlock());
+    table.addEntry(qty + " spectres" + _npcCommonerBlock());
+    table.addEntry(qty + " grells");
+    table.addEntry(qty + " ettins" + _raceBlock());
+    table.addEntry(qty + " hook horrors" + _animalBlock());
+    table.addEntry("1 quaggoth thonot with " + qty + " quaggoths" + _raceBlock());
+    table.addEntry(qty + " Meenlocks (VGM)");
+    table.addEntry(qty + " Shadow Mastiffs (VGM)" + _animalBlock());
 
-    qty = QString::number(Dice::roll(1,10));
-    table.addEntry(qty + " goblins");
-
-    table.addEntry("1 swarm of insects");
-    table.addEntry("1 deep gnome");
-
-    qty = QString::number(Dice::roll(1,8)+1);
-    table.addEntry(qty + " drow");
+    qty = QString::number(Dice::roll(1,3) + 1);
+    table.addEntry(qty + " giant poisonous snakes" + _animalBlock());
 
     qty = QString::number(Dice::roll(1,4));
     table.addEntry(qty + " violet fungi");
+    table.addEntry(qty + " bugbears" + _raceBlock());
+    table.addEntry(qty + " fire snakes" + _animalBlock());
+    qty2 = QString::number(Dice::roll(5,4));
+    table.addEntry(qty + " myconid adults with " + qty2 + " myconid sprouts" +_intellegentBlock());
+    table.addEntry(qty + " wights" + _npcCommonerBlock());
+    table.addEntry(qty + " ogres" + _raceBlock());
+    table.addEntry(qty + " dwarf explorers (veterans)" + _raceBlock());
+    table.addEntry(qty + " phase spiders" + _animalBlock());
+    qty2 = QString::number(Dice::roll(2,10));
+    table.addEntry("1 hobgoblin captain with " + qty + " half-ogres and "
+                   + qty2 + " hobgoblins" + _raceBlock());
+    qty = QString::number(Dice::roll(1,4));
+    qty2 = QString::number(Dice::roll(2,8));
+    table.addEntry("1 orc Eye of Gruumsh with " + qty + " orogs and " + qty2
+                   + " orcs" + _intellegentBlock());
+    qty = QString::number(Dice::roll(1,4));
+    qty2 = QString::number(Dice::roll(1,10));
+    table.addEntry(qty + " ghasts with " + qty2 + " ghouls");
+    table.addEntry(qty + " Vargouilles (VGM)");
 
-    qty = QString::number(Dice::roll(1,12));
-    table.addEntry(qty + " kuo-toa");
-
-    table.addEntry("1 rust monster");
-
-    qty = QString::number(Dice::roll(1,8)+1);
-    table.addEntry(qty + " giant bats");
-
-    qty = QString::number(Dice::roll(3,6));
-    table.addEntry(qty + " kobolds");
-
-    qty = QString::number(Dice::roll(2,4));
-    table.addEntry(qty + " grimlocks");
-
-    qty = QString::number(Dice::roll(1,4)+3);
+    qty = QString::number(Dice::roll(1,4) + 3);
     table.addEntry(qty + " swarms of bats");
 
-    table.addEntry("1 dwarf prospector (scout) looking for gold");
-    table.addEntry("1 carrion crawler");
-    table.addEntry("1 gelatinous cube");
+    qty = QString::number(Dice::roll(2,4));
+    table.addEntry(qty + " giant fire beetles");
+    table.addEntry(qty + " kobolds" + _intellegentBlock());
+    table.addEntry(qty + " humans (tribal warriors) seeking the way to the "
+                         "surface, fleeing thier Underdark oppressors"
+                   + _motivatedBlock());
+    qty = QString::number(Dice::roll(2,4));
+    table.addEntry(qty + " grimlocks" + _raceBlock());
+    table.addEntry(qty + " piercers");
+    table.addEntry("1 goblin boss with " + qty + " goblins" + _intellegentBlock());
+
+    qty = QString::number(Dice::roll(4,4));
+    table.addEntry(qty + " grimlocks" + _raceBlock());
+
+    qty = QString::number(Dice::roll(5,4));
+    table.addEntry(qty + " duergar" + _raceBlock());
+
+    qty = QString::number(Dice::roll(1,6));
+    table.addEntry(qty + " giant spiders");
+    table.addEntry(qty + " Gazers (VGM)");
+    table.addEntry(qty + " Chitines (VGM)" + _intellegentBlock());
+    table.addEntry(qty + " Darklings (VGM)" + _raceBlock());
+    table.addEntry("1 Darkling Elder and " + qty + " Darklings (VGM)"
+                   + _raceBlock());
+    table.addEntry(qty + " Firenewts (VGM)" + _intellegentBlock());
+    table.addEntry("1 Firenewt Warlock of Imix and " + qty
+                   + " Firenewts (VGM)" + _intellegentBlock());
+    table.addEntry(qty + " Swarm of Rot Grubs (VGM)");
+
+    qty = QString::number(Dice::roll(1,6) + 3);
+    table.addEntry(qty + " hobgoblins" + _raceBlock());
+
+    qty = QString::number(Dice::roll(3,6));
+    table.addEntry(qty + " stirges");
+    table.addEntry(qty + " kobolds" + _intellegentBlock());
+    table.addEntry(qty + " kuo-toa" + _intellegentBlock());
+    table.addEntry(qty + " drow" + _raceBlock());
 
     qty = QString::number(Dice::roll(1,8));
     table.addEntry(qty + " darkmantles");
 
-    qty = QString::number(Dice::roll(2,4));
-    table.addEntry(qty + " piercers");
+    qty = QString::number(Dice::roll(1,8) + 1);
+    table.addEntry(qty + " flumphs");
+    table.addEntry(qty + " stirges");
+    table.addEntry(qty + " drow" + _raceBlock());
+    table.addEntry(qty + " giant bats");
+    table.addEntry(qty + " orcs" + _intellegentBlock());
+    table.addEntry(qty + " quaggoth spore servants" + _intellegentBlock());
+    table.addEntry("1 kuo-toa monitor with " + qty + " kuo-toa whips"
+                   + _intellegentBlock());
 
-    table.addEntry("1 hell hound");
+    qty = QString::number(Dice::roll(2,8) + 1);
+    table.addEntry(qty + " troglodytes" + _intellegentBlock());
 
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " spectres");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " bugbears");
+    qty = QString::number(Dice::roll(1,10));
+    table.addEntry(qty + " troglodytes" + _intellegentBlock());
+    table.addEntry(qty + " goblins" + _intellegentBlock());
 
     qty = QString::number(Dice::roll(1,10) + 5);
-    table.addEntry(qty + " winged kobolds");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " fire snakes");
-
-    qty = QString::number(Dice::roll(2,8)+1);
-    table.addEntry(qty + " troglodytes");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry(qty + " giant spiders");
-
-    qty = QString::number(Dice::roll(3,6));
-    table.addEntry(qty + " kuo-toa");
-
-    qty = QString::number(Dice::roll(2,4));
-    table.addEntry("1 goblin boss with " + qty + " goblins");
-
-    qty = QString::number(Dice::roll(4,4));
-    table.addEntry(qty + " grimlocks");
-
-    table.addEntry("1 ochre jelly");
+    table.addEntry(qty + " winged kobolds" + _intellegentBlock());
 
     qty = QString::number(Dice::roll(2,10));
     table.addEntry(qty + " giant centipedes");
 
-    table.addEntry("1 nothic");
-    table.addEntry("1 giant toad");
-
-    qty = QString::number(Dice::roll(1,4));
-    QString qty2 = QString::number(Dice::roll(5,4));
-    table.addEntry(qty + " myconid adults with " + qty2 + " myconid sprouts");
-
-    table.addEntry("1 Minotaur");
-    table.addEntry("1 Minotaur Skeleton");
-
-    qty = QString::number(Dice::roll(3,6));
-    table.addEntry(qty + " drow");
-
-    table.addEntry("1 mimic");
-    table.addEntry("1 doppleganger");
-
-    qty = QString::number(Dice::roll(1,6)+3);
-    table.addEntry(qty + " hobgoblins");
-
-    table.addEntry("1 intellect devourer");
-    table.addEntry("1 spectator");
-
-    qty = QString::number(Dice::roll(1,8)+1);
-    table.addEntry(qty + " orcs");
-
-    table.addEntry("1 gibbering mouther");
-    table.addEntry("1 water wierd");
-
     qty = QString::number(Dice::roll(1,12));
+    table.addEntry(qty + " giant rats" + _animalBlock());
+    table.addEntry(qty + " kuo-toa" + _intellegentBlock());
     table.addEntry(qty + " gas spores");
-
-    table.addEntry("1 giant constrictor snake");
 
     qty = QString::number(Dice::roll(1,19));
     table.addEntry(qty + " shadows");
 
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " grells");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " wights");
-
-    qty = QString::number(Dice::roll(1,8)+1);
-    table.addEntry(qty + " quaggoth spore servants");
-
-    qty = QString::number(Dice::roll(1,2));
-    table.addEntry(qty + " gargoyles");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " ogres");
-
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " ettins");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " dwarf explorers (veterans)");
-
-    table.addEntry("1 chuul");
-    table.addEntry("1 salamander");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " phase spiders");
-
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " hook horrors");
-
-    qty = QString::number(Dice::roll(5,4));
-    table.addEntry(qty + " duergar");
-
-    table.addEntry("1 ghost");
-    table.addEntry("1 flameskull");
-    table.addEntry("1 wraith");
-    table.addEntry("1 druid with 1 polar bear (cave bear)");
-
-    qty = QString::number(Dice::roll(1,4));
-    qty2 = QString::number(Dice::roll(2,10));
-    table.addEntry("1 hobgoblin captain with " + qty + " half-ogres and "
-                   + qty2 + " hobgoblins");
-
-    table.addEntry("1 earth elemental");
-    table.addEntry("1 black pudding");
-
-    qty = QString::number(Dice::roll(1,8)+1);
-    table.addEntry("1 kuo-toa monitor with " + qty + " kuo-toa whips");
-
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry("1 quaggoth thonot with " + qty + " quaggoths");
-
-    table.addEntry("1 beholder zombie");
-    table.addEntry("1 bone naga");
-
-    qty = QString::number(Dice::roll(1,4));
-    qty2 = QString::number(Dice::roll(2,8));
-    table.addEntry("1 orc Eye of Gruumsh with " + qty + " orogs and " + qty2
-                   + " orcs");
-
-    qty = QString::number(Dice::roll(1,4));
-    qty2 = QString::number(Dice::roll(1,10));
-    table.addEntry(qty + " ghasts with " + qty2 + " ghouls");
-
-    table.addEntry("1 otyugh");
-    table.addEntry("1 roper");
-    table.addEntry("1 vampire spawn");
-    table.addEntry("1 chimera");
-    table.addEntry("1 mind flayer");
-    table.addEntry("1 spirit naga");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry(qty + " Gazers (VGM)");
-
-    qty = QString::number(Dice::roll(1,2));
-    table.addEntry(qty + " Cave Fishers(VGM)");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry(qty + " Chitines (VGM)");
-
-    qty = QString::number(Dice::roll(1,2));
-    table.addEntry(qty + " Choldrith (VGM)");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry(qty + " Darklings (VGM)");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry("1 Darkling Elder and " + qty + " Darklings (VGM)");
-
-    table.addEntry("1 Babau Demon (VGE)");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry(qty + " Firenewts (VGM)");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry("1 Firenewt Warlock of Imix and " + qty
-                   + " Firenewts (VGM)");
-
-    qty = QString::number(Dice::roll(1,2));
-    table.addEntry(qty + " Flail snails (VGM)");
-
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " Meenlocks (VGM)");
-
-    qty = QString::number(Dice::roll(1,3));
-    table.addEntry(qty + " Shadow Mastiffs (VGM)");
-
-    table.addEntry(qty + "1 Slithering Tracker (VGM)");
-
-    qty = QString::number(Dice::roll(1,2));
-    table.addEntry(qty + " Trappers (VGM)");
-
-    qty = QString::number(Dice::roll(1,4));
-    table.addEntry(qty + " Vargouilles (VGM)");
-
-    qty = QString::number(Dice::roll(1,6));
-    table.addEntry(qty + " Swarm of Rot Grubs (VGM)");
-
-    table.addEntry(NpcTables::adventuringParty(tier));
-    table.addEntry(NpcTables::generateAdventurer(tier));
-
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + _loot(tier);
 }
 
 QString MonsterTable::undermountainMonster(int tier)
@@ -844,169 +734,166 @@ QString MonsterTable::coastalEncounter(int tier)
     RandomTable table;
     QString num;
     QString num2;
-    QString race = NpcTables::commonerRace();
-    QString disposition = NpcTables::npcDisposition();
-    QString gender = NpcTables::npcGender();
-    QString alignment = NpcTables::determineAlignment();
-    QString activity = EncounterTables::motivation();
-    QString animalActivity = EncounterTables::animalDowntime();
-    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
-            + "(" + activity + ")";
 
     if (tier == 1) {
-        table.addEntry("1 pseudodragon");
+        table.addEntry("1 pseudodragon" + _intellegentBlock());
         table.addEntry("A few dozen baby turtles struggling to make their way "
                        "to the sea.");
-        table.addEntry("1 Sea Hag");
+        table.addEntry("1 Sea Hag" + _intellegentBlock());
         table.addEntry("A momentary formation in the waves that looks like a "
                "human face");
-        table.addEntry("1 druid: " + npc);
+        table.addEntry("1 druid: " + _npcCommonerBlock());
         table.addEntry("A lone hermit (acolyte) sitting on the beach, "
-               "contemplating the meaning of the multiverse (" + npc
-               + ")");
-        table.addEntry("1 banshee");
-        table.addEntry("1 sahuagin baron");
+               "contemplating the meaning of the multiverse"
+                       + _motivatedBlock());
+        table.addEntry("1 banshee" + _intellegentBlock());
+        table.addEntry("1 sahuagin baron" + _intellegentBlock());
         table.addEntry("1 water elemental");
-        table.addEntry("1 cyclops");
-        table.addEntry("1 deep scion swashbuckler (vgm)");
-        table.addEntry("1 young bronze dragon");
+        table.addEntry("1 cyclops" + _raceBlock());
+        table.addEntry("1 deep scion swashbuckler (vgm)" + _raceBlock());
+        table.addEntry("1 young bronze dragon" + _raceBlock());
 
         num = QString::number(Dice::roll(1, 2));
-        table.addEntry(num + " plesiosauruses");
-        table.addEntry(num + " quetzalcuatlus (vgm)");
+        table.addEntry(num + " plesiosauruses" + _animalBlock());
+        table.addEntry(num + " quetzalcuatlus (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1, 3));
-        table.addEntry(num + " poisonous snakes");
-        table.addEntry(num + " manticores");
+        table.addEntry(num + " poisonous snakes" + _animalBlock());
+        table.addEntry(num + " manticores" + _animalBlock());
         num2= QString::number(Dice::roll(2, 6));
         table.addEntry("1 sahuagin priestess with " + num + " merrow and "
-               + num2 + " sahuagin");
+               + num2 + " sahuagin" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1, 4));
         num2 = QString::number(Dice::roll(2, 6));
-        table.addEntry(num + " dimetrodons (vgm)");
+        table.addEntry(num + " dimetrodons (vgm)" + _animalBlock());
         table.addEntry(num + " ghouls feeding on corpses aboard the wreck "
              "of a merchant ship. A search uncovers "
                + LootTables::mundaneHorde(tier)
                + " and some mundane cargo.");
         num2 = QString::number(Dice::roll(1, 6) + 1);
-        table.addEntry(num + " winged kobolds with " + num2 + " kobolds");
+        table.addEntry(num + " winged kobolds with " + num2 + " kobolds"
+                       + _intellegentBlock());
         table.addEntry(num + " harpies");
-        table.addEntry(num + " berserkers: " + npc);
-        table.addEntry(num + " ogres");
-        table.addEntry(num + " merrow");
-        table.addEntry(num + " veterans: " + npc);
-        table.addEntry(num + " sea spawns (vgm)");
+        table.addEntry(num + " berserkers: " + _npcCommonerBlock());
+        table.addEntry(num + " ogres" + _raceBlock());
+        table.addEntry(num + " merrow" + _raceBlock());
+        table.addEntry(num + " veterans: " + _npcCommonerBlock());
+        table.addEntry(num + " sea spawns (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1, 4) + 3);
-        table.addEntry(num + " griffons", 2);
+        table.addEntry(num + " griffons" + _animalBlock(), 2);
 
         num = QString::number(Dice::roll(2, 4));
-        table.addEntry(num + " stirges");
-        table.addEntry(num + " sahuagin");
-        table.addEntry(num + " giant toads");
-        table.addEntry(num + " scouts: " + npc);
+        table.addEntry(num + " stirges" + _animalBlock());
+        table.addEntry(num + " sahuagin" + _intellegentBlock());
+        table.addEntry(num + " giant toads" + _animalBlock());
+        table.addEntry(num + " scouts: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(2, 4) + 5);
-        table.addEntry(num + " blood hawks");
+        table.addEntry(num + " blood hawks" + _animalBlock());
 
         num = QString::number(Dice::roll(3, 4));
-        table.addEntry(num + " kobolds");
+        table.addEntry(num + " kobolds" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1, 6));
-        table.addEntry(num + " giant eagles: " + animalActivity);
-        table.addEntry(num + " guards protecting a stranded noble");
+        table.addEntry(num + " giant eagles: " + _animalBlock());
+        table.addEntry(num + " guards protecting a stranded noble"
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1, 6) + 2);
-        table.addEntry(num + " giant lizards: " + animalActivity);
-        table.addEntry(num + " scouts: " + npc);
+        table.addEntry(num + " giant lizards: " + _animalBlock());
+        table.addEntry(num + " scouts: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1, 6) + 4);
-        table.addEntry(num + " giant crabs");
+        table.addEntry(num + " giant crabs" + _animalBlock());
 
         num = QString::number(Dice::roll(2, 6));
-        table.addEntry(num + " fishers (commoners: " + npc + ")", 11-6);
-        table.addEntry(num + " tribal warriors - " + npc);
-        table.addEntry("1 bandit captain with " + num + " bandits");
+        table.addEntry(num + " fishers (commoners): " + _npcCommonerBlock());
+        table.addEntry(num + " tribal warriors - " + _npcCommonerBlock());
+        table.addEntry("1 bandit captain with " + num + " bandits"
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(2, 6) + 3);
-        table.addEntry(num + " bandits: " + npc);
+        table.addEntry(num + " bandits: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(3, 6));
-        table.addEntry(num + " sahuagin");
+        table.addEntry(num + " sahuagin" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1, 8) + 1);
-        table.addEntry(num + " pteranodons");
+        table.addEntry(num + " pteranodons" + _animalBlock());
 
         num = QString::number(Dice::roll(2, 8));
-        table.addEntry(num + " crabs: " + animalActivity);
+        table.addEntry(num + " crabs: " + _animalBlock());
 
         num = QString::number(Dice::roll(2, 10));
-        table.addEntry(num + " merfolk - " + disposition);
+        table.addEntry(num + " merfolk - " + _raceBlock());
 
         num = QString::number(Dice::roll(2, 10)+2);
-        table.addEntry(num + " sahuagin");
+        table.addEntry(num + " sahuagin" + _intellegentBlock());
     }
     else { // tier 2
-        table.addEntry("1 sea hag");
+        table.addEntry("1 sea hag" + _intellegentBlock());
         table.addEntry("1 pseudodragon chasing gulls through the air");
-        table.addEntry("1 commoner singing a dirge: " + npc
-                       + " (day only) or 1 banshee (night only)");
+        table.addEntry("1 commoner singing a dirge"
+                       " (day only) or 1 banshee (night only)"
+                       + _intellegentBlock());
         table.addEntry("A battle at sea between 2 galleons");
-        table.addEntry("3 sea hags");
+        table.addEntry("3 sea hags" + _intellegentBlock());
         table.addEntry("A severed humanoid hand tangled in a net");
-        table.addEntry("1 water elemental");
-        table.addEntry("1 cyclops");
-        table.addEntry("1 young bronze dragon: " + npc);
-        table.addEntry("1 young blue dragon: " + npc);
-        table.addEntry("1 djinni");
-        table.addEntry("1 roc");
-        table.addEntry("1 marid");
-        table.addEntry("1 storm giant");
-        table.addEntry("1 storm giant dreamwalker (vgm)");
+        table.addEntry("1 water elemental" + _intellegentBlock());
+        table.addEntry("1 cyclops" + _intellegentBlock());
+        table.addEntry("1 young bronze dragon: " + _intellegentBlock());
+        table.addEntry("1 young blue dragon: " + _intellegentBlock());
+        table.addEntry("1 djinni" + _raceBlock());
+        table.addEntry("1 roc" + _animalBlock());
+        table.addEntry("1 marid" + _raceBlock());
+        table.addEntry("1 storm giant" + _raceBlock());
+        table.addEntry("1 storm giant dreamwalker (vgm)" + _raceBlock());
         num = QString::number(Dice::roll(1, 2));
-        table.addEntry(num + " druids: " + npc);
-        table.addEntry(num + " kraken priests (vgm): " + npc);
+        table.addEntry(num + " druids: " + _npcCommonerBlock());
+        table.addEntry(num + " kraken priests (vgm): " + _npcAdventurerBlock());
         num = QString::number(Dice::roll(1, 3));
         num2 = QString::number(Dice::roll(2, 8));
         table.addEntry("1 sahuagin baron with " + num
-                       + " sahuagin priestesses and " + num2 + " sahuagin");
-        table.addEntry(num + " cyclopses");
+                       + " sahuagin priestesses and " + num2 + " sahuagin"
+                       + _intellegentBlock());
+        table.addEntry(num + " cyclopses" + _raceBlock());
         num = QString::number(Dice::roll(1, 4));
-        table.addEntry(num + " plesiosauruses");
-        table.addEntry(num + " manticores");
-        table.addEntry(num + " banshees (night only)");
+        table.addEntry(num + " plesiosauruses" + _animalBlock());
+        table.addEntry(num + " manticores" + _animalBlock());
+        table.addEntry(num + " banshees (night only)" + _intellegentBlock());
         num = QString::number(Dice::roll(1, 4) + 1);
-        table.addEntry(num + " giant toads");
+        table.addEntry(num + " giant toads" + _animalBlock());
         num = QString::number(Dice::roll(1, 4) + 3);
-        table.addEntry(num + " merrow");
+        table.addEntry(num + " merrow" + _raceBlock() );
         num = QString::number(Dice::roll(2, 4));
-        table.addEntry(num + " scouts: " + npc);
-        table.addEntry(num + " veterans: " + npc);
-        table.addEntry(num + " ogres");
+        table.addEntry(num + " scouts: " + _npcCommonerBlock());
+        table.addEntry(num + " veterans: " + _npcCommonerBlock());
+        table.addEntry(num + " ogres" + _raceBlock());
         num = QString::number(Dice::roll(2, 4) + 1);
-        table.addEntry(num + " giant toads");
+        table.addEntry(num + " giant toads" + _animalBlock());
         num = QString::number(Dice::roll(1, 6) + 2);
-        table.addEntry(num + " sahuagin");
+        table.addEntry(num + " sahuagin" + _intellegentBlock());
         num = QString::number(Dice::roll(2, 6));
-        table.addEntry(num + " giant eagles: " + animalActivity);
+        table.addEntry(num + " giant eagles: " + _animalBlock());
         num = QString::number(Dice::roll(3, 6));
-        table.addEntry(num + " pteranodons");
-        table.addEntry(num + " sahuagin");
+        table.addEntry(num + " pteranodons" + _intellegentBlock());
+        table.addEntry(num + " sahuagin" + _intellegentBlock());
         num = QString::number(Dice::roll(1, 8) + 1);
         table.addEntry(num + " harpies");
         num = QString::number(Dice::roll(2, 8));
-        table.addEntry(num + " giant wolf spiders");
+        table.addEntry(num + " giant wolf spiders" + _animalBlock());
         num = QString::number(Dice::roll(1, 10));
-        table.addEntry(num + " griffons");
+        table.addEntry(num + " griffons" + _animalBlock());
         num = QString::number(Dice::roll(2, 12));
         table.addEntry("A pirate crew consisting of 1 bandit captain, 1 "
                        "druid, 2 berserkers and " + num
-                       + " bandits, all searching for burried treasure ("
-                       + npc + ")");
+                       + " bandits, all searching for burried treasure"
+                       + _motivatedBlock());
     }
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + _loot(tier);
 }
 
 QString MonsterTable::forestEncounter(int tier)
@@ -1014,361 +901,361 @@ QString MonsterTable::forestEncounter(int tier)
     RandomTable table;
     QString num;
     QString num2;
-    QString race = NpcTables::commonerRace();
-    QString disposition = NpcTables::npcDisposition();
-    QString gender = NpcTables::npcGender();
-    QString alignment = NpcTables::determineAlignment();
-    QString activity = EncounterTables::motivation();
-    QString animalActivity = EncounterTables::animalDowntime();
-    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
-            + "(" + activity + ")";
 
-    if (tier == 1) {
-        table.addEntry("1 giant owl: " + animalActivity);
-        table.addEntry("1 owl: " + animalActivity);
-        table.addEntry("1 pseudodragon: " + activity);
-        table.addEntry("1 panther: " + animalActivity);
-        table.addEntry("1 giant poisonous snake");
-        table.addEntry("1 ape");
-        table.addEntry("1 tiger");
-        table.addEntry("1 scout: " + npc);
-        table.addEntry("1 satyr");
-        table.addEntry("1 faerie dragon (yellow or younger): " + disposition
-               + ", " + activity);
+   if (tier == 1) {
+        table.addEntry("1 giant owl: " + _animalBlock());
+        table.addEntry("1 owl: " + _animalBlock());
+        table.addEntry("1 pseudodragon: " + _intellegentBlock());
+        table.addEntry("1 panther: " + _animalBlock());
+        table.addEntry("1 giant poisonous snake" + _animalBlock());
+        table.addEntry("1 ape" + _animalBlock());
+        table.addEntry("1 tiger" + _animalBlock());
+        table.addEntry("1 scout: " + _npcCommonerBlock());
+        table.addEntry("1 satyr" + _intellegentBlock());
+        table.addEntry("1 faerie dragon (yellow or younger): " + _raceBlock());
         table.addEntry("A young woodcutter (scout) racing through the forest on a "
-               "hook.");
+               "hook." + _motivatedBlock());
         table.addEntry("1 swarm of insects");
-        table.addEntry("1 brown bear: " + animalActivity);
-        table.addEntry("1 awakened tree: " + disposition + ", " + activity);
-        table.addEntry("1 phase spider");
-        table.addEntry("1 ettercap");
+        table.addEntry("1 brown bear: " + _animalBlock());
+        table.addEntry("1 awakened tree: " + _intellegentBlock());
+        table.addEntry("1 phase spider" + _animalBlock());
+        table.addEntry("1 ettercap" + _intellegentBlock());
         table.addEntry("1 ankheg");
-        table.addEntry("1 giant constrictor snake");
-        table.addEntry("1 pegasus: " + animalActivity);
-        table.addEntry("A stream of cool clean water flowing between the trees");
-        table.addEntry("1 ogre");
-        table.addEntry("1 faerie dragon (green or older): " + disposition + ", "
-               + activity);
-        table.addEntry("1 werewolf");
-        table.addEntry("1 druid harvesting mistletoe: " + npc);
+        table.addEntry("1 giant constrictor snake" + _animalBlock());
+        table.addEntry("1 pegasus: " + _animalBlock());
+        table.addEntry("1 ogre" + _raceBlock());
+        table.addEntry("1 faerie dragon (green or older): " + _raceBlock());
+        table.addEntry("1 werewolf" + _npcCommonerBlock());
+        table.addEntry("1 druid harvesting mistletoe: " + _npcCommonerBlock());
         table.addEntry("1 will-o-wisp");
-        table.addEntry("1 giant boar");
-        table.addEntry("1 owlbear");
-        table.addEntry("1 giant elk: " + animalActivity);
-        table.addEntry("1 gnoll Fang of Yeenoghu");
-        table.addEntry("1 coutail (day) or 1 banshee (night)");
-        table.addEntry("1 gorgon");
-        table.addEntry("1 unicorn: " + animalActivity);
-        table.addEntry("1 shambling mound");
-        table.addEntry("1 yuan-ti abomination");
-        table.addEntry("1 archer (vgm): " + npc);
-        table.addEntry("1 flail snail (vgm)");
-        table.addEntry("1 orc Red Fang of Shargaas (vgm)");
-        table.addEntry("1 redcap (vgm)" );
-        table.addEntry("1 Barghest (vgm)");
-        table.addEntry("1 girallon (vgm)");
-        table.addEntry("1 hobgoblin devestartor (vgm)");
-        table.addEntry("1 orc Blade of Ilneval (vgm)");
-        table.addEntry("1 stegasaurus (vgm): " + animalActivity);
-        table.addEntry("1 warlock of the archfey: " + npc);
-        table.addEntry("1 yeth hound (vgm)");
-        table.addEntry("1 " + gender + " yuan-ti mind-whisperer (vgm)");
-        table.addEntry("1 " + gender + " yuan-ti nightmare-speaker (vgm)");
+        table.addEntry("1 giant boar" + _animalBlock());
+        table.addEntry("1 owlbear" + _animalBlock());
+        table.addEntry("1 giant elk: " + _animalBlock());
+        table.addEntry("1 gnoll Fang of Yeenoghu" + _intellegentBlock());
+        table.addEntry("1 coutail (day) or 1 banshee (night)"
+                       + _intellegentBlock());
+        table.addEntry("1 gorgon" + _animalBlock());
+        table.addEntry("1 unicorn: " + _animalBlock());
+        table.addEntry("1 shambling mound" + _animalBlock());
+        table.addEntry("1 yuan-ti abomination" + _raceBlock());
+        table.addEntry("1 archer (vgm): " + _npcCommonerBlock());
+        table.addEntry("1 flail snail (vgm)" + _animalBlock());
+        table.addEntry("1 orc Red Fang of Shargaas (vgm)" + _intellegentBlock());
+        table.addEntry("1 redcap (vgm)"  + _intellegentBlock());
+        table.addEntry("1 Barghest (vgm)" + _intellegentBlock());
+        table.addEntry("1 girallon (vgm)" + _animalBlock());
+        table.addEntry("1 hobgoblin devestartor (vgm)" + _raceBlock());
+        table.addEntry("1 orc Blade of Ilneval (vgm)" + _intellegentBlock());
+        table.addEntry("1 stegasaurus (vgm): " + _animalBlock());
+        table.addEntry("1 warlock of the archfey: " + _npcCommonerBlock());
+        table.addEntry("1 yeth hound (vgm)" + _animalBlock());
+        table.addEntry("1  yuan-ti mind-whisperer (vgm)" + _raceBlock());
+        table.addEntry("1  yuan-ti nightmare-speaker (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,3));
-        table.addEntry(num + " constrictor snakes: " + animalActivity);
+        table.addEntry(num + " constrictor snakes: " + _animalBlock());
         table.addEntry("A lost, wandering child. If the characters take the "
                "child home, the parents reward them with " + num
-               + " healing potions");
-        table.addEntry(num + " black bears: " + animalActivity);
+               + " healing potions" + _motivatedBlock());
+        table.addEntry(num + " black bears: " + _animalBlock());
         num2= QString::number(Dice::roll(1,12));
         table.addEntry(num + " vine blights with " + num2 + " awakened shrubs");
-        table.addEntry(num + " dryads: " + disposition + ", " + activity);
+        table.addEntry(num + " dryads" + _intellegentBlock());
         num2 = QString::number(Dice::roll(1,10) + 2);
         table.addEntry("1 Lizardfolk shaman with " + num
-               + " swarms of poisonous snakes and " + num2 + " lizardfolk");
-        table.addEntry(num + " green hags");
-        table.addEntry(num + " weretigers: " + npc);
-        table.addEntry(num + " guard drakes (vgm)");
-        table.addEntry(num + " hobgoblin iron shadows (vgm)");
-        table.addEntry(num + " meenloks (vgm)");
-        table.addEntry(num + " orc hand of Yurtrus (vgm)");
-        table.addEntry(num + " shadow mastiffs(vgm)");
-        table.addEntry(num + " yuan-ti broodguards (vgm)");
+               + " swarms of poisonous snakes and " + num2 + " lizardfolk"
+                       + _intellegentBlock());
+        table.addEntry(num + " green hags" + _intellegentBlock());
+        table.addEntry(num + " weretigers: " + _npcCommonerBlock());
+        table.addEntry(num + " guard drakes (vgm)" + _animalBlock());
+        table.addEntry(num + " hobgoblin iron shadows (vgm)" + _raceBlock());
+        table.addEntry(num + " meenloks (vgm)" + _animalBlock());
+        table.addEntry(num + " orc hand of Yurtrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " shadow mastiffs(vgm)" + _animalBlock());
+        table.addEntry(num + " yuan-ti broodguards (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " cats: " + animalActivity);
-        table.addEntry("1 badger: " + animalActivity);
-        table.addEntry(num + " poisonous snakes: " + animalActivity);
-        table.addEntry(num + " swarms of ravens: " + animalActivity);
-        table.addEntry(num + " lizardfolk: " + disposition + ", " + activity);
-        table.addEntry(num + " bugbears");
-        table.addEntry(num + " half-ogres");
-        table.addEntry(num + " dire wolves");
-        table.addEntry("1 wereboar: " + npc);
-        table.addEntry(num + gender + " centaurs: " + disposition + ", "
-               + activity);
-        table.addEntry(num + " giant elk");
-        table.addEntry(num + " gricks");
-        table.addEntry(num + " wererats");
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
-        table.addEntry(num + " veterans: " + npc);
-        table.addEntry(num + " displacer beasts");
-        table.addEntry(num + " deinonychus (vgm)");
-        table.addEntry(num + " gnoll flesh gnawers (vgm)");
-        table.addEntry(num + " grung wildlings (vgm)" + disposition + ", "
-                       + activity);
-        table.addEntry(num + " quicklings (vgm): " + disposition + ", "
-                       + activity);
-        table.addEntry(num + " vegepygmy thornies (vgm): " + disposition + ", "
-                       + activity);
-        table.addEntry("1 " + gender + " darkling elder (vgm) with " + num
-                       + " darklings");
+        table.addEntry(num + " cats: " + _animalBlock());
+        table.addEntry("1 badger: " + _animalBlock());
+        table.addEntry(num + " poisonous snakes: " + _animalBlock());
+        table.addEntry(num + " swarms of ravens: " + _animalBlock());
+        table.addEntry(num + " lizardfolk: " + _intellegentBlock());
+        table.addEntry(num + " bugbears" + _raceBlock());
+        table.addEntry(num + " half-ogres" + _raceBlock());
+        table.addEntry(num + " dire wolves" + _animalBlock());
+        table.addEntry("1 wereboar: " + _npcCommonerBlock());
+        table.addEntry(num + " centaurs: " + _raceBlock());
+        table.addEntry(num + " giant elk" + _animalBlock());
+        table.addEntry(num + " gricks" + _animalBlock());
+        table.addEntry(num + " wererats" + _npcCommonerBlock());
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas"
+                       + _intellegentBlock());
+        table.addEntry(num + " veterans: " + _npcCommonerBlock());
+        table.addEntry(num + " displacer beasts" + _animalBlock());
+        table.addEntry(num + " deinonychus (vgm)" + _animalBlock());
+        table.addEntry(num + " gnoll flesh gnawers (vgm)" + _intellegentBlock());
+        table.addEntry(num + " grung wildlings (vgm)" + _intellegentBlock());
+        table.addEntry(num + " quicklings (vgm): " + _intellegentBlock());
+        table.addEntry(num + " vegepygmy thornies (vgm): " + _intellegentBlock());
+        table.addEntry("1 darkling elder (vgm) with " + num
+                       + " darklings" + _raceBlock());
 
         num = QString::number(Dice::roll(1,4) + 1);
-        table.addEntry(num + " giant lizards: " + animalActivity);
+        table.addEntry(num + " giant lizards: " + _animalBlock());
         num2 = QString::number(Dice::roll(1,6) + 3);
-        table.addEntry(num + " needle blights with " + num2 + " twig blights");
+        table.addEntry(num + " needle blights with " + num2 + " twig blights"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,4) + 2);
-        table.addEntry(num + " giant badgers");
+        table.addEntry(num + " giant badgers" + _animalBlock());
 
         num = QString::number(Dice::roll(1,4) + 3);
-        table.addEntry(num + " goblins");
+        table.addEntry(num + " goblins" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,4) + 4);
-        table.addEntry(num + " wolves: " + animalActivity);
+        table.addEntry(num + " wolves: " + _animalBlock());
 
         num = QString::number(Dice::roll(2,4));
-        table.addEntry(num + " woodcutters (commoners): " + npc);
+        table.addEntry(num + " woodcutters (commoners): " + _npcCommonerBlock());
         num2 = QString::number(Dice::roll(1,8));
-        table.addEntry(num + " guards with " + num2 + " mastiffs: " + npc);
-        table.addEntry(num + " kenku");
-        table.addEntry(num + " blink dogs: " + animalActivity);
+        table.addEntry(num + " guards with " + num2 + " mastiffs: "
+                       + _npcCommonerBlock());
+        table.addEntry(num + " kenku" + _raceBlock());
+        table.addEntry(num + " blink dogs: " + _animalBlock());
         table.addEntry(num + " giant wolf spiders");
-        table.addEntry(num + " blood hawks");
-        table.addEntry(num + " hobgoblins");
-        table.addEntry(num + " berzerkers: " + npc);
-        table.addEntry(num + " boggles (vgm): " + disposition + ", "
-                       + activity);
-        table.addEntry(num + " " + gender + "darklings (vgm)");
-        table.addEntry(num + " orc neutered ones of Yurturus (vgm)");
+        table.addEntry(num + " blood hawks" + _animalBlock());
+        table.addEntry(num + " hobgoblins" + _raceBlock());
+        table.addEntry(num + " berzerkers: " + _npcCommonerBlock());
+        table.addEntry(num + " boggles (vgm): " + _intellegentBlock());
+        table.addEntry(num + "darklings (vgm)" + _raceBlock());
+        table.addEntry(num + " orc neutered ones of Yurturus (vgm)"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,4) + 2);
-        table.addEntry("1 Orc Eye of Gruumsh with " + num + " orcs");
+        table.addEntry("1 Orc Eye of Gruumsh with " + num + " orcs"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(4,4));
-        table.addEntry(num + " kobolds");
-        table.addEntry("1 kobold inventor (vgm) with " + num + " kobolds");
-        table.addEntry("1 kobold dragon shield (vgm) with " + num + " kobolds");
-        table.addEntry("1 kobold scale sorceror (vgm) with " + num + " kobolds");
+        table.addEntry(num + " kobolds" + _intellegentBlock());
+        table.addEntry("1 kobold inventor (vgm) with " + num + " kobolds"
+                       + _intellegentBlock());
+        table.addEntry("1 kobold dragon shield (vgm) with " + num + " kobolds"
+                       + _intellegentBlock());
+        table.addEntry("1 kobold scale sorceror (vgm) with " + num + " kobolds"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " hyenas: " + animalActivity);
+        table.addEntry(num + " hyenas: " + _animalBlock());
         table.addEntry(num + " harpies");
-        table.addEntry(num + " giant toads");
+        table.addEntry(num + " giant toads" + _animalBlock());
         table.addEntry(num + " web cocoons hanging from the branches, "
-                 "holding withered corcasses");
+                 "holding withered carcasses");
 
         num = QString::number(Dice::roll(1,6) + 1);
-        table.addEntry("1 yuan-ti malison with " + num + " yuan-ti purebloods");
+        table.addEntry("1 yuan-ti malison with " + num + " yuan-ti purebloods"
+                       + _raceBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
-        table.addEntry(num + " boars");
+        table.addEntry(num + " boars" + _animalBlock());
         table.addEntry(num + " giant bats");
-        table.addEntry(num + " elk: " + animalActivity, 3);
-        table.addEntry(num + " pixies: " + disposition + ", " + activity);
+        table.addEntry(num + " elk: " + _animalBlock(), 3);
+        table.addEntry(num + " pixies: " + _intellegentBlock());
         table.addEntry(num + " giant spiders");
 
         num = QString::number(Dice::roll(2,6));
         num2 = QString::number(Dice::roll(1,6));
         table.addEntry(num + " tribal warriors with " + num2 + " mastiffs: "
-               + npc);
+               + _npcCommonerBlock());
         table.addEntry(num + " flying snakes");
-        table.addEntry(num + " gnolls");
-        table.addEntry("1 gnoll hunter (vgm) with " + num + " gnolls");
+        table.addEntry(num + " gnolls" + _intellegentBlock());
+        table.addEntry("1 gnoll hunter (vgm) with " + num + " gnolls"
+                       + _intellegentBlock());
         num2 = QString::number(Dice::roll(1,4));
         table.addEntry("1 hobgoblin captain with " + num + " hobgoblins and "
-               + num2 + " giant boars");
+               + num2 + " giant boars" + _raceBlock());
 
         num = QString::number(Dice::roll(2,6) + 1);
-        table.addEntry("1 goblin boss with " + num + " goblins");
-        table.addEntry("1 nilbog with " + num + " goblins");
+        table.addEntry("1 goblin boss with " + num + " goblins"
+                       + _intellegentBlock());
+        table.addEntry("1 nilbog with " + num + " goblins"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,6) + 3);
-        table.addEntry(num + " giant weasles");
-        table.addEntry("1 bandit captain with " + num + " bandits: " + npc);
+        table.addEntry(num + " giant weasles" + _animalBlock());
+        table.addEntry("1 bandit captain with " + num + " bandits: "
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(3,6));
         table.addEntry(num + " stirges");
-        table.addEntry(num + " bandits: " + npc);
+        table.addEntry(num + " bandits: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,8) + 1);
-        table.addEntry(num + " winged kobolds");
-        table.addEntry(num + " giant frogs");
-        table.addEntry(num + " sprites: " + disposition + ", " + activity);
-        table.addEntry(num + " orcs");
+        table.addEntry(num + " winged kobolds" + _intellegentBlock());
+        table.addEntry(num + " giant frogs" + _animalBlock());
+        table.addEntry(num + " sprites: " + _raceBlock());
+        table.addEntry(num + " orcs" + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,8));
-        table.addEntry(num + " baboons: " + animalActivity);
+        table.addEntry(num + " baboons: " + _animalBlock());
         table.addEntry(num + " gnoll witherlings (vgm)");
-        table.addEntry(num + " vegepygmies (vgm): " +  disposition + ", "
-                       + activity);
-        table.addEntry(num + " velociraptors (vgm)");
+        table.addEntry(num + " vegepygmies (vgm): " + _intellegentBlock());
+        table.addEntry(num + " velociraptors (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,10));
         table.addEntry(num + " giant wasps");
 
         num = QString::number(Dice::roll(1,10) + 5);
-        table.addEntry(num + " giant rats");
+        table.addEntry(num + " giant rats" + _animalBlock());
     }
     else { // tier 2
-        table.addEntry("1 faerie dragon (any age)");
-        table.addEntry("1 brown bear");
-        table.addEntry("1 couatl");
-        table.addEntry("1 werebear: " + npc);
-        table.addEntry("1 yuan-ti abomination: " + npc);
-        table.addEntry("1 oni");
-        table.addEntry("1 young green dragon");
-        table.addEntry("1 treant");
-        table.addEntry("1 guardian naga");
-        table.addEntry("1 adult gold dragon: " + npc);
-        table.addEntry("1 Barghest (vgm)");
-        table.addEntry("1 Girallon (vgm)");
-        table.addEntry("1 hobgoblin devestator (vgm)");
-        table.addEntry("1 orc blade of illneval (vgm)");
-        table.addEntry("1 stegosarus (vgm): " + animalActivity);
-        table.addEntry("1 warlock of the archfey (vgm)");
-        table.addEntry("1 yeth hound (vgm)");
-        table.addEntry("1 " + gender + " yuan-ti mind whisperer (vgm)");
-        table.addEntry("1 " + gender + " yuan-ti nightmare speaker (vgm)");
-        table.addEntry("1 brontosaurus (vgm): " + animalActivity);
-        table.addEntry("1 wood woad (vgm): " + disposition + ", " + activity);
-        table.addEntry("1 " + gender + " yuan-ti pit master (vgm)");
-        table.addEntry("1 korred (vgm): " + disposition + ", " + activity);
-        table.addEntry("1 Shoosuva (vgm)");
-        table.addEntry("1 Flind (vgm)");
+        table.addEntry("1 faerie dragon (any age)" + _raceBlock());
+        table.addEntry("1 brown bear" + _animalBlock());
+        table.addEntry("1 couatl" + _animalBlock());
+        table.addEntry("1 werebear: " + _npcCommonerBlock());
+        table.addEntry("1 yuan-ti abomination: " + _raceBlock());
+        table.addEntry("1 oni" + _raceBlock());
+        table.addEntry("1 young green dragon" + _raceBlock());
+        table.addEntry("1 treant" + _raceBlock());
+        table.addEntry("1 guardian naga" + _raceBlock());
+        table.addEntry("1 adult gold dragon: " + _npcCommonerBlock());
+        table.addEntry("1 Barghest (vgm)" + _intellegentBlock());
+        table.addEntry("1 Girallon (vgm)" + _animalBlock());
+        table.addEntry("1 hobgoblin devestator (vgm)" + _raceBlock());
+        table.addEntry("1 orc blade of illneval (vgm)" + _intellegentBlock());
+        table.addEntry("1 stegosarus (vgm): " + _animalBlock());
+        table.addEntry("1 warlock of the archfey (vgm)" + _npcCommonerBlock());
+        table.addEntry("1 yeth hound (vgm)" + _animalBlock());
+        table.addEntry("1 yuan-ti mind whisperer (vgm)" + _raceBlock());
+        table.addEntry("1 yuan-ti nightmare speaker (vgm)" + _raceBlock());
+        table.addEntry("1 brontosaurus (vgm): " + _animalBlock());
+        table.addEntry("1 wood woad (vgm): " + _intellegentBlock());
+        table.addEntry("1 yuan-ti pit master (vgm)" + _raceBlock());
+        table.addEntry("1 korred (vgm): " + _intellegentBlock());
+        table.addEntry("1 Shoosuva (vgm)" + _intellegentBlock());
+        table.addEntry("1 Flind (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,3));
         table.addEntry(num + " will-o-wisps");
         num2 = QString::number(Dice::roll(1,8) + 2);
         table.addEntry("1 orc Eye of Gruumsh with " + num + " orogs and "
-                       + num2 + " orcs");
-        table.addEntry(num + " constrictor snakes");
-        table.addEntry(num + " awakened trees (day) or 1 banshee (night)");
-        table.addEntry(num + " green hags");
-        table.addEntry(num + " archers (vgm): " + npc);
-        table.addEntry(num + " flail snails (vgm)" );
-        table.addEntry(num + " orc red fang of Shargaas (vgm)" );
-        table.addEntry(num + " redcaps (vgm): " + npc);
+                       + num2 + " orcs" + _intellegentBlock());
+        table.addEntry(num + " constrictor snakes" + _animalBlock());
+        table.addEntry(num + " awakened trees (day) or 1 banshee (night)"
+                       + _intellegentBlock());
+        table.addEntry(num + " green hags" + _intellegentBlock());
+        table.addEntry(num + " archers (vgm): " + _npcCommonerBlock());
+        table.addEntry(num + " flail snails (vgm)"  + _animalBlock());
+        table.addEntry(num + " orc red fang of Shargaas (vgm)"
+                       + _intellegentBlock());
+        table.addEntry(num + " redcaps (vgm): " + _raceBlock());
 
         num = QString::number(Dice::roll(1,4));
         table.addEntry(num + " swarms of poisonous snakes");
-        table.addEntry(num + " tigers: " + animalActivity);
-        table.addEntry(num + " giant boars: " + animalActivity);
+        table.addEntry(num + " tigers: " + _animalBlock());
+        table.addEntry(num + " giant boars: " + _animalBlock());
         table.addEntry(num + " ankhegs");
-        table.addEntry(num + " ogres");
-        table.addEntry(num + " griks");
-        table.addEntry(num + " giant elk: " + animalActivity);
-        table.addEntry(num + " owlbears");
-        table.addEntry(num + " werewolves: " + npc);
-        table.addEntry(num + " veterans: " + npc);
-        table.addEntry(num + " wereboars: " + npc);
-        table.addEntry(num + " shambling mounds");
-        table.addEntry(num + " trolls", 3);
-        table.addEntry(num + " unicorns: " + animalActivity, 2);
-        table.addEntry(num + " gorgons");
-        table.addEntry(num + " reavenants");
-        table.addEntry(num + " giant apes");
+        table.addEntry(num + " ogres" + _raceBlock());
+        table.addEntry(num + " griks" + _animalBlock());
+        table.addEntry(num + " giant elk: " + _animalBlock());
+        table.addEntry(num + " owlbears" + _animalBlock());
+        table.addEntry(num + " werewolves: " + _npcCommonerBlock());
+        table.addEntry(num + " veterans: " + _npcCommonerBlock());
+        table.addEntry(num + " wereboars: " + _npcCommonerBlock());
+        table.addEntry(num + " shambling mounds" + _animalBlock());
+        table.addEntry(num + " trolls" + _raceBlock(), 3);
+        table.addEntry(num + " unicorns: " + _animalBlock(), 2);
+        table.addEntry(num + " gorgons" + _animalBlock());
+        table.addEntry(num + " reavenants" + _npcCommonerBlock());
+        table.addEntry(num + " giant apes" + _animalBlock());
 
         num = QString::number(Dice::roll(1,4) + 1);
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
-        table.addEntry("1 " + gender + " darkling elder (vgm) with " + num
-                       + " shadow mastiffs (vgm)");
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas"
+                       + _intellegentBlock());
+        table.addEntry("1 darkling elder (vgm) with " + num
+                       + " shadow mastiffs (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(2,4));
         table.addEntry(num + " vine blights");
-        table.addEntry(num + " apes");
-        table.addEntry(num + " satyrs: " + disposition + ", " + activity);
-        table.addEntry("1 lizardfolk shaman with " + num + " lizardfolk");
-        table.addEntry(num + " dire wolves");
-        table.addEntry(num + " bugbears");
-        table.addEntry(num + " " + gender + " centaurs: " + disposition + ", "
-                       + activity);
-        table.addEntry(num + " displacer beasts");
-        table.addEntry(num + " " + gender + " yuan-ti malisons");
+        table.addEntry(num + " apes" + _animalBlock());
+        table.addEntry(num + " satyrs: " + _intellegentBlock());
+        table.addEntry("1 lizardfolk shaman with " + num + " lizardfolk"
+                       + _intellegentBlock());
+        table.addEntry(num + " dire wolves" + _animalBlock());
+        table.addEntry(num + " bugbears" + _raceBlock());
+        table.addEntry(num + " centaurs: " + _raceBlock());
+        table.addEntry(num + " displacer beasts" + _animalBlock());
+        table.addEntry(num + " yuan-ti malisons" + _raceBlock());
         table.addEntry("1 vegepygmy chief (vgm) with " + num
-                       + " vegepygmy thornies (vgm)");
+                       + " vegepygmy thornies (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " wererats: " + npc);
-        table.addEntry(num + " pegasi: " + animalActivity);
-        table.addEntry(num + " grung elete warriors (vgm)");
-        table.addEntry(num + " guard drakes (vgm)");
-        table.addEntry(num + " hobgoblin iron shadows (vgm)");
-        table.addEntry(num + " meenlocks (vgm)");
-        table.addEntry(num + " orc hands of Yurtrus (vgm)");
-        table.addEntry(num + " shadow mastiffs (vgm)");
-        table.addEntry(num + " " + gender + " yuan-ti brood guards (vgm)");
+        table.addEntry(num + " wererats: " + _npcCommonerBlock());
+        table.addEntry(num + " pegasi: " + _animalBlock());
+        table.addEntry(num + " grung elete warriors (vgm)" + _intellegentBlock());
+        table.addEntry(num + " guard drakes (vgm)" + _animalBlock());
+        table.addEntry(num + " hobgoblin iron shadows (vgm)" + _raceBlock());
+        table.addEntry(num + " meenlocks (vgm)" + _animalBlock());
+        table.addEntry(num + " orc hands of Yurtrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " shadow mastiffs (vgm)" + _animalBlock());
+        table.addEntry(num + " yuan-ti brood guards (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,6) + 1);
-        table.addEntry("1 grik alpha with " + num + " griks");
+        table.addEntry("1 grik alpha with " + num + " griks" + _animalBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
-        table.addEntry(num + " black bears: " + animalActivity);
-        table.addEntry(num + " half-ogres");
-        table.addEntry(num + " dryads: " + disposition + ", " + activity);
-        table.addEntry(num + " weretigers: " + npc);
-        table.addEntry(num + " gnoll fangs of Yeenoghu");
+        table.addEntry(num + " black bears: " + _animalBlock());
+        table.addEntry(num + " half-ogres" + _raceBlock());
+        table.addEntry(num + " dryads: " + _intellegentBlock());
+        table.addEntry(num + " weretigers: " + _npcCommonerBlock());
+        table.addEntry(num + " gnoll fangs of Yeenoghu" + _intellegentBlock());
         table.addEntry("1 kobold scale sorcerer (vgm) with "
-                       + num + " kobold dragonshields (vgm)");
+                       + num + " kobold dragonshields (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6) + 5);
         table.addEntry("1 bandit captain with 1 druid and " + num + " bandits: "
-                       + npc);
-        table.addEntry(num + " deinonychus (vgm)");
-        table.addEntry(num + " gnoll flesh gnawer (vgm)");
-        table.addEntry(num + " grung wildlings (vgm)");
-        table.addEntry(num + " kobold dragonshields (vgm)");
-        table.addEntry(num + " quicklings (vgm): " + disposition + ", "
-                       + activity);
-        table.addEntry(num + " vegepygmy thornies (vgm): " + disposition + ", "
-                       + activity);
+                       + _npcCommonerBlock());
+        table.addEntry(num + " deinonychus (vgm)" + _animalBlock());
+        table.addEntry(num + " gnoll flesh gnawer (vgm)" + _intellegentBlock());
+        table.addEntry(num + " grung wildlings (vgm)" + _intellegentBlock());
+        table.addEntry(num + " kobold dragonshields (vgm)" + _intellegentBlock());
+        table.addEntry(num + " quicklings (vgm): " + _raceBlock());
+        table.addEntry(num + " vegepygmy thornies (vgm): " + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,6));
-        table.addEntry(num + " hobgoblins");
-        table.addEntry(num + " orcs");
-        table.addEntry("1 " + gender + " Darkling elder (vgm) with "
-                       + num + " darklings (vgm)");
-        table.addEntry(num + " " + gender + " Darklings (vgm) with "
-                       "1 shadow mastiff (vgm)");
+        table.addEntry(num + " hobgoblins" + _raceBlock());
+        table.addEntry(num + " orcs" + _intellegentBlock());
+        table.addEntry("1 Darkling elder (vgm) with "
+                       + num + " darklings (vgm)" + _raceBlock());
+        table.addEntry(num + " Darklings (vgm) with "
+                       "1 shadow mastiff (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(3,6));
-        table.addEntry("1 goblin boss with " + num + " goblins");
+        table.addEntry("1 goblin boss with " + num + " goblins"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,8) + 1);
         table.addEntry(num + " giant spiders");
-        table.addEntry(num + " " + gender + " yuan-ti purebloods");
+        table.addEntry(num + " yuan-ti purebloods" + _raceBlock());
         table.addEntry(num + " harpies");
-        table.addEntry(num + " berzerkers: " + npc);
-        table.addEntry(num + " ettercaps");
+        table.addEntry(num + " berzerkers: " + _npcCommonerBlock());
+        table.addEntry(num + " ettercaps" + _intellegentBlock());
         table.addEntry(num + " phase spiders");
 
         num = QString::number(Dice::roll(1,10));
-        table.addEntry(num + " giant toads");
+        table.addEntry(num + " giant toads" + _animalBlock());
 
         num = QString::number(Dice::roll(2,10));
-        table.addEntry(num + " elk: " + animalActivity);
+        table.addEntry(num + " elk: " + _animalBlock());
 
         num = QString::number(Dice::roll(3,10));
-        table.addEntry(num + " blink dogs: " + animalActivity);
+        table.addEntry(num + " blink dogs: " + _animalBlock());
         num2 = QString::number(Dice::roll(4,12));
         table.addEntry("1 hobgoblin captain with " + num + " hobgoblins and "
-                       + num2 + " goblins");
+                       + num2 + " goblins" + _intellegentBlock());
 
     }
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + _loot(tier);
 }
 
 QString MonsterTable::grasslandsEncounter(int tier)
@@ -1377,222 +1264,210 @@ QString MonsterTable::grasslandsEncounter(int tier)
 
     QString num;
     QString num2;
-    QString race = NpcTables::commonerRace();
-    QString disposition = NpcTables::npcDisposition();
-    QString gender = NpcTables::npcGender();
-    QString alignment = NpcTables::determineAlignment();
-    QString activity = EncounterTables::motivation();
-    QString animalActivity = EncounterTables::animalDowntime();
-    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
-            + "(" + activity + ")";
 
     if (tier == 1) {
-        table.addEntry("1 ankylosaurus");
-        table.addEntry("1 weretiger");
+        table.addEntry("1 ankylosaurus" + _animalBlock());
+        table.addEntry("1 weretiger" + _npcCommonerBlock());
         table.addEntry("1 phase spider");
-        table.addEntry("1 orog");
-        table.addEntry("1 pegasus: " + animalActivity);
+        table.addEntry("1 orog" + _intellegentBlock());
+        table.addEntry("1 pegasus: " + _animalBlock());
         table.addEntry("1 ankheg");
-        table.addEntry("1 chimera");
-        table.addEntry("1 gorgon");
-        table.addEntry("1 giant boar");
-        table.addEntry("1 ogre");
-        table.addEntry("1 panther (leopard): " + animalActivity);
-        table.addEntry("1 lion: " + animalActivity);
-        table.addEntry("1 giant eagle: " + animalActivity);
-        table.addEntry("1 giant elk: " + animalActivity);
-        table.addEntry("1 triceratops: " + animalActivity);
-        table.addEntry("1 cyclops");
+        table.addEntry("1 chimera" + _animalBlock());
+        table.addEntry("1 gorgon" + _animalBlock());
+        table.addEntry("1 giant boar" + _animalBlock());
+        table.addEntry("1 ogre" + _raceBlock());
+        table.addEntry("1 panther (leopard): " + _animalBlock());
+        table.addEntry("1 lion: " + _animalBlock());
+        table.addEntry("1 giant eagle: " + _animalBlock());
+        table.addEntry("1 giant elk: " + _animalBlock());
+        table.addEntry("1 triceratops: " + _animalBlock());
+        table.addEntry("1 cyclops" + _raceBlock());
         table.addEntry("1 bulette");
-        table.addEntry("1 tyranosaurus rex");
-        table.addEntry("1 Barghest (vgm)");
-        table.addEntry("1 hobgoblin devestartor (vgm)");
-        table.addEntry("1 orc Blade of Ilneval (vgm)");
-        table.addEntry("1 stegosaurus (vgm): " + animalActivity);
-        table.addEntry("1 yeth hound (vgm)");
+        table.addEntry("1 tyranosaurus rex" + _animalBlock());
+        table.addEntry("1 Barghest (vgm)" + _intellegentBlock());
+        table.addEntry("1 hobgoblin devestartor (vgm)" + _raceBlock());
+        table.addEntry("1 orc Blade of Ilneval (vgm)" + _intellegentBlock());
+        table.addEntry("1 stegosaurus (vgm): " + _animalBlock());
+        table.addEntry("1 yeth hound (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,2));
-        table.addEntry(num + " couatls");
+        table.addEntry(num + " couatls" + _animalBlock());
         table.addEntry(num + " giant poisonous snakes");
-        table.addEntry(num + " tigers: " + animalActivity);
-        table.addEntry(num + " bugbears");
-        table.addEntry(num + " aurochs (vgm)");
-        table.addEntry(num + " hobgoblin iron shadows (vgm)");
-        table.addEntry(num + " orc hand of Yurtrus (vgm)");
-        table.addEntry(num + " leucrottas (vgm)");
+        table.addEntry(num + " tigers: " + _animalBlock());
+        table.addEntry(num + " bugbears" + _raceBlock());
+        table.addEntry(num + " aurochs (vgm)" + _animalBlock());
+        table.addEntry(num + " hobgoblin iron shadows (vgm)" + _raceBlock());
+        table.addEntry(num + " orc hand of Yurtrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " leucrottas (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,3));
-        table.addEntry(num + " allosauruses");
-        table.addEntry(num + " elephants: " + animalActivity);
-        table.addEntry(num + " rhinoceroses: " + animalActivity);
-        table.addEntry(num + " cockatrices");
-        table.addEntry(num + " boars: " + animalActivity);
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
-        table.addEntry(num + " giant vultures");
-        table.addEntry(num + " hippogriphs");
-        table.addEntry(num + " thri-kreen");
-        table.addEntry(num + " druids patrolling the wilds: " + npc);
-        table.addEntry(num + " " + gender +" centaurs: " + disposition + ", "
-               + activity);
-        table.addEntry(num + " griffons: " + animalActivity);
-        table.addEntry(num + " gnoll fangs of Yeenoghu");
+        table.addEntry(num + " allosauruses" + _animalBlock());
+        //table.addEntry(num + " elephants: " + _animalBlock());
+        //table.addEntry(num + " rhinoceroses: " + _animalBlock());
+        table.addEntry(num + " cockatrices" + _animalBlock());
+        table.addEntry(num + " boars: " + _animalBlock());
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas"
+                       + _intellegentBlock());
+        table.addEntry(num + " giant vultures" + _animalBlock());
+        table.addEntry(num + " hippogriphs" + _animalBlock());
+        table.addEntry(num + " thri-kreen" + _intellegentBlock());
+        table.addEntry(num + " druids patrolling the wilds: " + _npcCommonerBlock());
+        table.addEntry(num + " centaurs: " + _raceBlock());
+        table.addEntry(num + " griffons: " + _animalBlock());
+        table.addEntry(num + " gnoll fangs of Yeenoghu" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,4));
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
-        table.addEntry(num + " jackleweres");
-        table.addEntry(num + " scouts: " + npc);
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas"
+                       + _intellegentBlock());
+        table.addEntry(num + " jackleweres" + _npcCommonerBlock());
+        table.addEntry(num + " scouts: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,4) + 1);
-        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins");
-        table.addEntry(num + " manticores");
-        table.addEntry(num + " deinonychuses (vgm)");
-        table.addEntry(num + " gnoll flesh gnawers (vgm)");
+        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins"
+                       + _raceBlock());
+        table.addEntry(num + " manticores" + _animalBlock());
+        table.addEntry(num + " deinonychuses (vgm)" + _animalBlock());
+        table.addEntry(num + " gnoll flesh gnawers (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,4) + 3);
         table.addEntry(num + " swarms of insects");
 
         num = QString::number(Dice::roll(2,4));
-        table.addEntry(num + " hobgoblins");
-        table.addEntry(num + " orcs");
-        table.addEntry(num + " gnolls");
-        table.addEntry(num + " goblins");
+        table.addEntry(num + " hobgoblins" + _raceBlock());
+        table.addEntry(num + " orcs" + _intellegentBlock());
+        table.addEntry(num + " gnolls" + _intellegentBlock());
+        table.addEntry(num + " goblins" + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,4) + 1);
-        table.addEntry("Orc eye of Gruumsh with " + num + " orcs");
+        table.addEntry("Orc eye of Gruumsh with " + num + " orcs"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,4) + 2);
-        table.addEntry(num + " axe beaks: " + animalActivity);
-        table.addEntry(num + " gnoll hunters (vgm)");
-        table.addEntry(num + " orc Nurtured One of Yurtrus (vgm)");
+        table.addEntry(num + " axe beaks: " + _animalBlock());
+        table.addEntry(num + " gnoll hunters (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc Nurtured One of Yurtrus (vgm)"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6));
         table.addEntry(num + " scarecrows");
-        table.addEntry("1 wereboar");
+        table.addEntry("1 wereboar" + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
         table.addEntry(num + " giant wasps");
-        table.addEntry(num + " elk: " + animalActivity);
-        table.addEntry(num + " riding horses: " + animalActivity);
+        table.addEntry(num + " elk: " + _animalBlock());
+        table.addEntry(num + " riding horses: " + _animalBlock());
         num2 = QString::number(Dice::roll(1,4) + 3);
         table.addEntry("1 goblin boss with " + num + " goblins and " + num2
-               + "wolves");
+               + "wolves" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6) + 3);
-        table.addEntry(num + " goblins riding wolves");
+        table.addEntry(num + " goblins riding wolves" + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,6));
         table.addEntry(num + " giant wolf spiders");
 
         num = QString::number(Dice::roll(3,6));
-        table.addEntry(num + " wolves: " + animalActivity, 3);
-        table.addEntry(num + " Cow (rothe) (vgm): " + animalActivity, 3);
-        table.addEntry(num + " gnoll witherlings (vgm)");
-        table.addEntry(num + " hadrosauruses (vgm)");
-        table.addEntry(num + " velociraptors (vgm)");
+        table.addEntry(num + " wolves: " + _animalBlock(), 3);
+        table.addEntry(num + " Cow (rothe) (vgm): " + _animalBlock(), 3);
+        table.addEntry(num + " gnoll witherlings (vgm)" + _intellegentBlock());
+        table.addEntry(num + " hadrosauruses (vgm)" + _animalBlock());
+        table.addEntry(num + " velociraptors (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,8));
-        table.addEntry(num + " giant goats: " + animalActivity);
-        table.addEntry(num + " worgs");
+        table.addEntry(num + " giant goats: " + _animalBlock());
+        table.addEntry(num + " worgs" + _animalBlock());
 
         num = QString::number(Dice::roll(1,8) + 4);
-        table.addEntry(num + " pteranadons");
+        table.addEntry(num + " pteranadons" + _animalBlock());
     }
     else { // tier == 2
-        table.addEntry("1 chimera");
-        table.addEntry("A tornado touches down 1d6 miles away, tearing "
-                       "up the land for 1 mile before it dissipates.");
-        table.addEntry("A stretch of land littered with rotting war "
-                       "machines, bones, and banners of forgotten armies");
-        table.addEntry("1 allosaurus");
-        table.addEntry("1 tiger: " + animalActivity);
-        table.addEntry("1 ankylosaurus");
-        table.addEntry("A hot wind that carries the stench of rot");
-        table.addEntry("1 bulette");
-        table.addEntry("1 young gold dragon: " + npc);
-        table.addEntry("1 barghest (vgm)");
-        table.addEntry("1 flind (vgm)");
-        table.addEntry("1 Shoosuva (vgm)");
+        table.addEntry("1 chimera" + _animalBlock());
+        table.addEntry("1 allosaurus" + _animalBlock());
+        table.addEntry("1 tiger: " + _animalBlock());
+        table.addEntry("1 ankylosaurus" + _animalBlock());
+        table.addEntry("1 bulette" + _animalBlock());
+        table.addEntry("1 young gold dragon: " + _npcCommonerBlock());
+        table.addEntry("1 barghest (vgm)" + _intellegentBlock());
+        table.addEntry("1 flind (vgm)" + _intellegentBlock());
+        table.addEntry("1 Shoosuva (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,2));
-        table.addEntry(num + " giant eagles: " + animalActivity);
-        table.addEntry(num + " giant vultures");
-        table.addEntry(num + " pegasi: " + animalActivity);
-        table.addEntry(num + " couatls");
-        table.addEntry(num + " hobgoblin devestators (vgm)");
-        table.addEntry(num + " orc Blade of Ilnevals (vgm)");
-        table.addEntry(num + " stegasauruses (vgm): " + animalActivity);
-        table.addEntry(num + " yeth hounds (vgm)");
-        table.addEntry(num + " brontosauruses (vgm)");
-        table.addEntry(num + " mouths of Grolantor (vgm)");
+        table.addEntry(num + " giant eagles: " + _animalBlock());
+        table.addEntry(num + " giant vultures" + _animalBlock());
+        table.addEntry(num + " pegasi: " + _animalBlock());
+        table.addEntry(num + " couatls" + _animalBlock());
+        table.addEntry(num + " hobgoblin devestators (vgm)" + _raceBlock());
+        table.addEntry(num + " orc Blade of Ilnevals (vgm)" + _intellegentBlock());
+        table.addEntry(num + " stegasauruses (vgm): " + _animalBlock());
+        table.addEntry(num + " yeth hounds (vgm)" + _animalBlock());
+        table.addEntry(num + " brontosauruses (vgm)" + _animalBlock());
+        table.addEntry(num + " mouths of Grolantor (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,3));
-        table.addEntry(num + " gorgons");
-        table.addEntry(num + " gnoll fangs of Yeenoghu");
-        table.addEntry(num + " manticores");
+        table.addEntry(num + " gorgons" + _animalBlock());
+        table.addEntry(num + " gnoll fangs of Yeenoghu" + _intellegentBlock());
+        table.addEntry(num + " manticores" + _animalBlock());
         table.addEntry(num + " phase spiders");
-        table.addEntry(num + " weretigers: " + npc);
-        table.addEntry(num + " tyranasaurus rex");
-        table.addEntry(num + " leucrotta (vgm)");
+        table.addEntry(num + " weretigers: " + _npcCommonerBlock());
+        table.addEntry(num + " tyranasaurus rex" + _animalBlock());
+        table.addEntry(num + " leucrotta (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " cyclopses");
+        table.addEntry(num + " cyclopses" + _raceBlock());
         num2 = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " ogres and " + num2 + " orogs");
-        table.addEntry(num + " triceratops: " + animalActivity);
+        table.addEntry(num + " ogres and " + num2 + " orogs" + _raceBlock());
+        table.addEntry(num + " triceratops: " + _animalBlock());
 
         num = QString::number(Dice::roll(1,4) + 1);
-        table.addEntry(num + " veterans on riding horses: " + npc);
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
-        table.addEntry(num + " rhinoceroses");
-        table.addEntry(num + " Aurochs (vgm): " + animalActivity);
-        table.addEntry(num + " hobgoblin iron shadows (vgm)");
-        table.addEntry(num + " orc hand of Yurtrus (vgm)");
+        table.addEntry(num + " veterans on riding horses: " + _npcCommonerBlock());
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas"
+                       + _intellegentBlock());
+        //table.addEntry(num + " rhinoceroses" + _animalBlock());
+        table.addEntry(num + " Aurochs (vgm): " + _animalBlock());
+        table.addEntry(num + " hobgoblin iron shadows (vgm)" + _raceBlock());
+        table.addEntry(num + " orc hand of Yurtrus (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,4));
         table.addEntry(num + " ankhegs");
         table.addEntry(num + " scarecrows");
-        table.addEntry("1 goblin boss with " + num + " goblins");
-        table.addEntry(num + " hippogriffs");
-        table.addEntry(num + " giant elk: " + animalActivity);
+        table.addEntry("1 goblin boss with " + num + " goblins" + _intellegentBlock());
+        table.addEntry(num + " hippogriffs" + _animalBlock());
+        table.addEntry(num + " giant elk: " + _animalBlock());
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " elephants: " + animalActivity);
+        //table.addEntry(num + " elephants: " + _animalBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
-        table.addEntry(num + " griffons: " + animalActivity, 5);
-        table.addEntry(num + " giant boars");
-        table.addEntry(num + " wereboars: " + npc);
+        table.addEntry(num + " griffons: " + _animalBlock(), 5);
+        table.addEntry(num + " giant boars" + _animalBlock());
+        table.addEntry(num + " wereboars: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(2,6));
-        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins");
-        table.addEntry(num + " deinonychuses (vgm)");
-        table.addEntry(num + " gnoll flesh gnawers (vgm)");
+        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins" + _raceBlock());
+        table.addEntry(num + " deinonychuses (vgm)" + _animalBlock());
+        table.addEntry(num + " gnoll flesh gnawers (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,8) + 1);
-        table.addEntry(num + " " + gender + " centaurs" + disposition + ", "
-                       + activity);
-        table.addEntry(num + " bugbears");
-        table.addEntry("1 eye of Gruumsh with " + num + " orcs");
+        table.addEntry(num + " centaurs" + _raceBlock());
+        table.addEntry(num + " bugbears" + _raceBlock());
+        table.addEntry("1 eye of Gruumsh with " + num + " orcs" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,10));
-        table.addEntry(num + " thri-kreen");
+        table.addEntry(num + " thri-kreen" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,12));
-        table.addEntry(num + " Lions");
+        table.addEntry(num + " Lions" + _animalBlock());
 
         num = QString::number(Dice::roll(2,20) + 20);
         table.addEntry("A tribe of " + num
                        + " nomads (tribal warriors) on "
                          "riding horses following a herd of antelope (deer). "
                          "The nomads are willing to trade food, leather, and "
-                         "information for weapons.");
-
-
-        table.addEntry(num + " ");
+                         "information for weapons." + _motivatedBlock());
 
     }
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + _loot(tier);
 }
 
 QString MonsterTable::hillEncounter(int tier)
@@ -1601,256 +1476,258 @@ QString MonsterTable::hillEncounter(int tier)
 
     QString num;
     QString num2;
-    QString race = NpcTables::commonerRace();
-    QString disposition = NpcTables::npcDisposition();
-    QString gender = NpcTables::npcGender();
-    QString alignment = NpcTables::determineAlignment();
-    QString activity = EncounterTables::motivation();
-    QString animalActivity = EncounterTables::animalDowntime();
-    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
-            + "(" + activity + ")";
 
     if (tier == 1) {
-        table.addEntry("1 orc Eye of Gruumsh with " + num + " orcs");
-        table.addEntry("1 eagle: " + animalActivity);
-        table.addEntry("1 raven: " + animalActivity);
-        table.addEntry("1 poisonous snake: " + animalActivity);
-        table.addEntry("1 pseudodragon: " + disposition + ", " + activity);
-        table.addEntry("1 lion: " + animalActivity);
-        table.addEntry("1 panther (cougar): " + animalActivity);
-        table.addEntry("1 hippogriff");
-        table.addEntry("1 worg");
-        table.addEntry("1 eagle: " + animalActivity);
+        table.addEntry("1 orc Eye of Gruumsh with " + num + " orcs" + _intellegentBlock());
+        table.addEntry("1 eagle: " + _animalBlock());
+        table.addEntry("1 raven: " + _animalBlock());
+        table.addEntry("1 poisonous snake: " + _animalBlock());
+        table.addEntry("1 pseudodragon: " + _raceBlock());
+        table.addEntry("1 lion: " + _animalBlock());
+        table.addEntry("1 panther (cougar): " + _animalBlock());
+        table.addEntry("1 hippogriff" + _animalBlock());
+        table.addEntry("1 worg" + _animalBlock());
+        table.addEntry("1 eagle: " + _animalBlock());
         table.addEntry("An old dwarf sitting on a stump, whittling a piece of "
-               "wood: " + npc);
+               "wood: " + _motivatedBlock());
         table.addEntry("1 swarm of insects");
-        table.addEntry("1 brown bear: " + animalActivity);
-        table.addEntry("1 scout: " + npc);
-        table.addEntry("1 ogre");
-        table.addEntry("1 giant elk: " + animalActivity);
-        table.addEntry("1 werewolf");
-        table.addEntry("1 druid: " + npc);
-        table.addEntry("1 veteran: " + npc);
+        table.addEntry("1 brown bear: " + _animalBlock());
+        table.addEntry("1 scout: " + _npcCommonerBlock());
+        table.addEntry("1 ogre" + _raceBlock());
+        table.addEntry("1 giant elk: " + _animalBlock());
+        table.addEntry("1 werewolf" + _npcCommonerBlock());
+        table.addEntry("1 druid: " + _npcAdventurerBlock());
+        table.addEntry("1 veteran: " + _npcAdventurerBlock());
         table.addEntry("The corpse of an adventurer that carries an intact "
                "explorers pack and lies atop a longsword");
-        table.addEntry("1 green hag");
-        table.addEntry("1 manticore");
+        table.addEntry("1 green hag" + _intellegentBlock());
+        table.addEntry("1 manticore" + _animalBlock());
         table.addEntry("1 phase spider");
         table.addEntry("A pile of droppings from a very large bird");
-        table.addEntry("1 gnoll fang of Yeenoghu");
-        table.addEntry("1 ettin");
-        table.addEntry("1 wereboar");
-        table.addEntry("1 cyclops");
-        table.addEntry("1 stone giant: " + gender + ", " + disposition + ", "
-               + activity);
-        table.addEntry("1 Barghest (vgm)");
-        table.addEntry("1 Hobgoblin devestator (vgm)");
-        table.addEntry("1 neogi master (vgm)");
-        table.addEntry("1 orc blade of ilneval (vgm)");
-        table.addEntry("1 yeth hound (vgm)");
-        table.addEntry("1 tanarukk (vgm)");
+        table.addEntry("1 gnoll fang of Yeenoghu" + _intellegentBlock());
+        table.addEntry("1 ettin" + _raceBlock());
+        table.addEntry("1 wereboar" + _npcCommonerBlock());
+        table.addEntry("1 cyclops" + _raceBlock());
+        table.addEntry("1 stone giant: " + _raceBlock());
+        table.addEntry("1 Barghest (vgm)" + _intellegentBlock());
+        table.addEntry("1 Hobgoblin devestator (vgm)" + _raceBlock());
+        table.addEntry("1 neogi master (vgm)" + _raceBlock());
+        table.addEntry("1 orc blade of ilneval (vgm)" + _intellegentBlock());
+        table.addEntry("1 yeth hound (vgm)" + _animalBlock());
+        table.addEntry("1 orc tanarukk (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,3));
-        table.addEntry(num + " griffons: " + animalActivity);
-        table.addEntry(num + " perytons");
-        table.addEntry(num + " trolls");
-        table.addEntry(num + " giant owls: " + animalActivity);
+        table.addEntry(num + " griffons" + _animalBlock());
+        table.addEntry(num + " perytons" + _animalBlock());
+        table.addEntry(num + " trolls" + _raceBlock());
+        table.addEntry(num + " giant owls" + _animalBlock());
         table.addEntry(num + " swarms of bats");
         table.addEntry(num + " swarms of ravens");
-        table.addEntry(num + " boars: " + animalActivity);
-        table.addEntry(num + " dire wolves");
-        table.addEntry(num + " giant boars");
-        table.addEntry(num + " ogres");
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
+        table.addEntry(num + " boars: " + _animalBlock());
+        table.addEntry(num + " dire wolves" + _animalBlock());
+        table.addEntry(num + " giant boars" + _animalBlock());
+        table.addEntry(num + " ogres" + _raceBlock());
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas" + _intellegentBlock());
         num2 = QString::number(Dice::roll(1,2));
         table.addEntry(num + " guards with " + num2 + " mastiffs and 1 mule: "
-               + npc);
-        table.addEntry(num + " aurochs (vgm): " + animalActivity);
-        table.addEntry(num + " hobgoblin iron shadows (vgm)");
-        table.addEntry(num + " orc hand of Yutrus (vgm)");
-        table.addEntry(num + " quetzalxoatlus (vgm)");
-        table.addEntry(num + " shadow mastiffs (vgm)");
-        table.addEntry(num + " neogi (vgm)");
-        table.addEntry(num + " orc red fang of Shargaas (vgm)");
-        table.addEntry(num + " redcaps (vgm)");
+               + _npcCommonerBlock());
+        table.addEntry(num + " aurochs (vgm): " + _animalBlock());
+        table.addEntry(num + " hobgoblin iron shadows (vgm)" + _raceBlock());
+        table.addEntry(num + " orc hand of Yutrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " quetzalxoatlus (vgm)" + _animalBlock());
+        table.addEntry(num + " shadow mastiffs (vgm)" + _animalBlock());
+        table.addEntry(num + " neogi (vgm)" + _raceBlock());
+        table.addEntry(num + " orc red fang of Shargaas (vgm)" + _intellegentBlock());
+        table.addEntry(num + " redcaps (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,3) + 1);
         table.addEntry(num + " harpies");
 
         num = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " vultures: " + animalActivity);
-        table.addEntry(num + " pegasi: " + animalActivity);
-        table.addEntry(num + " elk: " + animalActivity);
-        table.addEntry(num + " half-ogres");
-        table.addEntry(num + " berzerkers: " + npc);
+        table.addEntry(num + " vultures: " + _animalBlock());
+        table.addEntry(num + " pegasi: " + _animalBlock());
+        table.addEntry(num + " elk: " + _animalBlock());
+        table.addEntry(num + " half-ogres" + _raceBlock());
+        table.addEntry(num + " berzerkers: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,4) + 3);
-        table.addEntry(num + " giant weasles: " + animalActivity);
+        table.addEntry(num + " giant weasles: " + _animalBlock());
 
         num = QString::number(Dice::roll(2,4));
-        table.addEntry(num + " baboons: " + animalActivity);
-        table.addEntry(num + " stirges");
-        table.addEntry(num + " goblins");
-        table.addEntry(num + " wolves: " + animalActivity);
-        table.addEntry(num + " gnolls");
-        table.addEntry(num + " orcs");
-        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins");
-        table.addEntry(num + " giant goats: " + animalActivity);
-        table.addEntry("1 bandit captain with " + num + " bandits: " + npc);
+        table.addEntry(num + " baboons: " + _animalBlock());
+        table.addEntry(num + " stirges" + _animalBlock());
+        table.addEntry(num + " goblins" + _intellegentBlock());
+        table.addEntry(num + " wolves: " + _animalBlock());
+        table.addEntry(num + " gnolls" + _intellegentBlock());
+        table.addEntry(num + " orcs" + _intellegentBlock());
+        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins"
+                       + _raceBlock());
+        table.addEntry(num + " giant goats: " + _animalBlock());
+        table.addEntry("1 bandit captain with " + num + " bandits: "
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " bandits: " + npc);
-        table.addEntry(num + " deinonychuses (vgm)");
+        table.addEntry(num + " bandits: " + _npcCommonerBlock());
+        table.addEntry(num + " deinonychuses (vgm)" + _animalBlock());
         table.addEntry("1 firenewt warlock of Imix (vgm) with " + num
-                       + " firenewts (vgm)");
-        table.addEntry(num + " giant striders (vgm)");
-        table.addEntry(num + " gnoll flesh gnawers (vgm)");
-        table.addEntry(num + " kobold dragon shields (vgm)");
+                       + " firenewts (vgm)" + _intellegentBlock());
+        table.addEntry(num + " giant striders (vgm)" + _animalBlock());
+        table.addEntry(num + " gnoll flesh gnawers (vgm)" + _intellegentBlock());
+        table.addEntry(num + " kobold dragon shields (vgm)" + _intellegentBlock());
         table.addEntry("1 kobold scale sorcerer (vgm) with " + num
-                       + " kobolds");
+                       + " kobolds" + _intellegentBlock());
         table.addEntry("1 xvart warlock of Raxivort (vgm) with " + num
-                       + " xvarts (vgm)");
+                       + " xvarts (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
         table.addEntry(num + " giant wolf spiders");
-        table.addEntry(num + " hobgoblins");
+        table.addEntry(num + " hobgoblins" + _raceBlock());
 
         num = QString::number(Dice::roll(1,6) + 4);
-        table.addEntry(num + " blood hawks");
+        table.addEntry(num + " blood hawks" + _animalBlock());
 
         num = QString::number(Dice::roll(1,6) + 5);
-        table.addEntry(num + " hyenas: " + animalActivity);
+        table.addEntry(num + " hyenas: " + _animalBlock());
 
         num = QString::number(Dice::roll(2,6));
-        table.addEntry(num + " bandits: " + npc);
-        table.addEntry(num + " tribal warriors: " + npc);
-        table.addEntry("1 goblin boss with " + num + " goblins");
-        table.addEntry(num + " firenewts (vgm)");
-        table.addEntry(num + " gnoll hunters (vgm)");
-        table.addEntry(num + " orc neutered ones of Yurtrus (vgm)");
+        table.addEntry(num + " bandits: " + _npcCommonerBlock());
+        table.addEntry(num + " tribal warriors: " + _npcCommonerBlock());
+        table.addEntry("1 goblin boss with " + num + " goblins" + _intellegentBlock());
+        table.addEntry(num + " firenewts (vgm)" + _intellegentBlock());
+        table.addEntry(num + " gnoll hunters (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc neutered ones of Yurtrus (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,8) + 1);
-        table.addEntry(num + " axe beaks");
+        table.addEntry(num + " axe beaks" + _animalBlock());
 
         num = QString::number(Dice::roll(2,8));
-        table.addEntry(num + " goats: " + animalActivity);
-        table.addEntry(num + " kobolds");
-        table.addEntry(num + " boggles (vgm): " + disposition + ", "
-                       + activity);
-        table.addEntry(num + " neogi hatchlings");
-        table.addEntry(num + " xvarts (vgm): " + disposition + ", " + activity);
+        table.addEntry(num + " goats: " + _animalBlock());
+        table.addEntry(num + " kobolds" + _intellegentBlock());
+        table.addEntry(num + " boggles (vgm): " + _intellegentBlock());
+        table.addEntry(num + " neogi hatchlings" + _animalBlock());
+        table.addEntry(num + " xvarts (vgm): " + _raceBlock());
         num2 = QString::number(Dice::roll(2,8));
         table.addEntry(num + " gnoll witherlings (vgm) with " + num2
-                       + " gnolls");
-        table.addEntry("1 kobold inventor (vgm) with "+ num + " kobolds");
+                       + " gnolls" + _intellegentBlock());
+        table.addEntry("1 kobold inventor (vgm) with "+ num + " kobolds"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,10));
-        table.addEntry(num + " commoners: " + npc);
+        table.addEntry(num + " commoners: " + _npcCommonerBlock());
         num2 = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " winged kobolds with " + num2 + " kobolds");
+        table.addEntry(num + " winged kobolds with " + num2 + " kobolds"
+                       + _intellegentBlock());
     }
     else { // tier 2
-        table.addEntry("1 manticore");
-        table.addEntry("1 chimera");
-        table.addEntry("1 galeb duhr");
+        table.addEntry("1 manticore" + _animalBlock());
+        table.addEntry("1 chimera" + _animalBlock());
+        table.addEntry("1 galeb duhr" + _intellegentBlock());
         table.addEntry("1 bulette");
-        table.addEntry("1 wyvern");
-        table.addEntry("1 young red dragon");
-        table.addEntry("1 roc");
-        table.addEntry("1 annis hag (vgm)");
-        table.addEntry("1 flind (vgm)");
-        table.addEntry("1 shoosuva (vgm)");
-        table.addEntry("1 stone giant dreamwalker (vgm)");
+        table.addEntry("1 wyvern" + _animalBlock());
+        table.addEntry("1 young red dragon" + _raceBlock());
+        table.addEntry("1 roc" + _animalBlock());
+        table.addEntry("1 annis hag (vgm)" + _intellegentBlock());
+        table.addEntry("1 flind (vgm)" + _intellegentBlock());
+        table.addEntry("1 shoosuva (vgm)" + _intellegentBlock());
+        table.addEntry("1 stone giant dreamwalker (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,2));
-        table.addEntry(num + " gorgons");
-        table.addEntry(num + " barghests (vgm)");
-        table.addEntry(num + " hobgoblin devestators (vgm)");
-        table.addEntry(num + " neoti masters (vgm)");
-        table.addEntry(num + " orc blades of Ilneval(vgm)");
-        table.addEntry(num + " yeth hounds (vgm)");
-        table.addEntry(num + " tanarukk (vgm)");
-        table.addEntry(num + " mouths of grolantor (vgm)");
-        table.addEntry(num + " warlock of the great old ones (vgm): " + npc);
+        table.addEntry(num + " gorgons" + _animalBlock());
+        table.addEntry(num + " barghests (vgm)" + _intellegentBlock());
+        table.addEntry(num + " hobgoblin devestators (vgm)" + _raceBlock());
+        table.addEntry(num + " neogi masters (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc blades of Ilneval(vgm)" + _intellegentBlock());
+        table.addEntry(num + " yeth hounds (vgm)" + _animalBlock());
+        table.addEntry(num + " orc tanarukk (vgm)" + _intellegentBlock());
+        table.addEntry(num + " mouths of grolantor (vgm)" + _raceBlock());
+        table.addEntry(num + " warlock of the great old ones (vgm): "
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,3));
-        table.addEntry(num + " perytons: " + animalActivity);
-        table.addEntry(num + " green hags");
-        table.addEntry(num + " hill giants", 5);
-        table.addEntry(num + " young copper dragons: " + npc);
-        table.addEntry(num + " neogis (vgm)");
-        table.addEntry(num + " orc red fang of Shargaas (vgm)");
-        table.addEntry(num + " redcap (vgm)");
+        table.addEntry(num + " perytons: " + _animalBlock());
+        table.addEntry(num + " green hags" + _intellegentBlock());
+        table.addEntry(num + " hill giants" + _raceBlock(), 5);
+        table.addEntry(num + " young copper dragons: " + _npcCommonerBlock());
+        table.addEntry(num + " neogis (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc red fang of Shargaas (vgm)" + _intellegentBlock());
+        table.addEntry(num + " redcap (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " pegasi: " + animalActivity);
-        table.addEntry(num + " lions: " + animalActivity);
-        table.addEntry(num + " brown bears: " + animalActivity);
+        table.addEntry(num + " pegasi: " + _animalBlock());
+        table.addEntry(num + " lions: " + _animalBlock());
+        table.addEntry(num + " brown bears: " + _animalBlock());
         num2 = QString::number(Dice::roll(2,6));
         table.addEntry("1 goblin boss with " + num + " dire wolves and "
-                       + num2 + " goblins");
+                       + num2 + " goblins" + _intellegentBlock());
         table.addEntry(num + " phase spiders");
-        table.addEntry(num + " werewolves: " + npc);
-        table.addEntry(num + " ettins");
-        table.addEntry(num + " revenants");
-        table.addEntry(num + " cyclopses");
-        table.addEntry(num + " stone giants");
+        table.addEntry(num + " werewolves: " + _npcCommonerBlock());
+        table.addEntry(num + " ettins" + _raceBlock());
+        table.addEntry(num + " revenants" + _npcCommonerBlock());
+        table.addEntry(num + " cyclopses" + _raceBlock());
+        table.addEntry(num + " stone giants" + _raceBlock());
 
         num = QString::number(Dice::roll(1,4) + 1);
-        table.addEntry(num + " griffons: " + animalActivity, 5);
-        table.addEntry(num + " aurochs (vgm): " + animalActivity);
-        table.addEntry(num + " hobgoblin iron shadows (vgm)");
-        table.addEntry(num + " orc hand of Yurtrus (vgm)");
-        table.addEntry(num + " quetzalcoatlus (vgm)");
-        table.addEntry(num + " shadow mastiffs (vgm)");
+        table.addEntry(num + " griffons: " + _animalBlock(), 5);
+        table.addEntry(num + " aurochs (vgm): " + _animalBlock());
+        table.addEntry(num + " hobgoblin iron shadows (vgm)" + _raceBlock());
+        table.addEntry(num + " orc hand of Yurtrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " quetzalcoatlus (vgm)" + _animalBlock());
+        table.addEntry(num + " shadow mastiffs (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,4) + 3);
-        table.addEntry(num + " giant boars");
+        table.addEntry(num + " giant boars" + _animalBlock());
 
         num = QString::number(Dice::roll(2,4));
-        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas");
-        table.addEntry(num + " hippogriffs: " + animalActivity);
-        table.addEntry(num + " orogs");
-        table.addEntry(num + " wereboars: " + npc);
+        table.addEntry("1 gnoll pack lord with " + num + " giant hyenas"
+                       + _intellegentBlock());
+        table.addEntry(num + " hippogriffs: " + _animalBlock());
+        table.addEntry(num + " orogs" + _raceBlock());
+        table.addEntry(num + " wereboars: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " giant elk: " + animalActivity);
+        table.addEntry(num + " giant elk: " + _animalBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
-        table.addEntry(num + " giant goats: " + animalActivity);
-        table.addEntry(num + " worgs");
-        table.addEntry(num + " harpies");
-        table.addEntry(num + " ogres");
+        table.addEntry(num + " giant goats: " + _animalBlock());
+        table.addEntry(num + " worgs" + _animalBlock());
+        table.addEntry(num + " harpies" + _animalBlock());
+        table.addEntry(num + " ogres" + _animalBlock());
         num2 = QString::number(Dice::roll(2,6));
-        table.addEntry(num + " veterans with " + num2 + " berzerkers: " + npc);
+        table.addEntry(num + " veterans with " + num2 + " berzerkers: "
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(2,6));
-        table.addEntry("1 half-ogre with " + num + " orcs");
+        table.addEntry("1 half-ogre with " + num + " orcs"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,6) + 3);
-        table.addEntry("1 orc Eye of Gruumsh with " + num + " orcs");
+        table.addEntry("1 orc Eye of Gruumsh with " + num + " orcs"
+                       + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,6) + 10);
-        table.addEntry(num + " goats with 1 herder (tribal warrior): " + npc);
+        table.addEntry(num + " goats with 1 herder (tribal warrior): "
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(3,6));
-        table.addEntry(num + " axe beaks: " + animalActivity);
-        table.addEntry("1 bandit captain with " + num + " bandits: " + npc);
+        table.addEntry(num + " axe beaks: " + _animalBlock());
+        table.addEntry("1 bandit captain with " + num + " bandits: "
+                       + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,8) + 1);
-        table.addEntry(num + " gnolls");
-        table.addEntry(num + " hobgoblins");
-        table.addEntry(num + " giant eagles: " + animalActivity);
-        table.addEntry(num + " gnoll fangs of Yeenoghu");
+        table.addEntry(num + " gnolls" + _intellegentBlock());
+        table.addEntry(num + " hobgoblins" + _raceBlock());
+        table.addEntry(num + " giant eagles: " + _animalBlock());
+        table.addEntry(num + " gnoll fangs of Yeenoghu" + _intellegentBlock());
 
         num = QString::number(Dice::roll(2,8));
-        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins");
+        table.addEntry("1 hobgoblin captain with " + num + " hobgoblins"
+                       + _raceBlock());
 
         num = QString::number(Dice::roll(2,10));
-        table.addEntry(num + " winged kobolds");
+        table.addEntry(num + " winged kobolds" + _intellegentBlock());
     }
 
-    return table.getRollTableEntry();
+    return table.getRollTableEntry() + _loot(tier);
 }
 
 QString MonsterTable::mountainEncounter(int tier)
@@ -1859,146 +1736,135 @@ QString MonsterTable::mountainEncounter(int tier)
 
     QString num;
     QString num2;
-    QString race = NpcTables::commonerRace();
-    QString disposition = NpcTables::npcDisposition();
-    QString gender = NpcTables::npcGender();
-    QString alignment = NpcTables::determineAlignment();
-    QString activity = EncounterTables::motivation();
-    QString animalActivity = EncounterTables::animalDowntime();
-    QString npc = gender + " " + race + ", " + alignment + " - " + disposition
-            + "(" + activity + ")";
 
     if (tier == 1) {
-        table.addEntry("1 eagle: " + animalActivity);
-        table.addEntry("1 lion: " + animalActivity);
-        table.addEntry("1 giant goat: " + animalActivity);
-        table.addEntry("1 half-ogre");
-        table.addEntry("1 berzerker: " + npc);
-        table.addEntry("1 orog");
-        table.addEntry("1 hell hound");
-        table.addEntry("1 druid: " + npc);
-        table.addEntry("1 peryton");
-        table.addEntry("1 manticore");
+        table.addEntry("1 eagle: " + _animalBlock());
+        table.addEntry("1 lion: " + _animalBlock());
+        table.addEntry("1 giant goat: " + _animalBlock());
+        table.addEntry("1 half-ogre" + _raceBlock());
+        table.addEntry("1 berzerker: " + _npcCommonerBlock());
+        table.addEntry("1 orog" + _raceBlock());
+        table.addEntry("1 hell hound" + _animalBlock());
+        table.addEntry("1 druid: " + _npcAdventurerBlock());
+        table.addEntry("1 peryton" + _animalBlock());
+        table.addEntry("1 manticore" + _animalBlock());
         table.addEntry("Enormous footprits left by a giant, which head into the "
                "mountain peaks");
-        table.addEntry("1 giant elk: " + animalActivity);
-        table.addEntry("1 veteran: " + npc);
-        table.addEntry("1 orc eye of Gruumsh");
-        table.addEntry("1 ogre");
-        table.addEntry("1 griffon: " + animalActivity);
-        table.addEntry("1 basilisk");
-        table.addEntry("1 saber-toothed tiger");
-        table.addEntry("1 cyclops");
-        table.addEntry("1 troll");
-        table.addEntry("1 galeb duhr");
+        table.addEntry("1 giant elk: " + _animalBlock());
+        table.addEntry("1 veteran: " + _npcAdventurerBlock());
+        table.addEntry("1 orc eye of Gruumsh" + _intellegentBlock());
+        table.addEntry("1 ogre" + _raceBlock());
+        table.addEntry("1 griffon: " + _animalBlock(), 6);
+        table.addEntry("1 basilisk" +  _animalBlock());
+        table.addEntry("1 saber-toothed tiger" + _animalBlock());
+        table.addEntry("1 cyclops" + _raceBlock());
+        table.addEntry("1 troll" + _raceBlock());
+        table.addEntry("1 galeb duhr" + _intellegentBlock());
         table.addEntry("1 air elemental");
         table.addEntry("1 bulette");
-        table.addEntry("1 chimera");
-        table.addEntry("1 wyvern");
-        table.addEntry("1 stone giant");
-        table.addEntry("1 frost giant");
-        table.addEntry("1 barghest (vgm)");
+        table.addEntry("1 chimera" + _animalBlock());
+        table.addEntry("1 wyvern" + _animalBlock());
+        table.addEntry("1 stone giant" + _raceBlock());
+        table.addEntry("1 frost giant" + _raceBlock());
+        table.addEntry("1 barghest (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,2));
-        table.addEntry(num + " hippogriffs");
-        table.addEntry(num + " ettins");
-        table.addEntry(num + " orc blade of Ilneval (vgm)");
-        table.addEntry(num + " warlock of the archfey (vgm): " + npc);
-        table.addEntry(num + " tanarukk (vgm)");
-        table.addEntry(num + " warlock of the great old one (vgm): " + npc);
+        table.addEntry(num + " hippogriffs" + _animalBlock());
+        table.addEntry(num + " ettins" + _raceBlock());
+        table.addEntry(num + " orc blade of Ilneval (vgm)" + _intellegentBlock());
+        table.addEntry(num + " warlock of the archfey (vgm): " + _npcCommonerBlock());
+        table.addEntry(num + " orc tanarukk (vgm)" + _intellegentBlock());
+        table.addEntry(num + " warlock of the great old one (vgm): " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,3));
         table.addEntry(num + " swarms of bats");
         num = QString::number(Dice::roll(1,4));
         table.addEntry(num + " harpies");
         num = QString::number(Dice::roll(2,4));
-        table.addEntry(num + " aarakocra");
-        table.addEntry(num + " orcs");
+        table.addEntry(num + " aarakocra" + _raceBlock());
+        table.addEntry(num + " orcs" + _raceBlock());
         num = QString::number(Dice::roll(3,4));
-        table.addEntry(num + " kobolds");
-        table.addEntry(num + " aurochs (vgm)");
-        table.addEntry(num + " guard drakes (red)(vgm)");
-        table.addEntry(num + " orc claw of luthic (vgm)");
-        table.addEntry(num + " orc hand of Yutrus (vgm)");
-        table.addEntry(num + " quetzalcoatlus (vgm)");
-        table.addEntry(num + " orc red fang of Shargaas (vgm)");
+        table.addEntry(num + " kobolds" + _intellegentBlock());
+        table.addEntry(num + " aurochs (vgm)" + _animalBlock());
+        table.addEntry(num + " guard drakes (red)(vgm)" + _animalBlock());
+        table.addEntry(num + " orc claw of luthic (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc hand of Yutrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " quetzalcoatlus (vgm)" + _animalBlock());
+        table.addEntry(num + " orc red fang of Shargaas (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " goats: " + animalActivity);
+        table.addEntry(num + " goats: " + _animalBlock());
         table.addEntry("1 firenewt warlock of Imix with " + num
-                       + " firewts (vgm)");
-        table.addEntry(num + " giant striders (vgm)");
-        table.addEntry(num + "firenewts riding giant striders (vgm)");
-        table.addEntry(num + " kobold dragonshields (vgm)");
-        table.addEntry("kobold scale sorcerer (vgm) with " + num + " kobolds");
+                       + " firewts (vgm)" + _intellegentBlock());
+        table.addEntry(num + " giant striders (vgm)" + _animalBlock());
+        table.addEntry(num + "firenewts riding giant striders (vgm)" + _intellegentBlock());
+        table.addEntry(num + " kobold dragonshields (vgm)" + _intellegentBlock());
+        table.addEntry("kobold scale sorcerer (vgm) with " + num + " kobolds" + _intellegentBlock());
         num = QString::number(Dice::roll(1,6) + 2);
-        table.addEntry(num + " scouts: " + npc);
+        table.addEntry(num + " scouts: " + _npcCommonerBlock());
         num = QString::number(Dice::roll(1,6) + 3);
-        table.addEntry(num + " pteranodons");
+        table.addEntry(num + " pteranodons" + _animalBlock());
         num = QString::number(Dice::roll(2,6));
         num2 = QString::number(Dice::roll(1,6));
         table.addEntry(num + " dwarf soldiers (guards) with " + num2
-               + " mules laden with iron ore");
-        table.addEntry(num + " firenewts (vgm)");
-        table.addEntry(num + " orc neutered one of yurtrus (vgm)");
+               + " mules laden with iron ore" + _motivatedBlock());
+        table.addEntry(num + " firenewts (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc neutered one of yurtrus (vgm)" + _intellegentBlock());
         num = QString::number(Dice::roll(1,8) + 1);
-        table.addEntry(num + " winged kobolds");
+        table.addEntry(num + " winged kobolds" + _intellegentBlock());
         num = QString::number(Dice::roll(2,8) + 1);
-        table.addEntry(num + " blood hawks");
+        table.addEntry(num + " blood hawks" + _animalBlock());
         num = QString::number(Dice::roll(1,10) + 5);
-        table.addEntry(num + " tribal warriors: " + npc);
+        table.addEntry(num + " tribal warriors: " + _npcCommonerBlock());
         num = QString::number(Dice::roll(2,10));
-        table.addEntry(num + " stirges");
-        table.addEntry("1 kobold inventor (vgm) with " + num + " kobolds");
+        table.addEntry(num + " stirges" + _animalBlock());
+        table.addEntry("1 kobold inventor (vgm) with " + num + " kobolds"
+                       + _intellegentBlock());
     }
     else { // tier 2
-        table.addEntry("1 lion: " + animalActivity);
-        table.addEntry("1 saber-toothed tiger: " + animalActivity);
-        table.addEntry("1 basilisk");
-        table.addEntry("1 manticore");
-        table.addEntry("1 galeb duhr");
+        table.addEntry("1 lion: " + _animalBlock());
+        table.addEntry("1 saber-toothed tiger: " + _animalBlock());
+        table.addEntry("1 basilisk" + _animalBlock());
+        table.addEntry("1 manticore" + _animalBlock());
+        table.addEntry("1 galeb duhr" + _intellegentBlock());
         table.addEntry("1 bulette");
-        table.addEntry("1 wyvern");
-        table.addEntry("1 " + gender + " fire giant: " + disposition + ", "
-                       + activity);
-        table.addEntry("1 " + gender + " cloud giant: " + disposition + ", "
-                       + activity);
-        table.addEntry("1 silver dragon: " + npc);
-        table.addEntry("1 roc");
-        table.addEntry("1 young red dragon");
-        table.addEntry("1 barghest (vgm)");
-        table.addEntry("1 anis hag (vgm)");
-        table.addEntry("1 stone giant dreamwalker (vgm)");
+        table.addEntry("1 wyvern" + _animalBlock());
+        table.addEntry("1 fire giant" + _raceBlock());
+        table.addEntry("1 cloud giant" + _raceBlock());
+        table.addEntry("1 silver dragon: " + _npcCommonerBlock());
+        table.addEntry("1 roc" + _animalBlock());
+        table.addEntry("1 young red dragon" + _raceBlock());
+        table.addEntry("1 barghest (vgm)" + _intellegentBlock());
+        table.addEntry("1 anis hag (vgm)" + _intellegentBlock());
+        table.addEntry("1 stone giant dreamwalker (vgm)" + _raceBlock());
 
         num = QString::number(Dice::roll(1,3));
-        table.addEntry(num + " hell hounds");
-        table.addEntry(num + " orc blade of ilneval (vgm)");
-        table.addEntry(num + " warlock of the archfey (vgm): " + npc);
-        table.addEntry(num + " tarnarukk (vgm)");
-        table.addEntry(num + " warlock of the great old one (vgm): " + npc);
+        table.addEntry(num + " hell hounds" + _animalBlock());
+        table.addEntry(num + " orc blade of ilneval (vgm)" + _intellegentBlock());
+        table.addEntry(num + " warlock of the archfey (vgm): " + _npcCommonerBlock());
+        table.addEntry(num + " orc tarnarukk (vgm)" + _intellegentBlock());
+        table.addEntry(num + " warlock of the great old one (vgm): " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,3) + 1);
-        table.addEntry(num + " cyclopses");
-        table.addEntry(num + " ork red fang of shargaas (vgm)");
+        table.addEntry(num + " cyclopses" + _raceBlock());
+        table.addEntry(num + " ork red fang of shargaas (vgm)" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,4));
-        table.addEntry(num + " ettins");
+        table.addEntry(num + " ettins" + _raceBlock());
         table.addEntry(num + " air elementals");
-        table.addEntry(num + " trolls", 5);
-        table.addEntry(num + " chimeras");
-        table.addEntry(num + " " + gender + " stone giants: " + disposition
-                       + ", " + activity);
-        table.addEntry(num + " " + gender + " frost giants: " + disposition
-                       + ", " + activity);
-        table.addEntry(num + "aurochs (vgm)");
-        table.addEntry(num + " guard drakes - red (vgm)");
-        table.addEntry(num + " orc claw of luthic (vgm)");
-        table.addEntry(num + " orc hand of yurtrus (vgm)");
-        table.addEntry(num + " quetzalcoatlus (vgm)");
+        table.addEntry(num + " trolls" + _raceBlock(), 5);
+        table.addEntry(num + " chimeras" + _animalBlock());
+        table.addEntry(num + " stone giants" + _raceBlock());
+        table.addEntry(num + " frost giants: " + _raceBlock());
+        table.addEntry(num + "aurochs (vgm)" + _animalBlock());
+        table.addEntry(num + " guard drakes - red (vgm)" + _animalBlock());
+        table.addEntry(num + " orc claw of luthic (vgm)" + _intellegentBlock());
+        table.addEntry(num + " orc hand of yurtrus (vgm)" + _intellegentBlock());
+        table.addEntry(num + " quetzalcoatlus (vgm)" + _animalBlock());
 
         num = QString::number(Dice::roll(1,4) + 3);
-        table.addEntry(num + " " + gender + " dwarf trailblazers (scouts): "
-                       + disposition);
+        table.addEntry(num + " dwarf trailblazers (scouts): "
+                       + _motivatedBlock());
 
         num = QString::number(Dice::roll(2,4));
         table.addEntry(num + " harpies");
@@ -2006,25 +1872,25 @@ QString MonsterTable::mountainEncounter(int tier)
         num = QString::number(Dice::roll(1,6));
         num2 = QString::number(Dice::roll(3,6) + 10);
         table.addEntry("1 orc Eye of Gruumsh with " + num + " orogs and "
-                       + num2 + " orcs");
+                       + num2 + " orcs" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,6) + 2);
-        table.addEntry(num + " orcs");
+        table.addEntry(num + " orcs" + _intellegentBlock());
 
         num = QString::number(Dice::roll(1,8) + 1);
-        table.addEntry(num + " giant goats: " + animalActivity);
-        table.addEntry(num + " hippogriffs: " + animalActivity);
-        table.addEntry(num + " veterans: " + npc);
+        table.addEntry(num + " giant goats: " + _animalBlock());
+        table.addEntry(num + " hippogriffs: " + _animalBlock());
+        table.addEntry(num + " veterans: " + _npcAdventurerBlock());
 
         num = QString::number(Dice::roll(2,8) + 1);
-        table.addEntry(num + " aarakocra: " + disposition + ", " + activity);
+        table.addEntry(num + " aarakocra" + _raceBlock());
 
         num = QString::number(Dice::roll(1,10));
-        table.addEntry(num + " giant eagles: " + animalActivity);
-        table.addEntry(num + " berzerkers: " + npc);
+        table.addEntry(num + " giant eagles: " + _animalBlock());
+        table.addEntry(num + " berzerkers: " + _npcCommonerBlock());
 
         num = QString::number(Dice::roll(1,12));
-        table.addEntry(num + " half-ogres");
+        table.addEntry(num + " half-ogres" + _raceBlock());
 
     }
 
@@ -2118,12 +1984,6 @@ QString MonsterTable::generateUrbanEncounter(int tier)
     }
     else if (encounterType < 75) {
         encounter = urbanEncounterXge(tier);
-        /*
-        encounter += "\n- Intellegent motive: " + humanoidAttacksUrban() + "\n";
-        encounter += "- Creature motive: " + creatureAttacksUrban() + "\n";
-        encounter += "- Friendly motive: " + friendlyHumanoidUrbanActivity() + "\n";
-        encounter += (roll(1,6) < 4) ? "(friendly)" : "(hostile)";
-        */
 
     }
     //else if (encounterType < 90) {
@@ -2175,5 +2035,45 @@ QString MonsterTable::friendlyHumanoidUrbanActivity()
     table.addEntry("Adventure hook:" + AdventureTables::adventureHook(), 3);
 
     return table.getRollTableEntry();
+}
+
+QString MonsterTable::_intellegentBlock()
+{
+    return "\nACTIVITY: " + EncounterTables::motivation();
+}
+
+QString MonsterTable::_raceBlock()
+{
+    return "\n" + NpcTables::npcGender() + ", " + NpcTables::npcDisposition()
+            + _intellegentBlock();
+}
+
+QString MonsterTable::_npcAdventurerBlock()
+{
+    return "\n" + NpcTables::npcGender() + " " + NpcTables::AdventurerRace()
+            + ", " + NpcTables::determineAlignment() + ", "
+            + NpcTables::npcDisposition() + _intellegentBlock();
+}
+
+QString MonsterTable::_npcCommonerBlock()
+{
+    return "\n" + NpcTables::npcGender() + " " + NpcTables::commonRace()
+            + ", " + NpcTables::determineAlignment() + ", "
+            + NpcTables::npcDisposition() + _intellegentBlock();
+}
+
+QString MonsterTable::_motivatedBlock()
+{
+    return "\n" + NpcTables::npcGender() + ", " + NpcTables::npcDisposition();
+}
+
+QString MonsterTable::_animalBlock()
+{
+    return "\nACTIVITY: " + EncounterTables::animalDowntime();
+}
+
+QString MonsterTable::_loot(int tier)
+{
+    return "\nLOOT: " + LootTables::generateIndividualTreasure(tier);
 }
 
