@@ -139,6 +139,7 @@ QString HexcrawlTables::mainNauticalFeature(int tier)
     inhabitants.addEntry("Boss monster hideout with minions");
     inhabitants.addEntry("Castaways");
     inhabitants.addEntry("Penal colony");
+    inhabitants.addEntry("Morkoth Island Lair (vgm)");
 
     RandomTable contents;
     contents.addEntry("Nothing out of the ordinary");
@@ -166,6 +167,22 @@ QString HexcrawlTables::mainNauticalFeature(int tier)
                    + "\nType: " + islandType.getRollTableEntry()
                    + "\nInhabitants: " + inhabitants.getRollTableEntry()
                    + "\nContents: " + contents.getRollTableEntry(), 8);
+
+    QString treasure = (Dice::roll(1,100) < 50)
+            ? " with treasure:\n" + LootTables::generateTreasureHorde(tier)
+            : "";
+    table.addEntry("Sunken galleon" + treasure);
+    table.addEntry("An underwater, empty castle made from coral");
+    table.addEntry("An underwater statue of a squatting humanoid, with bat "
+                   "wings on its back and tentacles sprouting from its "
+                   "face");
+    table.addEntry("A 1 mile radius sphere of effervescent water that allows "
+                   "air breathing creatures to breathe water while within the "
+                   "sphere");
+    table.addEntry("An underwater, shimmering, blue-green portal to the "
+                   "Elemental plane of Water");
+    table.addEntry("Undersea aboleth lair");
+    table.addEntry("Undersea kraken lair");
 
     return table.getRollTableEntry();
 
@@ -251,17 +268,25 @@ QString HexcrawlTables::wanderingNauticalEncounter(int tier)
     hail.addEntry("Warning of trespassing");
 
     RandomTable mission;
-    mission.addEntry("Merchant, Guarded by: " + nauticalGuard());
-    mission.addEntry("Passengers, Guarded by: " + nauticalGuard());
-    mission.addEntry("Fishermen");
-    mission.addEntry("Pirates");
-    mission.addEntry("Privateers");
-    mission.addEntry("Adventurers");
-    mission.addEntry("Navy");
-    mission.addEntry("Mercenary");
-    mission.addEntry("Explorers");
-    mission.addEntry("Diplomatic");
-    mission.addEntry("Smuggling");
+    mission.addEntry("Merchant, Guarded by: " + nauticalGuard(), 5);
+    mission.addEntry("Passengers, Guarded by: " + nauticalGuard(), 5);
+    mission.addEntry("Fishermen", 3);
+    mission.addEntry("Pirates", 5);
+    mission.addEntry("Privateers", 3);
+    mission.addEntry("Adventurers:\n" + NpcTables::adventuringParty(tier),2);
+    mission.addEntry("Navy", 2);
+    mission.addEntry("Mercenary", 3);
+    mission.addEntry("Explorers", 2);
+    mission.addEntry("Diplomatic", 4);
+    mission.addEntry("Smuggling", 5);
+    mission.addEntry("Orc merauders");
+    mission.addEntry("Hobgoblin pirates", 3);
+    mission.addEntry("Kuo-toan hijackers", 2);
+    mission.addEntry("Treasure hunters", 3);
+    mission.addEntry("Illithid with thral crew");
+    mission.addEntry("Kraken cultists");
+    mission.addEntry("Aboleth minions");
+    mission.addEntry("Beholder with minion crew");
 
     QString treasure = "Treasure: " + (Dice::roll(1,100) < tier * 20)
             ? LootTables::generateTreasureHorde(tier)
@@ -305,6 +330,8 @@ QString HexcrawlTables::wanderingNauticalEncounter(int tier)
                    + LootTables::generateTreasureHorde(tier));
     table.addEntry("Jetsam: an abandoned cargo: "
                    + LootTables::generateTreasureHorde(tier));
+    table.addEntry("Floating corpses of sailors");
+    table.addEntry("Abandoned bathysphere");
 
     return table.getRollTableEntry();
 }
@@ -312,12 +339,12 @@ QString HexcrawlTables::wanderingNauticalEncounter(int tier)
 QString HexcrawlTables::nauticalGuard()
 {
     RandomTable guardShips;
-    guardShips.addEntry("None");
-    guardShips.addEntry("Local navy");
-    guardShips.addEntry("Mercenary");
-    guardShips.addEntry("Privately owned navy");
-    guardShips.addEntry("Pirates");
-    guardShips.addEntry("Adventurers");
+    guardShips.addEntry("None", 3);
+    guardShips.addEntry("Local navy", 3);
+    guardShips.addEntry("Mercenary", 4);
+    guardShips.addEntry("Privately owned navy", 2);
+    guardShips.addEntry("Pirates", 2);
+    guardShips.addEntry("Adventurers",2);
     guardShips.addEntry("Sea monster/supernatural");
 
     return guardShips.getRollTableEntry();

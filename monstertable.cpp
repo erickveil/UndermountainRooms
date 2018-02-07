@@ -1912,9 +1912,12 @@ QString MonsterTable::nauticalEncounter(int tier)
         table.addEntry("1 giant shark");
         table.addEntry("1 water elemental");
         table.addEntry("1 sahuagin baron");
+        table.addEntry("1 deep scion (vgm)");
+        table.addEntry("1 slithering tracker (vgm)");
 
         num = QString::number(Dice::roll(1,4));
         table.addEntry(num + " sahuagin");
+        table.addEntry(num + " dimetrodons (vgm)");
 
         num = QString::number(Dice::roll(2,4));
         table.addEntry(num + " steam mephits");
@@ -1931,10 +1934,12 @@ QString MonsterTable::nauticalEncounter(int tier)
         table.addEntry("1 giant octopus");
         table.addEntry("1 marid");
         table.addEntry("1 storm giant");
+        table.addEntry("1 morkoth (vgm)");
 
         num = QString::number(Dice::roll(1,3));
         num2= QString::number(Dice::roll(2,10));
         table.addEntry(num + " sahuagin priestesses with " + num2 + " sahuagin");
+        table.addEntry(num + " slithering trackers (vgm)");
 
         num = QString::number(Dice::roll(1,4));
         table.addEntry(num + " sea hags");
@@ -1942,6 +1947,7 @@ QString MonsterTable::nauticalEncounter(int tier)
         table.addEntry(num + " giant constrictor snakes");
         table.addEntry(num + " water elementals");
         table.addEntry(num + " giant sharks");
+        table.addEntry(num + " deep scions (vgm)");
 
         num = QString::number(Dice::roll(3,6));
         table.addEntry(num + " steam mephits");
@@ -1956,26 +1962,33 @@ QString MonsterTable::nauticalEncounter(int tier)
         num = QString::number(Dice::roll(2,10));
         num2= QString::number(Dice::roll(1,4));
         table.addEntry(num + " merfolk with " + num2 + " giant seahorses");
+        table.addEntry(num + " dimetrodons (vgm)");
 
     }
     else {
-        table.addEntry("1 dragon turtle", 10);
+        table.addEntry("1 dragon turtle", 5);
         table.addEntry("1 kraken");
+        table.addEntry("1 aboleth");
+        table.addEntry("1 froghemoth (vgm)", 5);
+        table.addEntry("1 storm giant, quintessent (vgm)");
 
         num = QString::number(Dice::roll(1,4));
         table.addEntry(num + " storm giants", 5);
+        table.addEntry(num + " morkoths (vgm)", 2);
 
         num = QString::number(Dice::roll(1,4));
         num2= QString::number(Dice::roll(2,10));
         table.addEntry("1 sahuagin baron with " + num
                        + " sahuagin priestesses and " + num2 + " sahuagin", 10);
-        table.addEntry(num + " marids", 10);
+        table.addEntry(num + " marids", 5);
 
         num = QString::number(Dice::roll(1,6));
-        table.addEntry(num + " giant sharks", 10);
+        table.addEntry(num + " giant sharks", 5);
 
         num = QString::number(Dice::roll(1,10));
-        table.addEntry(num + " water elementals", 10);
+        table.addEntry(num + " water elementals", 5);
+        table.addEntry(num + " dimetrodons (vgm)", 5);
+
     }
 
     return table.getRollTableEntry();
