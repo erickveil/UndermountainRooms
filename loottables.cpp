@@ -1555,6 +1555,86 @@ QString LootTables::mundaneHorde(int tier)
     return treasure;
 }
 
+QString LootTables::adventureGear()
+{
+    RandomTable table;
+
+    QString num = QString::number(Dice::roll(1, 6));
+
+    table.addEntry(num + " bolts");
+    table.addEntry(num + " arrows");
+    table.addEntry(num + " sling ammo");
+    table.addEntry(num + " darts");
+    table.addEntry(num + " iron spikes");
+    table.addEntry(num + " torches");
+    table.addEntry(num + " candles");
+
+
+    RandomTable trade;
+    trade.addEntry(num+ " lbs of wheat");
+    trade.addEntry(num+ " lbs of flour");
+    trade.addEntry(num+ " lbs of salt");
+    trade.addEntry(num+ " lbs of cinnamon");
+    trade.addEntry(num+ " lbs of iron");
+    trade.addEntry(num+ " lbs of pepper");
+    trade.addEntry(num+ " lbs of cloves");
+    table.addEntry(trade.getRollTableEntry());
+
+    table.addEntry("silvered bolt");
+    table.addEntry("silvered arrow");
+    table.addEntry("vial of acid");
+    table.addEntry("flask of alchemists fire");
+    table.addEntry("vial of antitoxin");
+    table.addEntry("bag of ball bearings");
+    table.addEntry(num + " caltrops");
+    table.addEntry("flask of oil");
+    table.addEntry("vial of basic poison");
+    table.addEntry("Piton");
+    table.addEntry("10 foot pole");
+    table.addEntry("Potion of healing");
+    table.addEntry("1 day of rations");
+
+    num = QString::number(Dice::roll(1, 10) * 10);
+    table.addEntry(num + " feet of hemp rope");
+
+    table.addEntry("waterskin (full)");
+    table.addEntry("wineskin (full)");
+
+    RandomTable tools;
+    tools.addEntry("Alchemists supplies");
+    tools.addEntry("Brewers supplies");
+    tools.addEntry("Calligrapher supplies");
+    tools.addEntry("Carpenters tools");
+    tools.addEntry("Cartographer tools");
+    tools.addEntry("Cobbler tools");
+    tools.addEntry("Cook utensils");
+    tools.addEntry("Glassblower tools");
+    tools.addEntry("Jeweler tools");
+    tools.addEntry("Leatherworker tools");
+    tools.addEntry("Mason tools");
+    tools.addEntry("Painter supplies");
+    tools.addEntry("Potters supplies");
+    tools.addEntry("Smith tools");
+    tools.addEntry("Tinker tools");
+    tools.addEntry("Weaver tools");
+    tools.addEntry("Woodcarver tools");
+    tools.addEntry("Disguise kit");
+    tools.addEntry("Forgery kit");
+    tools.addEntry("Dice set");
+    tools.addEntry("Dragonchess set");
+    tools.addEntry("Playing card set");
+    tools.addEntry("Three-dragon ante set");
+    tools.addEntry("Herbalism kit");
+    tools.addEntry("Navigator tools");
+    tools.addEntry("Poisoner kit");
+    tools.addEntry("Thieves tools");
+
+    table.addEntry(tools.getRollTableEntry());
+
+    return table.getRollTableEntry();
+
+}
+
 QString LootTables::treasureContainer()
 {
     RandomTable table;
@@ -1609,6 +1689,7 @@ QString LootTables::generateTreasureHorde(int tier)
     int numArt;
     int numMagic;
     bool hasMundane;
+    bool hasAdventure;
 
     QString treasure;
     treasure = "TREASURE: \nCONTAINER: " + treasureContainer() + "\n"
@@ -1623,6 +1704,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 35;
+        hasAdventure = Dice::roll(1,100) < 50;
 
     }
     else if (tier == 2) {
@@ -1633,6 +1715,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 45;
+        hasAdventure = Dice::roll(1,100) < 25;
     }
     else if (tier == 3) {
         hasGems = Dice::roll(1,100) < 47;
@@ -1642,6 +1725,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 55;
+        hasAdventure = Dice::roll(1,100) < 10;
     }
     else {
         hasGems = Dice::roll(1,100) < 42;
@@ -1651,6 +1735,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(1,10) : 0;
         numMagic = hasMagic ? Dice::roll(1,8) : 0;
         hasMundane = Dice::roll(1,100) < 65;
+        hasAdventure = Dice::roll(1,100) < 5;
     }
 
     for (int i = 0; i < numArt; ++i) { treasure += art(tier) + "\n\n"; }
@@ -1661,6 +1746,10 @@ QString LootTables::generateTreasureHorde(int tier)
 
     if (hasMundane) {
         treasure += mundaneHorde(tier) + "\n\n";
+    }
+
+    if (hasAdventure) {
+        treasure += adventureGear() + "\n\n";
     }
 
     return treasure;
@@ -1757,12 +1846,17 @@ QString LootTables::generateIndividualTreasure(int tier)
     bool hasMagic = Dice::roll(1,100) < magicChance;
     int jewelChance = tier * 10;
     bool hasJewel = Dice::roll(1,100) < jewelChance;
+    int adventureChance = 25;
+    bool hasAdventure = Dice::roll(1,100) < adventureChance;
 
     if (hasMagic) {
         treasure += "\n" + selectMagicItemByTier(tier);
     }
     if (hasJewel) {
         treasure += "\n" + art(tier);
+    }
+    if (hasAdventure) {
+        treasure += "\n" + adventureGear();
     }
 
     return treasure;
