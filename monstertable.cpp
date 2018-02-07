@@ -1897,6 +1897,90 @@ QString MonsterTable::mountainEncounter(int tier)
     return table.getRollTableEntry();
 }
 
+QString MonsterTable::nauticalEncounter(int tier)
+{
+    RandomTable table;
+    QString num;
+    QString num2;
+
+    if (tier == 1) {
+        table.addEntry("1 giant octopus");
+        table.addEntry("1 merrow");
+        table.addEntry("1 plesiosaurus");
+        table.addEntry("1 giant constrictor snake");
+        table.addEntry("1 sea hag");
+        table.addEntry("1 giant shark");
+        table.addEntry("1 water elemental");
+        table.addEntry("1 sahuagin baron");
+
+        num = QString::number(Dice::roll(1,4));
+        table.addEntry(num + " sahuagin");
+
+        num = QString::number(Dice::roll(2,4));
+        table.addEntry(num + " steam mephits");
+        table.addEntry("1 sahuagin priestess with " + num + " sahuagin");
+
+        num = QString::number(Dice::roll(2,6));
+        table.addEntry(num + "merfolk");
+
+        num = QString::number(Dice::roll(1,10));
+        num2= QString::number(Dice::roll(1,3));
+        table.addEntry(num + " merfolk with " + num2 + " giant seahorses");
+    }
+    else if (tier == 2) {
+        table.addEntry("1 giant octopus");
+        table.addEntry("1 marid");
+        table.addEntry("1 storm giant");
+
+        num = QString::number(Dice::roll(1,3));
+        num2= QString::number(Dice::roll(2,10));
+        table.addEntry(num + " sahuagin priestesses with " + num2 + " sahuagin");
+
+        num = QString::number(Dice::roll(1,4));
+        table.addEntry(num + " sea hags");
+        table.addEntry(num + " plesiosauruses");
+        table.addEntry(num + " giant constrictor snakes");
+        table.addEntry(num + " water elementals");
+        table.addEntry(num + " giant sharks");
+
+        num = QString::number(Dice::roll(3,6));
+        table.addEntry(num + " steam mephits");
+
+        num = QString::number(Dice::roll(2,8));
+        table.addEntry("1 sahuagin baron with " + num + " sahuagin");
+
+        num = QString::number(Dice::roll(1,10));
+        table.addEntry(num + " sahuagin");
+        table.addEntry(num + " merrow");
+
+        num = QString::number(Dice::roll(2,10));
+        num2= QString::number(Dice::roll(1,4));
+        table.addEntry(num + " merfolk with " + num2 + " giant seahorses");
+
+    }
+    else {
+        table.addEntry("1 dragon turtle", 10);
+        table.addEntry("1 kraken");
+
+        num = QString::number(Dice::roll(1,4));
+        table.addEntry(num + " storm giants", 5);
+
+        num = QString::number(Dice::roll(1,4));
+        num2= QString::number(Dice::roll(2,10));
+        table.addEntry("1 sahuagin baron with " + num
+                       + " sahuagin priestesses and " + num2 + " sahuagin", 10);
+        table.addEntry(num + " marids", 10);
+
+        num = QString::number(Dice::roll(1,6));
+        table.addEntry(num + " giant sharks", 10);
+
+        num = QString::number(Dice::roll(1,10));
+        table.addEntry(num + " water elementals", 10);
+    }
+
+    return table.getRollTableEntry();
+}
+
 
 QString MonsterTable::guardianFoe(int tier)
 {

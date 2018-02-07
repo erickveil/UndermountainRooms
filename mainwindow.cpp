@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->biomeSelect->addItem("Grasslands");
     ui->biomeSelect->addItem("Hill");
     ui->biomeSelect->addItem("Mountain");
+    ui->biomeSelect->addItem("Nautical");
 
     ui->itemType->addItem("By Tier");
     ui->itemType->addItem("Minor Common");
@@ -210,6 +211,12 @@ void MainWindow::on_wanderingMonster_clicked()
                     + "\n" + loot
                     );
     }
+    else if (biome == "Nautical") {
+        ui->resultArea->setPlainText(
+                    MonsterTable::nauticalEncounter(tier)
+                    + "\n" + loot
+                    );
+    }
 
     else {
         ui->resultArea->setPlainText("Unknown biome type: " + biome );
@@ -291,7 +298,14 @@ void MainWindow::on_intiTreas_clicked()
 void MainWindow::on_keyHex_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(hexTables.keyHex(tier));
+    QString biome = ui->biomeSelect->currentText();
+
+    if (biome == "Nautical") {
+        ui->resultArea->setPlainText(hexTables.keyNauticalHex(tier));
+    }
+    else {
+        ui->resultArea->setPlainText(hexTables.keyHex(tier));
+    }
 }
 
 void MainWindow::on_butComplexTrap_clicked()

@@ -23,6 +23,15 @@ QString HexcrawlTables::keyHex(int tier)
     return key;
 }
 
+QString HexcrawlTables::keyNauticalHex(int tier)
+{
+    QString key = "Main Feature:\n";
+    key += mainNauticalFeature(tier) + "\n\n";
+    key += "Wandering Encounter:\n";
+    key += wanderingNauticalEncounter(tier) + "\n";
+    return key;
+}
+
 QString HexcrawlTables::mainFeature(int tier)
 {
     RandomTable table;
@@ -35,6 +44,131 @@ QString HexcrawlTables::mainFeature(int tier)
                    100-98);
 
     return table.getRollTableEntry();
+}
+
+QString HexcrawlTables::mainNauticalFeature(int tier)
+{
+    RandomTable table;
+
+    table.addEntry("Area of magnetic disruption. Affects compases: Navigate "
+                   "at disadvantage in this area.");
+
+    RandomTable graveyard;
+    graveyard.addEntry("Uninhabited");
+    graveyard.addEntry("Haunted by ghosts");
+    graveyard.addEntry("Haunted by skeletons");
+    graveyard.addEntry("Occupied by pirate scavengers");
+    graveyard.addEntry("Haunted by ghosts, with treasure horde: "
+                       + LootTables::generateTreasureHorde(tier));
+    graveyard.addEntry("Haunted by skeletons, with treasure horde: "
+                       + LootTables::generateTreasureHorde(tier));
+    graveyard.addEntry("Occupied by pirate scavengers looking for treasure "
+                       "horde: " + LootTables::generateTreasureHorde(tier));
+    graveyard.addEntry("Uninhabited with treasure horde: "
+                       + LootTables::generateTreasureHorde(tier));
+    table.addEntry("Shipwreck graveyard: " + graveyard.getRollTableEntry());
+
+    table.addEntry("Undersea city - ruins");
+    table.addEntry("Undersea city/lair - sahuagin");
+    table.addEntry("Undersea city - merfolk");
+    table.addEntry("Undersea city - merfolk");
+    table.addEntry("Undersea caves - submerged");
+    table.addEntry("Undersea caves - air filled");
+    table.addEntry("Undersea ruins - submerged");
+    table.addEntry("Undersea ruins - air filled");
+    table.addEntry("Undersea dungeon - air filled");
+    table.addEntry("Undersea dungeon - submerged");
+
+    table.addEntry("Coral threatens hull");
+    table.addEntry("Claimed waters: naval vessels attack on sight");
+    table.addEntry("Claimed waters: naval vessels warn party to stay out or "
+                   "go around");
+    QString dc = QString::number(tier + 14);
+    table.addEntry("Large iceberg: Navigate DC " + dc + " or damage hull");
+
+    RandomTable malestrom;
+    malestrom.addEntry("Ship is destroyed and joins a shipwreck graveyard at "
+                       "the bottom of the sea ("
+                       + graveyard.getRollTableEntry() + ")");
+    malestrom.addEntry("Ship is safely gated to the Plane of Water in a bubble.");
+    malestrom.addEntry("Ship is deposited into an underdark sea cavern, "
+                       "sustaining moderate damage.");
+    QString hex = QString::number(Dice::roll(1,100));
+    malestrom.addEntry("Ship is gated to another sea hex: " + hex);
+    malestrom.addEntry("Ship escapes, but is now automatically lost.");
+
+    table.addEntry("Malestrom: Navigate DC " + dc + " or get caught: "
+                   + malestrom.getRollTableEntry());
+
+    table.addEntry("Region is permanently encased in a thick fog. Navigate at "
+                   "disadvantage.");
+    table.addEntry("Region is permanently windless. Must use oars to move or "
+                   "be trapped.");
+    table.addEntry("Sunken treasure deep below the waves: "
+                   + LootTables::generateTreasureHorde(tier));
+
+    RandomTable biome;
+    biome.addEntry("Desert - all sand and no life");
+    biome.addEntry("Jungle");
+    biome.addEntry("Forest");
+    biome.addEntry("Hilly grass");
+    biome.addEntry("Swamp");
+
+    RandomTable islandType;
+    islandType.addEntry("Normal", 7);
+    QString height = QString::number(Dice::roll(1,100) * 100);
+    islandType.addEntry("Earth mote floating " + height + " feet in the air");
+    islandType.addEntry("Back of large, sleeping creature");
+    islandType.addEntry("Floating/moving island");
+    islandType.addEntry("Completely artificial structure");
+    islandType.addEntry("Volcano");
+    islandType.addEntry("Hidden or hard to find");
+    islandType.addEntry("Situated in the calm eye of a perpetual, volent storm");
+
+    QString islandGuards = " Guarded by: " + nauticalGuard();
+
+    RandomTable inhabitants;
+    inhabitants.addEntry("Uninhabited");
+    inhabitants.addEntry("Animal life only");
+    inhabitants.addEntry("Monsters");
+    inhabitants.addEntry("Primitive tribe");
+    inhabitants.addEntry("Pirate hideout" + islandGuards);
+    inhabitants.addEntry("Pirate traders' cove" + islandGuards);
+    inhabitants.addEntry("Cultured civilization" + islandGuards);
+    inhabitants.addEntry("Alien/unusual civilization" + islandGuards);
+    inhabitants.addEntry("Boss monster hideout with minions");
+    inhabitants.addEntry("Castaways");
+    inhabitants.addEntry("Penal colony");
+
+    RandomTable contents;
+    contents.addEntry("Nothing out of the ordinary");
+    contents.addEntry("Ruins");
+    contents.addEntry("Caves");
+    contents.addEntry("Village");
+    contents.addEntry("Town");
+    contents.addEntry("Abandoned camp");
+    contents.addEntry("Normal camp");
+    contents.addEntry("Castle or stronhold");
+    contents.addEntry("Lighthouse");
+    contents.addEntry("Wizard Tower");
+    contents.addEntry("Lair");
+    contents.addEntry("Shipwreck");
+    contents.addEntry("Buried treasure: "
+                      + LootTables::generateTreasureHorde(tier));
+
+    RandomTable size;
+    size.addEntry("Small (< 1 mile)");
+    size.addEntry("Medium (1-3 mile)");
+    size.addEntry("Large (3-10 mile)");
+
+    table.addEntry("Island:\nBiome: " + biome.getRollTableEntry()
+                   + "\nSize: " + size.getRollTableEntry()
+                   + "\nType: " + islandType.getRollTableEntry()
+                   + "\nInhabitants: " + inhabitants.getRollTableEntry()
+                   + "\nContents: " + contents.getRollTableEntry(), 8);
+
+    return table.getRollTableEntry();
+
 }
 
 QString HexcrawlTables::wanderingEncounter(int tier)
@@ -51,6 +185,142 @@ QString HexcrawlTables::wanderingEncounter(int tier)
     table.addEntry("Remarkable event or feature: " + remarkableEvent(tier));
 
     return table.getRollTableEntry();
+}
+
+QString HexcrawlTables::wanderingNauticalEncounter(int tier)
+{
+    RandomTable table;
+
+    table.addEntry("Monster attack: " + MonsterTable::nauticalEncounter(tier));
+    table.addEntry("Pirates: Run up the flag and let you pass after you "
+                   "jettison your cargo");
+    table.addEntry("Marauders: Ram your ship and grapple the sides, board and "
+                   "murder your crew, loot the wreckage, then shove off");
+    table.addEntry("Raiders: Prefer to raid coastal and island villages");
+    table.addEntry("Hijackers: Out to take the whole ship intact. Will take "
+                   "turncoats as crew or prisoners who surrender to sell as "
+                   "slaves");
+    table.addEntry("Stowaways revealed");
+    table.addEntry("St Elmo's fire: Navigate at advantage for 24 hours");
+    table.addEntry("Magnetic disruption affects compasses: Navigate at "
+                   "disadvantage while in area");
+    table.addEntry("Thick fog: navigate at disadvantage");
+
+    QString direction = QString::number(Dice::roll(1,12)) + " o'clock";
+    QString distance = QString::number(Dice::roll(1,2));
+
+    table.addEntry("Dangerous storm: batten down the hatches. Navigation "
+                   "impossible. Lost afterwords, and moved " + distance
+                   + " hexes at " + direction + " off course");
+    table.addEntry("Armada en route to battle");
+
+    RandomTable shipType;
+    shipType.addEntry("Submarine");
+    shipType.addEntry("Flying ship");
+    shipType.addEntry("Caravel (sailing ship)");
+    shipType.addEntry("Cargo Ship (should be near a shoreline)");
+    shipType.addEntry("Cog (improved cargo ship)");
+    shipType.addEntry("Curragh (primitive ship of stretched skins and one sail)");
+    shipType.addEntry("Drakkar (dragon ship - large viking longship)");
+    shipType.addEntry("Dromond (war ship)");
+    shipType.addEntry("Fishing boat");
+    shipType.addEntry("Galley (very advanced: oars and three masts)");
+    shipType.addEntry("Knarr (open sea cargo ship with oars and sails)");
+    shipType.addEntry("Longship (viking)");
+    shipType.addEntry("Penteconter (galley with 2 banks of oars and outriggers "
+                      "and ram");
+    shipType.addEntry("Sohar (middle eastern merchant ship with 3 masts)");
+    shipType.addEntry("Trireme (three banks of oars and single mast, and little "
+                      "room for supplies)");
+
+    RandomTable sos;
+    sos.addEntry("Sinking ship");
+    sos.addEntry("Crew mostly dead from illness (contagion possible)");
+    sos.addEntry("Crew mostly dead from pirates");
+    sos.addEntry("Trick ambush by pirates");
+    sos.addEntry("Wreckage with survivors");
+    sos.addEntry("Wreckage with no survivors");
+    sos.addEntry("Lost at sea, out of provisions");
+
+    RandomTable hail;
+    hail.addEntry("Merchant ship requires escort");
+    hail.addEntry("Warning about danger in area (pirates or monster)");
+    hail.addEntry("Trick ambush by pirates");
+    hail.addEntry("Adventurer aid required on nearest shore");
+    hail.addEntry("Need directions");
+    hail.addEntry("Warning of trespassing");
+
+    RandomTable mission;
+    mission.addEntry("Merchant, Guarded by: " + nauticalGuard());
+    mission.addEntry("Passengers, Guarded by: " + nauticalGuard());
+    mission.addEntry("Fishermen");
+    mission.addEntry("Pirates");
+    mission.addEntry("Privateers");
+    mission.addEntry("Adventurers");
+    mission.addEntry("Navy");
+    mission.addEntry("Mercenary");
+    mission.addEntry("Explorers");
+    mission.addEntry("Diplomatic");
+    mission.addEntry("Smuggling");
+
+    QString treasure = "Treasure: " + (Dice::roll(1,100) < tier * 20)
+            ? LootTables::generateTreasureHorde(tier)
+            : "None";
+
+    table.addEntry("Ghost ship filled with ghosts: "
+                   + shipType.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Ghost ship filled with zombies: "
+                   + shipType.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Ghost ship filled with skeletons: "
+                   + shipType.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Ship in distress sos: " + sos.getRollTableEntry()
+                   + shipType.getRollTableEntry()
+                   + "\nMission: " + mission.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Ship hail: " + hail.getRollTableEntry()
+                   + shipType.getRollTableEntry()
+                   + "\nMission: " + mission.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Ship turns and runs away: "
+                   + shipType.getRollTableEntry()
+                   + "\nMission: " + mission.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Ship quietly maintains course: "
+                   + shipType.getRollTableEntry()
+                   + "\nMission: " + mission.getRollTableEntry()
+                   + "\n" + treasure);
+
+    table.addEntry("Flotsam scattered about surface (a recent sunken ship)");
+    table.addEntry("Flotsam scattered about surface (a recent sunken ship with "
+                   "sunken treasure)\n"
+                   + LootTables::generateTreasureHorde(tier));
+    table.addEntry("Jetsam: an abandoned cargo: "
+                   + LootTables::generateTreasureHorde(tier));
+
+    return table.getRollTableEntry();
+}
+
+QString HexcrawlTables::nauticalGuard()
+{
+    RandomTable guardShips;
+    guardShips.addEntry("None");
+    guardShips.addEntry("Local navy");
+    guardShips.addEntry("Mercenary");
+    guardShips.addEntry("Privately owned navy");
+    guardShips.addEntry("Pirates");
+    guardShips.addEntry("Adventurers");
+    guardShips.addEntry("Sea monster/supernatural");
+
+    return guardShips.getRollTableEntry();
 }
 
 QString HexcrawlTables::remoteStructure(int tier)

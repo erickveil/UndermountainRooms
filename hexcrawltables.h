@@ -13,12 +13,17 @@ public:
     HexcrawlTables();
 
     QString keyHex(int tier);
+    QString keyNauticalHex(int tier);
 
     QString pregenHex(int tier);
     QString randomEcnounter(int tier);
 
     QString mainFeature(int tier);
     QString wanderingEncounter(int tier);
+
+    QString mainNauticalFeature(int tier);
+    QString wanderingNauticalEncounter(int tier);
+    QString nauticalGuard();
 
     QString remoteStructure(int tier);
     QString ruinedStructure(int tier);

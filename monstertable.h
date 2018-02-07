@@ -32,6 +32,15 @@ public:
     static QString hillEncounter(int tier);
     static QString mountainEncounter(int tier);
 
+    /**
+     * @brief nauticalEncounter
+     * Sea adventures *while on a ship* use underwater encounters when players
+     * enter the water.
+     * @param tier
+     * @return
+     */
+    static QString nauticalEncounter(int tier);
+
     static QString guardianFoe(int tier);
 
     static QString generateUrbanEncounter(int tier);
