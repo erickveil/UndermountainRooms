@@ -24,38 +24,13 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="dunType">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>290</y>
-      <width>200</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>200</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="text">
-     <string>Dungeon Type</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>220</x>
       <y>10</y>
       <width>202</width>
-      <height>275</height>
+      <height>306</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -158,6 +133,25 @@
       <widget class="QPushButton" name="hordTreas">
        <property name="text">
         <string>Treasure Horde</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="dunType">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Dungeon Type</string>
        </property>
       </widget>
      </item>
@@ -290,14 +284,27 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>10</x>
       <y>330</y>
-      <width>89</width>
+      <width>201</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>Hook</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbTreasureMap">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>330</y>
+      <width>201</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Treasure Map</string>
     </property>
    </widget>
   </widget>

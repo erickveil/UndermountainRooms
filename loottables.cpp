@@ -1609,6 +1609,7 @@ QString LootTables::generateTreasureHorde(int tier)
     int numArt;
     int numMagic;
     bool hasMundane;
+    bool hasMap;
 
     QString treasure;
     treasure = "TREASURE: \nCONTAINER: " + treasureContainer() + "\n"
@@ -1623,6 +1624,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 35;
+        hasMap = Dice::roll(1,100) < 20;
 
     }
     else if (tier == 2) {
@@ -1633,6 +1635,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 45;
+        hasMap = Dice::roll(1,100) < 25;
     }
     else if (tier == 3) {
         hasGems = Dice::roll(1,100) < 47;
@@ -1642,6 +1645,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 55;
+        hasMap = Dice::roll(1,100) < 30;
     }
     else {
         hasGems = Dice::roll(1,100) < 42;
@@ -1651,6 +1655,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(1,10) : 0;
         numMagic = hasMagic ? Dice::roll(1,8) : 0;
         hasMundane = Dice::roll(1,100) < 65;
+        hasMap = Dice::roll(1,100) < 35;
     }
 
     for (int i = 0; i < numArt; ++i) { treasure += art(tier) + "\n\n"; }
@@ -1661,6 +1666,10 @@ QString LootTables::generateTreasureHorde(int tier)
 
     if (hasMundane) {
         treasure += mundaneHorde(tier) + "\n\n";
+    }
+
+    if (hasMap) {
+        treasure += treasureMaps::generateMap() + "\n\n";
     }
 
     return treasure;

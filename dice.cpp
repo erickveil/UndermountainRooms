@@ -2,7 +2,6 @@
 
 Dice::Dice()
 {
-
 }
 
 int Dice::randomNumber(int min, int max)

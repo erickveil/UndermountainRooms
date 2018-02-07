@@ -3,6 +3,7 @@
 
 
 #include <QtGlobal>
+#include <QTime>
 
 class Dice
 {

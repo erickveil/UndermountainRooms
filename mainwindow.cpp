@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QtGlobal>
+#include <QTime>
 
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    qsrand(QTime::currentTime().msec());
     ui->setupUi(this);
 
     ui->typeSelect->addItem("General");
@@ -301,4 +304,10 @@ void MainWindow::on_butComplexTrap_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     ui->resultArea->setPlainText(AdventureTables::fullAdventureGen());
+}
+
+void MainWindow::on_pbTreasureMap_clicked()
+{
+    ui->resultArea->setPlainText(treasureMaps::generateMap());
+
 }
