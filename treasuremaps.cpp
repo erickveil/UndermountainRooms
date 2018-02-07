@@ -36,8 +36,9 @@ QString treasureMaps::whereIsTreasure()
 
     levels = QString::number(Dice::roll(1,4));
     QString hex = QString::number(Dice::roll(1,100));
-    table.addEntry("Another dungeon: level " + levels + " located at hex "
-                   + hex + genWaypoints("hex"));
+    table.addEntry("Another dungeon: level " + levels + " located at hex " + hex + genWaypoints("hex"));
+    table.addEntry("Another dungeon (hidden): level " + levels
+                   + " located at hex " + hex + genWaypoints("hex"));
 
     table.addEntry("Nautical (" + nauticalDetails() + ")" + genWaypoints("nautical"));
 
@@ -114,7 +115,7 @@ QString treasureMaps::wildernessLandmarks()
     RandomTable gate;
     gate.addEntry("another plane");
     gate.addEntry("a foreign wilderness");
-    gate.addEntry("a dunction");
+    gate.addEntry("a dungeon");
     table.addEntry("Gate to " + gate.getRollTableEntry());
 
     table.addEntry("Entrance to a dungeon - must pass through and out the "
@@ -139,7 +140,11 @@ QString treasureMaps::dungeonLandmarks()
     gate.addEntry("another dungeon");
     gate.addEntry("a local hex");
     table.addEntry("Gate to " + gate.getRollTableEntry());
+
     QString dungeonFeature = RandomChambers::primaryFeature();
+    while (dungeonFeature == "None") {
+        dungeonFeature = RandomChambers::primaryFeature();
+    }
     table.addEntry(dungeonFeature, 5);
 
     return table.getRollTableEntry();

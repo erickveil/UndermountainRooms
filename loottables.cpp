@@ -1849,6 +1849,8 @@ QString LootTables::generateIndividualTreasure(int tier)
     bool hasJewel = Dice::roll(1,100) < jewelChance;
     int adventureChance = 25;
     bool hasAdventure = Dice::roll(1,100) < adventureChance;
+    int mapChance = (tier * 5) + 10;
+    bool hasMap = Dice::roll(1,100) < mapChance;
 
     if (hasMagic) {
         treasure += "\n" + selectMagicItemByTier(tier);
@@ -1858,6 +1860,9 @@ QString LootTables::generateIndividualTreasure(int tier)
     }
     if (hasAdventure) {
         treasure += "\n" + adventureGear();
+    }
+    if (hasMap) {
+        treasure += "\n" + treasureMaps::generateMap();
     }
 
     return treasure;
