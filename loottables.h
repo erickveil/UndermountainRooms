@@ -41,6 +41,7 @@ public:
     static QString generateIndividualTreasure(int tier);
     static QString miscTreasure(int tier);
     static QString mundaneHorde(int tier);
+    static QString adventureGear();
 };
 
 #endif // LOOTTABLES_H

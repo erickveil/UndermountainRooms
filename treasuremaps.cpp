@@ -15,10 +15,7 @@ QString treasureMaps::generateMap()
 
     desc += "\nType: " + mapType();
     desc += "\nLanguage: " + language();
-
-    int waypoints = Dice::roll(1,4);
     desc += "\nLocation: " + whereIsTreasure();
-
     desc += "\nMax Sell Value: " + QString::number(Dice::roll(2,20)) + " gp";
 
     return desc;
