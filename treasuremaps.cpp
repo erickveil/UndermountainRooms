@@ -16,6 +16,7 @@ QString treasureMaps::generateMap()
     desc += "\nType: " + mapType();
     desc += "\nLanguage: " + language();
     desc += "\nLocation: " + whereIsTreasure();
+
     desc += "\nMax Sell Value: " + QString::number(Dice::roll(2,20)) + " gp";
 
     return desc;
@@ -26,17 +27,19 @@ QString treasureMaps::whereIsTreasure()
     RandomTable table;
 
     RandomTable sameDungeon;
-    QString levels = QString::number(Dice::roll(1,4));
-    sameDungeon.addEntry(levels + " levels up");
+    QString levels = QString::number(Dice::roll(1,3));
+    sameDungeon.addEntry("1 level up");
     sameDungeon.addEntry(levels + " levels down");
     sameDungeon.addEntry("same level");
+    sameDungeon.addEntry("Secret sub-level");
 
     table.addEntry("Same dungeon: " + sameDungeon.getRollTableEntry()
                    + genWaypoints("dungeon"));
 
     levels = QString::number(Dice::roll(1,4));
     QString hex = QString::number(Dice::roll(1,100));
-    table.addEntry("Another dungeon: level " + levels + " located at hex " + hex + genWaypoints("hex"));
+    table.addEntry("Another dungeon: level " + levels + " located at hex "
+                   + hex + genWaypoints("hex"));
     table.addEntry("Another dungeon (hidden): level " + levels
                    + " located at hex " + hex + genWaypoints("hex"));
 
@@ -49,7 +52,9 @@ QString treasureMaps::whereIsTreasure()
 
     levels = QString::number(Dice::roll(1,6));
     table.addEntry("Megadungeon: " + megadungeon.getRollTableEntry()
-                   + " level: " + levels + genWaypoints("dungeon"));
+                   + " level: " + levels
+                   + "\nProximity: " + proximity() + "\n"
+                   + genWaypoints("dungeon"));
 
     table.addEntry("Ruined city in hex " + hex + genWaypoints("hex"));
     table.addEntry("Vault located at hex " + hex + genWaypoints("hex"));
@@ -234,5 +239,36 @@ QString treasureMaps::nauticalDetails()
     desc += type.getRollTableEntry();
 
     return desc;
+}
+
+QString treasureMaps::proximity()
+{
+    RandomTable table;
+
+    table.addEntry("5", 5);
+    table.addEntry("6", 4);
+    table.addEntry("7", 3);
+    table.addEntry("8", 2);
+    table.addEntry("9");
+    table.addEntry("10");
+    table.addEntry("More than 10");
+
+    return table.getRollTableEntry() + " rooms away from the level entry";
+}
+
+QString treasureMaps::hidden()
+{
+    RandomTable table;
+
+    table.addEntry("Buried: Need picks and shovels");
+    table.addEntry("Under Loose Stones: Need pry bars");
+    table.addEntry("Behind wall: Need Sledge hammer");
+    table.addEntry("Behind locked panel: Need key or lockpick");
+    table.addEntry("Sealed door: Need hammer and pry bars");
+    table.addEntry("Sealed door with guardian: Need hammer and pry bars");
+    table.addEntry("Locked stairwell: Need key or lockpick");
+    table.addEntry("Locked stairwell with guardian: Need key or lockpick");
+
+    return table.getRollTableEntry();
 }
 

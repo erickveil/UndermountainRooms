@@ -114,6 +114,8 @@ public:
     static QString genWaypoints(QString type);
     static QString nauticalWaypoint();
     static QString nauticalDetails();
+    static QString proximity();
+    static QString hidden();
 };
 
 #endif // TREASUREMAPS_H
