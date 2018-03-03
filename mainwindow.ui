@@ -30,7 +30,7 @@
       <x>220</x>
       <y>10</y>
       <width>202</width>
-      <height>306</height>
+      <height>337</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -155,6 +155,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pbTreasureMap">
+       <property name="text">
+        <string>Treasure Map</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -163,7 +170,7 @@
       <x>10</x>
       <y>40</y>
       <width>202</width>
-      <height>275</height>
+      <height>306</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -250,6 +257,20 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Hook</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbNonEncounter">
+       <property name="text">
+        <string>Non Encounter</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -280,32 +301,6 @@
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>330</y>
-      <width>201</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Hook</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pbTreasureMap">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>330</y>
-      <width>201</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Treasure Map</string>
-    </property>
    </widget>
   </widget>
  </widget>

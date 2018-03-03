@@ -2,12 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTime>
+#include <QtGlobal>
+
 #include "hexcrawltables.h"
 #include "complextrap.h"
 #include "loottables.h"
 #include "randomchambers.h"
 #include "monstertable.h"
 #include "treasuremaps.h"
+#include "nonencounters.h"
 
 namespace Ui {
 class MainWindow;
@@ -61,6 +65,8 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pbTreasureMap_clicked();
+
+    void on_pbNonEncounter_clicked();
 
 private:
     Ui::MainWindow *ui;

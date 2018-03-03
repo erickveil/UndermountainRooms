@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QtGlobal>
-#include <QTime>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -323,5 +321,16 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pbTreasureMap_clicked()
 {
     ui->resultArea->setPlainText(treasureMaps::generateMap());
+
+}
+
+void MainWindow::on_pbNonEncounter_clicked()
+{
+    if (ui->biomeSelect->currentText() == "Mountain") {
+        ui->resultArea->setPlainText(NonEncounters::mountain());
+    }
+    else {
+        ui->resultArea->setPlainText(NonEncounters::plains());
+    }
 
 }
