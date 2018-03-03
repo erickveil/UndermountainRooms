@@ -26,6 +26,9 @@ public:
     static QString dungeonGoals();
     static QString generateRandomAdventure(int tier, QString type);
 
+    static QString patronFaction();
+    static QString guild();
+
 };
 
 #endif // ADVENTURETABLES_H

@@ -17,7 +17,6 @@ QString AdventureTables::adventureHook()
     table.addEntry("Ad in paper");
     table.addEntry("Overheard rumor");
     table.addEntry("Wild eyed person looking for help");
-    table.addEntry("Press gang");
     table.addEntry("Commotion outside");
     table.addEntry("Drafted by nearby guard or authorities");
     table.addEntry("Recruiter for an organization");
@@ -75,17 +74,6 @@ QString AdventureTables::adventureHookMethod()
 
 QString AdventureTables::hookSource()
 {
-    // friendly npc adventurer
-    // friendly adventuring party
-    // guild member
-    // faction member
-    // random encounter result
-    // noble
-    // town guard
-    // merchant
-    // hires mercenaries
-    // mercenary crew
-    // intellegent monsters
     RandomTable table;
 
     table.addEntry("Retired adventurer");
@@ -102,6 +90,9 @@ QString AdventureTables::hookSource()
     table.addEntry("Desperate commoner");
     table.addEntry("Embattled merchant");
     table.addEntry("Villain posing as a patron");
+    table.addEntry("Friendly NPC adventurer");
+    table.addEntry("An employer of mercenaries");
+    table.addEntry("A local wizard");
 
     return table.getRollTableEntry();
 }
@@ -365,6 +356,7 @@ QString AdventureTables::fullAdventureGen()
     QString desc;
 
     desc  = "PATRON: " + hookSource() + "\n";
+    desc += "PATRON FACTION: " + patronFaction() + "\n";
     desc += "DELIVERY: " + adventureHook() + "\n";
     desc += "MISSION: " + hookMission() + "\n";
     desc += "LOCATION: " + DungeonTables::dungeonLocation() + "\n";
@@ -413,8 +405,8 @@ QString AdventureTables::dungeonGoals()
 QString AdventureTables::generateRandomAdventure(int tier, QString type)
 {
     QString desc;
-    desc = "HOOK: " + adventureHook() + "\n";
-    desc += "GOAL: " + dungeonGoals() + "\n";
+    //desc = "HOOK: " + adventureHook() + "\n";
+    //desc += "GOAL: " + dungeonGoals() + "\n";
     //QString type = dungeonType();
     // todo adventure goals tables
     desc += "DUNGEON TYPE: " + type + "\n";
@@ -508,4 +500,94 @@ QString AdventureTables::generateRandomAdventure(int tier, QString type)
 
     return desc;
 
+}
+
+QString AdventureTables::patronFaction()
+{
+    RandomTable table;
+
+    table.addEntry("The Watch", 2);
+    table.addEntry("The Guard", 2);
+    table.addEntry("The Gray Hand");
+    table.addEntry("The Blackstaff", 2);
+    table.addEntry("Agent of Laerel Silverhand", 2);
+    table.addEntry("Agent of the Masked Lords", 2);
+    table.addEntry("Humanist Conspirator");
+    table.addEntry("A Waterdhavian Noble", 2);
+    table.addEntry("Waterdeep Guild: " + guild(), 2);
+    table.addEntry("The Knights of the Shield");
+    table.addEntry("Represenative of the Common House");
+    table.addEntry("The Harpers", 3);
+    table.addEntry("The Order of the Gauntlet", 3);
+    table.addEntry("The Emerald Enclave", 3);
+    table.addEntry("The Lords' Alliance", 3);
+    table.addEntry("The Zhentarim", 3);
+    table.addEntry("The Moonstars");
+    table.addEntry("The Red Sashes");
+    table.addEntry("The Cult of Scionel");
+    table.addEntry("The Red Wizards");
+    table.addEntry("The Eye");
+    table.addEntry("The Plague Rats");
+    table.addEntry("Uthgardt Barbarian, Elk Tribe");
+    table.addEntry("Uthgardt Barbarian, Gray Wolf Tribe");
+    table.addEntry("Independent citizen", 3);
+    table.addEntry("Magistrate");
+
+    RandomTable ambassador;
+    ambassador.addEntry("Neverwinter");
+    ambassador.addEntry("Baldurs Gate");
+    ambassador.addEntry("Luskan");
+    table.addEntry("Foreign ambassador of " + ambassador.getRollTableEntry());
+
+    return table.getRollTableEntry();
+}
+
+QString AdventureTables::guild()
+{
+    RandomTable table;
+
+    table.addEntry("Bakers Guild");
+    table.addEntry("Carpenters Roofers and Plasterers Guild");
+    table.addEntry("Cellarers and Plumbers Guild", 5);
+    table.addEntry("Coopers Guild");
+    table.addEntry("Council of Farmers-Grocers");
+    table.addEntry("Council of Musicians, Instrument-Makers, and Choristers");
+    table.addEntry("Dungsweepers Guild");
+    table.addEntry("Fellowship of Bowyers and Fletchers");
+    table.addEntry("Carters and coachmen");
+    table.addEntry("Fellowship of Innkeepers");
+    table.addEntry("Fellowship of Salters, Packers, and Joiners");
+    table.addEntry("Fishmongers Fellowship");
+    table.addEntry("Guild of Apothecaries and Physicians", 5);
+    table.addEntry("Guild of Butchers");
+    table.addEntry("Guild of Chandlers and Lamplighters");
+    table.addEntry("Guild of fine Carvers");
+    table.addEntry("Guild of Glassblowers, Glaziers, and Speculum Makers");
+    table.addEntry("Guild of Stonecutters, Masons, Potters, and Tilemakers");
+    table.addEntry("Guild of Trusted Pewters and casters");
+    table.addEntry("Guild of Watermen");
+    table.addEntry("Jewlers Guild", 5);
+    table.addEntry("Launderers Guild");
+    table.addEntry("League of Basketmakers and Wickerworkers");
+    table.addEntry("League of Skinners and Tanners");
+    table.addEntry("Master Mariners Guild", 5);
+    table.addEntry("Most Careful Order of Skilled Smiths and Metalforgers");
+    table.addEntry("Most Diligent League of Sail-Makers and Cordwainers");
+    table.addEntry("Most Excellent Order of Weavers and Dyers");
+    table.addEntry("Order of Cobblers and Corvisers");
+    table.addEntry("Order of Master Shipwrights");
+    table.addEntry("Order of Master Teylors, Glovers, and Mercers");
+    table.addEntry("Saddlers and Harness-Makers Guild");
+    table.addEntry("Scriveners, Scribes, and Clerks Guild", 5);
+    table.addEntry("Solemn Order of Recognized Furriers and Woolmen");
+    table.addEntry("Splendid Order of Armorers, Locksmiths, and Finesmiths");
+    table.addEntry("Stablemasters and Farriers Guild");
+    table.addEntry("Stationers Guild");
+    table.addEntry("Surveyors, Map, and Chartmakers Guild", 5);
+    table.addEntry("Vinters, Distillers, and Brewers Guild");
+    table.addEntry("Wagonmakers and Coach Builders Guild");
+    table.addEntry("Watchful Order of Magists and Protectors", 5);
+    table.addEntry("Wheelwrights Guild");
+
+    return table.getRollTableEntry();
 }
