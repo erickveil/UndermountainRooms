@@ -74,7 +74,7 @@ QString roomExit::getExitType(int tier)
     secretDoorTrigger.addEntry("Press loose stone in wall");
     secretDoorTrigger.addEntry("Step on loose floor stone");
     secretDoorTrigger.addEntry("Physically move door (strength check: DC "
-                               + secretDoorInvestigateDc + ")");
+                               + QString::number(secretDoorInvestigateDc) + ")");
     secretDoorTrigger.addEntry("Pull a blatant lever");
     secretDoorTrigger.addEntry("Straighten picture on wall");
     secretDoorTrigger.addEntry("Tilt picture crooked on wall");
@@ -114,6 +114,7 @@ QString roomExit::getExitType(int tier)
     chuteType.addEntry("angled slide");
     chuteType.addEntry("spiral slide");
 
+    QString doorLockResult = doorLock.getRollTableEntry();
     trapDoor.addEntry("Hatch in floor: " + chuteType.getRollTableEntry()
                       + "; " + doorLockResult + trap);
     trapDoor.addEntry("Hatch in ceiling" + chuteType.getRollTableEntry()
@@ -155,7 +156,7 @@ QString roomExit::getExitType(int tier)
     gateOpen.addEntry("being the master of the dungeon");
     gateOpen.addEntry("carrying a special badge");
     gateOpen.addEntry("lighting the 2 brazers on either side");
-    gateOpen.addEntry(secretDoorTrigger);
+    gateOpen.addEntry(secretDoorTrigger.getRollTableEntry());
 
     RandomTable gateEffects;
     gateEffects.addEntry("Swirling colors");
@@ -183,13 +184,13 @@ QString roomExit::getExitType(int tier)
     gateFrequency.addEntry("Every 24 hours");
 
     QString gate = gateType.getRollTableEntry() + " opened by "
-            + gateOpen.getRollTableEntry() + " to reveal " + gateEffects
+            + gateOpen.getRollTableEntry() + " to reveal "
+            + gateEffects.getRollTableEntry()
             + ". It transports " + gateAllowance.getRollTableEntry()
             + " " + gateFrequency.getRollTableEntry();
 
-    QString doorLockResult = doorLock.getRollTableEntry();
-    table.addEntry("Wooden door; " + doorLockresult + trap);
-    table.addEntry("Stone door; " + doorLockresult + trap);
+    table.addEntry("Wooden door; " + doorLockResult + trap);
+    table.addEntry("Stone door; " + doorLockResult + trap);
     table.addEntry("Iron door; " + doorLockResult + trap);
     table.addEntry("Portcullis; " + doorLockResult + trap);
     table.addEntry("Secret door: " + secretDoor + "; " + doorLockResult + trap);

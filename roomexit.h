@@ -15,10 +15,10 @@ class roomExit
 
 public:
     roomExit();
-    static void createExit(int tier);
-    static QString getExitType(int tier);
-    static QString getExitLocation();
-    static int getLockDc(int tier);
+    void createExit(int tier);
+    QString getExitType(int tier);
+    QString getExitLocation();
+    int getLockDc(int tier);
 };
 
 #endif // ROOMEXIT_H
