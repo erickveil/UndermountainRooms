@@ -18,6 +18,7 @@ public:
     void initRoom(int tier, int qtyRoomsInLevel);
     QList<roomExit> getExitList();
     QString describeRoom();
+    void connectHall(int exitNumber, hall *passage);
 
     int getQtyExits();
 };

@@ -8,7 +8,6 @@
 #include "treasuremaps.h"
 #include "hall.h"
 
-
 class roomExit
 {
     QString _exitDescripton;

@@ -29,8 +29,6 @@ void hall::initHall(int tier)
 
     // TODO: the hall needs a description of where it connects, and if there is
     // any random hall stuff in it
-
-
 }
 
 bool hall::isFull()

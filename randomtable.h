@@ -5,6 +5,7 @@
 #include <QtGlobal>
 
 #include "tableentry.h"
+#include "dice.h"
 
 class RandomTable
 {

@@ -8,7 +8,7 @@ roomExit::roomExit()
 void roomExit::initExit(int tier)
 {
     _exitDescripton =
-            getExitLocation() + ": " +
+            getExitLocation() + ":\n" +
             getExitType(tier);
 }
 
@@ -237,7 +237,8 @@ QString roomExit::getExitLocation()
     table.addEntry("East");
     table.addEntry("West");
 
-    return table.getRollTableEntry();
+    QString direction = table.getRollTableEntry();
+    return direction;
 }
 
 int roomExit::getLockDc(int tier)
