@@ -7,9 +7,10 @@
 class level
 {
     QList<room> _roomList;
+
 public:
     level();
-    void createLevel(int qtyRooms, int tier);
+    void initLevel(int qtyRooms, int tier);
     QList<room> getRooms();
 };
 

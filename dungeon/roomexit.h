@@ -11,11 +11,10 @@
 class roomExit
 {
     QString _exitDescripton;
-    QString _boundDestination = "";
 
 public:
     roomExit();
-    void createExit(int tier);
+    void initExit(int tier);
     QString getExitType(int tier);
     QString getExitLocation();
     int getLockDc(int tier);

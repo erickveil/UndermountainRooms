@@ -5,12 +5,12 @@ level::level()
 
 }
 
-void level::createLevel(int qtyRooms, int tier)
+void level::initLevel(int qtyRooms, int tier)
 {
     QList<room> roomList;
     for (int i = 0; i < qtyRooms; ++i) {
         room nextRoom;
-        nextRoom.createRoom(tier, qtyRooms);
+        nextRoom.initRoom(tier, qtyRooms);
         roomList.append(nextRoom);
     }
     _roomList = roomList;

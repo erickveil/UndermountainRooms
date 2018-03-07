@@ -5,7 +5,7 @@ roomExit::roomExit()
 
 }
 
-void roomExit::createExit(int tier)
+void roomExit::initExit(int tier)
 {
     _exitDescripton =
             getExitLocation() + ": " +
@@ -221,6 +221,6 @@ int roomExit::getLockDc(int tier)
     if (tier == 1) { return 5 + mod; }
     if (tier == 2) { return 10 + mod; }
     if (tier == 3) { return 14 + mod; }
-    if (tier == 4) { return 17 + mod; }
+    return 17 + mod; // tier 4
 }
 

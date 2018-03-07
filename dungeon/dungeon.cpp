@@ -13,7 +13,7 @@ void dungeon::createDungeon(int qtyLevels, int minRooms, int maxRooms, int minTi
         int tier = calcTier(dungeonLevel, qtyLevels, minTier, maxTier);
         int qtyRooms = calcRoomQty(minRooms, maxRooms);
         level nextLevel;
-        nextLevel.createLevel(qtyRooms, tier);
+        nextLevel.initLevel(qtyRooms, tier);
         levelList.append(nextLevel);
     }
     _levelList = levelList;

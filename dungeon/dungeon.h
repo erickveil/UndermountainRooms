@@ -19,8 +19,8 @@ public:
     QList<level> getLevels();
 
 
-    static int calcTier(int currentLevel, int maxLevels, int minTier, int maxTier);
-    static int calcRoomQty(int minRooms, int maxRooms);
+    int calcTier(int currentLevel, int maxLevels, int minTier, int maxTier);
+    int calcRoomQty(int minRooms, int maxRooms);
 };
 
 #endif // DUNGEON_H

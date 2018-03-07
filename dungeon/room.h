@@ -15,7 +15,7 @@ class room
 
 public:
     room();
-    void createRoom(int tier, int qtyRoomsInLevel);
+    void initRoom(int tier, int qtyRoomsInLevel);
 
     static int getQtyExits();
 };
