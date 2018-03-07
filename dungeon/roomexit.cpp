@@ -142,11 +142,11 @@ QString roomExit::getExitType(int tier)
     QString doorLockResult = doorLock.getRollTableEntry();
     trapDoor.addEntry("Hatch in floor: " + chuteType.getRollTableEntry()
                       + "; " + doorLockResult + trap);
-    trapDoor.addEntry("Hatch in ceiling" + chuteType.getRollTableEntry()
+    trapDoor.addEntry("Hatch in ceiling " + chuteType.getRollTableEntry()
                       + "; " + doorLockResult + trap);
-    trapDoor.addEntry("Open in floor" + chuteShape.getRollTableEntry()
+    trapDoor.addEntry("Open pit in floor " + chuteShape.getRollTableEntry()
                       + ", " + chuteType.getRollTableEntry());
-    trapDoor.addEntry("Open in ceiling" + chuteShape.getRollTableEntry()
+    trapDoor.addEntry("Open chute in ceiling " + chuteShape.getRollTableEntry()
                       + ", " + chuteType.getRollTableEntry());
     trapDoor.addEntry("Hidden trap door in floor triggered by stepping on: "
                       + trapStats);

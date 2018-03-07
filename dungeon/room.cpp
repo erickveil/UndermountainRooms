@@ -12,9 +12,10 @@ void room::initRoom(int tier, int qtyRoomsInLevel)
     QList<roomExit> exitList;
     for (int i = 0; i < qtyDoors; ++i) {
         roomExit ex;
+        ex.initExit(tier);
         exitList.append(ex);
     }
-
+    _exitList = exitList;
 }
 
 QList<roomExit> room::getExitList()
