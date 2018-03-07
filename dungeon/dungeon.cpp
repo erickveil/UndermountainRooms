@@ -5,7 +5,7 @@ dungeon::dungeon()
 
 }
 
-void dungeon::createDungeon(int qtyLevels, int minRooms, int maxRooms, int minTier, int maxTier)
+void dungeon::initDungeon(int qtyLevels, int minRooms, int maxRooms, int minTier, int maxTier)
 {
     QList<level> levelList;
     for (int i = 0; i < qtyLevels; ++i) {
@@ -17,6 +17,16 @@ void dungeon::createDungeon(int qtyLevels, int minRooms, int maxRooms, int minTi
         levelList.append(nextLevel);
     }
     _levelList = levelList;
+}
+
+QString dungeon::describeDungeon()
+{
+    QString desc = "";
+    for (int i = 0; i < _levelList.size(); ++i) {
+        desc += "LEVEL " + QString::number(i + 1) + ":\n";
+        desc += _levelList[i].describeLevel();
+    }
+    return desc;
 }
 
 int dungeon::calcTier(int currentLevel, int maxLevels, int minTier, int maxTier)

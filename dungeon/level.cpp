@@ -46,6 +46,25 @@ void level::attachRooms(int tier)
 
 }
 
+QString level::describeLevel()
+{
+    QString desc = "";
+    for (int r = 0; r < _roomList.size(); ++r) {
+        desc += "ROOM " + QString::number(r + 1) + ": ";
+        desc += _roomList[r].describeRoom();
+        desc += "\n";
+    }
+
+    desc += "\n";
+
+    for (int h = 0; h < _hallList.size(); ++h) {
+        desc += "HALL " + QString::number(h + 1) + ": ";
+        desc += _hallList[h].describeHall();
+        desc += "\n";
+    }
+    return desc;
+}
+
 QList<room> level::getRooms()
 {
     return _roomList;

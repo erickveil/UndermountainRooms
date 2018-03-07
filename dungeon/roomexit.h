@@ -19,6 +19,7 @@ public:
     void initExit(int tier);
     void connectHall(hall *connection);
     bool isConnected();
+    QString describeExit();
 
     QString getExitType(int tier);
     QString getExitLocation();

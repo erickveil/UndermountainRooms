@@ -14,6 +14,9 @@ public:
     level();
     void initLevel(int qtyRooms, int tier);
     void attachRooms(int tier);
+    QString describeLevel();
+
+
     QList<room> getRooms();
 };
 

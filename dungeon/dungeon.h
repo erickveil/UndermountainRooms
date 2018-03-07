@@ -15,8 +15,9 @@ class dungeon
 
 public:
     dungeon();
-    void createDungeon(int qtyLevels, int minRooms, int maxRooms, int minTier, int maxTier);
+    void initDungeon(int qtyLevels, int minRooms, int maxRooms, int minTier, int maxTier);
     QList<level> getLevels();
+    QString describeDungeon();
 
 
     int calcTier(int currentLevel, int maxLevels, int minTier, int maxTier);

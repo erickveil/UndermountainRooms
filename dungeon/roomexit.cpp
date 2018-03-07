@@ -24,6 +24,19 @@ bool roomExit::isConnected()
     return _connectedHall != nullptr;
 }
 
+QString roomExit::describeExit()
+{
+    QString desc = "";
+    desc += _exitDescripton + "\n";
+    if (_connectedHall == nullptr) {
+        desc += "This exit isn't connected!";
+    }
+    else {
+        desc += "Hall key goes here";
+    }
+    return desc;
+}
+
 QString roomExit::getExitType(int tier)
 {
     RandomTable table;

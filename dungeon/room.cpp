@@ -22,6 +22,17 @@ QList<roomExit> room::getExitList()
     return _exitList;
 }
 
+QString room::describeRoom()
+{
+    QString desc = "";
+    desc += QString::number(_exitList.size()) + " EXITS:\n";
+    for (int e = 0; e < _exitList.size(); ++e) {
+        desc += _exitList[e].describeExit() + "\n";
+    }
+    return desc;
+
+}
+
 int room::getQtyExits()
 {
     RandomTable table;

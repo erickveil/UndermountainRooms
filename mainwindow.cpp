@@ -325,3 +325,10 @@ void MainWindow::on_pbTreasureMap_clicked()
     ui->resultArea->setPlainText(treasureMaps::generateMap());
 
 }
+
+void MainWindow::on_pbNewDungeon_clicked()
+{
+    dungeon newDungeon;
+    newDungeon.initDungeon(2, 4, 5, 1, 2);
+    ui->resultArea->setPlainText(newDungeon.describeDungeon());
+}

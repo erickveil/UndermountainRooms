@@ -15,6 +15,7 @@ public:
     void initHall(int tier);
     bool isFull();
     void addExit();
+    QString describeHall();
 };
 
 #endif // HALL_H

@@ -23,6 +23,7 @@ void hall::initHall(int tier)
     else if (type == "Crossroad") {
         _openConnectons = 4;
     }
+    _hallDesc = type;
 
     addExit();
 
@@ -43,5 +44,14 @@ void hall::addExit()
     if (isFull()) { return; }
 
     --_openConnectons;
+}
+
+QString hall::describeHall()
+{
+    QString desc = "";
+    desc += _hallDesc;
+
+    // TODO: how to get description of where it connects?
+    return desc;
 }
 

@@ -17,6 +17,7 @@ public:
     room();
     void initRoom(int tier, int qtyRoomsInLevel);
     QList<roomExit> getExitList();
+    QString describeRoom();
 
     int getQtyExits();
 };
