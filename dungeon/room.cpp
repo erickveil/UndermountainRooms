@@ -29,7 +29,7 @@ QString room::describeRoom()
     QString desc = "";
     desc += QString::number(_exitList.size()) + " EXITS:\n";
     for (int e = 0; e < _exitList.size(); ++e) {
-        desc += _exitList[e].describeExit() + "\n";
+        desc += QString::number(e) + ". " + _exitList[e].describeExit() + "\n";
     }
     return desc;
 
@@ -37,7 +37,7 @@ QString room::describeRoom()
 
 void room::connectHall(int exitNumber, hall *passage)
 {
-//    _exitList[exitNumber].connectHall(passage);
+    _exitList[exitNumber].connectHall(passage);
 }
 
 int room::getNumUnconnectedExits()
@@ -56,6 +56,7 @@ void room::connectAllExits(QList<hall> &hallList, int roomNumber, int tier)
             if (hallList[h].isFull()) { continue; }
             _exitList[e].connectHall(&hallList[h]);
             hallList[h].connectExit(roomNumber, e + 1);
+            break;
         }
         if (_exitList[e].isConnected()) { continue; }
 

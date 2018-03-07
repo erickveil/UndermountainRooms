@@ -58,6 +58,7 @@ QString hall::describeHall()
     QString desc = "";
     desc += _hallDesc;
 
+    desc += "\nConnects to rooms: ";
     for (int i = 0; i < _connectionNames.size(); ++i) {
         desc += "\n" + _connectionNames[i];
     }

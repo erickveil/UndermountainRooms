@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>429</width>
+    <width>646</width>
     <height>759</height>
    </rect>
   </property>
@@ -17,18 +17,18 @@
    <widget class="QPlainTextEdit" name="resultArea">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>370</y>
+      <x>220</x>
+      <y>10</y>
       <width>411</width>
-      <height>381</height>
+      <height>731</height>
      </rect>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>10</y>
+      <x>10</x>
+      <y>350</y>
       <width>202</width>
       <height>337</height>
      </rect>
