@@ -156,96 +156,27 @@ QString TrapTables::trapTrigger()
     table.addEntry("living being enters the area");
     table.addEntry("touching or dispelling the illusionary treasure");
     table.addEntry("attacking the illusionary monster");
+    table.addEntry("disarming decoy tripwire");
 
     return table.getRollTableEntry();
 }
 
-QString TrapTables::trapSeverity(int tier)
+QString TrapTables::doorTrapTrigger()
 {
-    QString severity = trapSeverityLevel(tier);
-    QString effects = trapSeverityStats(severity, tier);
-    return severity + ": " + effects;
-    /*
     RandomTable table;
-    QString dc;
-    QString att;
-    QString damage;
-    QString spell;
 
-    dc = QString::number(randomNumber(10, 11));
-    att = QString::number(randomNumber(3, 5));
-    if (tier == 1) {
-        damage = "1d10";
-        spell = LootTables::wizardSpells(0) + " or " + LootTables::wizardSpells(0);
-    }
-    else if (tier == 2) {
-        damage = "2d10";
-        spell = LootTables::wizardSpells(1) + " or " + LootTables::wizardSpells(1);
-    }
-    else if (tier == 3) {
-        damage = "4d10";
-        spell = LootTables::wizardSpells(3) + " or " + LootTables::wizardSpells(3);
-    }
-    else {
-        damage = "10d10";
-        spell = LootTables::wizardSpells(6) + " or " + LootTables::wizardSpells(6);
-    }
-    QString detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage
-            + "\nSPELL EFFECT: " + spell;
-
-    table.addEntry("Setback" + detail, 2);
-
-    dc = QString::number(randomNumber(12, 15));
-    att = QString::number(randomNumber(6, 8));
-    if (tier == 1) {
-        damage = "2d10";
-        spell = LootTables::wizardSpells(1) + " or " + LootTables::wizardSpells(1);
-    }
-    else if (tier == 2) {
-        damage = "4d10";
-        spell = LootTables::wizardSpells(3) + " or " + LootTables::wizardSpells(3);
-    }
-    else if (tier == 3) {
-        damage = "10d10";
-        spell = LootTables::wizardSpells(6) + " or " + LootTables::wizardSpells(6);
-    }
-    else {
-        damage = "18d10";
-        spell = LootTables::wizardSpells(9) + " or " + LootTables::wizardSpells(9);
-    }
-    detail = " DC: " + dc + ", attk: +" + att + ", dmg: " + damage
-            + "\nSPELL EFFECT: " + spell;
-
-    table.addEntry("Dangerous" + detail, 3);
-
-    dc = QString::number(randomNumber(16, 20));
-    att = QString::number(randomNumber(9, 12));
-    if (tier == 1) {
-        damage = "4d10";
-        spell = LootTables::wizardSpells(2) + " or " + LootTables::wizardSpells(2);
-    }
-    else if (tier == 2) {
-        damage = "10d10";
-        spell = LootTables::wizardSpells(6) + " or " + LootTables::wizardSpells(6);
-    }
-    else if (tier == 3) {
-        damage = "18d10";
-        spell = LootTables::wizardSpells(9) + " or " + LootTables::wizardSpells(9);
-    }
-    else {
-        damage = "24d10";
-        spell = LootTables::wizardSpells(9) + " and " + LootTables::wizardSpells(5) + " or "
-                + LootTables::wizardSpells(9) + " and " + LootTables::wizardSpells(5);
-    }
-    detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage
-            + "\nSPELL EFFECT: " + spell;
-
-    table.addEntry("Deadly" + detail);
+    table.addEntry("stepping on plate in exit");
+    table.addEntry("moving through exit");
+    table.addEntry("touching doorknob");
+    table.addEntry("opening door");
+    table.addEntry("examining door and failing save");
+    table.addEntry("tripping on wire across exit");
+    table.addEntry("disturbing spider webs over exit");
+    table.addEntry("pulling lever next to door");
+    table.addEntry("disarming decoy tripwire");
 
     return table.getRollTableEntry();
-    */
 }
-
 
 QString TrapTables::trapEffects(QString severity, int tier)
 {

@@ -29,7 +29,11 @@ SOURCES += main.cpp\
     traptables.cpp \
     encountertables.cpp \
     dungeontables.cpp \
-    treasuremaps.cpp
+    treasuremaps.cpp \
+    dungeon.cpp \
+    level.cpp \
+    room.cpp \
+    roomexit.cpp
 
 HEADERS  += mainwindow.h \
     tableentry.h \
@@ -47,6 +51,10 @@ HEADERS  += mainwindow.h \
     traptables.h \
     encountertables.h \
     dungeontables.h \
-    treasuremaps.h
+    treasuremaps.h \
+    dungeon.h \
+    level.h \
+    room.h \
+    roomexit.h
 
 FORMS    += mainwindow.ui
