@@ -8,8 +8,8 @@ hall::hall()
 void hall::initHall(int tier)
 {
     RandomTable hallType;
-    hallType.addEntry("single connection");
-    hallType.addEntry("T Branch");
+    hallType.addEntry("single connection", 4);
+    hallType.addEntry("T Branch", 2);
     hallType.addEntry("Crossroad");
 
     QString type = hallType.getRollTableEntry();
@@ -58,7 +58,28 @@ QString hall::describeHall()
     QString desc = "";
     desc += _hallDesc;
 
-    // TODO: how to get description of where it connects?
+    for (int i = 0; i < _connectionNames.size(); ++i) {
+        desc += "\n" + _connectionNames[i];
+    }
+
     return desc;
+}
+
+void hall::connectExit(int roomNumber, int exitNumber)
+{
+    _connectedRooms.append(roomNumber);
+    auto connectionName = QString("room ")
+            + QString::number(roomNumber)
+            + ", exit "
+            + QString::number(exitNumber);
+    _connectionNames.append(connectionName);
+}
+
+bool hall::hasRoomConnection(int roomNumber)
+{
+    for (int i = 0; i < _connectedRooms.size(); ++i) {
+        if (_connectedRooms[i] == roomNumber) { return true; }
+    }
+    return false;
 }
 

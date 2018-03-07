@@ -37,7 +37,7 @@ QString room::describeRoom()
 
 void room::connectHall(int exitNumber, hall *passage)
 {
-    _exitList[exitNumber].connectHall(passage);
+//    _exitList[exitNumber].connectHall(passage);
 }
 
 int room::getNumUnconnectedExits()
@@ -45,15 +45,17 @@ int room::getNumUnconnectedExits()
     return _unconnectedExits;
 }
 
-void room::connectAllExits(QList<hall> &hallList, int tier)
+void room::connectAllExits(QList<hall> &hallList, int roomNumber, int tier)
 {
     for (int e = 0; e < _exitList.size(); ++e) {
         if (_exitList[e].isConnected()) { continue; }
         // find an existing hall to connect
         for (int h = 0; h < hallList.size(); ++ h) {
+            if (hallList[h].hasRoomConnection(roomNumber)) { continue; }
             // connect existing hall
             if (hallList[h].isFull()) { continue; }
             _exitList[e].connectHall(&hallList[h]);
+            hallList[h].connectExit(roomNumber, e + 1);
         }
         if (_exitList[e].isConnected()) { continue; }
 
@@ -64,6 +66,7 @@ void room::connectAllExits(QList<hall> &hallList, int tier)
         hallList.append(newHall);
         // connect new hall
         _exitList[e].connectHall(&hallList.last());
+        hallList.last().connectExit(roomNumber, e);
     }
 }
 

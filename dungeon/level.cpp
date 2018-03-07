@@ -20,7 +20,7 @@ void level::initLevel(int qtyRooms, int tier)
 void level::attachRooms(int tier)
 {
     for (int r = 0; r < _roomList.size(); ++r) {
-        _roomList[r].connectAllExits(_hallList, tier);
+        _roomList[r].connectAllExits(_hallList, r + 1, tier);
     }
 }
 

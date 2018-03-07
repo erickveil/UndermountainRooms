@@ -21,7 +21,7 @@ public:
     QString describeRoom();
     void connectHall(int exitNumber, hall *passage);
     int getNumUnconnectedExits();
-    void connectAllExits(QList<hall> &hallList, int tier);
+    void connectAllExits(QList<hall> &hallList, int roomNumber, int tier);
 
     int getQtyExits();
 };
