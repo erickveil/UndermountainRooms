@@ -31,6 +31,16 @@ void hall::initHall(int tier)
     // any random hall stuff in it
 }
 
+void hall::setKeyNumber(int key)
+{
+    _keyNumber = key;
+}
+
+int hall::getKeyNumber()
+{
+    return _keyNumber;
+}
+
 bool hall::isFull()
 {
     return _openConnectons <= 0;

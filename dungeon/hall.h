@@ -9,10 +9,13 @@ class hall
 
     int _openConnectons = 0;
     QString _hallDesc;
+    int _keyNumber;
 
 public:
     hall();
     void initHall(int tier);
+    void setKeyNumber(int key);
+    int getKeyNumber();
     bool isFull();
     void addExit();
     QString describeHall();

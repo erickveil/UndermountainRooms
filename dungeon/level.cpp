@@ -40,6 +40,8 @@ void level::attachRooms(int tier)
             // all connections taken up, create a new hall
             hall newHall;
             newHall.initHall(tier);
+            newHall.setKeyNumber(_hallList.size() + 1);
+
             _hallList.append(newHall);
             _roomList[r].connectHall(e, &_hallList.last());
         }
@@ -59,10 +61,11 @@ QString level::describeLevel()
     desc += "\n";
 
     for (int h = 0; h < _hallList.size(); ++h) {
-        desc += "HALL " + QString::number(h + 1) + ": ";
+        desc += "HALL " + QString::number(_hallList[h].getKeyNumber()) + ": ";
         desc += _hallList[h].describeHall();
         desc += "\n";
     }
+    desc += "\n";
     return desc;
 }
 

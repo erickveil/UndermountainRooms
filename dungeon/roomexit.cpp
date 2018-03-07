@@ -28,11 +28,12 @@ QString roomExit::describeExit()
 {
     QString desc = "";
     desc += _exitDescripton + "\n";
-    if (_connectedHall == nullptr) {
+    if (!isConnected()) {
         desc += "This exit isn't connected!";
     }
     else {
-        desc += "Hall key goes here";
+        desc += "Connected to hall "
+                + QString::number(_connectedHall->getKeyNumber());
     }
     return desc;
 }
