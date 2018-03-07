@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = UndermountainRooms
 TEMPLATE = app
 
+CONFIG += c++14
+
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -33,7 +35,8 @@ SOURCES += main.cpp\
     dungeon/dungeon.cpp \
     dungeon/level.cpp \
     dungeon/room.cpp \
-    dungeon/roomexit.cpp
+    dungeon/roomexit.cpp \
+    dungeon/hall.cpp
 
 HEADERS  += mainwindow.h \
     tableentry.h \
@@ -55,6 +58,7 @@ HEADERS  += mainwindow.h \
     dungeon/dungeon.h \
     dungeon/level.h \
     dungeon/room.h \
-    dungeon/roomexit.h
+    dungeon/roomexit.h \
+    dungeon/hall.h
 
 FORMS    += mainwindow.ui

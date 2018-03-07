@@ -3,10 +3,12 @@
 
 #include <QList>
 #include "room.h"
+#include "hall.h"
 
 class level
 {
     QList<room> _roomList;
+    QList<hall> _hallList;
 
 public:
     level();
