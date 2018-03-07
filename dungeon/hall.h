@@ -2,16 +2,19 @@
 #define HALL_H
 
 #include <QList>
-#include "roomexit.h"
+#include "randomtable.h"
 
 class hall
 {
 
     int _openConnectons = 0;
-    QList<roomExit*> _exitConnections;
+    QString _hallDesc;
 
 public:
     hall();
+    void initHall(int tier);
+    bool isFull();
+    void addExit();
 };
 
 #endif // HALL_H

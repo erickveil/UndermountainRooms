@@ -1,4 +1,4 @@
-#include "room.h"
+﻿#include "room.h"
 
 room::room()
 {
@@ -15,6 +15,11 @@ void room::initRoom(int tier, int qtyRoomsInLevel)
         exitList.append(ex);
     }
 
+}
+
+QList<roomExit> room::getExitList()
+{
+    return _exitList;
 }
 
 int room::getQtyExits()

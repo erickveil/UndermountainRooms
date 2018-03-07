@@ -16,8 +16,9 @@ class room
 public:
     room();
     void initRoom(int tier, int qtyRoomsInLevel);
+    QList<roomExit> getExitList();
 
-    static int getQtyExits();
+    int getQtyExits();
 };
 
 #endif // ROOM_H

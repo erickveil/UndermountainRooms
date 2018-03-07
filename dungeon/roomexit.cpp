@@ -12,6 +12,18 @@ void roomExit::initExit(int tier)
             getExitType(tier);
 }
 
+void roomExit::connectHall(hall *connection)
+{
+    if (isConnected()) { return; }
+    _connectedHall = connection;
+    connection->addExit();
+}
+
+bool roomExit::isConnected()
+{
+    return _connectedHall != nullptr;
+}
+
 QString roomExit::getExitType(int tier)
 {
     RandomTable table;

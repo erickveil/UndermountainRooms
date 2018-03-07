@@ -13,6 +13,7 @@ class level
 public:
     level();
     void initLevel(int qtyRooms, int tier);
+    void attachRooms(int tier);
     QList<room> getRooms();
 };
 
