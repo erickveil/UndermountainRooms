@@ -25,7 +25,6 @@ void hall::initHall(int tier)
     }
     _hallDesc = type;
 
-    addExit();
 
     // TODO: the hall needs a description of where it connects, and if there is
     // any random hall stuff in it

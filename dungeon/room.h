@@ -12,6 +12,7 @@
 class room
 {
     QList<roomExit> _exitList;
+    int _unconnectedExits = 0;
 
 public:
     room();
@@ -19,6 +20,8 @@ public:
     QList<roomExit> getExitList();
     QString describeRoom();
     void connectHall(int exitNumber, hall *passage);
+    int getNumUnconnectedExits();
+    void connectAllExits(QList<hall> &hallList, int tier);
 
     int getQtyExits();
 };

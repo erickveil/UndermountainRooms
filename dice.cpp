@@ -6,7 +6,7 @@ Dice::Dice()
 
 int Dice::randomNumber(int min, int max)
 {
-    qsrand(QDateTime::currentMSecsSinceEpoch());
+    //qsrand(QDateTime::currentMSecsSinceEpoch());
     return qRound(((double)(qrand() % (max+1 - min)) + (double)min));
 }
 
