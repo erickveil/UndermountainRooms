@@ -40,7 +40,7 @@ QString level::describeLevel()
     for (int h = 0; h < _hallList.size(); ++h) {
         desc += "HALL " + QString::number(_hallList[h].getKeyNumber()) + ": ";
         desc += _hallList[h].describeHall();
-        desc += "\n";
+        desc += "\n\n";
     }
     desc += "\n";
     return desc;

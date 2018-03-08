@@ -3,6 +3,7 @@
 
 #include <QList>
 #include "randomtable.h"
+#include "randomchambers.h"
 
 class hall
 {
@@ -12,6 +13,7 @@ class hall
     int _keyNumber;
     QList<int> _connectedRooms;
     QList<QString> _connectionNames;
+    int _tier;
 
 public:
     hall();

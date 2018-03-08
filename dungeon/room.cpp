@@ -18,6 +18,7 @@ void room::initRoom(int tier, int qtyRoomsInLevel, QString dungeonType)
     _exitList = exitList;
     _unconnectedExits = qtyDoors;
     setRoomContentsByDungeonType(dungeonType, tier);
+    setRoomShape();
 }
 
 QList<roomExit> room::getExitList()
@@ -29,6 +30,7 @@ QString room::describeRoom()
 {
     QString desc = "";
     desc += _roomContents;
+    desc += "SIZE: " + _roomShape;
     desc += "\n" + QString::number(_exitList.size()) + " EXITS:\n";
     for (int e = 0; e < _exitList.size(); ++e) {
         desc += QString::number(e) + ". " + _exitList[e].describeExit() + "\n";
@@ -117,6 +119,27 @@ void room::setRoomContentsByDungeonType(QString type, int tier)
     else {
         _roomContents = ("Unknown dungeon type.");
     }
+}
+
+void room::setRoomShape()
+{
+    RandomTable shape;
+    RandomTable size;
+    int orientation = Dice::roll(1,4);
+
+    shape.addEntry("Square");
+    shape.addEntry("Rectangular");
+    shape.addEntry("Round");
+    shape.addEntry("L-Shaped");
+    shape.addEntry("T-Shaped");
+    shape.addEntry("Hall of pillars");
+
+    size.addEntry("Small (30 x 30)");
+    size.addEntry("Medium (50 x 50)");
+    size.addEntry("Large (70 x 70)");
+
+    _roomShape = size.getRollTableEntry() + ", " + shape.getRollTableEntry()
+            + "; orientation " + QString::number(orientation);
 }
 
 int room::getQtyExits()

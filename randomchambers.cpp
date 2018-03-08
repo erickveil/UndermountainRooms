@@ -159,14 +159,14 @@ QString RandomChambers::generateTreasureVault(int tier)
 
 QString RandomChambers::generateHallwayContents(int tier)
 {
-    QString sound = (Dice::roll(1,8) == 1) ? "SOUND: " + noises() + "\n": "";
-    QString smell = (Dice::roll(1,8) == 1) ? "SMELL: " + odors() + "\n": "";
-    QString feature = (Dice::roll(1,8) == 1) ? "FEATURE: " + primaryFeature() + "\n"
+    QString sound = (Dice::roll(1,8) == 1) ? "\nSOUND: " + noises() : "";
+    QString smell = (Dice::roll(1,8) == 1) ? "\nSMELL: " + odors() : "";
+    QString feature = (Dice::roll(1,8) == 1) ? "\nFEATURE: " + primaryFeature()
                                        : "";
 
     bool isEncounter = Dice::roll(1, 6) == 1;
     if (!isEncounter) {
-        return "Hallway all clear.\n" + sound +  smell + feature;
+        return "Hallway all clear." + sound +  smell + feature;
     }
 
     RandomTable table;
@@ -180,7 +180,7 @@ QString RandomChambers::generateHallwayContents(int tier)
     QString monster_loot = LootTables::generateIndividualTreasure(tier);
 
 
-    table.addEntry("MONSTER (dominant inhabitant or "
+    table.addEntry("\nMONSTER (dominant inhabitant or "
                    + monster + ")"
                    + "\nLoot: " + monster_loot
                    + motivation + "\n"
@@ -188,14 +188,14 @@ QString RandomChambers::generateHallwayContents(int tier)
                    + sound +  smell + feature
                    , 8);
 
-    table.addEntry("MONSTER (pet or allied creature): "
+    table.addEntry("\nMONSTER (pet or allied creature): "
                    + monster
                    + "\nLoot: " + monster_loot
                    + motivation + "\n"
                    + activity
                    + sound +  smell + feature
                    , 12);
-    table.addEntry("MONSTER (random): "
+    table.addEntry("\nMONSTER (random): "
                    + monster
                    + "\nLoot: + monster_loot"
                    + motivation + "\n"
@@ -204,15 +204,15 @@ QString RandomChambers::generateHallwayContents(int tier)
                    , 9);
 
     QString obstacle = obstacles();
-    table.addEntry("OBSTACLE: " + obstacle + sound +  smell + feature, 5);
+    table.addEntry("\nOBSTACLE: " + obstacle + sound +  smell + feature, 5);
 
     QString trap = TrapTables::generateTrap(tier);
-    table.addEntry("TRAP: " + trap + sound +  smell + feature, 10);
+    table.addEntry("\nTRAP: " + trap + sound +  smell + feature, 10);
 
     QString trick = TrapTables::generateTrick();
-    table.addEntry("TRICK: " + trick + sound +  smell + feature, 4);
+    table.addEntry("\nTRICK: " + trick + sound +  smell + feature, 4);
 
-    table.addEntry("HAZARD: " + hazard + sound +  smell + feature, 6);
+    table.addEntry("\nHAZARD: " + hazard + sound +  smell + feature, 6);
 
 
     return table.getRollTableEntry();

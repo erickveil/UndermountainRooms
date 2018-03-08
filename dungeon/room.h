@@ -14,6 +14,7 @@ class room
     QList<roomExit> _exitList;
     int _unconnectedExits = 0;
     QString _roomContents;
+    QString _roomShape;
 
 public:
     room();
@@ -24,6 +25,7 @@ public:
     int getNumUnconnectedExits();
     void connectAllExits(QList<hall> &hallList, int roomNumber, int tier);
     void setRoomContentsByDungeonType(QString type, int tier);
+    void setRoomShape();
 
     int getQtyExits();
 };

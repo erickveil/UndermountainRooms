@@ -10,7 +10,7 @@ QString EncounterTables::generateActivity()
 {
     QString desc;
     desc = "Intelegent activity: " + monsterDowntime() + "\n";
-    desc += "Animal activity: " + animalDowntime() + "\n";
+    desc += "Animal activity: " + animalDowntime();
     return desc;
 }
 

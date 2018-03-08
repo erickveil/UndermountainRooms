@@ -7,6 +7,7 @@ hall::hall()
 
 void hall::initHall(int tier)
 {
+    _tier = tier;
     RandomTable hallType;
     hallType.addEntry("single connection", 4);
     hallType.addEntry("T Branch", 2);
@@ -25,9 +26,6 @@ void hall::initHall(int tier)
     }
     _hallDesc = type;
 
-
-    // TODO: the hall needs a description of where it connects, and if there is
-    // any random hall stuff in it
 }
 
 void hall::setKeyNumber(int key)
@@ -57,6 +55,7 @@ QString hall::describeHall()
 {
     QString desc = "";
     desc += _hallDesc;
+    desc += "\n" + RandomChambers::generateHallwayContents(_tier);
 
     desc += "\nConnects to rooms: ";
     for (int i = 0; i < _connectionNames.size(); ++i) {
