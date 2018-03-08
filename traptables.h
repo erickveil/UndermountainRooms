@@ -14,10 +14,11 @@ public:
 
     static QString trapSeverityLevel(int tier);
     static QString trapSeverityStats(QString severity, int tier);
-    static QString trapSeverity(int tier);
+
     static QString trapSpell(QString severity, int tier);
 
     static QString trapTrigger();
+    static QString doorTrapTrigger();
     static QString trapEffects(QString severity, int tier);
     static QString trapDisarm();
 

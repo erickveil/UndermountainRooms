@@ -30,7 +30,8 @@ TableEntry RandomTable::rollTable()
     // select from table
     int min = 0;
     int max = fullTable.size();
-    int index = (qrand() % ((max) - min) + min);
+    //int index = (qrand() % ((max) - min) + min);
+    int index = Dice::randomNumber(min, max-1);
 
     return fullTable[index];
 }

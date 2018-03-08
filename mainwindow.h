@@ -12,6 +12,7 @@
 #include "monstertable.h"
 #include "treasuremaps.h"
 #include "nonencounters.h"
+#include "dungeon/dungeon.h"
 
 namespace Ui {
 class MainWindow;
@@ -67,6 +68,8 @@ private slots:
     void on_pbTreasureMap_clicked();
 
     void on_pbNonEncounter_clicked();
+
+    void on_pbNewDungeon_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -334,3 +334,11 @@ void MainWindow::on_pbNonEncounter_clicked()
     }
 
 }
+
+void MainWindow::on_pbNewDungeon_clicked()
+{
+    dungeon newDungeon;
+    QString type = ui->typeSelect->currentText();
+    newDungeon.initDungeon(type, 2, 4, 5, 1, 2);
+    ui->resultArea->setPlainText(newDungeon.describeDungeon());
+}
