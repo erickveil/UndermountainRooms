@@ -2,6 +2,7 @@
 Quickly fill an empty room in Undermountain
 
 ![This is a screenshot](https://raw.githubusercontent.com/erickveil/UndermountainRooms/master/Screenshot.jpeg)
+
 This project violates the "Do one thing" principle as it has grown to do much
 more than the description above. It generates entire dungeons with the click
 of a button, adventure hooks, treasure hordes, NPC parties, complex traps.
