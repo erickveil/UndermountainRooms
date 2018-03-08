@@ -7,6 +7,7 @@
 #include "traptables.h"
 #include "treasuremaps.h"
 #include "hall.h"
+#include "door.h"
 
 class roomExit
 {
@@ -22,7 +23,6 @@ public:
 
     QString getExitType(int tier);
     QString getExitLocation();
-    int getLockDc(int tier);
 };
 
 #endif // ROOMEXIT_H

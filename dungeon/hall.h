@@ -4,16 +4,19 @@
 #include <QList>
 #include "randomtable.h"
 #include "randomchambers.h"
+#include "door.h"
 
 class hall
 {
 
+    int _totalConnectons = 0;
     int _openConnectons = 0;
     QString _hallDesc;
     int _keyNumber;
     QList<int> _connectedRooms;
     QList<QString> _connectionNames;
     int _tier;
+    QList<QString> _deadEnds;
 
 public:
     hall();
@@ -25,6 +28,10 @@ public:
     QString describeHall();
     void connectExit(int roomNumber, int exitNumber);
     bool hasRoomConnection(int roomNumber);
+    QString createDeadEnd(int tier);
+    int getNumOpenConnections();
+    void addDeadEnd(int tier);
+    QString hallWidth();
 };
 
 #endif // HALL_H
