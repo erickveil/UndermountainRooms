@@ -33,7 +33,7 @@ QString dungeon::describeDungeon()
 
     for (int i = 0; i < _levelList.size(); ++i) {
         desc += "LEVEL " + QString::number(i + 1) + ":\n";
-        desc += _levelList[i].describeLevel();
+        desc += _levelList[i].describeLevel(i + 1, _levelList.size());
     }
     return desc;
 }

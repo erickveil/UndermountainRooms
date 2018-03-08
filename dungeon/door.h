@@ -14,6 +14,7 @@ public:
     static int getLockDc(int tier);
     static QString secretDoor(int tier);
     static QString secretDoorTrigger(int tier);
+    static QString gate(int tier);
 
 };
 

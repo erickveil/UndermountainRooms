@@ -97,7 +97,6 @@ bool hall::hasRoomConnection(int roomNumber)
 QString hall::createDeadEnd(int tier)
 {
     /* TODO:
-     * Gate direction (one/two way? which way?)
      * Test multi-levels
      */
     RandomTable deadEndLure;

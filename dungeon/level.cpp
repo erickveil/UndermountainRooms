@@ -37,14 +37,26 @@ void level::looseEnds(int tier)
     }
 }
 
-QString level::describeLevel()
+QString level::describeLevel(int level, int totalLevels)
 {
     QString desc = "";
     desc += "TIER: " + QString::number(_tier) + "\n\n";
     for (int r = 0; r < _roomList.size(); ++r) {
         desc += "ROOM " + QString::number(r + 1) + ": ";
         desc += _roomList[r].describeRoom();
-        desc += "\n";
+        if (r == 0 && level == 1) {
+            desc += "\nEntrance to the dungeon.";
+        }
+        else if (r == 0) {
+            desc += "\nStairs up to level " + QString::number(level - 1);
+        }
+        else if (r == _roomList.size() -1 && level == totalLevels) {
+            desc += "\nDUNGEON GOAL";
+        }
+        else if (r == _roomList.size() -1) {
+            desc += "\nStairs down to level " + QString::number(level + 1);
+        }
+        desc += "\n\n";
     }
 
     desc += "\n";

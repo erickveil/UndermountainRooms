@@ -16,7 +16,7 @@ public:
     void initLevel(int qtyRooms, int tier, QString dungeonType);
     void attachRooms(int tier);
     void looseEnds(int tier);
-    QString describeLevel();
+    QString describeLevel(int level, int totalLevels);
 
 
     QList<room> getRooms();
