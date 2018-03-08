@@ -15,7 +15,8 @@ class dungeon
 
 public:
     dungeon();
-    void initDungeon(int qtyLevels, int minRooms, int maxRooms, int minTier, int maxTier);
+    void initDungeon(QString dungeonType, int qtyLevels, int minRooms,
+                     int maxRooms, int minTier, int maxTier);
     QList<level> getLevels();
     QString describeDungeon();
 

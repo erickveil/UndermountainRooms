@@ -12,7 +12,7 @@ class level
 
 public:
     level();
-    void initLevel(int qtyRooms, int tier);
+    void initLevel(int qtyRooms, int tier, QString dungeonType);
     void attachRooms(int tier);
     QString describeLevel();
 

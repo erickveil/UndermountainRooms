@@ -5,12 +5,12 @@ level::level()
 
 }
 
-void level::initLevel(int qtyRooms, int tier)
+void level::initLevel(int qtyRooms, int tier, QString dungeonType)
 {
     QList<room> roomList;
     for (int i = 0; i < qtyRooms; ++i) {
         room nextRoom;
-        nextRoom.initRoom(tier, qtyRooms);
+        nextRoom.initRoom(tier, qtyRooms, dungeonType);
         roomList.append(nextRoom);
     }
     _roomList = roomList;

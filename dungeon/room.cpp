@@ -5,7 +5,7 @@ room::room()
 
 }
 
-void room::initRoom(int tier, int qtyRoomsInLevel)
+void room::initRoom(int tier, int qtyRoomsInLevel, QString dungeonType)
 {
     int qtyDoors = getQtyExits();
 
@@ -17,6 +17,7 @@ void room::initRoom(int tier, int qtyRoomsInLevel)
     }
     _exitList = exitList;
     _unconnectedExits = qtyDoors;
+    setRoomContentsByDungeonType(dungeonType, tier);
 }
 
 QList<roomExit> room::getExitList()
@@ -27,7 +28,8 @@ QList<roomExit> room::getExitList()
 QString room::describeRoom()
 {
     QString desc = "";
-    desc += QString::number(_exitList.size()) + " EXITS:\n";
+    desc += _roomContents;
+    desc += "\n" + QString::number(_exitList.size()) + " EXITS:\n";
     for (int e = 0; e < _exitList.size(); ++e) {
         desc += QString::number(e) + ". " + _exitList[e].describeExit() + "\n";
     }
@@ -68,6 +70,52 @@ void room::connectAllExits(QList<hall> &hallList, int roomNumber, int tier)
         // connect new hall
         _exitList[e].connectHall(&hallList.last());
         hallList.last().connectExit(roomNumber, e);
+    }
+}
+
+void room::setRoomContentsByDungeonType(QString type, int tier)
+{
+    if (type == "General") {
+        _roomContents = (RandomChambers::generateGeneralRoom(tier));
+    }
+    else if (type == "Death Trap") {
+        _roomContents = (RandomChambers::generateDeathTrapRoom(tier));
+    }
+    else if (type == "Lair") {
+        _roomContents = (RandomChambers::generateLairRoom(tier));
+    }
+    else if (type == "Maze") {
+        _roomContents = (RandomChambers::generateMazeRoomType(tier));
+    }
+    else if (type == "Planar Gate") {
+        _roomContents = (RandomChambers::generatePlanarGateRoom(tier));
+    }
+    else if (type == "Stronghold") {
+        _roomContents = (RandomChambers::generateStrongholdRoom(tier));
+    }
+    else if (type == "Temple") {
+        _roomContents = (RandomChambers::generateTempleRoom(tier));
+    }
+    else if (type == "Tomb") {
+        _roomContents = (RandomChambers::generateToomb(tier));
+    }
+    else if (type == "Treasure Vault") {
+        _roomContents = (RandomChambers::generateTreasureVault(tier));
+    }
+    else if (type == "Hallway") {
+        _roomContents = (RandomChambers::generateHallwayContents(tier));
+    }
+    else if (type == "Mine") {
+        _roomContents = (RandomChambers::generateMineRoom(tier));
+    }
+    else if (type == "Library") {
+        _roomContents = (RandomChambers::generateLibraryRoom(tier));
+    }
+    else if (type == "Caverns") {
+        _roomContents = (RandomChambers::generateCavernRoom(tier));
+    }
+    else {
+        _roomContents = ("Unknown dungeon type.");
     }
 }
 

@@ -9,13 +9,12 @@ QString RandomChambers::generateGeneralRoom(int tier)
 {
 
     QString description;
-    description = "ROOM: " + generalDungeonRoomType() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = generalDungeonRoomType() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier)
             + ".\n";
 
@@ -25,13 +24,12 @@ QString RandomChambers::generateGeneralRoom(int tier)
 QString RandomChambers::generateDeathTrapRoom(int dungeonLevel)
 {
     QString description;
-    description = "ROOM: " + deathTrapRoomType() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = deathTrapRoomType() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(dungeonLevel)
             + ".\n";
 
@@ -41,13 +39,12 @@ QString RandomChambers::generateDeathTrapRoom(int dungeonLevel)
 QString RandomChambers::generateLairRoom(int dungeonLevel)
 {
     QString description;
-    description = "ROOM: " + lairRoomType() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = lairRoomType() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(dungeonLevel)
             + ".\n";
 
@@ -57,14 +54,13 @@ QString RandomChambers::generateLairRoom(int dungeonLevel)
 QString RandomChambers::generateMineRoom(int tier)
 {
     QString description;
-    description = "ROOM: " + mineRoomType() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = mineRoomType() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -73,14 +69,13 @@ QString RandomChambers::generateMineRoom(int tier)
 QString RandomChambers::generatePlanarGateRoom(int tier)
 {
     QString description;
-    description = "ROOM: " + planarGateRoomType() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = planarGateRoomType() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -89,14 +84,13 @@ QString RandomChambers::generatePlanarGateRoom(int tier)
 QString RandomChambers::generateMazeRoomType(int tier)
 {
     QString description;
-    description = "ROOM: " + mazeRoomType() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = mazeRoomType() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -106,14 +100,13 @@ QString RandomChambers::generateMazeRoomType(int tier)
 QString RandomChambers::generateStrongholdRoom(int tier)
 {
     QString description;
-    description = "ROOM: " + strongholdRoom() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = strongholdRoom() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -122,14 +115,13 @@ QString RandomChambers::generateStrongholdRoom(int tier)
 QString RandomChambers::generateTempleRoom(int tier)
 {
     QString description;
-    description = "ROOM: " + templeRoom() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = templeRoom() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -138,14 +130,13 @@ QString RandomChambers::generateTempleRoom(int tier)
 QString RandomChambers::generateToomb(int tier)
 {
     QString description;
-    description = "ROOM: " + tombRoom() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = tombRoom() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -154,14 +145,13 @@ QString RandomChambers::generateToomb(int tier)
 QString RandomChambers::generateTreasureVault(int tier)
 {
     QString description;
-    description = "ROOM: " + treasureVaultRoom() + ".\n";
-    description += "DOORS: " + doorType() + ".\n";
-    description += "LIGHT: " + lighting() + ".\n";
-    description += "FEATURE: " + primaryFeature() + ".\n";
+    description = treasureVaultRoom() + "\n";
+    description += "LIGHT: " + lighting() + "\n";
+    description += "FEATURE: " + primaryFeature() + "\n";
     description += "SOUND: " + noises() + "\n";
     description += "SMELL: " + odors() + "\n";
-    description += "STATE: " + currentChamberState() + ".\n";
-    description += "CONTENTS:\n" + chamberContents(tier) + ".\n";
+    description += "STATE: " + currentChamberState() + "\n";
+    description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
     return description;
 
@@ -330,14 +320,15 @@ QString RandomChambers::deathTrapRoomType()
 {
     RandomTable table;
 
-    table.addEntry("Antechamber or waiting room for spectators");
-    table.addEntry("Guardroom fortified against intruders", 6);
-    table.addEntry("Vault for holding important treasures, accessible only by "
+    table.addEntry("Antechamber or waiting room"
+                   "\nfor spectators");
+    table.addEntry("Guardroom\nfortified against intruders", 6);
+    table.addEntry("Vault\n for holding important treasures, accessible only by "
                    "locked or secret door.", 3);
-    table.addEntry("Room containing a puzzle that must be solved to bypass a "
+    table.addEntry("Puzzle\nRoom containing a puzzle that must be solved to bypass a "
                    "trap or monster", 3);
-    table.addEntry("Trap designed to kill or capture creatures", 5);
-    table.addEntry("Observation room, allowing guards or spectators to observe "
+    table.addEntry("Trap Room\ndesigned to kill or capture creatures", 5);
+    table.addEntry("Observation room\nallowing guards or spectators to observe "
                    "creatures moving through the dungeon");
 
     return table.getRollTableEntry();
@@ -347,19 +338,19 @@ QString RandomChambers::lairRoomType()
 {
     RandomTable table;
 
-    table.addEntry("Armory stocked with weapons and armor");
-    table.addEntry("Audience chamber, used to receive guests");
-    table.addEntry("Banquet room for important celebrations");
-    table.addEntry("Barracks where the lair's defenders are quartered");
-    table.addEntry("Bedroom for use by leaders");
-    table.addEntry("Chapel where the lair's inhabitants worship");
-    table.addEntry("Cistern or well for drinking water");
-    table.addEntry("Guardroom for the defense of the lair", 2);
-    table.addEntry("Kennel for pets or guard beasts");
-    table.addEntry("Kitchen for food storage and preparation");
-    table.addEntry("Pen or prison where captives are held");
-    table.addEntry("Storage, mostly nonperishable goods", 2);
-    table.addEntry("Throne room where the lair's leaders hold court");
+    table.addEntry("Armory\nstocked with weapons and armor");
+    table.addEntry("Audience\n chamber, used to receive guests");
+    table.addEntry("Banquet\nroom for important celebrations");
+    table.addEntry("Barracks\nwhere the lair's defenders are quartered");
+    table.addEntry("Bedroom\nfor use by leaders");
+    table.addEntry("Chapel\nwhere the lair's inhabitants worship");
+    table.addEntry("Cistern\nor well for drinking water");
+    table.addEntry("Guardroom\nfor the defense of the lair", 2);
+    table.addEntry("Kennel\nfor pets or guard beasts");
+    table.addEntry("Kitchen\nfor food storage and preparation");
+    table.addEntry("Pen or prison\nwhere captives are held");
+    table.addEntry("Storage\nmostly nonperishable goods", 2);
+    table.addEntry("Throne Room\nwhere the lair's leaders hold court");
     table.addEntry("Torture chamber");
     table.addEntry("Training and exercise room");
     table.addEntry("Trophy room or museum");

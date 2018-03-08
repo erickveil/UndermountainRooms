@@ -56,14 +56,14 @@ QString roomExit::getExitType(int tier)
     QString lock = lockType.getRollTableEntry() + ", DC: "
             + QString::number(lockDc);
 
-    doorLock.addEntry("unlocked");
-    doorLock.addEntry("barred on opposite side");
-    doorLock.addEntry("barred on this side");
-    doorLock.addEntry("locked: " + lock);
+    doorLock.addEntry("unlocked", 32);
+    doorLock.addEntry("barred on opposite side", 8);
+    doorLock.addEntry("barred on this side", 4);
+    doorLock.addEntry("locked: " + lock, 16);
     doorLock.addEntry("opened by a lever in next room");
-    doorLock.addEntry("opened by a lever in this room");
+    doorLock.addEntry("opened by a lever in this room", 2);
     // TODO: which room?
-    doorLock.addEntry("opened by a lever in room "  );
+    //doorLock.addEntry("opened by a lever in room "  );
 
     int trapChance = 5;
     bool isTrapped = Dice::roll(1,100) <= trapChance;
@@ -88,8 +88,9 @@ QString roomExit::getExitType(int tier)
     secretDoorType.addEntry("False ceiling panel");
     secretDoorType.addEntry("Trap door under a rug");
     secretDoorType.addEntry("False floor panel");
-    secretDoorType.addEntry("Stairs up raise to reveal secret stairs down");
+    //secretDoorType.addEntry("Stairs up raise to reveal secret stairs down");
     secretDoorType.addEntry("Inside a coffin");
+    secretDoorType.addEntry("Illusion wall");
     secretDoorType.addEntry("False bottom to a chest");
 
     int secretDoorPerceptionDc = getLockDc(tier);
@@ -152,6 +153,9 @@ QString roomExit::getExitType(int tier)
     trapDoor.addEntry("Hidden trap door in floor triggered by stepping on: "
                       + trapStats);
     trapDoor.addEntry("Carpet covers open chute in floor: " + trapStats);
+    trapDoor.addEntry("Section of floor is an illusion covering a pit: "
+                      + trapStats);
+    trapDoor.addEntry("Section of ceiling is an illusion covering a chute.");
 
     RandomTable gateType;
     gateType.addEntry("A Large, round gate on a dias");
@@ -215,14 +219,14 @@ QString roomExit::getExitType(int tier)
             + ". It transports " + gateAllowance.getRollTableEntry()
             + " " + gateFrequency.getRollTableEntry();
 
-    table.addEntry("Wooden door; " + doorLockResult + trap);
-    table.addEntry("Stone door; " + doorLockResult + trap);
-    table.addEntry("Iron door; " + doorLockResult + trap);
-    table.addEntry("Portcullis; " + doorLockResult + trap);
+    table.addEntry("Wooden door; " + doorLockResult + trap, 8);
+    table.addEntry("Archway; " + trap, 8);
+    table.addEntry("Stone door; " + doorLockResult + trap, 4);
+    table.addEntry("Portcullis; " + doorLockResult + trap, 2);
     table.addEntry("Secret door: " + secretDoor + "; " + doorLockResult + trap);
-    table.addEntry("Archway; " + trap);
-    table.addEntry(stair.getRollTableEntry() + "; " + trap);
     table.addEntry(trapDoor.getRollTableEntry());
+    table.addEntry(stair.getRollTableEntry() + "; " + trap);
+    table.addEntry("Iron door; " + doorLockResult + trap);
     table.addEntry("Gate: " + gate);
 
     return table.getRollTableEntry();

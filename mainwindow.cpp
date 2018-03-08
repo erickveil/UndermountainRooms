@@ -329,6 +329,7 @@ void MainWindow::on_pbTreasureMap_clicked()
 void MainWindow::on_pbNewDungeon_clicked()
 {
     dungeon newDungeon;
-    newDungeon.initDungeon(2, 4, 5, 1, 2);
+    QString type = ui->typeSelect->currentText();
+    newDungeon.initDungeon(type, 2, 4, 5, 1, 2);
     ui->resultArea->setPlainText(newDungeon.describeDungeon());
 }
