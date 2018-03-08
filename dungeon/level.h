@@ -9,6 +9,7 @@ class level
 {
     QList<room> _roomList;
     QList<hall> _hallList;
+    int _tier;
 
 public:
     level();

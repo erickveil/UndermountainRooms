@@ -339,6 +339,13 @@ void MainWindow::on_pbNewDungeon_clicked()
 {
     dungeon newDungeon;
     QString type = ui->typeSelect->currentText();
-    newDungeon.initDungeon(type, 2, 4, 5, 1, 2);
+    int levels = ui->sbDungeonLevels->value();
+    int minRooms = ui->sbLevelSize->value();
+    int maxRooms = ui->sbMaxRooms->value();
+    if (maxRooms < minRooms) { maxRooms = minRooms; }
+    int minTier = ui->tierSelect->value();
+    int maxTier = ui->sbMaxTier->value();
+    if (maxTier < minTier) { maxTier = minTier; }
+    newDungeon.initDungeon(type, levels, minRooms, maxRooms, minTier, maxTier);
     ui->resultArea->setPlainText(newDungeon.describeDungeon());
 }

@@ -7,6 +7,7 @@ level::level()
 
 void level::initLevel(int qtyRooms, int tier, QString dungeonType)
 {
+    _tier = tier;
     QList<room> roomList;
     for (int i = 0; i < qtyRooms; ++i) {
         room nextRoom;
@@ -27,6 +28,7 @@ void level::attachRooms(int tier)
 QString level::describeLevel()
 {
     QString desc = "";
+    desc += "TIER: " + QString::number(_tier) + "\n\n";
     for (int r = 0; r < _roomList.size(); ++r) {
         desc += "ROOM " + QString::number(r + 1) + ": ";
         desc += _roomList[r].describeRoom();

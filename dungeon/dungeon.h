@@ -12,6 +12,7 @@
 class dungeon
 {
     QList<level> _levelList;
+    QString _type;
 
 public:
     dungeon();
