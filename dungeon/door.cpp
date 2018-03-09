@@ -140,6 +140,56 @@ QString door::gate(int tier)
     return gate;
 }
 
+QString door::Doorlock(int tier)
+{
+    RandomTable doorLock;
+    RandomTable lockType;
+
+    lockType.addEntry("key", 50);
+    lockType.addEntry("combination", 3);
+    lockType.addEntry("puzzle");
+
+    int lockDc = door::getLockDc(tier);
+    QString lockTypeResult = lockType.getRollTableEntry() + ", DC: "
+            + QString::number(lockDc);
+
+    doorLock.addEntry("unlocked", 32);
+    doorLock.addEntry("barred on opposite side", 8);
+    doorLock.addEntry("barred on this side", 4);
+    doorLock.addEntry("locked: " + lockTypeResult, 16);
+    doorLock.addEntry("opened by a lever in next room");
+    doorLock.addEntry("opened by a lever in this room", 2);
+    // TODO: which room?
+    //doorLock.addEntry("opened by a lever in room "  );
+
+    return doorLock.getRollTableEntry();
+}
+
+QString door::RandomDoor(int tier)
+{
+    int trapChance = 5;
+    bool isTrapped = Dice::roll(1,100) <= trapChance;
+    QString trapSeverity = TrapTables::trapSeverityLevel(tier);
+    QString trapStats = TrapTables::trapSeverityStats(trapSeverity, tier);
+    QString trapTrigger = TrapTables::doorTrapTrigger();
+    QString trapEffect = TrapTables::trapEffects(trapSeverity, tier);
+    QString trapDisarm = TrapTables::trapDisarm();
+    QString trapDesc = QString("; Trapped: ")
+            + trapTrigger + ", "
+            + trapStats + ", "
+            + trapEffect + ", "
+            + trapDisarm;
+    QString trap = !isTrapped ? "" : trapDesc;
+
+    QString doorLockResult = door::Doorlock(tier);
+
+    RandomTable table;
+    table.addEntry("Wooden door; " + doorLockResult + trap, 8);
+    table.addEntry("Stone door; " + doorLockResult + trap, 4);
+    table.addEntry("Iron door; " + doorLockResult + trap);
+    return table.getRollTableEntry();
+}
+
 int door::getLockDc(int tier)
 {
     int mod = Dice::roll(1,6);

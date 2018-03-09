@@ -5,9 +5,15 @@ room::room()
 
 }
 
-void room::initRoom(int tier, int qtyRoomsInLevel, QString dungeonType)
+void room::initRoom(int tier, int roomNumber, int qtyRoomsInLevel,
+                    QString dungeonType)
 {
-    int qtyDoors = getQtyExits();
+    /* Last rooms in the level only get 1-2 exits to reduce dead ends and
+     * prevent the last room from being a nexus
+     */
+    bool isLastRoom = (qtyRoomsInLevel == roomNumber);
+
+    int qtyDoors = getQtyExits(isLastRoom);
 
     QList<roomExit> exitList;
     for (int i = 0; i < qtyDoors; ++i) {
@@ -49,12 +55,25 @@ int room::getNumUnconnectedExits()
     return _unconnectedExits;
 }
 
-void room::connectAllExits(QList<hall> &hallList, int roomNumber, int tier)
+void room::connectAllExits(QList<hall> &hallList, int numRooms, int roomNumber,
+                           int tier)
 {
     for (int e = 0; e < _exitList.size(); ++e) {
         if (_exitList[e].isConnected()) { continue; }
-        // find an existing hall to connect
+
+        /* Only connect existing hall if there is no danger of isolating the
+         * section from the rest of the dungeon, otherwise make a new hall
+         * so that it connects to the next room.
+         */
+        bool has2exits = (_exitList.size() == 2);
+        bool is2ndExit = (e==1);
+        bool isLastRoom = (roomNumber == numRooms);
+        bool isIsolationDanger = (has2exits && is2ndExit && !isLastRoom);
+
+        // find next existing hall to connect
         for (int h = 0; h < hallList.size(); ++ h) {
+            if (isIsolationDanger) { break; }
+
             if (hallList[h].hasRoomConnection(roomNumber)) { continue; }
             // connect existing hall
             if (hallList[h].isFull()) { continue; }
@@ -66,12 +85,15 @@ void room::connectAllExits(QList<hall> &hallList, int roomNumber, int tier)
 
         // new hall needed
         hall newHall;
-        newHall.initHall(tier);
+        bool isCloseToEnd = (roomNumber == numRooms -1);
+        newHall.initHall(tier, isCloseToEnd);
         newHall.setKeyNumber(hallList.size() + 1);
         hallList.append(newHall);
         // connect new hall
         _exitList[e].connectHall(&hallList.last());
         hallList.last().connectExit(roomNumber, e);
+
+        // end if
     }
 }
 
@@ -142,13 +164,19 @@ void room::setRoomShape()
             + "; orientation " + QString::number(orientation);
 }
 
-int room::getQtyExits()
+int room::getQtyExits(bool isLastRoom)
 {
     RandomTable table;
-    table.addEntry("1");
-    table.addEntry("2", 6);
-    table.addEntry("3", 3);
-    table.addEntry("4");
+    if (isLastRoom) {
+        table.addEntry("1");
+        table.addEntry("2");
+    }
+    else {
+        table.addEntry("1");
+        table.addEntry("2", 6);
+        table.addEntry("3", 3);
+        table.addEntry("4");
+    }
     return table.getRollTableEntry().toInt();
 }
 

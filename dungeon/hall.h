@@ -20,7 +20,7 @@ class hall
 
 public:
     hall();
-    void initHall(int tier);
+    void initHall(int tier, bool isCloseToEnd);
     void setKeyNumber(int key);
     int getKeyNumber();
     bool isFull();
@@ -28,9 +28,10 @@ public:
     QString describeHall();
     void connectExit(int roomNumber, int exitNumber);
     bool hasRoomConnection(int roomNumber);
-    QString createDeadEnd(int tier);
+    QString createDeadEnd(int tier, QList<hall> &hallList);
     int getNumOpenConnections();
-    void addDeadEnd(int tier);
+    void addDeadEnd(int tier, QList<hall> &hallList);
+    void addDeadEnd(QString deadEndResult, int connectingHall);
     QString hallWidth();
 };
 

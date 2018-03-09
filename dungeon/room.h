@@ -18,16 +18,18 @@ class room
 
 public:
     room();
-    void initRoom(int tier, int qtyRoomsInLevel, QString dungeonType);
+    void initRoom(int tier, int roomNumber, int qtyRoomsInLevel,
+                  QString dungeonType);
     QList<roomExit> getExitList();
     QString describeRoom();
     void connectHall(int exitNumber, hall *passage);
     int getNumUnconnectedExits();
-    void connectAllExits(QList<hall> &hallList, int roomNumber, int tier);
+    void connectAllExits(QList<hall> &hallList, int numRooms, int roomNumber,
+                         int tier);
     void setRoomContentsByDungeonType(QString type, int tier);
     void setRoomShape();
 
-    int getQtyExits();
+    int getQtyExits(bool isLastRoom);
 };
 
 #endif // ROOM_H

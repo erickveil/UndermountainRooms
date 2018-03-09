@@ -41,27 +41,9 @@ QString roomExit::describeExit()
 QString roomExit::getExitType(int tier)
 {
     RandomTable table;
-    RandomTable doorLock;
-    RandomTable lockType;
     RandomTable stair;
     RandomTable trapDoor;
 
-    lockType.addEntry("key", 50);
-    lockType.addEntry("combination", 3);
-    lockType.addEntry("puzzle");
-
-    int lockDc = door::getLockDc(tier);
-    QString lock = lockType.getRollTableEntry() + ", DC: "
-            + QString::number(lockDc);
-
-    doorLock.addEntry("unlocked", 32);
-    doorLock.addEntry("barred on opposite side", 8);
-    doorLock.addEntry("barred on this side", 4);
-    doorLock.addEntry("locked: " + lock, 16);
-    doorLock.addEntry("opened by a lever in next room");
-    doorLock.addEntry("opened by a lever in this room", 2);
-    // TODO: which room?
-    //doorLock.addEntry("opened by a lever in room "  );
 
     int trapChance = 5;
     bool isTrapped = Dice::roll(1,100) <= trapChance;
@@ -96,7 +78,8 @@ QString roomExit::getExitType(int tier)
     chuteType.addEntry("angled slide");
     chuteType.addEntry("spiral slide");
 
-    QString doorLockResult = doorLock.getRollTableEntry();
+    QString doorLockResult = door::Doorlock(tier);
+
     trapDoor.addEntry("Hatch in floor: " + chuteType.getRollTableEntry()
                       + "; " + doorLockResult + trap);
     trapDoor.addEntry("Hatch in ceiling " + chuteType.getRollTableEntry()

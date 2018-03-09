@@ -11,7 +11,7 @@ void level::initLevel(int qtyRooms, int tier, QString dungeonType)
     QList<room> roomList;
     for (int i = 0; i < qtyRooms; ++i) {
         room nextRoom;
-        nextRoom.initRoom(tier, qtyRooms, dungeonType);
+        nextRoom.initRoom(tier, i+1, qtyRooms, dungeonType);
         roomList.append(nextRoom);
     }
     _roomList = roomList;
@@ -22,7 +22,7 @@ void level::initLevel(int qtyRooms, int tier, QString dungeonType)
 void level::attachRooms(int tier)
 {
     for (int r = 0; r < _roomList.size(); ++r) {
-        _roomList[r].connectAllExits(_hallList, r + 1, tier);
+        _roomList[r].connectAllExits(_hallList, _roomList.size(), r + 1, tier);
     }
 }
 
@@ -32,7 +32,7 @@ void level::looseEnds(int tier)
         if (_hallList[h].isFull()) { continue; }
 
         for (int i = 0; i < _hallList[h].getNumOpenConnections(); ++i) {
-            _hallList[h].addDeadEnd(tier);
+            _hallList[h].addDeadEnd(tier, _hallList);
         }
     }
 }

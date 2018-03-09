@@ -5,13 +5,22 @@ hall::hall()
 
 }
 
-void hall::initHall(int tier)
+void hall::initHall(int tier, bool isCloseToEnd)
 {
     _tier = tier;
     RandomTable hallType;
-    hallType.addEntry("single connection", 32);
-    hallType.addEntry("T Branch", 4);
-    hallType.addEntry("Crossroad");
+    if (isCloseToEnd) {
+        // higher chance of branching increases dead ends but also decreases
+        // chance of final room isolation
+        hallType.addEntry("single connection", 4);
+        hallType.addEntry("T Branch", 2);
+        hallType.addEntry("Crossroad");
+    }
+    else {
+        hallType.addEntry("single connection", 32);
+        hallType.addEntry("T Branch", 4);
+        hallType.addEntry("Crossroad");
+    }
 
     QString type = hallType.getRollTableEntry();
 
@@ -94,11 +103,8 @@ bool hall::hasRoomConnection(int roomNumber)
     return false;
 }
 
-QString hall::createDeadEnd(int tier)
+QString hall::createDeadEnd(int tier, QList<hall> &hallList)
 {
-    /* TODO:
-     * Test multi-levels
-     */
     RandomTable deadEndLure;
     deadEndLure.addEntry("Something scrawled on the wall at the end");
     deadEndLure.addEntry("A coin or gem glimmers on the ground at the end");
@@ -118,14 +124,33 @@ QString hall::createDeadEnd(int tier)
                      + TrapTables::generateTrap(tier));
     deadEnd.addEntry("Cornered: Monster approaches, there's nowhere to run: "
                      + MonsterTable::dungeonMonster(tier));
-    deadEnd.addEntry("Secret Door: One way secret door into a room or "
-                     "hallway: " + door::secretDoor(tier));
+
+    int randomHallIndex = Dice::randomNumber(0, hallList.size() - 1);
+    if (randomHallIndex == _keyNumber) {
+        if (_keyNumber == 0) { ++randomHallIndex; }
+        else { --randomHallIndex; }
+    }
+    deadEnd.addEntry("Door (secret): One way secret door into hallway "
+                     + QString::number(randomHallIndex + 1) + ": "
+                     + door::secretDoor(tier), 4);
+    deadEnd.addEntry("Door: Door into hallway "
+                     + QString::number(randomHallIndex + 1) + ": "
+                     + door::RandomDoor(tier), 6);
+
     deadEnd.addEntry("Secret Stash: Secret door into a treasure-closet: "
                      + door::secretDoor(tier) + "\nContents:\n"
                      + LootTables::generateTreasureHorde(tier));
-    deadEnd.addEntry("Nothing special", 4);
+    deadEnd.addEntry("Nothing special");
 
-    return deadEndLure.getRollTableEntry() + "; " + deadEnd.getRollTableEntry();
+    QString deadEndType = deadEnd.getRollTableEntry();
+    QString deadEndDesc = deadEndLure.getRollTableEntry() + "; "
+            + deadEndType;
+
+    if (deadEndType.left(4) == "Door") {
+        hallList[randomHallIndex].addDeadEnd(deadEndDesc, _keyNumber);
+        return deadEndType;
+    }
+    return deadEndDesc;
 }
 
 int hall::getNumOpenConnections()
@@ -133,9 +158,18 @@ int hall::getNumOpenConnections()
     return _openConnectons;
 }
 
-void hall::addDeadEnd(int tier)
+void hall::addDeadEnd(int tier, QList<hall> &hallList)
 {
-    _deadEnds.append(createDeadEnd(tier));
+    _deadEnds.append(createDeadEnd(tier, hallList));
+}
+
+void hall::addDeadEnd(QString deadEndResult, int connectingHall)
+{
+    // for connecting dead ends to this hall
+    _deadEnds.append(deadEndResult);
+    ++_totalConnectons;
+    _hallDesc += " with door connecting to hall "
+            + QString::number(connectingHall);
 }
 
 QString hall::hallWidth()

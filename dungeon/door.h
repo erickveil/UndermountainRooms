@@ -15,6 +15,8 @@ public:
     static QString secretDoor(int tier);
     static QString secretDoorTrigger(int tier);
     static QString gate(int tier);
+    static QString Doorlock(int tier);
+    static QString RandomDoor(int tier);
 
 };
 
