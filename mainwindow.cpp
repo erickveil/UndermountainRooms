@@ -142,75 +142,77 @@ void MainWindow::on_wanderingMonster_clicked()
     QString biome = ui->biomeSelect->currentText();
     int tier = ui->tierSelect->value();
     QString loot = LootTables::generateIndividualTreasure(tier);
+    QString difficulty = MonsterTable::encounterLevel();
+    QString result;
 
     if (biome == "Underdark") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::dungeonMonster(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Undermountain") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::undermountainMonster(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Urban") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::generateUrbanEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Urban Night") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::generateUrbanEncounterNight(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Sewer") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::sewerEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Guardian") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::guardianFoe(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Coastal") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::coastalEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Forest") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::forestEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Grasslands") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::grasslandsEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Hill") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::hillEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Mountain") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::mountainEncounter(tier)
                     + "\n" + loot
                     );
     }
     else if (biome == "Nautical") {
-        ui->resultArea->setPlainText(
+        result = (
                     MonsterTable::nauticalEncounter(tier)
                     + "\n" + loot
                     );
@@ -219,6 +221,7 @@ void MainWindow::on_wanderingMonster_clicked()
     else {
         ui->resultArea->setPlainText("Unknown biome type: " + biome );
     }
+    ui->resultArea->setPlainText(difficulty + "\n" + result);
 }
 
 MainWindow::~MainWindow()

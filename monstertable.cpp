@@ -5,6 +5,18 @@ MonsterTable::MonsterTable()
 
 }
 
+QString MonsterTable::encounterLevel()
+{
+    RandomTable table;
+
+    table.addEntry("Easy", 4);
+    table.addEntry("Medium", 8);
+    table.addEntry("Hard", 2);
+    table.addEntry("Deadly");
+
+    return table.getRollTableEntry();
+}
+
 
 QString MonsterTable::dungeonMonster(int tier)
 {
@@ -203,6 +215,8 @@ QString MonsterTable::undermountainMonster(int tier)
     table.addEntry("A group of bandits looking for plunder", 3);
     table.addEntry("A commoner prisoner being led by thugs or bandits to sell "
                    "as slaves to the bloodfist goblins", 2);
+    table.addEntry("Wight Warrior encounter: A wight leading a pack of zombies "
+                   "unleashes them to slay the party, then moves on.");
 
     return table.getRollTableEntry();
 }

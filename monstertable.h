@@ -21,6 +21,7 @@ class MonsterTable
 public:
     MonsterTable();
 
+    static QString encounterLevel();
     static QString dungeonMonster(int tier);
     static QString undermountainMonster(int tier);
     static QString urbanEncounterXge(int tier);
