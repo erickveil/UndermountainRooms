@@ -1635,6 +1635,41 @@ QString LootTables::adventureGear()
 
 }
 
+QString LootTables::craftingComponents(int tier)
+{
+    RandomTable table;
+    int chance;
+
+    QString qty = QString::number(Dice::roll(1, 8));
+    // very common
+    chance = 16;
+    table.addEntry(qty + " Glass vial (1 gp)", chance);
+
+    // common
+    chance = 8;
+    table.addEntry(qty + " Mandrake Root (1 sp)", chance);
+    table.addEntry(qty + " lbs of clay", chance);
+    table.addEntry("Small bag of ash", chance);
+
+    // uncommon
+    chance = 4;
+    table.addEntry(qty + " Fruit of Selune", chance);
+    table.addEntry(qty + " Jar of blood", chance);
+    table.addEntry(qty + " ft copper wire (" + qty + " cp)", chance);
+
+    // rare
+    chance = 2;
+    table.addEntry("Jewel encrusted dagger (100 gp)", chance);
+    table.addEntry(qty + " Moon Tree Seeds", chance);
+    table.addEntry("Immature Moon Tree Clone", chance);
+
+    // very rare
+
+
+    return table.getRollTableEntry();
+
+}
+
 QString LootTables::treasureContainer()
 {
     RandomTable table;
@@ -1691,11 +1726,12 @@ QString LootTables::generateTreasureHorde(int tier)
     bool hasMundane;
     bool hasMap;
     bool hasAdventure;
+    int hasCrafting = Dice::roll(1, 20) <= 7;
 
     QString treasure;
     treasure = "TREASURE: \nCONTAINER: " + treasureContainer() + "\n"
-            + "HIDEN BY: " + treasureHiddenBy() + "\n"
-            + "COIN: " + coin + "\n\n";
+            + "HIDEN BY: " + treasureHiddenBy() + "\n\n"
+            + "COIN: " + coin + "\n";
 
     if (tier == 1) {
         hasGems = Dice::roll(1,100) < 53;
@@ -1707,7 +1743,6 @@ QString LootTables::generateTreasureHorde(int tier)
         hasMundane = Dice::roll(1,100) < 35;
         hasMap = Dice::roll(1,100) < 20;
         hasAdventure = Dice::roll(1,100) < 50;
-
     }
     else if (tier == 2) {
         hasGems = Dice::roll(1,100) < 40;
@@ -1743,15 +1778,36 @@ QString LootTables::generateTreasureHorde(int tier)
         hasAdventure = Dice::roll(1,100) < 5;
     }
 
-    for (int i = 0; i < numArt; ++i) { treasure += art(tier) + "\n\n"; }
-    for (int i = 0; i < numGems; ++i) { treasure += gem(tier) + "\n\n"; }
+    int qty = Dice::roll(1,8);
+    if (hasAdventure) {
+        for (int i=0; i < qty; ++i) {
+            treasure += adventureGear() + "\n";
+        }
+    }
+    if (hasCrafting) {
+        for (int i=0; i < qty; ++i) {
+            treasure += craftingComponents(tier) + "\n";
+        }
+    }
+    if (hasMundane) { treasure += "\n" + mundaneHorde(tier) + "\n"; }
+
+    if (hasArt) { treasure += "\n"; }
+    for (int i = 0; i < numArt; ++i) {
+        treasure += art(tier) + "\n";
+    }
+
+    if (hasGems) { treasure += "\n"; }
+    for (int i = 0; i < numGems; ++i) {
+        treasure += gem(tier) + "\n";
+    }
+
+    if (hasMagic) { treasure += "\n"; }
     for (int i = 0; i < numMagic; ++i) {
         treasure += selectMagicItemByTier(tier) + "\n\n";
     }
 
-    if (hasMundane) { treasure += mundaneHorde(tier) + "\n\n"; }
-    if (hasMap) { treasure += treasureMaps::generateMap() + "\n\n"; }
-    if (hasAdventure) { treasure += adventureGear() + "\n\n"; }
+    if (hasMap) { treasure += QString("\nMAP:\n")
+                + treasureMaps::generateMap(); }
 
     return treasure;
 }
@@ -1851,7 +1907,11 @@ QString LootTables::generateIndividualTreasure(int tier)
     bool hasAdventure = Dice::roll(1,100) < adventureChance;
     int mapChance = (tier * 5) + 10;
     bool hasMap = Dice::roll(1,100) < mapChance;
+    bool hasCrafting = Dice::roll(1,20) <= 5;
 
+    if (hasCrafting) {
+        treasure += "\n" + craftingComponents(tier);
+    }
     if (hasMagic) {
         treasure += "\n" + selectMagicItemByTier(tier);
     }
@@ -1862,7 +1922,7 @@ QString LootTables::generateIndividualTreasure(int tier)
         treasure += "\n" + adventureGear();
     }
     if (hasMap) {
-        treasure += "\n" + treasureMaps::generateMap();
+        treasure += "\n\n" + treasureMaps::generateMap();
     }
 
     return treasure;
