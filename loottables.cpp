@@ -1127,6 +1127,14 @@ QString LootTables::potionDescription()
     transpearencyTable.addEntry("translucent");
     transpearencyTable.addEntry("varegated");
 
+
+    return consistencyTable.getRollTableEntry() + ", "
+            + transpearencyTable.getRollTableEntry() + ", "
+            + color();
+}
+
+QString LootTables::color()
+{
     RandomTable colorTable;
     colorTable.addEntry("brassy");
     colorTable.addEntry("bronze");
@@ -1149,10 +1157,8 @@ QString LootTables::potionDescription()
     colorTable.addEntry("ivory");
     colorTable.addEntry("pearl");
     colorTable.addEntry("amber");
-    colorTable.addEntry("buff");
     colorTable.addEntry("citrine");
     colorTable.addEntry("cream");
-    colorTable.addEntry("fallow");
     colorTable.addEntry("flaxen");
     colorTable.addEntry("ochre");
     colorTable.addEntry("peach");
@@ -1160,7 +1166,6 @@ QString LootTables::potionDescription()
     colorTable.addEntry("straw");
     colorTable.addEntry("dove");
     colorTable.addEntry("dun");
-    colorTable.addEntry("neutral");
     colorTable.addEntry("carmine");
     colorTable.addEntry("cerise");
     colorTable.addEntry("cherry");
@@ -1178,8 +1183,6 @@ QString LootTables::potionDescription()
     colorTable.addEntry("scarlet");
     colorTable.addEntry("vermillion");
     colorTable.addEntry("chocolate");
-    colorTable.addEntry("ecru");
-    colorTable.addEntry("fawn");
     colorTable.addEntry("mahogany");
     colorTable.addEntry("tan");
     colorTable.addEntry("terra cotta");
@@ -1203,9 +1206,7 @@ QString LootTables::potionDescription()
     colorTable.addEntry("salmon");
     colorTable.addEntry("tawny");
 
-    return consistencyTable.getRollTableEntry() + ", "
-            + transpearencyTable.getRollTableEntry() + ", "
-            + colorTable.getRollTableEntry();
+    return colorTable.getRollTableEntry();
 }
 
 QString LootTables::gem(int tier)

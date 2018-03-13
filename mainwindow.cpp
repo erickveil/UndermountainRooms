@@ -329,12 +329,20 @@ void MainWindow::on_pbTreasureMap_clicked()
 
 void MainWindow::on_pbNonEncounter_clicked()
 {
+    QString desc = "The colors are: ";
+    desc += LootTables::color() + ", "
+            + LootTables::color() + ", and "
+            + LootTables::color();
+
+    desc += "\n";
     if (ui->biomeSelect->currentText() == "Mountain") {
-        ui->resultArea->setPlainText(NonEncounters::mountain());
+        desc += NonEncounters::mountain();
     }
     else {
-        ui->resultArea->setPlainText(NonEncounters::plains());
+        desc += NonEncounters::plains();
     }
+
+    ui->resultArea->setPlainText(desc);
 
 }
 

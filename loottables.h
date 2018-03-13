@@ -29,6 +29,7 @@ public:
     static QString itemCreator();
     static QString itemHistory();
     static QString potionDescription();
+    static QString color();
 
     static QString gem(int tier);
     static QString art(int tier);

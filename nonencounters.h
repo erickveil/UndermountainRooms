@@ -11,6 +11,7 @@ public:
 
     static QString mountain();
     static QString plains();
+
 };
 
 #endif // NONENCOUNTERS_H
