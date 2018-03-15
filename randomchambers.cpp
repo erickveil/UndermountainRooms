@@ -10,7 +10,7 @@ QString RandomChambers::generateGeneralRoom(int tier)
 
     QString description;
     description = generalDungeonRoomType() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description +=  lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -25,7 +25,7 @@ QString RandomChambers::generateDeathTrapRoom(int dungeonLevel)
 {
     QString description;
     description = deathTrapRoomType() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -40,7 +40,7 @@ QString RandomChambers::generateLairRoom(int dungeonLevel)
 {
     QString description;
     description = lairRoomType() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -55,7 +55,7 @@ QString RandomChambers::generateMineRoom(int tier)
 {
     QString description;
     description = mineRoomType() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -70,7 +70,7 @@ QString RandomChambers::generatePlanarGateRoom(int tier)
 {
     QString description;
     description = planarGateRoomType() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -85,7 +85,7 @@ QString RandomChambers::generateMazeRoomType(int tier)
 {
     QString description;
     description = mazeRoomType() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -101,7 +101,7 @@ QString RandomChambers::generateStrongholdRoom(int tier)
 {
     QString description;
     description = strongholdRoom() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -116,7 +116,7 @@ QString RandomChambers::generateTempleRoom(int tier)
 {
     QString description;
     description = templeRoom() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -131,7 +131,7 @@ QString RandomChambers::generateToomb(int tier)
 {
     QString description;
     description = tombRoom() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -146,7 +146,7 @@ QString RandomChambers::generateTreasureVault(int tier)
 {
     QString description;
     description = treasureVaultRoom() + "\n";
-    description += "LIGHT: " + lighting() + "\n";
+    description += lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
     //description += "SOUND: " + noises() + "\n";
     //description += "SMELL: " + odors() + "\n";
@@ -465,47 +465,47 @@ QString RandomChambers::strongholdRoom()
 {
     RandomTable table;
 
-    table.addEntry("Antechamber where visitors seeking access wait", 2);
-    table.addEntry("Armory hoding high-quality gear, including light "
+    table.addEntry("Antechamber\nwhere visitors seeking access wait", 2);
+    table.addEntry("Armory\nhoding high-quality gear, including light "
                    "seige weapons such as ballistas.", 3);
-    table.addEntry("Audience chamber used by the master of the stronghold "
+    table.addEntry("Audience chamber\nused by the master of the stronghold "
                    "to receive visitors");
-    table.addEntry("Aviary or zoo for keeping exotic creatures");
-    table.addEntry("Banquet room for hosting celebrations and guests", 4);
-    table.addEntry("Barracks used by elite guards", 4);
-    table.addEntry("Bath outfitted with a marble floor and other "
+    table.addEntry("Aviary or zoo\nfor keeping exotic creatures");
+    table.addEntry("Banquet room\nfor hosting celebrations and guests", 4);
+    table.addEntry("Barracks\nused by elite guards", 4);
+    table.addEntry("Bath\noutfitted with a marble floor and other "
                    "luxurious accoutrements");
-    table.addEntry("Bedroom for use by the stronghold's master or "
+    table.addEntry("Bedroom\nfor use by the stronghold's master or "
                    "important guests");
-    table.addEntry("Chapel dedicated to a deity associated with the "
+    table.addEntry("Chapel\ndedicated to a deity associated with the "
                    "stronhold's master");
-    table.addEntry("Cistern providing drinking water", 3);
-    table.addEntry("Dining room for intimate gatherings or informal "
+    table.addEntry("Cistern\nproviding drinking water", 3);
+    table.addEntry("Dining room\nfor intimate gatherings or informal "
                    "meals", 4);
-    table.addEntry("Dressing room featuring a nunber of wardrobes");
-    table.addEntry("Gallery for the display of expensive works of art "
+    table.addEntry("Dressing room\nfeaturing a nunber of wardrobes");
+    table.addEntry("Gallery\nfor the display of expensive works of art "
                    "and trophies", 3);
-    table.addEntry("Game room used to entertain visitors", 3);
+    table.addEntry("Game room\nused to entertain visitors", 3);
     table.addEntry("Guardroom", 18);
-    table.addEntry("Kennel where monsters or trained animals that "
+    table.addEntry("Kennel\nwhere monsters or trained animals that "
                    "protect the stronghold are kept");
-    table.addEntry("Kitchen designed to prepare exotic foods for large "
+    table.addEntry("Kitchen\ndesigned to prepare exotic foods for large "
                    "numbers of guests", 6);
-    table.addEntry("Library with an extensive collection of rare books", 4);
-    table.addEntry("Lounge used to entertain guests");
-    table.addEntry("Pantry, including cellar for wine or spirits", 8);
-    table.addEntry("Sitting room for family and intimate guests", 4);
+    table.addEntry("Library\nwith an extensive collection of rare books", 4);
+    table.addEntry("Lounge\nused to entertain guests");
+    table.addEntry("Pantry\nincluding cellar for wine or spirits", 8);
+    table.addEntry("Sitting room\nfor family and intimate guests", 4);
     table.addEntry("Stable", 5);
-    table.addEntry("Storage for mundane goods and supplies", 8);
-    table.addEntry("Strong room or vault for protecting important "
+    table.addEntry("Storage\nfor mundane goods and supplies", 8);
+    table.addEntry("Strong room\nor vault for protecting important "
                    "treasures (75% chance of being hidden behind a secret "
                    "door");
-    table.addEntry("Study, including a writing desk", 5);
-    table.addEntry("Throne room , elaborately decorated");
-    table.addEntry("Waiting room where lesser guests are held before "
+    table.addEntry("Study\nincluding a writing desk", 5);
+    table.addEntry("Throne room\nelaborately decorated");
+    table.addEntry("Waiting room\nwhere lesser guests are held before "
                    "receiving an audience", 3);
     table.addEntry("Latrine or bath", 2);
-    table.addEntry("Crypt belonging to the stronghold's master or "
+    table.addEntry("Crypt\nbelonging to the stronghold's master or "
                    "someone else of importance", 2);
 
     return table.getRollTableEntry();
@@ -515,53 +515,53 @@ QString RandomChambers::templeRoom()
 {
     RandomTable table;
 
-    table.addEntry("Armory filled with weapons and armor, battle "
+    table.addEntry("Armory\nfilled with weapons and armor, battle "
                    "banners, and pennants", 3);
-    table.addEntry("Audience chamber where priests of the temple "
+    table.addEntry("Audience chamber\nwhere priests of the temple "
                    "receive commoners and low-ranking visitors", 2);
-    table.addEntry("Banquet room used for celebrations and holy days", 2);
-    table.addEntry("Barracks for the temple's military arm or its hired"
+    table.addEntry("Banquet room\nused for celebrations and holy days", 2);
+    table.addEntry("Barracks\nfor the temple's military arm or its hired"
                    "guards", 3);
-    table.addEntry("Cells where the faithful cna sit in quiet contemplation",
+    table.addEntry("Cells\nwhere the faithful cna sit in quiet contemplation",
                    4);
-    table.addEntry("Central temple build to accomodate rituals", 10);
-    table.addEntry("Chapel dedicated to a lesser deity associated with the "
+    table.addEntry("Central temple\nbuild to accomodate rituals", 10);
+    table.addEntry("Chapel\ndedicated to a lesser deity associated with the "
                    "temple's major deity", 4);
-    table.addEntry("Classroom used to train initiates and priests", 4);
-    table.addEntry("Conjuring room, specially sanctified and used to summon "
+    table.addEntry("Classroom\nused to train initiates and priests", 4);
+    table.addEntry("Conjuring room\nspecially sanctified and used to summon "
                    "extraplanar creatures", 13);
-    table.addEntry("Crypt for a high priest or similar figure, hidden and "
+    table.addEntry("Crypt\nfor a high priest or similar figure, hidden and "
                    "heavily guarded by creatures and traps", 6);
-    table.addEntry("Dining room (large) for the temple's servants and "
+    table.addEntry("Dining room (large)\nfor the temple's servants and "
                    "lesser priests");
-    table.addEntry("Dining room (small) for the temple's high priests");
-    table.addEntry("Divination room, inscribed with runes and stocked with "
+    table.addEntry("Dining room (small)\nfor the temple's high priests");
+    table.addEntry("Divination room\ninscribed with runes and stocked with "
                    "soothsaying implements", 3);
-    table.addEntry("Dormitory for lesser priests or students", 4);
+    table.addEntry("Dormitory\nfor lesser priests or students", 4);
     table.addEntry("Guardroom", 6);
-    table.addEntry("Kennel for animals or monsters associated with the "
+    table.addEntry("Kennel\nfor animals or monsters associated with the "
                    "temple's deity");
-    table.addEntry("Kitchen (might bear a disturbing resemblance to a "
+    table.addEntry("Kitchen\n(might bear a disturbing resemblance to a "
                    "torture chamber in an evil temple", 3);
-    table.addEntry("Library, well stocked with religious treasties", 5);
-    table.addEntry("Prison for captured enemies (in good or neutral "
+    table.addEntry("Library\nwell stocked with religious treasties", 5);
+    table.addEntry("Prison\nfor captured enemies (in good or neutral "
                    "temples) or those designates as sacrifices (in evil "
                    "temples)", 3);
-    table.addEntry("Robing room containing ceremonial outfits and items", 5);
-    table.addEntry("Stable for riding horses and mounts belonging "
+    table.addEntry("Robing room\ncontaining ceremonial outfits and items", 5);
+    table.addEntry("Stable\nfor riding horses and mounts belonging "
                    "to the temple, or for visiting messengers and caravans");
-    table.addEntry("Storage holding mundane supplies", 5);
-    table.addEntry("Strong room or vault holding important relics and "
+    table.addEntry("Storage\nholding mundane supplies", 5);
+    table.addEntry("Strong room\nor vault holding important relics and "
                    "ceremonial items, heavily trapped");
-    table.addEntry("Torture chamber, used in inquisitions (in good or "
+    table.addEntry("Torture chamber\nused in inquisitions (in good or "
                    "neutral tamples with a lawful bent) or for the sheer "
                    "joy of causing pain (evil temples)", 2);
-    table.addEntry("Trophy room where are celebrating key figures and "
+    table.addEntry("Trophy room\nwhere are celebrating key figures and "
                    "events from mythology is displayed", 7);
     table.addEntry("Latrine or bath");
-    table.addEntry("Well for drinking water, defendable in the case of "
+    table.addEntry("Well\nfor drinking water, defendable in the case of "
                    "attack or seige", 5);
-    table.addEntry("Workshop for repairing or creating weapons, "
+    table.addEntry("Workshop\nfor repairing or creating weapons, "
                    "religious item, and tools", 6);
 
     return table.getRollTableEntry();
@@ -571,28 +571,28 @@ QString RandomChambers::tombRoom()
 {
     RandomTable table;
 
-    table.addEntry("Antechamber for those that have come to pay "
+    table.addEntry("Antechamber\nfor those that have come to pay "
                    "respects to the dead or prepare themselves for "
                    "burial rituals");
-    table.addEntry("Chapel dedicated to deities that watch over the dead "
+    table.addEntry("Chapel\ndedicated to deities that watch over the dead "
                    "and protect their resting places", 2);
-    table.addEntry("Crypt for less important burials", 5);
-    table.addEntry("Divination room, used in rituals to contact the dead "
+    table.addEntry("Crypt\nfor less important burials", 5);
+    table.addEntry("Divination room\nused in rituals to contact the dead "
                    "for guidance");
-    table.addEntry("False crypt (trapped) to kill or capture thieves");
-    table.addEntry("Gallery to display the deeds of the deceased");
-    table.addEntry("Grand crypt for a noble, high priest, or other "
+    table.addEntry("False crypt (trapped)\nto kill or capture thieves");
+    table.addEntry("Gallery\nto display the deeds of the deceased");
+    table.addEntry("Grand crypt\nfor a noble, high priest, or other "
                    "important individual");
-    table.addEntry("Guardroom, usually guarded by undead, "
+    table.addEntry("Guardroom\nusually guarded by undead, "
                    "constructs, or other creatures that don't need to "
                    "eat or sleep", 2);
-    table.addEntry("Robing room for priests to prepare for burial rituals");
-    table.addEntry("Storage, stocked with tools for maintaining the "
+    table.addEntry("Robing room\nfor priests to prepare for burial rituals");
+    table.addEntry("Storage\nstocked with tools for maintaining the "
                    "tomb and preparing the dead for burial", 2);
-    table.addEntry("Tomb where the wealthiest and most important "
+    table.addEntry("Tomb\nwhere the wealthiest and most important "
                    "folk are interred, protected by secret doors and "
                    "traps");
-    table.addEntry("Workshop for embalming the dead", 2);
+    table.addEntry("Workshop\nfor embalming the dead", 2);
 
     return table.getRollTableEntry();
 }
@@ -601,24 +601,24 @@ QString RandomChambers::treasureVaultRoom()
 {
     RandomTable table;
 
-    table.addEntry("Antechamber for visiting dignitaries");
-    table.addEntry("Armory containing mundane and magic gear used "
+    table.addEntry("Antechamber\nfor visiting dignitaries");
+    table.addEntry("Armory\ncontaining mundane and magic gear used "
                    "by the treasure vault's guards");
-    table.addEntry("Barracks for guards", 2);
-    table.addEntry("Cistern providing fresh water");
-    table.addEntry("Guardroom to defend against intruders", 4);
-    table.addEntry("Kennel for trained beasts used to guard the "
+    table.addEntry("Barracks\nfor guards", 2);
+    table.addEntry("Cistern\nproviding fresh water");
+    table.addEntry("Guardroom\nto defend against intruders", 4);
+    table.addEntry("Kennel\nfor trained beasts used to guard the "
                    "treasure vault");
-    table.addEntry("Kitchen for feeding guards");
-    table.addEntry("Watch room that allows guards to observe those "
+    table.addEntry("Kitchen\nfor feeding guards");
+    table.addEntry("Watch room\nthat allows guards to observe those "
                    "who approach the dungeon");
-    table.addEntry("Prison for holding captured intruders");
-    table.addEntry("Stron room or vault, for guarding the treasure "
+    table.addEntry("Prison\nfor holding captured intruders");
+    table.addEntry("Strong room or vault\nfor guarding the treasure "
                    "hidden in the dungeon, accessible ony by locked "
                    "or secret door", 2);
-    table.addEntry("Torture chamber for extracting information from captured "
+    table.addEntry("Torture chamber\nfor extracting information from captured "
                    "intruders");
-    table.addEntry("Trap or other trick designed to kill or capture "
+    table.addEntry("Trap or other trick\ndesigned to kill or capture "
                    "creatures that enter the dungeon");
 
     return table.getRollTableEntry();
@@ -644,12 +644,12 @@ QString RandomChambers::libraryRoom()
     table.addEntry("Museum room");
     table.addEntry("Artifact display");
     table.addEntry("Themed display presentation");
-    table.addEntry("Guard room for secure section of library");
+    table.addEntry("Guard room\nfor secure section of library");
     table.addEntry("Guard barraks");
     table.addEntry("Study");
     table.addEntry("Alchemy lab");
     table.addEntry("Bedroom");
-    table.addEntry("Cell or jail for those who break library rules");
+    table.addEntry("Cell or jail\nfor those who break library rules");
     table.addEntry("Conference room");
     table.addEntry("Ballroom");
 
@@ -662,27 +662,27 @@ QString RandomChambers::cavern()
 
     table.addEntry("Stelagtites and Stelagmites");
     table.addEntry("Fungal forrest");
-    table.addEntry("Crystal clusters (OotA, p. 26)");
+    table.addEntry("Crystal clusters\n(OotA, p. 26)");
     table.addEntry("Subterranian sea or lake");
     table.addEntry("Submerged caves");
     table.addEntry("Dungeon entrance");
     table.addEntry("Lair or den of subterranian creatures");
     table.addEntry("Ancient ruins");
     table.addEntry("Inhabited region");
-    table.addEntry("Faerzress: a region of dim, glowing light with other abilities (OotA, p. 21)");
-    table.addEntry("Boneyard (OotA, p. 25)");
+    table.addEntry("Faerzress\na region of dim, glowing light with other abilities (OotA, p. 21)");
+    table.addEntry("Boneyard\n(OotA, p. 25)");
     QString depth = QString::number(Dice::roll(2,4) * 100);
-    table.addEntry("Gorge, " + depth + " feet deep.");
+    table.addEntry("Gorge\n" + depth + " feet deep.");
     depth = QString::number(Dice::roll(2,6) * 10);
-    table.addEntry("High ledge that skirts a ravine " + depth + " feet deep");
+    table.addEntry("High ledge\nthat skirts a ravine " + depth + " feet deep");
     table.addEntry("Lava cave");
-    table.addEntry("Muck Pit - 3 foot deep muck fills the cavern");
+    table.addEntry("Muck Pit\n3 foot deep muck fills the cavern");
     table.addEntry("Unstable cavern, falling rocks");
     QString width= QString::number(Dice::roll(2,4) * 10);
     depth = QString::number(Dice::roll(2,4) * 10);
-    table.addEntry("Rope bridge over ravine that is " + width + " feet wide and "
+    table.addEntry("Rope bridge\nover ravine that is " + width + " feet wide and "
                    + depth + " feet deep");
-    table.addEntry("Dry cave that is easily defended. Long rest possible");
+    table.addEntry("Dry cave\nthat is easily defended. Long rest possible");
     table.addEntry("Sinhole");
     table.addEntry("Slime of moldy cave");
     table.addEntry("Poison gas caves");
@@ -691,7 +691,7 @@ QString RandomChambers::cavern()
     table.addEntry("Web-filled cave");
     table.addEntry("Stelagmite and column forrest");
     table.addEntry("Mine");
-    table.addEntry("Fungal growth - knee high. Sometimes grazed by subterranian animals");
+    table.addEntry("Fungal growth\nknee high. Sometimes grazed by subterranian animals");
     table.addEntry("Abandoned battlefield");
     table.addEntry("Active battlefield");
     table.addEntry("Outpost");
@@ -1186,38 +1186,37 @@ QString RandomChambers::lighting()
 {
     RandomTable table;
 
-    table.addEntry("Unlit");
-    table.addEntry("Torch, lit");
-    table.addEntry("Torch, unlit");
-    table.addEntry("Torch holders, empty");
-    table.addEntry("Candles, lit");
-    table.addEntry("Candles, unlit");
-    table.addEntry("Wax blobs, unlit");
-    table.addEntry("Oil lantern, lit");
-    table.addEntry("Oil lantern, full but unlit");
-    table.addEntry("Oil lantern, empty");
-    table.addEntry("Floating, glowing glass sphere");
-    table.addEntry("Chandelier, lit");
-    table.addEntry("Chandelier, unlit");
-    table.addEntry("Candelabra, lit");
-    table.addEntry("Candelabra, unlit");
-    table.addEntry("Errie, glowing mold");
+    table.addEntry("DARK: Unlit");
+    table.addEntry("LIGHT: Torch, lit");
+    table.addEntry("DARK: Torch, unlit");
+    table.addEntry("DARK: Torch holders, empty");
+    table.addEntry("LIGHT: Candles, lit");
+    table.addEntry("DARK: Candles, unlit");
+    table.addEntry("DARK: Wax blobs, unlit");
+    table.addEntry("LIGHT: Oil lantern, lit");
+    table.addEntry("DARK: Oil lantern, full but unlit");
+    table.addEntry("DARK: Oil lantern, empty");
+    table.addEntry("LIGHT: Floating, glowing glass sphere");
+    table.addEntry("LIGHT: Chandelier, lit");
+    table.addEntry("DARK: Chandelier, unlit");
+    table.addEntry("LIGHT: Candelabra, lit");
+    table.addEntry("DARK: Candelabra, unlit");
+    table.addEntry("DIM: Errie, glowing mold");
     table.addEntry("Light spell");
-    table.addEntry("Magical darkness spell");
-    table.addEntry("Brazier, burning coal");
-    table.addEntry("Brazier, burning wood");
-    table.addEntry("Brazier, smoldering ash");
-    table.addEntry("Brazier, coal, unlit");
-    table.addEntry("Brazier, wood, unlit");
-    table.addEntry("Brazier, empty");
-    table.addEntry("Burning fireplace");
-    table.addEntry("Fireplace, with wood, unlit");
-    table.addEntry("Fireplace, smoldering embers");
-    table.addEntry("Fireplace, empty");
-    table.addEntry("Burning firepit");
-    table.addEntry("Firepit, wood, unlit");
-    table.addEntry("Firepit, smoldering embers");
-    table.addEntry("Firepit, empty");
+    table.addEntry("LIGHT: Brazier, burning coal");
+    table.addEntry("LIGHT: Brazier, burning wood");
+    table.addEntry("DIM: Brazier, smoldering ash");
+    table.addEntry("DARK: Brazier, coal, unlit");
+    table.addEntry("DARK: Brazier, wood, unlit");
+    table.addEntry("DARK: Brazier, empty");
+    table.addEntry("LIGHT: Burning fireplace");
+    table.addEntry("DARK: Fireplace, with wood, unlit");
+    table.addEntry("DIM: Fireplace, smoldering embers");
+    table.addEntry("DARK: Fireplace, empty");
+    table.addEntry("LIGHT: Burning firepit");
+    table.addEntry("DARK: Firepit, wood, unlit");
+    table.addEntry("DIM: Firepit, smoldering embers");
+    table.addEntry("DARK: Firepit, empty");
 
     return table.getRollTableEntry();
 }
