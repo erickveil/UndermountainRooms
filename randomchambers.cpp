@@ -12,8 +12,8 @@ QString RandomChambers::generateGeneralRoom(int tier)
     description = generalDungeonRoomType() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier)
             + ".\n";
@@ -27,8 +27,8 @@ QString RandomChambers::generateDeathTrapRoom(int dungeonLevel)
     description = deathTrapRoomType() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(dungeonLevel)
             + ".\n";
@@ -42,8 +42,8 @@ QString RandomChambers::generateLairRoom(int dungeonLevel)
     description = lairRoomType() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(dungeonLevel)
             + ".\n";
@@ -57,8 +57,8 @@ QString RandomChambers::generateMineRoom(int tier)
     description = mineRoomType() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -72,8 +72,8 @@ QString RandomChambers::generatePlanarGateRoom(int tier)
     description = planarGateRoomType() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -87,8 +87,8 @@ QString RandomChambers::generateMazeRoomType(int tier)
     description = mazeRoomType() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -103,8 +103,8 @@ QString RandomChambers::generateStrongholdRoom(int tier)
     description = strongholdRoom() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -118,8 +118,8 @@ QString RandomChambers::generateTempleRoom(int tier)
     description = templeRoom() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -133,8 +133,8 @@ QString RandomChambers::generateToomb(int tier)
     description = tombRoom() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -148,8 +148,8 @@ QString RandomChambers::generateTreasureVault(int tier)
     description = treasureVaultRoom() + "\n";
     description += "LIGHT: " + lighting() + "\n";
     description += "FEATURE: " + primaryFeature() + "\n";
-    description += "SOUND: " + noises() + "\n";
-    description += "SMELL: " + odors() + "\n";
+    //description += "SOUND: " + noises() + "\n";
+    //description += "SMELL: " + odors() + "\n";
     description += "STATE: " + currentChamberState() + "\n";
     description += "CONTENTS:\n" + chamberContents(tier) + "\n";
 
@@ -365,18 +365,18 @@ QString RandomChambers::mazeRoomType()
 {
     RandomTable table;
 
-    table.addEntry("Conjuring room, used to summon creatures that guard the "
+    table.addEntry("Conjuring room\nused to summon creatures that guard the "
                    "maze.");
-    table.addEntry("Guardroom for sentinesl that patrol the maze.", 4);
-    table.addEntry("Lair for guard beasts that patrol the maze.", 4);
-    table.addEntry("Pen or prison accessible only by secret door, used to "
+    table.addEntry("Guardroom\nfor sentinesl that patrol the maze.", 4);
+    table.addEntry("Lair\nfor guard beasts that patrol the maze.", 4);
+    table.addEntry("Pen or prison\naccessible only by secret door, used to "
                    "hold captives condemned to the maze.");
-    table.addEntry("Shrine dedicated to a god or other entity.");
-    table.addEntry("Storage for food, as well as tools used by the maze's "
+    table.addEntry("Shrine\ndedicated to a god or other entity.");
+    table.addEntry("Storage\nfor food, as well as tools used by the maze's "
                    "guardians to keep the complex in working order.", 2);
-    table.addEntry("Trap to confound or kill those sent into the maze.", 4);
-    table.addEntry("Well that provides drinking water.");
-    table.addEntry("Workshop where doors, torch sconces, and other "
+    table.addEntry("Trap\nto confound or kill those sent into the maze.", 4);
+    table.addEntry("Well\nthat provides drinking water.");
+    table.addEntry("Workshop\nwhere doors, torch sconces, and other "
                    "furnishings are repaired and maintained.");
 
     return table.getRollTableEntry();
@@ -386,22 +386,22 @@ QString RandomChambers::mineRoomType()
 {
     RandomTable table;
 
-    table.addEntry("Barracks for miners", 2);
-    table.addEntry("Bedroom for a supervisor or manager");
-    table.addEntry("Chapel dedicated to a patron deity of miners, earth, or"
+    table.addEntry("Barracks\nfor miners", 2);
+    table.addEntry("Bedroom\nfor a supervisor or manager");
+    table.addEntry("Chapel\ndedicated to a patron deity of miners, earth, or"
                    "protection");
-    table.addEntry("Cistern providing drinking water for miners");
+    table.addEntry("Cistern\nproviding drinking water for miners");
     table.addEntry("Guardroom", 2);
-    table.addEntry("Kitchen used to feed workers");
-    table.addEntry("Laboratory used to conduct tests on strange nimerals "
+    table.addEntry("Kitchen\nused to feed workers");
+    table.addEntry("Laboratory\nused to conduct tests on strange nimerals "
                    "extracted from the mine");
     bool isDepleted = Dice::roll(1, 100) < 75;
     QString depleted = isDepleted ? "(Depleted)" : "(Still viable)";
-    table.addEntry("Lode where metal ore is mined " + depleted, 6);
-    table.addEntry("Office used by the mine supervisor");
-    table.addEntry("Smithy for repairing damaged tools");
-    table.addEntry("Storage for tools and other equipment", 2);
-    table.addEntry("Strong room or vault used to store ore for transport to "
+    table.addEntry("Lode\nwhere metal ore is mined " + depleted, 6);
+    table.addEntry("Office\nused by the mine supervisor");
+    table.addEntry("Smithy\nfor repairing damaged tools");
+    table.addEntry("Storage\nfor tools and other equipment", 2);
+    table.addEntry("Strong\nroom or vault used to store ore for transport to "
                    "the surface");
 
     return table.getRollTableEntry();
@@ -412,50 +412,50 @@ QString RandomChambers::planarGateRoomType()
     RandomTable table;
 
     table.addEntry("Decorated foyer or antechamber", 3);
-    table.addEntry("Armory used by the portal's guardians", 5);
-    table.addEntry("Audience chamber for receiving visitors", 2);
-    table.addEntry("Barracks used by the portal's guards", 9);
-    table.addEntry("Bedroom for use by the high-ranking members of the order "
+    table.addEntry("Armory\nused by the portal's guardians", 5);
+    table.addEntry("Audience chamber\nfor receiving visitors", 2);
+    table.addEntry("Barracks\nused by the portal's guards", 9);
+    table.addEntry("Bedroom\nfor use by the high-ranking members of the order "
                    "that guards the portal", 4);
-    table.addEntry("Chapel dedicatd to a deity or deities related to the portal "
+    table.addEntry("Chapel\ndedicatd to a deity or deities related to the portal "
                    "and its defenders", 7);
-    table.addEntry("Cistern providing fresh water", 5);
-    table.addEntry("Classroom for use of initiates learning about the portal's "
+    table.addEntry("Cistern\nproviding fresh water", 5);
+    table.addEntry("Classroom\nfor use of initiates learning about the portal's "
                    "secrets", 3);
-    table.addEntry("Conjuring room for summoning creatures used to investigate "
+    table.addEntry("Conjuring room\nfor summoning creatures used to investigate "
                    "or defend the portal");
-    table.addEntry("Crypt where the remains of those that died guarding the "
+    table.addEntry("Crypt\nwhere the remains of those that died guarding the "
                    "portal are kept", 2);
     table.addEntry("Dining room", 6);
-    table.addEntry("Divination room used to investigate the portal and events "
+    table.addEntry("Divination room\nused to investigate the portal and events "
                    "tied to it", 3);
-    table.addEntry("Dormitory for visitors and guards", 5);
-    table.addEntry("Entry room or vesibule", 2);
-    table.addEntry("Gallery for displaying trophies and objects related to the "
+    table.addEntry("Dormitory\nfor visitors and guards", 5);
+    table.addEntry("Entry room\nor vesibule", 2);
+    table.addEntry("Gallery\nfor displaying trophies and objects related to the "
                    "portal and those that guard it", 2);
-    table.addEntry("Guardroom to protect or watch over the portal", 8);
+    table.addEntry("Guardroom\nto protect or watch over the portal", 8);
     table.addEntry("Kitchen", 5);
-    table.addEntry("Laboratory for conducting exoperiments relating to the "
+    table.addEntry("Laboratory\nfor conducting exoperiments relating to the "
                    "portal and creatures that emerge from it", 5);
-    table.addEntry("Library holding books about the portal's history", 3);
-    table.addEntry("Pen or prison for holding captives or creatures that "
+    table.addEntry("Library\nholding books about the portal's history", 3);
+    table.addEntry("Pen or prison\nfor holding captives or creatures that "
                    "emerge from the portal", 5);
 
     bool isActive = Dice::roll(1, 100) < 25;
     QString active = isActive ? " (Still active)" : "";
-    table.addEntry("Planar junction, where the gate to another plane stands"
+    table.addEntry("Planar junction\nwhere the gate to another plane stands"
                    + active, 2);
 
     table.addEntry("Storage", 3);
-    table.addEntry("Strong room or vault, for guarding valuable treasures "
+    table.addEntry("Strong room or vault\nfor guarding valuable treasures "
                    "connecet to the portal or funds used to pay the planar "
                    "gate's guardians");
     table.addEntry("Study", 2);
-    table.addEntry("Torture chamber, for questioning creatures that pass"
+    table.addEntry("Torture chamber\nfor questioning creatures that pass"
                    "through the portal or that attmept to clandestinely use it",
                    1);
     table.addEntry("Latrine or bath", 3);
-    table.addEntry("Workshop for constructing tools and gear needed to study"
+    table.addEntry("Workshop\nfor constructing tools and gear needed to study"
                    "the portal", 2);
 
     return table.getRollTableEntry();
