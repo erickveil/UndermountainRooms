@@ -6,6 +6,7 @@
 #include "loottables.h"
 #include "dice.h"
 #include "encountertables.h"
+#include "factions.h"
 
 class NpcTables
 {

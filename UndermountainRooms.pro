@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     dungeon/room.cpp \
     dungeon/roomexit.cpp \
     nonencounters.cpp \
-    dungeon/door.cpp
+    dungeon/door.cpp \
+    factions.cpp
     nonencounters.cpp
 
 HEADERS  += mainwindow.h \
@@ -62,7 +63,8 @@ HEADERS  += mainwindow.h \
     dungeon/room.h \
     dungeon/roomexit.h \
     nonencounters.h \
-    dungeon/door.h
+    dungeon/door.h \
+    factions.h
     nonencounters.h
 
 FORMS    += mainwindow.ui

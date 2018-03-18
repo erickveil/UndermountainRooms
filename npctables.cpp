@@ -14,6 +14,8 @@ QString NpcTables::generateAdventurer(int tier)
     QString package = adventurerPackage(tier);
     QString loot = LootTables::generateIndividualTreasure(tier);
     QString alignment = determineAlignment();
+    bool isFactioned = Dice::roll(1,20) <= 10;
+    QString faciton = isFactioned ? Factions::getFaction() : "No Faction";
 
     table.addEntry(composite, 6);
     table.addEntry(package);
@@ -36,7 +38,9 @@ QString NpcTables::generateAdventurer(int tier)
          loot += "\nSpellbook:\n" + LootTables::generateSpellbook(tier);
     }
 
-    return table.getRollTableEntry() + "\n" + alignment + "\nLoot: " + loot;
+    return table.getRollTableEntry() + "\n" + alignment
+            + "\n" + faciton
+            + "\nLoot: " + loot;
 }
 
 QString NpcTables::generateMotivatedAdventurer(int tier)
