@@ -13,6 +13,7 @@ QString NpcTables::generateAdventurer(int tier)
     QString composite = gender + " " + advClass + " (" + AdventurerRace() + ")";
     QString package = adventurerPackage(tier);
     QString loot = LootTables::generateIndividualTreasure(tier);
+    QString alignment = determineAlignment();
 
     table.addEntry(composite, 6);
     table.addEntry(package);
@@ -35,7 +36,7 @@ QString NpcTables::generateAdventurer(int tier)
          loot += "\nSpellbook:\n" + LootTables::generateSpellbook(tier);
     }
 
-    return table.getRollTableEntry() + "\nLoot: " + loot;
+    return table.getRollTableEntry() + "\n" + alignment + "\nLoot: " + loot;
 }
 
 QString NpcTables::generateMotivatedAdventurer(int tier)

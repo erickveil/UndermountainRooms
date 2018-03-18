@@ -120,7 +120,7 @@ QString treasureMaps::wildernessLandmarks()
     RandomTable gate;
     gate.addEntry("another plane");
     gate.addEntry("a foreign wilderness");
-    gate.addEntry("a dungeon");
+    gate.addEntry("a dungeon", 2);
     table.addEntry("Gate to " + gate.getRollTableEntry());
 
     table.addEntry("Entrance to a dungeon - must pass through and out the "

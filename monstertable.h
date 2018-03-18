@@ -4,7 +4,6 @@
 #include <QList>
 #include "tableentry.h"
 #include "randomtable.h"
-#include "monsterentry.h"
 #include "dice.h"
 #include "npctables.h"
 #include "adventuretables.h"
