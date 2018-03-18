@@ -47,6 +47,8 @@ public:
     static QString generateUrbanEncounterNight(int tier);
     static QString friendlyHumanoidUrbanActivity();
 
+    static QString riders(int tier);
+
 private:
     // don't need race or gender
     static QString _intellegentBlock();

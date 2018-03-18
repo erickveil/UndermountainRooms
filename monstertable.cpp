@@ -916,6 +916,9 @@ QString MonsterTable::forestEncounter(int tier)
     QString num;
     QString num2;
 
+    // all tiers
+    table.addEntry(riders(tier), 4);
+
    if (tier == 1) {
         table.addEntry("1 giant owl: " + _animalBlock());
         table.addEntry("1 owl: " + _animalBlock());
@@ -1279,6 +1282,9 @@ QString MonsterTable::grasslandsEncounter(int tier)
     QString num;
     QString num2;
 
+    // all tiers
+    table.addEntry(riders(tier), 4);
+
     if (tier == 1) {
         table.addEntry("1 ankylosaurus" + _animalBlock());
         table.addEntry("1 weretiger" + _npcCommonerBlock());
@@ -1490,6 +1496,9 @@ QString MonsterTable::hillEncounter(int tier)
 
     QString num;
     QString num2;
+
+    // all tiers
+    table.addEntry(riders(tier), 4);
 
     if (tier == 1) {
         table.addEntry("1 orc Eye of Gruumsh with " + num + " orcs" + _intellegentBlock());
@@ -1750,6 +1759,9 @@ QString MonsterTable::mountainEncounter(int tier)
 
     QString num;
     QString num2;
+
+    // all tiers
+    table.addEntry(riders(tier), 4);
 
     if (tier == 1) {
         table.addEntry("1 eagle: " + _animalBlock());
@@ -2146,6 +2158,103 @@ QString MonsterTable::friendlyHumanoidUrbanActivity()
     table.addEntry("Adventure hook:" + AdventureTables::adventureHook(), 3);
 
     return table.getRollTableEntry();
+}
+
+QString MonsterTable::riders(int tier)
+{
+    RandomTable table;
+    RandomTable evilMounts;
+    RandomTable smallEvilMounts;
+    RandomTable goodMounts;
+    RandomTable smallGoodMounts;
+    RandomTable evilRiders;
+    RandomTable smallEvilRiders;
+    RandomTable goodRiders;
+    RandomTable smallGoodRiders;
+
+    int qty = Dice::roll(2,4);
+
+    evilMounts.addEntry("Giant bats");
+    evilMounts.addEntry("Giant vultures");
+    evilMounts.addEntry("Giant lizards");
+    evilMounts.addEntry("Giant boar");
+    evilMounts.addEntry("Giant bats");
+    evilMounts.addEntry("Giant boars");
+    evilMounts.addEntry("Giant Lizards");
+    evilMounts.addEntry("Giant Vultures");
+    evilMounts.addEntry("Dire Wolves");
+    evilMounts.addEntry("Allosauruses");
+    evilMounts.addEntry("Pteranodons");
+
+    smallEvilMounts.addEntry("Basilisks");
+    smallEvilMounts.addEntry("Giant Wasps");
+    smallEvilMounts.addEntry("Giant Wolf Spiders");
+    smallEvilMounts.addEntry("Wolves");
+
+    evilRiders.addEntry("Bugbears");
+    evilRiders.addEntry("Duergar");
+    evilRiders.addEntry("Drow");
+    evilRiders.addEntry("Gnolls");
+    evilRiders.addEntry("Hobgoblins");
+    evilRiders.addEntry("Orcs");
+
+    smallEvilRiders.addEntry("Goblins");
+    smallEvilRiders.addEntry("Kobolds");
+
+    goodMounts.addEntry("Griffons");
+    goodMounts.addEntry("Hippogriffs");
+    goodMounts.addEntry("Pegasus");
+    goodMounts.addEntry("Brown Bears");
+    goodMounts.addEntry("Horses");
+    goodMounts.addEntry("Giant Eagles");
+    goodMounts.addEntry("Giant Owls");
+    goodMounts.addEntry("Giant toads");
+    goodMounts.addEntry("Lions");
+    goodMounts.addEntry("Tigers");
+
+    smallGoodMounts.addEntry("Blink Dogs");
+    smallGoodMounts.addEntry("Black Bears");
+    smallGoodMounts.addEntry("Boars");
+    smallGoodMounts.addEntry("Deer");
+    smallGoodMounts.addEntry("Giant Badgers");
+    smallGoodMounts.addEntry("Giant Frogs");
+    smallGoodMounts.addEntry("Giant Weasels");
+
+    goodRiders.addEntry("Elves");
+    goodRiders.addEntry("Dwarves");
+    goodRiders.addEntry("Humans");
+
+    smallGoodRiders.addEntry("Deep gnomes");
+    smallGoodRiders.addEntry("Gnomes");
+    smallGoodRiders.addEntry("Halflings");
+
+    table.addEntry(evilRiders.getRollTableEntry() + " riding "
+                   + evilMounts.getRollTableEntry());
+    table.addEntry(smallEvilRiders.getRollTableEntry() + " riding "
+                   + smallEvilMounts.getRollTableEntry());
+    table.addEntry(goodRiders.getRollTableEntry() + " riding "
+                   + goodMounts.getRollTableEntry());
+    table.addEntry(smallGoodRiders.getRollTableEntry() + " riding "
+                   + smallGoodMounts.getRollTableEntry());
+    table.addEntry(smallEvilRiders.getRollTableEntry() + " riding "
+                   + evilMounts.getRollTableEntry());
+    table.addEntry(smallGoodRiders.getRollTableEntry() + " riding "
+                   + goodMounts.getRollTableEntry());
+    table.addEntry("Dwarves riding giant goats");
+    table.addEntry("Elves riding elk");
+    table.addEntry("Humans riding horses");
+    table.addEntry("Halflings riding mastiffs");
+    table.addEntry("Orcs riding aurochs");
+    table.addEntry("Goblins riding wolves");
+    table.addEntry("Gnolls riding giant hyenas");
+    table.addEntry("Gnomes riding giant toads");
+    table.addEntry("Elves riding giant eagles");
+    table.addEntry("Orcs riding giant bats");
+    table.addEntry("Hobgoblins riding giant vultures");
+    table.addEntry("Kobolds riding giant lizards");
+    table.addEntry("Drow riding giant spiders");
+    return QString::number(qty) + " " + table.getRollTableEntry()
+            + _intellegentBlock();
 }
 
 QString MonsterTable::_intellegentBlock()
