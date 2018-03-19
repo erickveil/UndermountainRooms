@@ -103,7 +103,7 @@ bool hall::hasRoomConnection(int roomNumber)
     return false;
 }
 
-QString hall::createDeadEnd(int tier, QList<hall> &hallList)
+QString hall::createDeadEnd(int tier, QList<hall> &hallList, int lastLevel)
 {
     RandomTable deadEndLure;
     deadEndLure.addEntry("Something scrawled on the wall at the end");
@@ -142,6 +142,20 @@ QString hall::createDeadEnd(int tier, QList<hall> &hallList)
                      + LootTables::generateTreasureHorde(tier));
     deadEnd.addEntry("Nothing special");
 
+    // start level transition
+    if (lastLevel != 1) {
+        auto targetLevel = QString::number(Dice::roll(1, lastLevel));
+        deadEnd.addEntry("Stairs to level " + targetLevel);
+        deadEnd.addEntry("Trap door and chute to level " + targetLevel);
+        deadEnd.addEntry("Hatch and ladder rungs to level " + targetLevel);
+        deadEnd.addEntry("Pulley-operatied elevator from this level to level "
+                 + targetLevel);
+        deadEnd.addEntry("Gate to level " + targetLevel + "\n" + door::gate(tier));
+    }
+
+
+    // end level transition
+
     QString deadEndType = deadEnd.getRollTableEntry();
     QString deadEndDesc = deadEndLure.getRollTableEntry() + "; "
             + deadEndType;
@@ -158,9 +172,9 @@ int hall::getNumOpenConnections()
     return _openConnectons;
 }
 
-void hall::addDeadEnd(int tier, QList<hall> &hallList)
+void hall::addDeadEnd(int tier, QList<hall> &hallList, int lastLevel)
 {
-    _deadEnds.append(createDeadEnd(tier, hallList));
+    _deadEnds.append(createDeadEnd(tier, hallList, lastLevel));
 }
 
 void hall::addDeadEnd(QString deadEndResult, int connectingHall)

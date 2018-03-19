@@ -28,9 +28,9 @@ public:
     QString describeHall();
     void connectExit(int roomNumber, int exitNumber);
     bool hasRoomConnection(int roomNumber);
-    QString createDeadEnd(int tier, QList<hall> &hallList);
+    QString createDeadEnd(int tier, QList<hall> &hallList, int lastLevel);
     int getNumOpenConnections();
-    void addDeadEnd(int tier, QList<hall> &hallList);
+    void addDeadEnd(int tier, QList<hall> &hallList, int lastLevel);
     void addDeadEnd(QString deadEndResult, int connectingHall);
     QString hallWidth();
 };

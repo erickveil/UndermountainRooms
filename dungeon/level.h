@@ -15,7 +15,7 @@ public:
     level();
     void initLevel(int qtyRooms, int tier, QString dungeonType);
     void attachRooms(int tier);
-    void looseEnds(int tier);
+    void looseEnds(int tier, int lastLevel);
     QString describeLevel(int level, int totalLevels);
 
 

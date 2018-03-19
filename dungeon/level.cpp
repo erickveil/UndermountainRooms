@@ -16,7 +16,8 @@ void level::initLevel(int qtyRooms, int tier, QString dungeonType)
     }
     _roomList = roomList;
     attachRooms(tier);
-    looseEnds(tier);
+    int lastLevel = roomList.size();
+    looseEnds(tier, lastLevel);
 }
 
 void level::attachRooms(int tier)
@@ -26,13 +27,13 @@ void level::attachRooms(int tier)
     }
 }
 
-void level::looseEnds(int tier)
+void level::looseEnds(int tier, int lastLevel)
 {
     for (int h = 0; h < _hallList.size(); ++h) {
         if (_hallList[h].isFull()) { continue; }
 
         for (int i = 0; i < _hallList[h].getNumOpenConnections(); ++i) {
-            _hallList[h].addDeadEnd(tier, _hallList);
+            _hallList[h].addDeadEnd(tier, _hallList, lastLevel);
         }
     }
 }
