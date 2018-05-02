@@ -40,12 +40,12 @@ QString dungeon::describeDungeon()
 
 int dungeon::calcTier(int currentLevel, int maxLevels, int minTier, int maxTier)
 {
-    int tierRange = maxTier - minTier + 1;
-    float stepRange = (float)tierRange / (float)maxLevels;
-    float aproxTier = stepRange * (float)currentLevel;
-    int tier = qRound(aproxTier);
-    if (tier < 1) { tier = 1; }
-    return tier;
+    int tierSteps = maxTier - minTier + 1;
+    float increment = (float)tierSteps / (float)maxLevels;
+    int currentTier = qRound(ceil(increment * currentLevel));
+    if (currentTier < minTier) { currentTier = minTier; }
+    if (currentTier > maxTier) { currentTier = maxTier; }
+    return currentTier;
 }
 
 int dungeon::calcRoomQty(int minRooms, int maxRooms)
