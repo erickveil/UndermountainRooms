@@ -54,7 +54,7 @@ QString treasureMaps::whereIsTreasure()
     table.addEntry("Megadungeon: " + megadungeon.getRollTableEntry()
                    + " level: " + levels
                    + "\nProximity: " + proximity() + "\n"
-                   + genWaypoints("dungeon"));
+                   + genWaypoints("dungeon"), 4);
 
     table.addEntry("Ruined city in hex " + hex + genWaypoints("hex"));
     table.addEntry("Vault located at hex " + hex + genWaypoints("hex"));
