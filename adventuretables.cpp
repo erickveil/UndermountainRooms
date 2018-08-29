@@ -142,6 +142,7 @@ QString AdventureTables::hookMission()
     table.addEntry("Pursue fleeing foes over land");
     table.addEntry("Assess the size of an approaching army.");
     table.addEntry("Protect a wilderness site from attackers.");
+    table.addEntry("Clear a hex.");
 
     // other goals
     table.addEntry("Sieze control of a fortified location such as a "
