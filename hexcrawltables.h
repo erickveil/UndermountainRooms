@@ -6,6 +6,8 @@
 #include "dice.h"
 #include "traptables.h"
 #include "dungeontables.h"
+#include "monstertable.h"
+#include "randomchambers.h"
 
 class HexcrawlTables
 {

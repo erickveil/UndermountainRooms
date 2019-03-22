@@ -1,9 +1,8 @@
 #ifndef TREASUREMAPS_H
 #define TREASUREMAPS_H
 
-#include "randomtable.h"
-//#include "randomchambers.h"
 #include "roomfeatures.h"
+#include "spellbooks.h"
 
 
 class treasureMaps

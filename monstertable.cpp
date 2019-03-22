@@ -225,9 +225,9 @@ QString MonsterTable::urbanEncounterXge(int tier)
 {
     RandomTable table;
 
-    QString animalMotive = " - " + EncounterTables::animalDowntime();
-    QString creatureMotive = " - " + EncounterTables::creatureAttacksUrban();
-    QString humanoidMotive = " - " + EncounterTables::humanoidAttacksUrban();
+    QString animalMotive = " - " + CreatureActivity::animalDowntime();
+    QString creatureMotive = " - " + CreatureActivity::creatureAttacksUrban();
+    QString humanoidMotive = " - " + CreatureActivity::humanoidAttacksUrban();
 
 
     QString qty;
@@ -353,7 +353,7 @@ QString MonsterTable::urbanEncounterXge(int tier)
         disposition += " -" + friendlyHumanoidUrbanActivity();
     }
     else {
-        disposition += " -" + EncounterTables::humanoidAttacksUrban();
+        disposition += " -" + CreatureActivity::humanoidAttacksUrban();
     }
 
     table.addEntry(NpcTables::adventuringParty(tier) + "\n" + disposition);
@@ -2155,7 +2155,7 @@ QString MonsterTable::friendlyHumanoidUrbanActivity()
     table.addEntry("Simple greeting");
     table.addEntry("Passing on a rumor or news");
     table.addEntry("New in town, looking for companions");
-    table.addEntry("Adventure hook:" + AdventureTables::adventureHook(), 3);
+    table.addEntry("Adventure hook:" + AdventureHooks::adventureHook(), 3);
 
     return table.getRollTableEntry();
 }
@@ -2259,7 +2259,7 @@ QString MonsterTable::riders(int tier)
 
 QString MonsterTable::_intellegentBlock()
 {
-    return "\nACTIVITY: " + EncounterTables::motivation();
+    return "\nACTIVITY: " + CreatureActivity::motivation();
 }
 
 QString MonsterTable::_raceBlock()
@@ -2289,11 +2289,13 @@ QString MonsterTable::_motivatedBlock()
 
 QString MonsterTable::_animalBlock()
 {
-    return "\nACTIVITY: " + EncounterTables::animalDowntime();
+    return "\nACTIVITY: " + CreatureActivity::animalDowntime();
 }
 
 QString MonsterTable::_loot(int tier)
 {
-    return "\nLOOT: " + LootTables::generateIndividualTreasure(tier);
+    //return "\nLOOT: " + LootTables::generateIndividualTreasure(tier);
+    return "";
+    // TODO: add loot elsewhere
 }
 

@@ -1,8 +1,8 @@
 #ifndef LOOTTABLES_H
 #define LOOTTABLES_H
 
-#include <QString>
 #include "treasuremaps.h"
+#include "spellbooks.h"
 
 class LootTables
 {

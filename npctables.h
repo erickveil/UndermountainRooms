@@ -1,11 +1,8 @@
 #ifndef NPCTABLES_H
 #define NPCTABLES_H
 
-#include <QString>
-#include "randomtable.h"
 #include "loottables.h"
-#include "dice.h"
-#include "encountertables.h"
+#include "creatureactivity.h"
 #include "factions.h"
 
 class NpcTables

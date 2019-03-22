@@ -6,7 +6,7 @@
 #include <QDateTime>
 
 #include "level.h"
-#include "dice.h"
+#include "dungeontables.h"
 
 
 class dungeon

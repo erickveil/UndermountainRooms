@@ -163,10 +163,9 @@ QString treasureMaps::mapType()
     table.addEntry("Magic compass directs bearer between waypoints");
     table.addEntry("Immovable scale model of area or dungeon");
     table.addEntry("Painted on a wall");
-    QString creature = MonsterTable::urbanEncounterXge(1);
-    table.addEntry("Tattooed on a creature or npc: " + creature);
+    table.addEntry("Tattooed on a creature or npc");
     table.addEntry("Inside a spellbook: "
-                   + LootTables::generateSpellbook(Dice::roll(1,2)));
+                   + SpellBooks::generateSpellbook(Dice::roll(1,2)));
     table.addEntry("Inside a journal");
     QString num = QString::number(Dice::roll(2,4));
     table.addEntry("Puzzle: only 1 of " + num + " pieces of the map");

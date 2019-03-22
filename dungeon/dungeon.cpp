@@ -42,7 +42,7 @@ int dungeon::calcTier(int currentLevel, int maxLevels, int minTier, int maxTier)
 {
     int tierSteps = maxTier - minTier + 1;
     float increment = (float)tierSteps / (float)maxLevels;
-    int currentTier = qRound(ceil(increment * currentLevel));
+    int currentTier = qRound((increment * currentLevel)); // TODO: ceil the inner parens
     if (currentTier < minTier) { currentTier = minTier; }
     if (currentTier > maxTier) { currentTier = maxTier; }
     return currentTier;

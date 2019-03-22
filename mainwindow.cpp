@@ -243,7 +243,7 @@ void MainWindow::on_dunType_clicked()
 
 void MainWindow::on_genAct_clicked()
 {
-    ui->resultArea->setPlainText(EncounterTables::generateActivity());
+    ui->resultArea->setPlainText(CreatureActivity::generateActivity());
 }
 
 void MainWindow::on_disarm_clicked()

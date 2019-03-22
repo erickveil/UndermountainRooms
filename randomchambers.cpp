@@ -171,11 +171,11 @@ QString RandomChambers::generateHallwayContents(int tier)
 
     RandomTable table;
 
-    QString motivation = "\nMOTIVATION: " + EncounterTables::motivation();
+    QString motivation = "\nMOTIVATION: " + CreatureActivity::motivation();
 
     QString monster = MonsterTable::undermountainMonster(tier);
     QString guard = MonsterTable::guardianFoe(tier);
-    QString activity = EncounterTables::generateActivity();
+    QString activity = CreatureActivity::generateActivity();
     QString hazard = dungeonHazards();
     QString monster_loot = LootTables::generateIndividualTreasure(tier);
 

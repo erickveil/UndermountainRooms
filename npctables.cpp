@@ -48,7 +48,7 @@ QString NpcTables::generateMotivatedAdventurer(int tier)
     QString npc = generateAdventurer(tier);
     QString disposition = npcDisposition();
     if (disposition == "friendly") {
-        disposition += " -" + EncounterTables::friendlyHumanoidUrbanActivity();
+        disposition += " -" + CreatureActivity::friendlyHumanoidUrbanActivity();
     }
     return npc + "\n(" + disposition + ")";
 }
