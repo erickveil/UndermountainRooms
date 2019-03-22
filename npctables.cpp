@@ -162,6 +162,7 @@ QString NpcTables::adventurerPackage(int tier)
         table.addEntry(npcGender() + "Hobgoblin Iron Shadow (vge)"); // 2
         table.addEntry("Orc Claw of Luthic (vge)"); // 2
         table.addEntry("Orc Hand of Yurtrus (vge)"); // 2
+        table.addEntry("tortle druid (mtf)"); // 2
     }
 
     else if (tier > 2) {
@@ -170,6 +171,9 @@ QString NpcTables::adventurerPackage(int tier)
         table.addEntry("Orc War Chief"); // 4
         table.addEntry("Hobgoblin Devastator (vge)"); // 4
         table.addEntry("Orc Blade of Ilneval (vge)"); // 4
+        table.addEntry("Shadar-kai gloom weaver (mtf)"); // 4
+        table.addEntry("Shadar-kai shadow danceer (mtf)"); // 4
+        table.addEntry("Shadar-kai soul monger (mtf)"); // 4
     }
 
     else if (tier > 3){
@@ -250,6 +254,14 @@ QString NpcTables::uncommonRace()
     table.addEntry("Drow");
     table.addEntry("Half elf");
     table.addEntry("Half orc");
+    table.addEntry("tortle (mtf)");
+    table.addEntry("Githzerai (mtf)");
+    table.addEntry("Githyanki (mtf)");
+    table.addEntry("Aasimar (vgm)");
+    table.addEntry("Firbolg (vgm)");
+    table.addEntry("Goliath (vgm)");
+    table.addEntry("Tabaxi (vgm)");
+    table.addEntry("Kenku");
 
     RandomTable dragon;
     dragon.addEntry("Black");
@@ -281,21 +293,16 @@ QString NpcTables::rareRace()
     table.addEntry("Aarakocra");
     table.addEntry("Bugbear");
     table.addEntry("Duergar");
-    table.addEntry("Githzerai");
     table.addEntry("Deep Gnome");
     table.addEntry("Goblin");
     table.addEntry("Hobgoblin");
-    table.addEntry("Kenku");
     table.addEntry("Kobold");
     table.addEntry("Kuo-toa");
     table.addEntry("Lizardfolk");
     table.addEntry("Myconid Adult");
     table.addEntry("Orc");
     table.addEntry("Thri-kreen");
-    table.addEntry("Aasimar (vgm)");
-    table.addEntry("Firbolg (vgm)");
-    table.addEntry("Goliath (vgm)");
-    table.addEntry("Tabaxi (vgm)");
+    table.addEntry("Shadar-kai (mtf)");
     table.addEntry("Darkling (vgm)");
 
     RandomTable element;
