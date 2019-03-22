@@ -45,6 +45,78 @@ QString room::describeRoom()
 
 }
 
+QString room::describeCrawlRoom(int tier, QString dungeonType)
+{
+    RandomTable roomSize;
+    roomSize.addEntry("Small");
+    roomSize.addEntry("Medium");
+    roomSize.addEntry("Large");
+    RandomTable hallSize;
+    hallSize.addEntry("5 ft wide");
+    hallSize.addEntry("10 ft wide");
+    hallSize.addEntry("20 ft wide");
+    RandomTable roomShape;
+    roomShape.addEntry("Square");
+    roomShape.addEntry("Rectangle");
+    roomShape.addEntry("Round");
+    roomShape.addEntry("T-Shaped");
+    roomShape.addEntry("L-Shaped");
+    roomShape.addEntry("Columned");
+    RandomTable hallShape;
+    hallShape.addEntry("Cross");
+    hallShape.addEntry("Straight");
+    hallShape.addEntry("T-Shaped");
+    hallShape.addEntry("L-Shaped");
+    hallShape.addEntry("Right-turning");
+    hallShape.addEntry("Left-turning");
+    hallShape.addEntry("Stairs up one level");
+    hallShape.addEntry("Stairs down one level");
+
+    //initRoom(tier, 0, 10, dungeonType);
+
+    bool isHall = Dice::roll(1,100) < 50;
+
+    QString desc = "";
+    if (isHall) {
+        desc += "A " + hallSize.getRollTableEntry() + " "
+                + hallShape.getRollTableEntry() + " Hallway\n";
+        desc += "-------------\n";
+    }
+    else {
+        // TODO: allow for generating room type by dropdown selection
+        desc += RandomChambers::generalDungeonRoomType() + "\n";
+        desc += "-------------\n";
+        desc += "SIZE: " + roomSize.getRollTableEntry()
+                + " " + roomShape.getRollTableEntry()
+                + "\n";
+    }
+
+    QString orientation = QString::number(Dice::roll(1,4));
+    desc += "ORIENTATION: " + orientation + "\n";
+
+    desc += "ILLUMINATION: " + RandomChambers::lighting() + "\n";
+    desc += "FEATURE: " + RoomFeatures::primaryFeature() + "\n";
+    desc += "STATE: " + RandomChambers::currentChamberState() + "\n";
+
+    int numExits = Dice::roll(1,4);
+    desc += "EXITS: " + QString::number(numExits) + "\n";
+    for (int i = 0; i < numExits; ++i) {
+        bool isGate = Dice::roll(1,100) < 10;
+        if (isGate) {
+            desc += "- " + door::gate(tier) + "\n";
+            continue;
+        }
+        RandomTable exitTable;
+        exitTable.addEntry(door::RandomDoor(tier), 8);
+        exitTable.addEntry(door::secretDoor(tier));
+        desc += "- " + exitTable.getRollTableEntry() + "\n";
+    }
+
+    desc += "CONTENTS: " + RandomChambers::chamberContents(tier) + "\n";
+
+    return desc;
+}
+
 void room::connectHall(int exitNumber, hall *passage)
 {
     _exitList[exitNumber].connectHall(passage);

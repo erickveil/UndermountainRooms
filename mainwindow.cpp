@@ -360,3 +360,14 @@ void MainWindow::on_pbNewDungeon_clicked()
     newDungeon.initDungeon(type, levels, minRooms, maxRooms, minTier, maxTier);
     ui->resultArea->setPlainText(newDungeon.describeDungeon());
 }
+
+void MainWindow::on_pbCrawlRoom_clicked()
+{
+    int minTier = ui->tierSelect->value();
+    int maxTier = ui->sbMaxTier->value();
+    if (maxTier < minTier) { maxTier = minTier; }
+    int tier = Dice::randomNumber(minTier, maxTier);
+    QString type = ui->typeSelect->currentText();
+    QString desc = room::describeCrawlRoom(tier, type);
+    ui->resultArea->setPlainText(desc);
+}

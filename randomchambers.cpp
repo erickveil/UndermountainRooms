@@ -740,6 +740,13 @@ QString RandomChambers::currentChamberState()
     table.addEntry("Converted to some other use: " + newUse, 2);
     table.addEntry("Stripped bare");
     table.addEntry("Pristine and in original state");
+    table.addEntry("Dusty, barely used", 8);
+    table.addEntry("Heavily frequented", 8);
+    table.addEntry("Dusty, with recent footprints", 4);
+    table.addEntry("Signs of recent occupation", 8);
+    table.addEntry("Damp, recently mopped", 4);
+    table.addEntry("Clean and tidy", 8);
+    table.addEntry("Covered in mold", 4);
 
     return table.getRollTableEntry();
 }

@@ -72,6 +72,8 @@ private slots:
 
     void on_pbNewDungeon_clicked();
 
+    void on_pbCrawlRoom_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
