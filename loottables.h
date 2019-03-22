@@ -2,8 +2,6 @@
 #define LOOTTABLES_H
 
 #include <QString>
-#include "dice.h"
-#include "randomtable.h"
 #include "treasuremaps.h"
 
 class LootTables

@@ -2,8 +2,8 @@
 #define TREASUREMAPS_H
 
 #include "randomtable.h"
-#include "dice.h"
-#include "randomchambers.h"
+//#include "randomchambers.h"
+#include "roomfeatures.h"
 
 
 class treasureMaps

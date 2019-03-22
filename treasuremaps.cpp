@@ -146,9 +146,9 @@ QString treasureMaps::dungeonLandmarks()
     gate.addEntry("a local hex");
     table.addEntry("Gate to " + gate.getRollTableEntry());
 
-    QString dungeonFeature = RandomChambers::primaryFeature();
+    QString dungeonFeature = RoomFeatures::primaryFeature();
     while (dungeonFeature == "None") {
-        dungeonFeature = RandomChambers::primaryFeature();
+        dungeonFeature = RoomFeatures::primaryFeature();
     }
     table.addEntry(dungeonFeature, 5);
 
