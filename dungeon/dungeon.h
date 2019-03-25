@@ -4,6 +4,7 @@
 #include <QList>
 #include <QtGlobal>
 #include <QDateTime>
+#include <QtMath>
 
 #include "level.h"
 #include "dice.h"
