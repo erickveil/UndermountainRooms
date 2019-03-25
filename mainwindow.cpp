@@ -243,7 +243,7 @@ void MainWindow::on_dunType_clicked()
 
 void MainWindow::on_genAct_clicked()
 {
-    ui->resultArea->setPlainText(EncounterTables::generateActivity());
+    ui->resultArea->setPlainText(CreatureActivity::generateActivity());
 }
 
 void MainWindow::on_disarm_clicked()
@@ -359,4 +359,15 @@ void MainWindow::on_pbNewDungeon_clicked()
     if (maxTier < minTier) { maxTier = minTier; }
     newDungeon.initDungeon(type, levels, minRooms, maxRooms, minTier, maxTier);
     ui->resultArea->setPlainText(newDungeon.describeDungeon());
+}
+
+void MainWindow::on_pbCrawlRoom_clicked()
+{
+    int minTier = ui->tierSelect->value();
+    int maxTier = ui->sbMaxTier->value();
+    if (maxTier < minTier) { maxTier = minTier; }
+    int tier = Dice::randomNumber(minTier, maxTier);
+    QString type = ui->typeSelect->currentText();
+    QString desc = room::describeCrawlRoom(tier, type);
+    ui->resultArea->setPlainText(desc);
 }

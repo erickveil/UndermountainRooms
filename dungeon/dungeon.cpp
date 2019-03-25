@@ -41,8 +41,12 @@ QString dungeon::describeDungeon()
 int dungeon::calcTier(int currentLevel, int maxLevels, int minTier, int maxTier)
 {
     int tierSteps = maxTier - minTier + 1;
-    float increment = (float)tierSteps / (float)maxLevels;
-    int currentTier = qRound((float)(qCeil(increment * currentLevel)));
+    float increment = static_cast<float>(tierSteps) /
+            static_cast<float>(maxLevels);
+    int currentTier = qCeil(
+                static_cast<qreal>(increment) *
+                static_cast<qreal>(currentLevel)
+                );
     if (currentTier < minTier) { currentTier = minTier; }
     if (currentTier > maxTier) { currentTier = maxTier; }
     return currentTier;

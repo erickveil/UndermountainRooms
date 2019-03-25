@@ -1,17 +1,10 @@
 #ifndef MONSTERTABLE_H
 #define MONSTERTABLE_H
 
-#include <QList>
-#include "tableentry.h"
-#include "randomtable.h"
-#include "dice.h"
 #include "npctables.h"
-#include "adventuretables.h"
-#include "loottables.h"
 #include "traptables.h"
 #include "complextrap.h"
-
-
+#include "creatureactivity.h"
 
 class MonsterTable
 {

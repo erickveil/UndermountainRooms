@@ -13,6 +13,7 @@
 #include "treasuremaps.h"
 #include "nonencounters.h"
 #include "dungeon/dungeon.h"
+#include "adventuretables.h"
 
 namespace Ui {
 class MainWindow;
@@ -70,6 +71,8 @@ private slots:
     void on_pbNonEncounter_clicked();
 
     void on_pbNewDungeon_clicked();
+
+    void on_pbCrawlRoom_clicked();
 
 private:
     Ui::MainWindow *ui;

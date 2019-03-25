@@ -6,6 +6,7 @@
 #include "dungeontables.h"
 #include "monstertable.h"
 #include "randomchambers.h"
+#include "adventurehooks.h"
 
 
 class AdventureTables

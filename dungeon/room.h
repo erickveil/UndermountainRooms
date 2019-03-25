@@ -7,6 +7,7 @@
 #include "traptables.h"
 #include "treasuremaps.h"
 #include "roomexit.h"
+#include "door.h"
 
 
 class room
@@ -22,6 +23,14 @@ public:
                   QString dungeonType);
     QList<roomExit> getExitList();
     QString describeRoom();
+
+    /**
+     * @brief describeCrawlRoom
+     * Crawl rooms are different in that they're intended to be generated one
+     * at a time as you go.
+     * @return
+     */
+    static QString describeCrawlRoom(int tier, QString dungeonType);
     void connectHall(int exitNumber, hall *passage);
     int getNumUnconnectedExits();
     void connectAllExits(QList<hall> &hallList, int numRooms, int roomNumber,

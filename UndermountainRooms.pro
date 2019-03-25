@@ -40,7 +40,11 @@ SOURCES += main.cpp\
     dungeon/door.cpp \
     factions.cpp \
     encountergroup.cpp \
-    encountergroupfactory.cpp
+    encountergroupfactory.cpp \
+    roomfeatures.cpp \
+    creatureactivity.cpp \
+    adventurehooks.cpp \
+    spellbooks.cpp
     nonencounters.cpp
 
 HEADERS  += mainwindow.h \
@@ -68,7 +72,11 @@ HEADERS  += mainwindow.h \
     dungeon/door.h \
     factions.h \
     encountergroup.h \
-    encountergroupfactory.h
+    encountergroupfactory.h \
+    roomfeatures.h \
+    creatureactivity.h \
+    adventurehooks.h \
+    spellbooks.h
     nonencounters.h
 
 FORMS    += mainwindow.ui

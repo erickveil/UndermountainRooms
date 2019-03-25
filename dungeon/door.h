@@ -5,6 +5,7 @@
 
 #include "randomtable.h"
 #include "treasuremaps.h"
+#include "traptables.h"
 
 class door
 {

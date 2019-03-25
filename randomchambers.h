@@ -1,12 +1,11 @@
 #ifndef RANDOMCHAMBERS_H
 #define RANDOMCHAMBERS_H
 
-#include <QString>
-#include "dice.h"
-#include "randomtable.h"
 #include "monstertable.h"
 #include "loottables.h"
 #include "traptables.h"
+#include "roomfeatures.h"
+#include "creatureactivity.h"
 
 class RandomChambers
 {
