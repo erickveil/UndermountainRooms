@@ -49,26 +49,25 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
 {
     RandomTable roomSize;
     roomSize.addEntry("Small");
-    roomSize.addEntry("Medium");
+    roomSize.addEntry("Medium", 4);
     roomSize.addEntry("Large");
     RandomTable hallSize;
     hallSize.addEntry("5 ft wide");
-    hallSize.addEntry("10 ft wide");
+    hallSize.addEntry("10 ft wide", 4);
     hallSize.addEntry("20 ft wide");
     RandomTable roomShape;
-    roomShape.addEntry("Square");
-    roomShape.addEntry("Rectangle");
-    roomShape.addEntry("Round");
+    roomShape.addEntry("Square", 4);
+    roomShape.addEntry("Rectangle", 4);
+    roomShape.addEntry("Round", 2);
     roomShape.addEntry("T-Shaped");
     roomShape.addEntry("L-Shaped");
     roomShape.addEntry("Columned");
     RandomTable hallShape;
-    hallShape.addEntry("Cross");
-    hallShape.addEntry("Straight");
-    hallShape.addEntry("T-Shaped");
-    hallShape.addEntry("L-Shaped");
-    hallShape.addEntry("Right-turning");
-    hallShape.addEntry("Left-turning");
+    hallShape.addEntry("Cross", 2);
+    hallShape.addEntry("Straight", 2);
+    hallShape.addEntry("T-Shaped", 2);
+    hallShape.addEntry("Right-turning", 2);
+    hallShape.addEntry("Left-turning", 2);
     hallShape.addEntry("Stairs up one level");
     hallShape.addEntry("Stairs down one level");
 
@@ -98,7 +97,7 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
     desc += "FEATURE: " + RoomFeatures::primaryFeature() + "\n";
     desc += "STATE: " + RandomChambers::currentChamberState() + "\n";
 
-    int numExits = Dice::roll(1,4);
+    int numExits = Dice::roll(1,4) - 1;
     desc += "EXITS: " + QString::number(numExits) + "\n";
     for (int i = 0; i < numExits; ++i) {
         bool isGate = Dice::roll(1,100) < 10;
