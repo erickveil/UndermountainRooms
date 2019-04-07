@@ -184,9 +184,13 @@ QString door::RandomDoor(int tier)
     QString doorLockResult = door::Doorlock(tier);
 
     RandomTable table;
-    table.addEntry("Wooden door; " + doorLockResult + trap, 8);
-    table.addEntry("Stone door; " + doorLockResult + trap, 4);
-    table.addEntry("Iron door; " + doorLockResult + trap);
+    table.addEntry("Wooden door; " + doorLockResult + trap, 16);
+    table.addEntry("Stone door; " + doorLockResult + trap, 8);
+    table.addEntry("Iron door; " + doorLockResult + trap, 4);
+    table.addEntry("Destroyed Wooden Door", 2);
+    table.addEntry("Destroyed Stone Door");
+    table.addEntry("Destroyed Iron Door");
+    table.addEntry("Destroyed Secret Door");
     return table.getRollTableEntry();
 }
 

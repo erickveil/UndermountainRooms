@@ -100,7 +100,7 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
     int numExits = Dice::roll(1,4) - 1;
     desc += "EXITS: " + QString::number(numExits) + "\n";
     for (int i = 0; i < numExits; ++i) {
-        bool isGate = Dice::roll(1,100) < 10;
+        bool isGate = Dice::roll(1,100) < 7;
         if (isGate) {
             desc += "- " + door::gate(tier) + "\n";
             continue;
