@@ -993,6 +993,72 @@ QString LootTables::hoardCoins(int tier)
 
 }
 
+QString LootTables::key(int tier)
+{
+    RandomTable keyMaterial;
+    keyMaterial.addEntry("brass");
+    keyMaterial.addEntry("bronze");
+    keyMaterial.addEntry("iron");
+    keyMaterial.addEntry("steel");
+    keyMaterial.addEntry("glass");
+    keyMaterial.addEntry("coper");
+    keyMaterial.addEntry("silver");
+    keyMaterial.addEntry("gold");
+    keyMaterial.addEntry("electrum");
+    keyMaterial.addEntry("platinum");
+    keyMaterial.addEntry("bone");
+    keyMaterial.addEntry("wooden");
+    keyMaterial.addEntry("adamantium");
+    keyMaterial.addEntry("mthril");
+    keyMaterial.addEntry("wax impression of a");
+    keyMaterial.addEntry("ceramic");
+    keyMaterial.addEntry("tin");
+
+    QString keyTeeth = QString::number(Dice::roll(2, 4));
+
+    RandomTable keyDesign;
+    keyDesign.addEntry("Circle");
+    keyDesign.addEntry("Square");
+    keyDesign.addEntry("Triangle");
+    keyDesign.addEntry("Diamond (shape)");
+    keyDesign.addEntry("Clover");
+    keyDesign.addEntry("Heart");
+    keyDesign.addEntry("Spade");
+    keyDesign.addEntry("Rook");
+    keyDesign.addEntry("Pawn");
+    keyDesign.addEntry("Crown");
+    keyDesign.addEntry("Ankh");
+    keyDesign.addEntry("Horse");
+    keyDesign.addEntry("Bird");
+    keyDesign.addEntry("Lion");
+    keyDesign.addEntry("Wolf");
+    keyDesign.addEntry("Snake");
+    keyDesign.addEntry("Skull");
+    QString points = QString::number(Dice::roll(3, 4));
+    keyDesign.addEntry(points + "-Pointed Star");
+    keyDesign.addEntry("Angel");
+    keyDesign.addEntry("Devil");
+    keyDesign.addEntry("Lizard");
+    keyDesign.addEntry("Dragon");
+    keyDesign.addEntry("Scepter");
+    keyDesign.addEntry("Hand");
+    keyDesign.addEntry("Claw");
+    keyDesign.addEntry("Moon");
+    keyDesign.addEntry("Sun");
+    keyDesign.addEntry(gem(tier));
+    keyDesign.addEntry("Bat");
+    keyDesign.addEntry("Toad");
+    keyDesign.addEntry("Tortise");
+    keyDesign.addEntry("Hare");
+    QString num = QString::number(Dice::roll(1, 9));
+    keyDesign.addEntry("Number " + num);
+
+    return "A "
+            + keyMaterial.getRollTableEntry() + " key with "
+            + keyTeeth + " teeth on its biting, and adorned with a "
+            + keyDesign.getRollTableEntry() + " on its bow.";
+}
+
 QString LootTables::mundaneHorde(int tier)
 {
     int totalValue;
@@ -1108,7 +1174,7 @@ QString LootTables::mundaneHorde(int tier)
     return treasure;
 }
 
-QString LootTables::adventureGear()
+QString LootTables::adventureGear(int tier)
 {
     RandomTable table;
 
@@ -1181,6 +1247,7 @@ QString LootTables::adventureGear()
     tools.addEntry("Navigator tools");
     tools.addEntry("Poisoner kit");
     tools.addEntry("Thieves tools");
+    tools.addEntry(key(tier), 10);
 
     table.addEntry(tools.getRollTableEntry());
 
@@ -1196,19 +1263,20 @@ QString LootTables::craftingComponents(int tier)
     QString qty = QString::number(Dice::roll(1, 8));
     // very common
     chance = 16;
+    table.addEntry(qty + " Scroll of blank parchment", chance);
+    table.addEntry(key(tier), chance);
     table.addEntry(qty + " Glass vial (1 gp)", chance);
 
     // common
     chance = 8;
     table.addEntry(qty + " Mandrake Root (1 sp)", chance);
-    table.addEntry(qty + " lbs of clay", chance);
-    table.addEntry("Small bag of ash", chance);
 
     // uncommon
     chance = 4;
     table.addEntry(qty + " Fruit of Selune", chance);
     table.addEntry(qty + " Jar of blood", chance);
     table.addEntry(qty + " ft copper wire (" + qty + " cp)", chance);
+    table.addEntry(qty + " Small vial of magic ink", chance);
 
     // rare
     chance = 2;
@@ -1334,7 +1402,7 @@ QString LootTables::generateTreasureHorde(int tier)
     int qty = Dice::roll(1,8);
     if (hasAdventure) {
         for (int i=0; i < qty; ++i) {
-            treasure += adventureGear() + "\n";
+            treasure += adventureGear(tier) + "\n";
         }
     }
     if (hasCrafting) {
@@ -1472,7 +1540,7 @@ QString LootTables::generateIndividualTreasure(int tier)
         treasure += "\n" + art(tier);
     }
     if (hasAdventure) {
-        treasure += "\n" + adventureGear();
+        treasure += "\n" + adventureGear(tier);
     }
     if (hasMap) {
         treasure += "\n\n" + treasureMaps::generateMap();

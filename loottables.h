@@ -33,14 +33,15 @@ public:
     static QString art(int tier);
     static QString hoardCoins(int tier);
 
+    static QString key(int tier);
+
     static QString treasureContainer();
     static QString treasureHiddenBy();
 
     static QString generateTreasureHorde(int tier);
     static QString generateIndividualTreasure(int tier);
-    static QString miscTreasure(int tier);
     static QString mundaneHorde(int tier);
-    static QString adventureGear();
+    static QString adventureGear(int tier);
     static QString craftingComponents(int tier);
 };
 
