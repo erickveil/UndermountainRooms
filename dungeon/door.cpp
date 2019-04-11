@@ -172,7 +172,25 @@ QString door::RandomDoor(int tier)
     QString trapSeverity = TrapTables::trapSeverityLevel(tier);
     QString trapStats = TrapTables::trapSeverityStats(trapSeverity, tier);
     QString trapTrigger = TrapTables::doorTrapTrigger();
-    QString trapEffect = TrapTables::trapEffects(trapSeverity, tier);
+
+    bool isDoorTrap = Dice::roll(1, 100) < 20;
+    RandomTable doorTrap;
+    doorTrap.addEntry("One-way door, closes and barred 1 minute after party "
+                      "passes through.");
+    doorTrap.addEntry("Stuck door, must be destroyed.", 2);
+    doorTrap.addEntry("Stuck door, Str check to open.", 2);
+    doorTrap.addEntry("Teleport door. Undetectable and disorienting. "
+                      "As if walking through another door in the dungeon.");
+
+    QString trapEffect;
+    if (!isDoorTrap) {
+        trapEffect = TrapTables::trapEffects(trapSeverity, tier);
+    }
+    else {
+        trapEffect = doorTrap.getRollTableEntry();
+    }
+
+
     QString trapDisarm = TrapTables::trapDisarm();
     QString trapDesc = QString("; Trapped: ")
             + trapTrigger + ", "
@@ -191,6 +209,8 @@ QString door::RandomDoor(int tier)
     table.addEntry("Destroyed Stone Door");
     table.addEntry("Destroyed Iron Door");
     table.addEntry("Destroyed Secret Door");
+    table.addEntry("Curtain");
+    table.addEntry("Mimic (door)");
     return table.getRollTableEntry();
 }
 

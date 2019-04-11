@@ -107,7 +107,7 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
         }
         RandomTable exitTable;
         exitTable.addEntry(door::RandomDoor(tier), 8);
-        exitTable.addEntry(door::secretDoor(tier));
+        exitTable.addEntry("Secret Door: " + door::secretDoor(tier));
         desc += "- " + exitTable.getRollTableEntry() + "\n";
     }
 
