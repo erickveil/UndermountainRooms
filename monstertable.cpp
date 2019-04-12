@@ -2184,6 +2184,23 @@ QString MonsterTable::mountainEncounter(int tier)
     return table.getRollTableEntry();
 }
 
+QString MonsterTable::biomeEncounter(int tier, QString biome)
+{
+    if (biome == "Underdark") { return dungeonMonster(tier); }
+    if (biome == "Undermountain") { return undermountainMonster(tier); }
+    if (biome == "Urban") { return urbanEncounterXge(tier); }
+    if (biome == "Urban Night") { return urbanEncountersUnique(); }
+    if (biome == "Sewer") { return sewerEncounter(tier); }
+    if (biome == "Gurardian") { return guardianFoe(tier); }
+    if (biome == "Coastal") { return coastalEncounter(tier); }
+    if (biome == "Forest") { return forestEncounter(tier); }
+    if (biome == "Grasslands") { return grasslandsEncounter(tier); }
+    if (biome == "Hill") { return hillEncounter(tier); }
+    if (biome == "Mountain") { return mountainEncounter(tier); }
+    // Nautical
+    return nauticalEncounter(tier);
+}
+
 QString MonsterTable::nauticalEncounter(int tier)
 {
     RandomTable table;

@@ -25,6 +25,8 @@ public:
     static QString hillEncounter(int tier);
     static QString mountainEncounter(int tier);
 
+    static QString biomeEncounter(int tier, QString biome);
+
     /**
      * @brief nauticalEncounter
      * Sea adventures *while on a ship* use underwater encounters when players

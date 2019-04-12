@@ -62,6 +62,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pbCrawlRoom">
+       <property name="text">
+        <string>Crawl Room</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="keyHex">
        <property name="text">
         <string>Hex Contents</string>
@@ -130,13 +137,6 @@
        </property>
        <property name="text">
         <string>Generate Room</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pbCrawlRoom">
-       <property name="text">
-        <string>Crawl Room</string>
        </property>
       </widget>
      </item>

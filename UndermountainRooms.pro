@@ -44,7 +44,8 @@ SOURCES += main.cpp\
     roomfeatures.cpp \
     creatureactivity.cpp \
     adventurehooks.cpp \
-    spellbooks.cpp
+    spellbooks.cpp \
+    onemilehex.cpp
     nonencounters.cpp
 
 HEADERS  += mainwindow.h \
@@ -76,7 +77,8 @@ HEADERS  += mainwindow.h \
     roomfeatures.h \
     creatureactivity.h \
     adventurehooks.h \
-    spellbooks.h
+    spellbooks.h \
+    onemilehex.h
     nonencounters.h
 
 FORMS    += mainwindow.ui

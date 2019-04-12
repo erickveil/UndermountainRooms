@@ -14,6 +14,7 @@
 #include "nonencounters.h"
 #include "dungeon/dungeon.h"
 #include "adventuretables.h"
+#include "onemilehex.h"
 
 namespace Ui {
 class MainWindow;

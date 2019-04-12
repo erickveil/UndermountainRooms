@@ -1328,6 +1328,7 @@ QString LootTables::treasureHiddenBy()
     table.addEntry("Under a loose stone in the floor");
     table.addEntry("Behind a loose stone int the wall");
     table.addEntry("In a secret room nearby");
+    table.addEntry("Buried");
     table.addEntry("Nothing", 10);
 
     return table.getRollTableEntry();

@@ -365,9 +365,22 @@ void MainWindow::on_pbCrawlRoom_clicked()
 {
     int minTier = ui->tierSelect->value();
     int maxTier = ui->sbMaxTier->value();
+    QString type = ui->typeSelect->currentText();
+    QString biome = ui->biomeSelect->currentText();
     if (maxTier < minTier) { maxTier = minTier; }
     int tier = Dice::randomNumber(minTier, maxTier);
-    QString type = ui->typeSelect->currentText();
-    QString desc = room::describeCrawlRoom(tier, type);
+
+    QString desc;
+    if (biome == "Forest"
+            || biome == "Grasslands"
+            || biome == "Hill"
+            || biome == "Mountain"
+            ) {
+        desc = OneMileHex::createOneMileHex(tier, biome);
+    }
+    else {
+        desc = room::describeCrawlRoom(tier, type);
+    }
+
     ui->resultArea->setPlainText(desc);
 }
