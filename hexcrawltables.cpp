@@ -513,8 +513,12 @@ QString HexcrawlTables::naturalStructure(int tier)
 
     int featureChance = 30;
     bool hasFeature = Dice::roll(1,100) < featureChance;
-    caveTable.addEntry("Small cave"
-                       + (hasFeature) ? " - " + RandomChambers::primaryFeature() : "", 50);
+    QString cave = "Small cave" + (
+                (hasFeature)
+                ? " - " + RandomChambers::primaryFeature()
+                : ""
+                  );
+    caveTable.addEntry(cave, 50);
 
     caveTable.addEntry("Animals", 10);
     caveTable.addEntry("Bandits", 10);

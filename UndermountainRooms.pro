@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     creatureactivity.cpp \
     adventurehooks.cpp \
     spellbooks.cpp \
-    onemilehex.cpp
+    onemilehex.cpp \
+    wildernessgate.cpp
     nonencounters.cpp
 
 HEADERS  += mainwindow.h \
@@ -78,7 +79,8 @@ HEADERS  += mainwindow.h \
     creatureactivity.h \
     adventurehooks.h \
     spellbooks.h \
-    onemilehex.h
+    onemilehex.h \
+    wildernessgate.h
     nonencounters.h
 
 FORMS    += mainwindow.ui

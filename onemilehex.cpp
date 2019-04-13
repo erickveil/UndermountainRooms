@@ -8,7 +8,7 @@ OneMileHex::OneMileHex()
 QString OneMileHex::createOneMileHex(int tier, QString biome)
 {
     QString type = rollAreaType(biome);
-    QString feature = rollWildernessFeature();
+    QString feature = rollWildernessFeature(tier);
     QString state = rollAreaState();
     QString trail = rollTrailDirections();
     QString encounter = rollEncounter(tier, biome);
@@ -45,7 +45,7 @@ QString OneMileHex::rollAreaType(QString biome)
     return rollMountainType();
 }
 
-QString OneMileHex::rollWildernessFeature()
+QString OneMileHex::rollWildernessFeature(int tier)
 {
     RandomTable table;
     table.addEntry("None", 16);
@@ -91,13 +91,12 @@ QString OneMileHex::rollWildernessFeature()
     table.addEntry("An occupied fort");
     table.addEntry("A ruined village");
     table.addEntry("A well");
-    table.addEntry("A statue");
+    table.addEntry("A statue - " + HexcrawlTables::statue());
     table.addEntry("A fountain");
     table.addEntry("A broken column");
     table.addEntry("A massive tree");
     table.addEntry("A permanent fog");
     table.addEntry("A permanent mist");
-    table.addEntry("A planar gate");
     table.addEntry("A teleportation circle");
     table.addEntry("An abandoned abbey");
     table.addEntry("An occupied abbey");
@@ -109,6 +108,22 @@ QString OneMileHex::rollWildernessFeature()
     table.addEntry("A sinkhole");
     table.addEntry("A trading post");
     table.addEntry("A fenced-in pasture");
+    table.addEntry(rollStronghold());
+    table.addEntry("A crater");
+    table.addEntry("A large, strange crystal");
+    table.addEntry("A floating earth mote");
+    table.addEntry("A floating stronghold - " + rollStronghold());
+    table.addEntry("A wrecked flying ship");
+    table.addEntry(HexcrawlTables::remoteStructure(tier), 8);
+    table.addEntry(HexcrawlTables::ruinedStructure(tier), 8);
+    table.addEntry("Dwarven hold");
+    table.addEntry("Opening to the Underdark");
+    table.addEntry("Elven garden sanctuary");
+    table.addEntry("Hobbit hole");
+    table.addEntry("Gnome mushroom house");
+    table.addEntry("Giant mushroom patch");
+    table.addEntry("Toadstool ring");
+    table.addEntry("Planar Gate -\n" + WildernessGate::rollGate());
 
     return table.getRollTableEntry();
 }
@@ -285,3 +300,22 @@ QString OneMileHex::rollSwampType()
     return "Foetid Bog";
 
 }
+
+QString OneMileHex::rollStronghold()
+{
+    RandomTable table;
+    table.addEntry("Barbarian Camp");
+    table.addEntry("Bard Theater");
+    table.addEntry("Cleric Church");
+    table.addEntry("Druid Grove");
+    table.addEntry("Fighter Fortress");
+    table.addEntry("Monk Monestary");
+    table.addEntry("Paladin Chapel");
+    table.addEntry("Ranger Lodge");
+    table.addEntry("Rogue Tavern");
+    table.addEntry("Sorcer Sanctum");
+    table.addEntry("Warlock Fane");
+    table.addEntry("Wizard Library");
+    return table.getRollTableEntry();
+}
+
