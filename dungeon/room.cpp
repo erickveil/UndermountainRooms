@@ -53,7 +53,7 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
     roomSize.addEntry("Large");
     RandomTable hallSize;
     hallSize.addEntry("5 ft wide");
-    hallSize.addEntry("10 ft wide", 4);
+    hallSize.addEntry("10 ft wide", 8);
     hallSize.addEntry("20 ft wide");
     RandomTable roomShape;
     roomShape.addEntry("Square", 4);
@@ -100,7 +100,7 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
     int numExits = Dice::roll(1,4) - 1;
     desc += "EXITS: " + QString::number(numExits) + "\n";
     for (int i = 0; i < numExits; ++i) {
-        bool isGate = Dice::roll(1,100) < 7;
+        bool isGate = Dice::roll(1,100) < 4;
         if (isGate) {
             desc += "- " + door::gate(tier) + "\n";
             continue;
