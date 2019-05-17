@@ -61,7 +61,6 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
     roomShape.addEntry("Round", 2);
     roomShape.addEntry("T-Shaped");
     roomShape.addEntry("L-Shaped");
-    roomShape.addEntry("Columned");
     RandomTable hallShape;
     hallShape.addEntry("Cross", 2);
     hallShape.addEntry("Straight", 2);

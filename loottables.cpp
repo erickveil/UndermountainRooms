@@ -1396,7 +1396,7 @@ QString LootTables::generateTreasureHorde(int tier)
         numArt = hasArt ? Dice::roll(1,10) : 0;
         numMagic = hasMagic ? Dice::roll(1,8) : 0;
         hasMundane = Dice::roll(1,100) < 65;
-        hasMap = Dice::roll(1,100) < 35;
+        hasMap = Dice::roll(1,100) < 15;
         hasAdventure = Dice::roll(1,100) < 5;
     }
 
@@ -1527,7 +1527,7 @@ QString LootTables::generateIndividualTreasure(int tier)
     bool hasJewel = Dice::roll(1,100) < jewelChance;
     int adventureChance = 25;
     bool hasAdventure = Dice::roll(1,100) < adventureChance;
-    int mapChance = (tier * 5) + 10;
+    int mapChance = tier + 15;
     bool hasMap = Dice::roll(1,100) < mapChance;
     bool hasCrafting = Dice::roll(1,20) <= 5;
 
