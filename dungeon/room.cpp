@@ -92,8 +92,16 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
     QString orientation = QString::number(Dice::roll(1,4));
     desc += "ORIENTATION: " + orientation + "\n";
 
-    desc += "ILLUMINATION: " + RandomChambers::lighting() + "\n";
-    desc += "FEATURE: " + RoomFeatures::primaryFeature() + "\n";
+    if (isHall) {
+        desc += "ILLUMINAION: " + RandomChambers::hallLighting() + "\n";
+    }
+    else {
+        desc += "ILLUMINATION: " + RandomChambers::lighting() + "\n";
+    }
+
+    if (!isHall) {
+        desc += "FEATURE: " + RoomFeatures::primaryFeature() + "\n";
+    }
     desc += "STATE: " + RandomChambers::currentChamberState() + "\n";
 
     int numExits = Dice::roll(1,4) - 1;

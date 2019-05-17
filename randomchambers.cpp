@@ -995,3 +995,27 @@ QString RandomChambers::lighting()
 
     return table.getRollTableEntry();
 }
+
+QString RandomChambers::hallLighting()
+{
+    RandomTable table;
+
+    table.addEntry("DARK: Unlit");
+    table.addEntry("LIGHT: Torch, lit");
+    table.addEntry("DARK: Torch, unlit");
+    table.addEntry("DARK: Torch holders, empty");
+    table.addEntry("LIGHT: Candles, lit");
+    table.addEntry("DARK: Candles, unlit");
+    table.addEntry("DARK: Wax blobs, unlit");
+    table.addEntry("LIGHT: Oil lantern, lit");
+    table.addEntry("DARK: Oil lantern, full but unlit");
+    table.addEntry("DARK: Oil lantern, empty");
+    table.addEntry("LIGHT: Floating, glowing glass sphere");
+    table.addEntry("LIGHT: Chandelier, lit");
+    table.addEntry("DARK: Chandelier, unlit");
+    table.addEntry("DIM: Errie, glowing mold");
+    table.addEntry("Light spell");
+
+    return table.getRollTableEntry();
+
+}

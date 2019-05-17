@@ -53,6 +53,7 @@ public:
     static QString odors();
     static QString primaryFeature();
     static QString lighting();
+    static QString hallLighting();
 
 
 };
