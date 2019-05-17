@@ -173,7 +173,7 @@ QString door::RandomDoor(int tier)
     QString trapStats = TrapTables::trapSeverityStats(trapSeverity, tier);
     QString trapTrigger = TrapTables::doorTrapTrigger();
 
-    bool isDoorTrap = Dice::roll(1, 100) < 20;
+    bool isDoorTrap = Dice::roll(1, 100) <= 25;
     RandomTable doorTrap;
     doorTrap.addEntry("One-way door, closes and barred 1 minute after party "
                       "passes through.");
@@ -203,6 +203,7 @@ QString door::RandomDoor(int tier)
 
     RandomTable table;
     table.addEntry("Wooden door; " + doorLockResult + trap, 16);
+    table.addEntry("Archway; " + trap, 8);
     table.addEntry("Stone door; " + doorLockResult + trap, 8);
     table.addEntry("Iron door; " + doorLockResult + trap, 4);
     table.addEntry("Destroyed Wooden Door", 2);
