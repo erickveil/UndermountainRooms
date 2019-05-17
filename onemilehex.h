@@ -18,6 +18,7 @@ public:
     static QString rollTrailDirections();
     static QString rollEncounter(int tier, QString biome);
     static QString rollAreaTreasure(int tier);
+    static QString rollAreaObstacle();
 
     static QString rollPlainsType();
     static QString rollForestType();

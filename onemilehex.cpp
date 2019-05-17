@@ -13,6 +13,10 @@ QString OneMileHex::createOneMileHex(int tier, QString biome)
     QString trail = rollTrailDirections();
     QString encounter = rollEncounter(tier, biome);
     QString treasure = rollAreaTreasure(tier);
+    bool isObstacle = Dice::roll(1, 100) <= 33;
+    QString obstacle;
+    if (isObstacle) { obstacle = rollAreaObstacle(); }
+    else { obstacle = "none"; }
 
     QString desc = type + "\n"
             + "----------------\n"
@@ -20,6 +24,7 @@ QString OneMileHex::createOneMileHex(int tier, QString biome)
             + "STATE: " + state + "\n"
             + "TRAIL: " + trail + "\n"
             + "ENCOUNTER: " + encounter + "\n"
+            + "OBSTACLE: " + obstacle + "\n"
             + "TREASURE: " + treasure + "\n";
     return desc;
 
@@ -75,7 +80,6 @@ QString OneMileHex::rollWildernessFeature(int tier)
     table.addEntry("A fjord over a river");
     table.addEntry("A bridge over a stream");
     table.addEntry("A chasm floor");
-    table.addEntry("An interposing chasm");
     table.addEntry("A bridge over a chasm");
     table.addEntry("A fallen tree over a chasm");
     table.addEntry("A waterfall");
@@ -195,6 +199,36 @@ QString OneMileHex::rollAreaTreasure(int tier)
     bool isTreasure = Dice::roll(1,10) <= 1;
     if (!isTreasure) { return "None."; }
     return LootTables::generateTreasureHorde(tier);
+}
+
+QString OneMileHex::rollAreaObstacle()
+{
+    RandomTable table;
+
+    table.addEntry("A raging river");
+    table.addEntry("A thick fog");
+    table.addEntry("An ongoing battle");
+    table.addEntry("A deep chasm");
+    table.addEntry("Sheer cliff face");
+    table.addEntry("A sudden drop");
+    table.addEntry("Signs of a zonesweeper");
+    table.addEntry("Enemy patrolls");
+    table.addEntry("Razorvine or thorny bramble growth");
+    table.addEntry("A great wall");
+    table.addEntry("A dark, thick wood");
+    table.addEntry("An ongoing wildfire");
+    table.addEntry("A mountain");
+    table.addEntry("A large lake");
+    table.addEntry("A quicksand-filled bog");
+    table.addEntry("Sleep poppies");
+    table.addEntry("A disorienting magical distortion");
+    table.addEntry("A dust storm");
+    table.addEntry("A great cloud of angry insects");
+    table.addEntry("A collaped bridge");
+    table.addEntry("A horseshoe gully");
+
+    return table.getRollTableEntry();
+
 }
 
 QString OneMileHex::rollPlainsType()
