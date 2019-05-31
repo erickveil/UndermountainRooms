@@ -18,6 +18,7 @@ EncounterGroup EncounterGroupFactory::createGenericEncounter()
                          "Low hp, low AC",
                          "Any animal"
                          );
+    return group;
 
 }
 

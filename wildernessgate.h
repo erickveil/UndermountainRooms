@@ -1,7 +1,7 @@
 #ifndef WILDERNESSGATE_H
 #define WILDERNESSGATE_H
 
-#include "randomtable.h";
+#include "randomtable.h"
 
 class WildernessGate
 {

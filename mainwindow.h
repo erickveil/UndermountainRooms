@@ -15,6 +15,7 @@
 #include "dungeon/dungeon.h"
 #include "adventuretables.h"
 #include "onemilehex.h"
+#include "opponentai.h"
 
 namespace Ui {
 class MainWindow;
@@ -74,6 +75,8 @@ private slots:
     void on_pbNewDungeon_clicked();
 
     void on_pbCrawlRoom_clicked();
+
+    void on_pb_ai_clicked();
 
 private:
     Ui::MainWindow *ui;

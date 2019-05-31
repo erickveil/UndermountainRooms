@@ -69,6 +69,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pb_ai">
+       <property name="text">
+        <string>Opponent AI</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="keyHex">
        <property name="text">
         <string>Hex Contents</string>

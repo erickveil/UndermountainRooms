@@ -384,3 +384,8 @@ void MainWindow::on_pbCrawlRoom_clicked()
 
     ui->resultArea->setPlainText(desc);
 }
+
+void MainWindow::on_pb_ai_clicked()
+{
+    ui->resultArea->setPlainText(OpponentAI::choseFullAi());
+}
