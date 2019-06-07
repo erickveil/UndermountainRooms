@@ -12,12 +12,17 @@ QString OpponentAI::choseFullAi()
     QString persistence = "Target Persistence: " + choseTargetPersistence();
     QString focus = "Focus: " + choseFocus();
     QString ranged = "Ranged Strategy: " + rangedStrategy();
+    QString offer = "Offer: " + considerOffers();
+    QString personality = "Leader Personality: " + chosePersonality();
 
     QString result = reaction + "\n"
             + opening + "\n"
             + persistence + "\n"
             + focus + "\n"
-            + ranged;
+            + ranged + "\n"
+            + personality + "\n"
+            + offer + "\n"
+            ;
 
     return result;
 }
@@ -85,6 +90,45 @@ QString OpponentAI::rangedStrategy()
                    "then focus on that one.", 4);
     table.addEntry("Attack the focus.", 2);
 
+    return table.getRollTableEntry();
+
+}
+
+QString OpponentAI::considerOffers()
+{
+    RandomTable table;
+    table.addEntry("No requirements. A disgruntled opponent purposely shirks "
+                   "their duty.");
+    table.addEntry("Perform a quest within the dungeon, in another direction.",
+                   2);
+    table.addEntry("Bribe the opponents for CR + 1d6 x 10 gp from each PC.", 2);
+    table.addEntry("Bribe the opponent with a magic item.");
+    return table.getRollTableEntry();
+
+}
+
+QString OpponentAI::chosePersonality()
+{
+    RandomTable table;
+    table.addEntry("Surly: All PC negotiation checks made at disadvantage.");
+    table.addEntry("Paranoid: Persuasion checks made by PCs have "
+                   "disadvantage.");
+    table.addEntry("Immitigable: Intimidation checks made by the PCs have "
+                   "disadvantage.");
+    table.addEntry("Suspicious: Deception checks made by PCs get "
+                   "disadvantage.");
+    table.addEntry("Grim: Performance checks made by PCs get disadvantage.");
+    table.addEntry("Bored: Performance checks made by PCs get advantage.");
+    table.addEntry("Gullible: Deception checks made by PCs get advantage.");
+    table.addEntry("Glass Jaw: Intimidation checks made by PCs have "
+                   "advantage.");
+    table.addEntry("Pushover: Persuasion checks made by PCs have "
+                   "advantage.");
+    table.addEntry("Indifferent: All negotiation checks made normally.");
+    table.addEntry("Amicable: All PC negotiation checks made with advantage.");
+    table.addEntry("Unusual: Some other skill check can be used and would get "
+                   "advantage (Medicine for an ill opponent, arcana for one "
+                   "with an interest in the arcane, etc.)");
     return table.getRollTableEntry();
 
 }
