@@ -8,9 +8,10 @@ OpponentAI::OpponentAI()
 QString OpponentAI::choseFullAi()
 {
     QString reaction = "Reaction: " + checkReaction();
-    QString opening = "If PCs supprised: " + choseOpeningTactics();
+    QString opening = "If PCs surprised: " + choseOpeningTactics();
     QString persistence = "Target Persistence: " + choseTargetPersistence();
     QString focus = "Focus: " + choseFocus();
+    QString secondaryFocus = "Secondary: " + choseFocus();
     QString ranged = "Ranged Strategy: " + rangedStrategy();
     QString offer = "Offer: " + considerOffers();
     QString personality = "Leader Personality: " + chosePersonality();
@@ -18,7 +19,7 @@ QString OpponentAI::choseFullAi()
     QString result = reaction + "\n"
             + opening + "\n"
             + persistence + "\n"
-            + focus + "\n"
+            + focus + ", " + secondaryFocus + "\n"
             + ranged + "\n"
             + personality + "\n"
             + offer + "\n"
@@ -30,9 +31,9 @@ QString OpponentAI::choseFullAi()
 QString OpponentAI::checkReaction()
 {
     RandomTable table;
-    table.addEntry("Immedate attack", 4);
-    table.addEntry("Hostile, possible attack", 3);
-    table.addEntry("Uncertain, opponent confused", 3);
+    table.addEntry("Unavoidable attack", 4);
+    table.addEntry("Hostile, likely attacks but might listen", 3);
+    table.addEntry("Uncertain, opponent confused, hesitant, or threatening", 3);
     table.addEntry("No attack, opponent leaves or considers offers");
     table.addEntry("Enthusiastic Friendship");
 
@@ -49,6 +50,7 @@ QString OpponentAI::choseOpeningTactics()
                    "guard is down.");
     table.addEntry("Circle around and strike from behind after the party "
                    "enters the room.");
+    table.addEntry("Noisy opponents, no supprise.");
 
     return table.getRollTableEntry();
 }
@@ -77,7 +79,7 @@ QString OpponentAI::choseFocus()
     table.addEntry("Highest AC");
     table.addEntry("Most hp");
     table.addEntry("Divide up on party");
-    table.addEntry("");
+    table.addEntry("The closest");
 
     return table.getRollTableEntry();
 
@@ -100,9 +102,10 @@ QString OpponentAI::considerOffers()
     table.addEntry("No requirements. A disgruntled opponent purposely shirks "
                    "their duty.");
     table.addEntry("Perform a quest within the dungeon, in another direction.",
-                   2);
+                   1);
     table.addEntry("Bribe the opponents for CR + 1d6 x 10 gp from each PC.", 2);
     table.addEntry("Bribe the opponent with a magic item.");
+    table.addEntry("Impenetrable - refuses any offers and attacks.");
     return table.getRollTableEntry();
 
 }
