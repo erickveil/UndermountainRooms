@@ -17,6 +17,7 @@ public:
     static QString rangedStrategy();
     static QString considerOffers();
     static QString chosePersonality();
+    static QString opportunityPreference();
 };
 
 #endif // OPPONENTAI_H

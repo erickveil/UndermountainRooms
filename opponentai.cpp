@@ -12,6 +12,7 @@ QString OpponentAI::choseFullAi()
     QString persistence = "Target Persistence: " + choseTargetPersistence();
     QString focus = "Focus: " + choseFocus();
     QString secondaryFocus = "Secondary: " + choseFocus();
+    QString opportunityPolicy = "Opportunity policy: " + opportunityPreference();
     QString ranged = "Ranged Strategy: " + rangedStrategy();
     QString offer = "Offer: " + considerOffers();
     QString personality = "Leader Personality: " + chosePersonality();
@@ -20,6 +21,7 @@ QString OpponentAI::choseFullAi()
             + opening + "\n"
             + persistence + "\n"
             + focus + ", " + secondaryFocus + "\n"
+            + opportunityPolicy + "\n"
             + ranged + "\n"
             + personality + "\n"
             + offer + "\n"
@@ -134,4 +136,17 @@ QString OpponentAI::chosePersonality()
                    "with an interest in the arcane, etc.)");
     return table.getRollTableEntry();
 
+}
+
+QString OpponentAI::opportunityPreference()
+{
+    RandomTable table;
+    table.addEntry("Avoid attacks of opportunity if stopped.");
+    table.addEntry("Stop at intervening melee, attack, then move in, splitting"
+                   " move if necessary.");
+    table.addEntry("Disengage to get to target.");
+    table.addEntry("Dodge to get to target.");
+    table.addEntry("Dash to get to target.");
+    table.addEntry("Normal movement to target, taking on attacks.");
+    return table.getRollTableEntry();
 }
