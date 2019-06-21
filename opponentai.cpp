@@ -103,7 +103,8 @@ QString OpponentAI::considerOffers()
     RandomTable table;
     table.addEntry("No requirements. A disgruntled opponent purposely shirks "
                    "their duty.");
-    table.addEntry("Perform a quest within the dungeon, in another direction.",
+    table.addEntry("Perform a quest within the dungeon, in another direction."
+                   "\n" + choseQuest(),
                    1);
     table.addEntry("Bribe the opponents for CR + 1d6 x 10 gp from each PC.", 2);
     table.addEntry("Bribe the opponent with a magic item.");
@@ -149,4 +150,44 @@ QString OpponentAI::opportunityPreference()
     table.addEntry("Dash to get to target.");
     table.addEntry("Normal movement to target, taking on attacks.");
     return table.getRollTableEntry();
+}
+
+QString OpponentAI::choseQuest()
+{
+    // quest goal
+    RandomTable goalTable;
+    goalTable.addEntry("Kill a target");
+    goalTable.addEntry("Capture a target alive");
+    goalTable.addEntry("Find a magic item");
+    goalTable.addEntry("Mediate a situation");
+    goalTable.addEntry("Clear a branch of the dungeon");
+    goalTable.addEntry("Bring the treasure");
+    goalTable.addEntry("Escort an important person");
+    goalTable.addEntry("Smuggle a package");
+    goalTable.addEntry("Destroy a magical threat");
+    goalTable.addEntry("Obtain information from a source");
+    goalTable.addEntry("Rescue a captive");
+    goalTable.addEntry("Map a section of the dungeon");
+
+    QString goal = goalTable.getRollTableEntry();
+
+    // number of rooms
+    int numRooms = Dice::roll(1,4) + 1;
+    auto numRoomStr = QString::number(numRooms);
+
+    // difficulty
+    RandomTable difficultyTable;
+    difficultyTable.addEntry("Trivial");
+    difficultyTable.addEntry("Easy");
+    difficultyTable.addEntry("Medium");
+    difficultyTable.addEntry("Hard");
+    difficultyTable.addEntry("Deadly");
+    difficultyTable.addEntry("Extra Deadly");
+    QString difficulty = difficultyTable.getRollTableEntry();
+
+    QString quest = "Quest: " + goal + "\n"
+            + "Difficulty: " + difficulty + "\n"
+            + "Encounters: " + numRoomStr;
+
+    return quest;
 }
