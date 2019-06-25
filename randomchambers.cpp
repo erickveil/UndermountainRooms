@@ -765,25 +765,29 @@ QString RandomChambers::chamberContents(int tier)
     QString trick = TrapTables::generateTrick();
     QString complexTrap = complexTrap::generateTrap(tier);
 
-    table.addEntry("MONSTER (dominant inhabitant or " + monster + ")" , 8);
-    table.addEntry("MONSTER (dominant inhabitant or "
-                   + monster + ") with treasure" + treasure, 7);
-    table.addEntry("MONSTER (pet or allied creature): " + monster , 12);
-    table.addEntry("MONSTER (pet or allied creature) guarding treasure: "
-                   + guard + "\n" + treasure, 6);
-    table.addEntry("MONSTER (random): " + monster, 9);
-    table.addEntry("MONSTER (random) with treasure: " + monster + "\n"
-                   + treasure, 8);
-    table.addEntry("HAZARD (" + hazard + ") with incidental treasure\n"
-                   + LootTables::generateIndividualTreasure(tier), 7);
-    table.addEntry("OBSTACLE: " + obstacle, 5);
-    table.addEntry("TRAP: " + trap, 10);
-    table.addEntry("TRAP protecting treasure: " + trap + "\n" + treasure, 3);
-    table.addEntry("TRICK: " + trick, 4);
-    table.addEntry("EMPTY ROOM", 8);
-    table.addEntry("HAZARD: " + hazard, 6);
-    table.addEntry(treasure, 6);
-    table.addEntry(complexTrap);
+    // 1/3 monster
+    int monsterWeight = 5;
+    table.addEntry("MONSTER:\n" + monster , monsterWeight + 2);
+    table.addEntry("MONSTER with TREASURE:\n" + monster + "\n" + treasure, monsterWeight - 2);
+
+    // 1/3 empty
+    table.addEntry("EMPTY", 10);
+
+    // 1/6 other
+    int otherWeight = 2;
+
+    table.addEntry("TRAP:\n" + trap, otherWeight + 1);
+    table.addEntry("TRAP protecting TREASURE: " + trap + "\n" + treasure, otherWeight - 1);
+
+    // 1/6 rare
+    int lesserWeight = 1;
+    table.addEntry("HAZARD:\n" + hazard, lesserWeight);
+    table.addEntry("HAZARD with TREASURE:\n" + hazard + "\n"
+                   + LootTables::generateIndividualTreasure(tier), lesserWeight);
+    table.addEntry("OBSTACLE:\n" + obstacle, lesserWeight);
+    table.addEntry("TRICK: " + trick, lesserWeight);
+    table.addEntry(complexTrap, lesserWeight);
+    table.addEntry(treasure, lesserWeight);
 
     return table.getRollTableEntry();
 }

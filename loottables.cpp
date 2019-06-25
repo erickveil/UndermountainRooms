@@ -1359,7 +1359,7 @@ QString LootTables::generateTreasureHorde(int tier)
         hasGems = Dice::roll(1,100) < 53;
         hasArt = Dice::roll(1,100) < 41;
         hasMagic = Dice::roll(1,100) < 100-37;
-        numGems = hasGems ? Dice::roll(2,6) : 0;
+        numGems = hasGems ? Dice::roll(1,6) : 0;
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 35;
@@ -1370,7 +1370,7 @@ QString LootTables::generateTreasureHorde(int tier)
         hasGems = Dice::roll(1,100) < 40;
         hasArt = Dice::roll(1,100) < 56;
         hasMagic = Dice::roll(1,100) < 100-29;
-        numGems = hasGems ? Dice::roll(3,6) : 0;
+        numGems = hasGems ? Dice::roll(2,6) : 0;
         numArt = hasArt ? Dice::roll(2,4) : 0;
         numMagic = hasMagic ? Dice::roll(1,6) : 0;
         hasMundane = Dice::roll(1,100) < 45;
