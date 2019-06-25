@@ -1351,7 +1351,7 @@ QString LootTables::generateTreasureHorde(int tier)
     int hasCrafting = Dice::roll(1, 20) <= 7;
 
     QString treasure;
-    treasure = "TREASURE: \nCONTAINER: " + treasureContainer() + "\n"
+    treasure = "CONTAINER: " + treasureContainer() + "\n"
             + "HIDEN BY: " + treasureHiddenBy() + "\n\n"
             + "COIN: " + coin + "\n";
 
