@@ -47,7 +47,8 @@ SOURCES += main.cpp\
     spellbooks.cpp \
     onemilehex.cpp \
     wildernessgate.cpp \
-    opponentai.cpp
+    opponentai.cpp \
+    dungeonatmosphere.cpp
     nonencounters.cpp
 
 HEADERS  += mainwindow.h \
@@ -82,7 +83,8 @@ HEADERS  += mainwindow.h \
     spellbooks.h \
     onemilehex.h \
     wildernessgate.h \
-    opponentai.h
+    opponentai.h \
+    dungeonatmosphere.h
     nonencounters.h
 
 FORMS    += mainwindow.ui

@@ -389,3 +389,8 @@ void MainWindow::on_pb_ai_clicked()
 {
     ui->resultArea->setPlainText(OpponentAI::choseFullAi());
 }
+
+void MainWindow::on_pbDungoenAtmosphere_clicked()
+{
+    ui->resultArea->setPlainText(DungeonAtmosphere::generateAtmosphere());
+}

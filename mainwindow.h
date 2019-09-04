@@ -5,6 +5,7 @@
 #include <QTime>
 #include <QtGlobal>
 
+#include "dungeonatmosphere.h"
 #include "hexcrawltables.h"
 #include "complextrap.h"
 #include "loottables.h"
@@ -77,6 +78,8 @@ private slots:
     void on_pbCrawlRoom_clicked();
 
     void on_pb_ai_clicked();
+
+    void on_pbDungoenAtmosphere_clicked();
 
 private:
     Ui::MainWindow *ui;

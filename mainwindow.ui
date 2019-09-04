@@ -76,6 +76,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pbDungoenAtmosphere">
+       <property name="text">
+        <string>Dungeon Atmosphere</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="keyHex">
        <property name="text">
         <string>Hex Contents</string>
