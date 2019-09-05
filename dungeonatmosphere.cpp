@@ -33,9 +33,20 @@ QString DungeonAtmosphere::constructionMaterial()
     special.addEntry("Fused roots");
     special.addEntry("Organic, living material");
     special.addEntry("Necrotic, rotting material");
-    special.addEntry("Metal");
+
+    RandomTable metals;
+    metals.addEntry("Red, rusted iron slabs");
+    metals.addEntry("Blue-green copper patina");
+    metals.addEntry("Polished, brushed steel pannels");
+    metals.addEntry("Gold-worked polished silver");
+    metals.addEntry("Mirror-polished silver");
+    metals.addEntry("Alien, violet-hued metal");
+    metals.addEntry("Led-lined stone panels");
+
+    special.addEntry(metals.getRollTableEntry());
     special.addEntry("Strange, unnatrual stone");
     special.addEntry("Faintly glowing stone");
+    special.addEntry("Pure, elemental earth");
 
     table.addEntry(special.getRollTableEntry());
 
@@ -77,11 +88,15 @@ QString DungeonAtmosphere::constructionQuality()
     imagery.addEntry("An adventuring party's tale");
     imagery.addEntry("An artifact or item");
 
-    table.addEntry("Etched with imagery - " + imagery.getRollTableEntry());
-    table.addEntry("Relief sculpted with imagery - "
+    table.addEntry("Etched with imagery depicting "
+                   + imagery.getRollTableEntry());
+    table.addEntry("Relief sculpted with imagery depicting "
                    + imagery.getRollTableEntry());
     table.addEntry("Murals - " + imagery.getRollTableEntry());
-    table.addEntry("Etched with text - " + imagery.getRollTableEntry());
+    table.addEntry("Etched with runes or text describing "
+                   + imagery.getRollTableEntry());
+    table.addEntry("Crude, primitive paintings depicting "
+                   + imagery.getRollTableEntry());
 
     RandomTable adornments;
     adornments.addEntry("Paintings");
@@ -140,6 +155,14 @@ QString DungeonAtmosphere::generalFeature()
     table.addEntry("The air sparkles with points of light, like tiny stars");
     table.addEntry("A thin layer of slime covers everything");
     table.addEntry("Roots tangle accross the floor and hang from the ceiling");
+    table.addEntry("Filled with an obscuring mist (all visual distances "
+                   "halved)");
+    table.addEntry("Filled with a poisonous gas (poisoned effect within, and "
+                   "for 1d4 hours after)");
+    table.addEntry("Submerged");
+    table.addEntry("The air is choked with dust");
+    table.addEntry("Dull, yellow light emenates from ceiling pannel");
+    table.addEntry("Crawling with small insects");
 
     return table.getRollTableEntry();
 
