@@ -11,7 +11,8 @@ QString TrapTables::generateTrap(int tier)
     QString description;
     QString severity = trapSeverityLevel(tier);
     QString effects = trapSeverityStats(severity, tier);
-    description = trapEffects(severity, tier)
+    //description = trapEffects(severity, tier)
+    description = newTrapType()
             + ",\nTRIGGER: " + trapTrigger()
             + ".\nSEVERITY: " + severity + " " + effects
             + ".\nDISARM: " + trapDisarm();
@@ -645,5 +646,264 @@ QString TrapTables::trick()
     table.addEntry("Cursed Magic Item: " , 5);
 
     return table.getRollTableEntry();
+}
+
+QString TrapTables::newTrapType()
+{
+    RandomTable table;
+
+    table.addEntry("Trap door: " + trapDoorContent());
+    table.addEntry("Gas: " + gasType());
+    bool isCoated = Dice::roll(1,6) <= 2;
+    table.addEntry("Spikes from " + trapDirection() +
+                   (isCoated ? "; Coated with " + bladeCoating() : "") );
+    table.addEntry("Darts shoot from " + trapDirection() +
+                   (isCoated ? "; Coated with " + bladeCoating() : "")
+                   );
+    table.addEntry("Blades scythe out from " + trapDirection() +
+                   (isCoated ? "; Coated with " + bladeCoating() : "")
+                   );
+    table.addEntry("Falling Blocks");
+    table.addEntry("Net drops from above (dex save or restrained)");
+    table.addEntry("Magic beam shoots from: " + trapDirection() + "; "
+                   + beamEffect() + ". It makes an attack roll against the "
+                                    "character who triggered it.");
+    QString radius = QString::number(Dice::roll(1,6) * 5) + " foot";
+    table.addEntry(radius + " Magic cone shoots from: " + trapDirection() + "; "
+                   + beamEffect() + ". Dex save for half damage");
+    table.addEntry("Magic symbol: "
+                   + beamEffect() + ". Dex save for all in room to shield their "
+                                    "eyes and avoid effects.");
+
+    table.addEntry(radius + " radius Magic blast, centered on character who "
+                            "triggered the trap: " + beamEffect()
+                   + ". Dex save for half damage.");
+    table.addEntry("Cage drops from above");
+    table.addEntry("Room Trap: All exits blocked with " + exitBlocker()
+                   + " and " + roomTrap()
+                   );
+    table.addEntry(exitBlocker() + " blocking progress");
+    table.addEntry("Reverse gravity. Fall up for falling damage.");
+
+    return table.getRollTableEntry();
+}
+
+QString TrapTables::trapDoorContent()
+{
+    RandomTable table;
+    table.addEntry("Drops to empty shaft", 3);
+    table.addEntry("Incidental treasure: " +
+                   LootTables::generateIndividualTreasure(1));
+    bool isCoated = Dice::roll(1,6) <= 2;
+    table.addEntry("Spikes" +
+                   (isCoated ? " Coated with " + bladeCoating() : "") );
+    table.addEntry("Monster: " + trapMonster());
+    table.addEntry("Liquid: " + trapPool());
+    table.addEntry("Straight drop to next level");
+    table.addEntry("Slide to next level (no damage)");
+    table.addEntry("Teleport to another part of the dungeon and dopped to the "
+                   "floor");
+    table.addEntry("Blender blades. Roll damage twice.");
+    table.addEntry("Gravity reverses each turn. Save to escape each reversal.");
+    table.addEntry("Gas: " + gasType());
+    table.addEntry("Straw. No damage");
+
+    QString contents = table.getRollTableEntry();
+    bool isGreased = Dice::roll(1,6) <= 2;
+    if (isGreased) contents += ". Walls are greased, disadvantage to climb "
+                               "out";
+    return contents;
+
+
+}
+
+QString TrapTables::gasType()
+{
+    RandomTable table;
+
+    table.addEntry("Harmless, obscuring. All blinded in area.");
+    table.addEntry("Poisonous. Save against poison condition.");
+    table.addEntry("Blinding.");
+    table.addEntry("Smelly. Characters smell bad. Double wandering monster "
+                   "checks.");
+    table.addEntry("Choking. Save for half damage.");
+    table.addEntry("Sleep. Save or fall unconcious");
+    table.addEntry("Acid damage.");
+    table.addEntry("Flamable. Explodes if open flames are within cloud.");
+    table.addEntry("Exhausting. Take one level of exhaustion per tier.");
+    table.addEntry("Fright gas. Save against Fear condition.");
+    table.addEntry("Incapacitating. Save or can't take actions or reactions.");
+    table.addEntry("Paralyzing. Save against Paralyzed condition.");
+    table.addEntry("Petrification. Save against Petrified condition.");
+    table.addEntry("Stunning. Save against stunning condition.");
+    table.addEntry("Disease: " + trapDisease());
+
+    QString type = table.getRollTableEntry();
+    QString radius = QString::number(Dice::roll(1,6) * 5) + " foot radius";
+
+    return radius + ". " + type;
+
+}
+
+QString TrapTables::trapDirection()
+{
+    RandomTable table;
+
+    table.addEntry("the ceiling");
+    table.addEntry("the floor");
+    table.addEntry("ahead");
+    table.addEntry("behind");
+    table.addEntry("the wall");
+
+    return table.getRollTableEntry();
+}
+
+QString TrapTables::bladeCoating()
+{
+    RandomTable table;
+
+    table.addEntry("Poisonous. Save against poison condition.");
+    table.addEntry("Paralyzing poison. Save against Paralyzed condition.");
+    table.addEntry("Disease: " + trapDisease());
+
+    return table.getRollTableEntry();
+}
+
+QString TrapTables::beamEffect()
+{
+    RandomTable table;
+
+    table.addEntry("Acid Spray - armor damaged -1 AC on failed save");
+    table.addEntry("Cold Blast - movement halved on failed save");
+    table.addEntry("Fire Blast - unattended flamable items are destroyed");
+    table.addEntry("Psychic Blast - concentration checks at disadvantage");
+    table.addEntry("Necrotic Energy - those slain rise as zombies");
+    table.addEntry("Radiant Energy");
+    table.addEntry("Lightning - strikes all in a straight line from blast");
+    table.addEntry("Thunder Blast - roll for wandering monster chance");
+    table.addEntry("Force Blast - knocked back 10 feet");
+    table.addEntry("Exhausting. Take one level of exhaustion per tier.");
+    table.addEntry("Fear condition.");
+    table.addEntry("Incapacitating.");
+    table.addEntry("Paralyzing.");
+    table.addEntry("Petrification.");
+    table.addEntry("Stunning.");
+
+    return table.getRollTableEntry();
+}
+
+QString TrapTables::exitBlocker()
+{
+    RandomTable table;
+
+    table.addEntry("Solid stone slab drops from ceiling");
+    table.addEntry("Portcuillus drops from ceiling");
+    table.addEntry("Iron pannel drops from ceiling");
+    table.addEntry("Doors slam shut");
+    table.addEntry("Doors vanish behind illusion of wall");
+    table.addEntry("Room rises, Exits sink into floor");
+
+    return table.getRollTableEntry();
+
+}
+
+QString TrapTables::trapPool()
+{
+    RandomTable table;
+
+    table.addEntry("Water. Half falling damage, flames extinguished.");
+    table.addEntry("Acid. Damage every round.");
+    table.addEntry("Oil. Flames explode for extra fire damage. Climb at "
+                   "disadvantage.");
+    table.addEntry("Poisoned. Save against poison condition.");
+    table.addEntry("Diseased: " + trapDisease());
+    table.addEntry("Ofal and feces");
+    table.addEntry("Lava. Damage every round.");
+
+    return table.getRollTableEntry();
+}
+
+QString TrapTables::trapDisease()
+{
+    RandomTable table;
+
+    table.addEntry("Tetanus. Jaw and neck muscles painfully contract and "
+                   "breathing becomes difficult. Max hp and movement halved "
+                   "until cure disease.");
+    table.addEntry("Cackle Feaver. "
+                   "https://roll20.net/compendium/dnd5e/Diseases#h-Cackle%20Fever");
+    table.addEntry("Sewer Plague. "
+                   "https://roll20.net/compendium/dnd5e/Diseases#h-Sewer%20Plague");
+    table.addEntry("Sight Rot. "
+                   "https://roll20.net/compendium/dnd5e/Diseases#h-Sight%20Rot");
+    table.addEntry("Black Fly Filth Fever."
+                   "https://dandwiki.com/wiki/Black_Fly_Filth_Fever_(5e_Disease)");
+    table.addEntry("Glitch. "
+                   "https://dandwiki.com/wiki/Gliched_(5e_Disease)");
+    table.addEntry("Miners Plague."
+                   "https://dandwiki.com/wiki/Miners_Plague_(5e_Disease)");
+    table.addEntry("Necrotic Disease."
+                   "https://dandwiki.com/wiki/Necrotic_Disease_(5e_Disease)");
+    table.addEntry("Weaver's Feaver."
+                   "https://dandwiki.com/wiki/Weaver%27s_Fever_(5e_Disease)");
+
+    return table.getRollTableEntry();
+
+
+}
+
+QString TrapTables::roomTrap()
+{
+    RandomTable table;
+
+    table.addEntry("secret panels open up from " + trapDirection()
+                   + " and deposit " + trapMonster() + " into the room.");
+    table.addEntry("Room fills with fluid in several turns. Skill challenge to "
+                   "escape. " + trapPool());
+    table.addEntry("Moving dungeon section slides, rotates, or elivates. All"
+                   " exits now lead elsewhere.");
+    table.addEntry("Teleportation of all room occupants to another room.");
+    table.addEntry("Walls close in, to smash party in several turns."
+                   " Skill challenge to escape.");
+    table.addEntry("Spikes come out of entire floor: coated in "
+                   + bladeCoating());
+    table.addEntry("Complex trap. Roll initiative.");
+
+    return table.getRollTableEntry();
+}
+
+QString TrapTables::trapMonster()
+{
+    RandomTable table;
+
+    table.addEntry("Animated armor");
+    table.addEntry("Golem (type depends on tier and difficulty)");
+    table.addEntry("Flying Sword");
+    table.addEntry("Helmed Horror");
+    table.addEntry("Rug of Smothering");
+    table.addEntry("Scarecrow");
+    table.addEntry("Shield Guardian");
+    table.addEntry("Stone Golem");
+    table.addEntry("Black pudding");
+    table.addEntry("Gelatinous Cube");
+    table.addEntry("Gray Ooze");
+    table.addEntry("Ochre Jelly");
+    table.addEntry("Oblex (MTF)");
+    table.addEntry("Slitehring Tracker (VGM)");
+    table.addEntry("Bronze Scout (MTF)");
+    table.addEntry("Clockwork Dragon (AI)");
+    table.addEntry("Crawling claws");
+    table.addEntry("Skeletons");
+    table.addEntry("Zombies");
+    table.addEntry("Shadows");
+    table.addEntry("Ghouls");
+    table.addEntry("Specters");
+    table.addEntry("Ghasts");
+    table.addEntry("Dust Mephit");
+    table.addEntry("Water Weird");
+    table.addEntry("Earth Elemental");
+
+    return table.getRollTableEntry();
+
 }
 

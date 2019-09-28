@@ -25,6 +25,18 @@ public:
     static QString generateTrick();
     static QString trickObject();
     static QString trick();
+
+    static QString newTrapType();
+    static QString trapDoorContent();
+    static QString gasType();
+    static QString trapDirection();
+    static QString bladeCoating();
+    static QString beamEffect();
+    static QString exitBlocker();
+    static QString roomTrap();
+    static QString trapMonster();
+    static QString trapPool();
+    static QString trapDisease();
 };
 
 #endif // TRAPTABLES_H
