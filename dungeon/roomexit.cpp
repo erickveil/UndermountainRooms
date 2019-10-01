@@ -47,7 +47,7 @@ QString roomExit::getExitType(int tier)
 
     int trapChance = 5;
     bool isTrapped = Dice::roll(1,100) <= trapChance;
-    QString trapSeverity = TrapTables::trapSeverityLevel(tier);
+    QString trapSeverity = TrapTables::trapSeverityLevel();
     QString trapStats = TrapTables::trapSeverityStats(trapSeverity, tier);
     QString trapTrigger = TrapTables::doorTrapTrigger();
     QString trapEffect = TrapTables::trapEffects(trapSeverity, tier);

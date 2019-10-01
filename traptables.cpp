@@ -9,7 +9,7 @@ TrapTables::TrapTables()
 QString TrapTables::generateTrap(int tier)
 {
     QString description;
-    QString severity = trapSeverityLevel(tier);
+    QString severity = trapSeverityLevel();
     QString effects = trapSeverityStats(severity, tier);
     //description = trapEffects(severity, tier)
     description = newTrapType()
@@ -20,9 +20,8 @@ QString TrapTables::generateTrap(int tier)
     return description;
 }
 
-QString TrapTables::trapSeverityLevel(int tier)
+QString TrapTables::trapSeverityLevel()
 {
-    ++tier;
     RandomTable table;
     table.addEntry("Setback", 2);
     table.addEntry("Dangerous", 3);
@@ -74,6 +73,62 @@ QString TrapTables::trapSeverityStats(QString severity, int tier)
 
         detail = " DC: " + dc + ", attk: " + att + ", dmg: " + damage;
         return detail;
+    }
+}
+
+QString TrapTables::trapDc(QString severity)
+{
+    if (severity == "Setback") {
+        return QString::number(Dice::randomNumber(10, 11));
+    }
+
+    else if (severity == "Dangerous") {
+        return QString::number(Dice::randomNumber(12, 15));
+    }
+
+    else {
+        return QString::number(Dice::randomNumber(16, 20));
+    }
+}
+
+QString TrapTables::trapAttackBonus(QString severity)
+{
+    QString att;
+
+    if (severity == "Setback") {
+        return QString::number(Dice::randomNumber(3, 5));
+    }
+
+    else if (severity == "Dangerous") {
+        return QString::number(Dice::randomNumber(6, 8));
+    }
+
+    else {
+        return QString::number(Dice::randomNumber(9, 12));
+    }
+}
+
+QString TrapTables::trapDamage(QString severity, int tier)
+{
+    if (severity == "Setback") {
+        if (tier == 1) { return "1d10"; }
+        else if (tier == 2) { return "2d10"; }
+        else if (tier == 3) { return "4d10"; }
+        else { return "10d10"; }
+    }
+
+    else if (severity == "Dangerous") {
+        if (tier == 1) { return "2d10"; }
+        else if (tier == 2) { return "4d10"; }
+        else if (tier == 3) { return "10d10"; }
+        else { return "18d10"; }
+    }
+
+    else {
+        if (tier == 1) { return "4d10"; }
+        else if (tier == 2) { return "10d10"; }
+        else if (tier == 3) { return "18d10"; }
+        else { return "24d10"; }
     }
 }
 
@@ -684,6 +739,10 @@ QString TrapTables::newTrapType()
                    );
     table.addEntry(exitBlocker() + " blocking progress");
     table.addEntry("Reverse gravity. Fall up for falling damage.");
+    table.addEntry("Spears shoot from " + trapDirection() +
+                   (isCoated ? "; Coated with " + bladeCoating() : "") );
+    table.addEntry("Arrows shoot from " + trapDirection() +
+                   (isCoated ? "; Coated with " + bladeCoating() : "") );
 
     return table.getRollTableEntry();
 }

@@ -15,6 +15,7 @@ CONFIG += c++14
 
 
 SOURCES += main.cpp\
+    complextrapimproved.cpp \
         mainwindow.cpp \
     tableentry.cpp \
     randomtable.cpp \
@@ -52,6 +53,7 @@ SOURCES += main.cpp\
     nonencounters.cpp
 
 HEADERS  += mainwindow.h \
+    complextrapimproved.h \
     tableentry.h \
     randomtable.h \
     monstertable.h \

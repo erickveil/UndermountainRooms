@@ -7,13 +7,13 @@ complexTrap::complexTrap()
 
 QString complexTrap::generateTrap(int tier)
 {
-    QString severity = TrapTables::trapSeverityLevel(tier);
+    QString severity = TrapTables::trapSeverityLevel();
     QString desc = "COMPLEX TRAP:\n"
                    "Threat level: ";
     desc += severity
             + "\n\nTrigger: " + trigger(tier)
             + "\n\nEffect Chain: " + effectDivision()
-            + "\n\nInitiative: " + initiative(tier)
+            + "\n\nInitiative: " + initiative()
             + "\n\nActive Elements:\n" + ActiveElements(severity, tier)
             + "Constant Elements: " + ConstantElements(severity, tier)
             + "\n\nXP: " + Experience(tier);
@@ -66,11 +66,10 @@ QString complexTrap::trigger(int tier)
     return TrapTables::trapTrigger();
 }
 
-QString complexTrap::initiative(int tier)
+QString complexTrap::initiative()
 {
-    ++tier;
     RandomTable table;
-    table.addEntry("initiative count 10");
+    table.addEntry("initiative count 10 (chamber sealed on supprise round)");
     table.addEntry("initiative count 20");
     table.addEntry("initiatie counts 10 and 20");
     return table.getRollTableEntry();

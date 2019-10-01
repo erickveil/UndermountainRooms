@@ -14,7 +14,7 @@ public:
 
     static QString effectDivision();
     static QString trigger(int tier);
-    static QString initiative(int tier);
+    static QString initiative();
     static QString ActiveElements(QString severity, int tier);
     static QString DynamicElements(int tier);
     static QString ConstantElements(QString severity, int tier);

@@ -12,8 +12,12 @@ public:
     TrapTables();
     static QString generateTrap(int tier = 1);
 
-    static QString trapSeverityLevel(int tier);
+    static QString trapSeverityLevel();
     static QString trapSeverityStats(QString severity, int tier);
+
+    static QString trapDc(QString severity);
+    static QString trapAttackBonus(QString severity);
+    static QString trapDamage(QString severity, int tier);
 
     static QString trapSpell(QString severity, int tier);
 
