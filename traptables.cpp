@@ -821,7 +821,7 @@ QString TrapTables::bladeCoating()
 {
     RandomTable table;
 
-    table.addEntry("Poisonous. Save against poison condition.");
+    table.addEntry("Poison. Save against poison condition.");
     table.addEntry("Paralyzing poison. Save against Paralyzed condition.");
     table.addEntry("Disease: " + trapDisease());
 

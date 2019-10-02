@@ -8,6 +8,7 @@
 #include "dungeonatmosphere.h"
 #include "hexcrawltables.h"
 #include "complextrap.h"
+#include "complextrapimproved.h"
 #include "loottables.h"
 #include "randomchambers.h"
 #include "monstertable.h"

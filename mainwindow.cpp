@@ -312,7 +312,8 @@ void MainWindow::on_keyHex_clicked()
 void MainWindow::on_butComplexTrap_clicked()
 {
     int tier = ui->tierSelect->value();
-    ui->resultArea->setPlainText(complexTrapTables.generateTrap(tier));
+    //ui->resultArea->setPlainText(complexTrapTables.generateTrap(tier));
+    ui->resultArea->setPlainText(ComplexTrapImproved::createComplexTrap(tier));
 
 }
 

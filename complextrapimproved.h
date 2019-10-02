@@ -23,9 +23,20 @@ public:
 
     static::QString componentDamageThreshold(int tier);
 
-    static::QString maintainancePanelForm();
+    static::QString maintainancePanelForm(QString severity, int tier);
 
     static::QString targetingControlForm();
+
+    static::QString controlEffect(QString severity, int tier);
+
+    static::QString controlDescription();
+
+    static::QString targetedComponents(QString severity, int tier);
+
+    static::QString aoeComponents(QString severity, int tier);
+
+    static::QString roomComponent();
+
 };
 
 #endif // COMPLEXTRAPIMPROVED_H
