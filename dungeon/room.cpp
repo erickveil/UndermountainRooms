@@ -81,8 +81,48 @@ QString room::describeCrawlRoom(int tier, QString dungeonType)
         desc += "-------------\n";
     }
     else {
-        // TODO: allow for generating room type by dropdown selection
-        desc += RandomChambers::generalDungeonRoomType() + "\n";
+        QString roomName;
+        if (dungeonType == "General") {
+            roomName = RandomChambers::generalDungeonRoomType();
+        }
+        else if (dungeonType == "Death Trap") {
+            roomName = RandomChambers::deathTrapRoomType();
+        }
+        else if (dungeonType == "Lair") {
+            roomName = RandomChambers::lairRoomType();
+        }
+        else if (dungeonType == "Maze") {
+            roomName = RandomChambers::mazeRoomType();
+        }
+        else if (dungeonType == "Planar Gate") {
+            roomName = RandomChambers::planarGateRoomType();
+        }
+        else if (dungeonType == "Stronghold") {
+            roomName = RandomChambers::strongholdRoom();
+        }
+        else if (dungeonType == "Temple") {
+            roomName = RandomChambers::templeRoom();
+        }
+        else if (dungeonType == "Tomb") {
+            roomName = RandomChambers::tombRoom();
+        }
+        else if (dungeonType == "Treasure Vault") {
+            roomName = RandomChambers::treasureVaultRoom();
+        }
+        else if (dungeonType == "Mine") {
+            roomName = RandomChambers::mineRoomType();
+        }
+        else if (dungeonType == "Library") {
+            roomName = RandomChambers::libraryRoom();
+        }
+        else if (dungeonType == "Caverns") {
+            roomName = RandomChambers::cavern();
+        }
+        else {
+            roomName = RandomChambers::generalDungeonRoomType();
+        }
+
+        desc += roomName + "\n";
         desc += "-------------\n";
         desc += "SIZE: " + roomSize.getRollTableEntry()
                 + " " + roomShape.getRollTableEntry()
