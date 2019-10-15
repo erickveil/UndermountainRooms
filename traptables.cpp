@@ -11,8 +11,10 @@ QString TrapTables::generateTrap(int tier)
     QString description;
     QString severity = trapSeverityLevel();
     QString effects = trapSeverityStats(severity, tier);
+    // old description
     //description = trapEffects(severity, tier)
-    description = newTrapType()
+    // new description
+    description = newTrapType(severity, tier)
             + ",\nTRIGGER: " + trapTrigger()
             + ".\nSEVERITY: " + severity + " " + effects
             + ".\nDISARM: " + trapDisarm();
@@ -703,7 +705,7 @@ QString TrapTables::trick()
     return table.getRollTableEntry();
 }
 
-QString TrapTables::newTrapType()
+QString TrapTables::newTrapType(QString severity, int tier)
 {
     RandomTable table;
 
@@ -734,10 +736,11 @@ QString TrapTables::newTrapType()
                             "triggered the trap: " + beamEffect()
                    + ". Dex save for half damage.");
     table.addEntry("Cage drops from above");
-    table.addEntry("Room Trap: All exits blocked with " + exitBlocker()
+    table.addEntry("Room Trap: All exits blocked with "
+                   + exitBlocker(severity, tier, true)
                    + " and " + roomTrap()
                    );
-    table.addEntry(exitBlocker() + " blocking progress");
+    table.addEntry(exitBlocker(severity, tier, false) + " blocking progress");
     table.addEntry("Reverse gravity. Fall up for falling damage.");
     table.addEntry("Spears shoot from " + trapDirection() +
                    (isCoated ? "; Coated with " + bladeCoating() : "") );
@@ -851,9 +854,12 @@ QString TrapTables::beamEffect()
     return table.getRollTableEntry();
 }
 
-QString TrapTables::exitBlocker()
+QString TrapTables::exitBlocker(QString severity, int tier, bool isHardBlock)
 {
     RandomTable table;
+    QString dmg = trapDamage(severity, tier);
+    QString acdc = trapDc(severity);
+
 
     table.addEntry("Solid stone slab drops from ceiling");
     table.addEntry("Portcuillus drops from ceiling");
@@ -861,6 +867,24 @@ QString TrapTables::exitBlocker()
     table.addEntry("Doors slam shut");
     table.addEntry("Doors vanish behind illusion of wall");
     table.addEntry("Room rises, Exits sink into floor");
+
+    if (isHardBlock) { return table.getRollTableEntry(); }
+
+    // soft blocks
+    table.addEntry("Blades spin out around exit: " + dmg
+                   + " slashing damage. DC " + acdc + " dex save for half");
+    table.addEntry("Ice wall. AC " + acdc + ", 30 hp, " + dmg
+                   + " cold damage in area after destroyed. DC " + acdc
+                   + " con save for half");
+    table.addEntry("Fire wall. " + dmg
+                   + " fire damage to pass through. DC "  + acdc
+                   + " dex save for half");
+    table.addEntry("Invisible force wall. " + dmg
+                   + " force damage. DC " + acdc + " dex save for half");
+    table.addEntry("Lightning wall." + dmg
+                   + " lightning damage. DC " + acdc + " dex save for half");
+    table.addEntry("Psychic barrier. " + dmg
+                       + " psychic damage. DC " + acdc + " int save for half");
 
     return table.getRollTableEntry();
 
@@ -926,9 +950,14 @@ QString TrapTables::roomTrap()
                    " Skill challenge to escape.");
     table.addEntry("Spikes come out of entire floor: coated in "
                    + bladeCoating());
-    table.addEntry("Complex trap. Roll initiative.");
+    table.addEntry("Oven room heats up: 1d8 fire damage per round");
+    table.addEntry("Icebox room freezes occupants: 1d8 cold damage per round");
+    table.addEntry("Tesla chamber: 1d8 lightning damage per round");
+    table.addEntry("Necrotic chamber: 1d8 necrotic damage per round");
+    table.addEntry("High-pitched sound: 1d8 thunder damage per round");
 
     return table.getRollTableEntry();
+
 }
 
 QString TrapTables::trapMonster()

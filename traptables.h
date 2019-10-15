@@ -30,13 +30,13 @@ public:
     static QString trickObject();
     static QString trick();
 
-    static QString newTrapType();
+    static QString newTrapType(QString severity, int tier);
     static QString trapDoorContent();
     static QString gasType();
     static QString trapDirection();
     static QString bladeCoating();
     static QString beamEffect();
-    static QString exitBlocker();
+    static QString exitBlocker(QString severity, int tier, bool isHardBlock);
     static QString roomTrap();
     static QString trapMonster();
     static QString trapPool();
