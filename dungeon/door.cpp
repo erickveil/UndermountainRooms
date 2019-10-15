@@ -153,7 +153,9 @@ QString door::Doorlock(int tier)
     QString lockTypeResult = lockType.getRollTableEntry() + ", DC: "
             + QString::number(lockDc);
 
-    doorLock.addEntry("unlocked", 32);
+    doorLock.addEntry("closed, unlocked", 32);
+    doorLock.addEntry("open");
+    doorLock.addEntry("destroyed");
     doorLock.addEntry("barred on opposite side", 8);
     doorLock.addEntry("barred on this side", 4);
     doorLock.addEntry("locked: " + lockTypeResult, 16);
@@ -205,14 +207,40 @@ QString door::RandomDoor(int tier)
     table.addEntry("Wooden door; " + doorLockResult + trap, 16);
     table.addEntry("Archway; " + trap, 8);
     table.addEntry("Stone door; " + doorLockResult + trap, 8);
-    table.addEntry("Iron door; " + doorLockResult + trap, 4);
-    table.addEntry("Destroyed Wooden Door", 2);
-    table.addEntry("Destroyed Stone Door");
-    table.addEntry("Destroyed Iron Door");
-    table.addEntry("Destroyed Secret Door");
+    table.addEntry("Iron door; " + doorLockResult + trap);
+
     table.addEntry("Curtain");
     table.addEntry("Mimic (door)");
-    return table.getRollTableEntry();
+    table.addEntry("Portcullis; " + doorLockResult + trap, 4);
+
+    RandomTable operation;
+    operation.addEntry("Knob", 4);
+    operation.addEntry("Handle", 4);
+    operation.addEntry("Push plate");
+    operation.addEntry("No knob: Opens when approached");
+    operation.addEntry("Wheel", 2);
+    operation.addEntry("Lever", 2);
+    operation.addEntry("Pull ring", 4);
+    operation.addEntry("Door knocker");
+    operation.addEntry("Button");
+    operation.addEntry("Secret activator");
+
+    RandomTable pushPull;
+    pushPull.addEntry("Push", 4);
+    pushPull.addEntry("Pull", 4);
+    pushPull.addEntry("Push/Pull");
+    pushPull.addEntry("Hidden hinges");
+    pushPull.addEntry("Slides");
+    pushPull.addEntry("Rotates");
+
+    QString desc = table.getRollTableEntry();
+
+    if (!(desc.contains("Arch") || desc.contains("Curtain"))) {
+        desc += " - " + operation.getRollTableEntry() + " ("
+                + pushPull.getRollTableEntry() + ")";
+    }
+
+    return desc;
 }
 
 int door::getLockDc(int tier)
