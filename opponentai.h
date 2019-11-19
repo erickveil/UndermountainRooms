@@ -19,6 +19,7 @@ public:
     static QString chosePersonality();
     static QString opportunityPreference();
     static QString choseQuest();
+    static QString fatality();
 };
 
 #endif // OPPONENTAI_H

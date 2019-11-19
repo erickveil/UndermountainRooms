@@ -16,6 +16,7 @@ QString OpponentAI::choseFullAi()
     QString ranged = "Ranged Strategy: " + rangedStrategy();
     QString offer = "Offer: " + considerOffers();
     QString personality = "Leader Personality: " + chosePersonality();
+    QString kill = "Fatality: " + fatality();
 
     QString result = reaction + "\n"
             + opening + "\n"
@@ -25,6 +26,7 @@ QString OpponentAI::choseFullAi()
             + ranged + "\n"
             + personality + "\n"
             + offer + "\n"
+            + kill + "\n"
             ;
 
     return result;
@@ -190,4 +192,19 @@ QString OpponentAI::choseQuest()
             + "Encounters: " + numRoomStr;
 
     return quest;
+}
+
+QString OpponentAI::fatality()
+{
+    RandomTable table;
+    table.addEntry("Typical: Take PC to 0 hp then focus on new target.", 8);
+    table.addEntry("Inpuisitor: Attack to subdue all targets and take prisoners for questioning after "
+                   "the fight.", 2);
+    table.addEntry("Kidnappers: Try to escape with fallen PCs. Possibly to ransom them back later.", 2);
+    table.addEntry("Hostage Negotiator: Grapple felled PCs and use them as leverage atainst the "
+                   "surviving party to surrender or perform quest/bribe/leave.", 2);
+    table.addEntry("Thief: Steals and item from the felled PC and attempts to make off with it.", 2);
+    table.addEntry("Murderer: Takes one hit on the fallen PC if they haven't made a death save yet, "
+                   "increasing the danger that they will die soon.");
+    return table.getRollTableEntry();
 }
