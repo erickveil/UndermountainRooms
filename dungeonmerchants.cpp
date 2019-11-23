@@ -62,6 +62,28 @@ QString DungeonMerchants::inventory(int tier)
         inv += "Scrolls:\n" + LootTables::generateSpellbook(tier) + "\n";
     }
 
+    bool hasTresureMap = Dice::roll(1, 3) < 3;
+    RandomTable exploredTable;
+    exploredTable.addEntry("Off of an already explored area.");
+    exploredTable.addEntry("In a yet to be explored area.");
+    RandomTable difficultyTable;
+    difficultyTable.addEntry("Medium");
+    difficultyTable.addEntry("Hard");
+    difficultyTable.addEntry("Deadly");
+    RandomTable guardTable;
+    guardTable.addEntry("Simple Trap");
+    guardTable.addEntry("Complex Trap");
+    guardTable.addEntry(difficultyTable.getRollTableEntry() + " Encounter");
+    guardTable.addEntry("Nothing");
+    QString distance = QString::number(Dice::roll(2, 4));
+
+    if (hasTresureMap) {
+        inv += "Treaure map to new secret door in this dungeon.\n"
+                + exploredTable.getRollTableEntry() + "\n"
+                + "Protected by: " + guardTable.getRollTableEntry() + "\n"
+                + distance + " rooms away.";
+    }
+
     bool hasMinorMagic = Dice::roll(1, 3) == 1;
     if (hasMinorMagic) {
         int numMinor = Dice::roll(1, 3);
