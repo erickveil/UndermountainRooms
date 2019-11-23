@@ -1,6 +1,7 @@
 #ifndef RANDOMCHAMBERS_H
 #define RANDOMCHAMBERS_H
 
+#include "dungeonmerchants.h"
 #include "monstertable.h"
 #include "loottables.h"
 #include "traptables.h"

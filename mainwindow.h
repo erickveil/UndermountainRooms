@@ -9,6 +9,7 @@
 #include "hexcrawltables.h"
 #include "complextrap.h"
 #include "complextrapimproved.h"
+#include "dungeonmerchants.h"
 #include "loottables.h"
 #include "randomchambers.h"
 #include "monstertable.h"
@@ -81,6 +82,8 @@ private slots:
     void on_pb_ai_clicked();
 
     void on_pbDungoenAtmosphere_clicked();
+
+    void on_pb_dungeonMerch_clicked();
 
 private:
     Ui::MainWindow *ui;

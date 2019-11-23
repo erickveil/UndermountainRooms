@@ -395,3 +395,12 @@ void MainWindow::on_pbDungoenAtmosphere_clicked()
 {
     ui->resultArea->setPlainText(DungeonAtmosphere::generateAtmosphere());
 }
+
+void MainWindow::on_pb_dungeonMerch_clicked()
+{
+    int minTier = ui->tierSelect->value();
+    int maxTier = ui->sbMaxTier->value();
+    int tier = minTier > maxTier ? minTier : maxTier;
+    QString merch = DungeonMerchants::generateMerchant(tier);
+    ui->resultArea->setPlainText(merch);
+}

@@ -313,6 +313,8 @@ QString NpcTables::rareRace()
 
     table.addEntry(element.getRollTableEntry() + " Gensai (EE)");
     table.addEntry("Goliath (EE)");
+    table.addEntry("Warforged");
+    table.addEntry("Tortle");
 
     return table.getRollTableEntry();
 }

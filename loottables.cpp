@@ -1188,7 +1188,6 @@ QString LootTables::adventureGear(int tier)
     table.addEntry(num + " torches");
     table.addEntry(num + " candles");
 
-
     RandomTable trade;
     trade.addEntry(num+ " lbs of wheat");
     trade.addEntry(num+ " lbs of flour");
@@ -1210,8 +1209,10 @@ QString LootTables::adventureGear(int tier)
     table.addEntry("vial of basic poison");
     table.addEntry("Piton");
     table.addEntry("10 foot pole");
-    table.addEntry("Potion of healing");
+    table.addEntry("Potion of healing", 2);
     table.addEntry("1 day of rations");
+    QString charges = QString::number(Dice::roll(1,3));
+    table.addEntry("Soul coin with " + charges + " charge");
 
     num = QString::number(Dice::roll(1, 10) * 10);
     table.addEntry(num + " feet of hemp rope");

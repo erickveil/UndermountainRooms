@@ -768,7 +768,17 @@ QString RandomChambers::chamberContents(int tier)
     // 1/3 monster
     int monsterWeight = 5;
     table.addEntry("MONSTER:\n" + monster , monsterWeight + 2);
-    table.addEntry("MONSTER with TREASURE:\n" + monster + "\n" + treasure, monsterWeight - 2);
+
+    int isMerch = Dice::roll(1, 6) == 1;
+    if (isMerch) {
+        table.addEntry("MERCHANT:\n"
+                    + DungeonMerchants::generateMerchant(tier),
+                       monsterWeight - 2);
+    }
+    else {
+        table.addEntry("MONSTER with TREASURE:\n" + monster + "\n"
+                       + treasure, monsterWeight - 2);
+    }
 
     // 1/3 empty
     table.addEntry("EMPTY", 10);

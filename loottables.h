@@ -6,7 +6,7 @@
 
 class LootTables
 {
-    const static bool _lowHauls = true;
+    const static bool _lowHauls = false;
 public:
     LootTables();
     static QString generateSpellbook(int tier);

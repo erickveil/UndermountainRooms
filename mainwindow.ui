@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>528</width>
-    <height>818</height>
+    <height>840</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,7 @@
       <x>10</x>
       <y>50</y>
       <width>202</width>
-      <height>761</height>
+      <height>781</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -289,6 +289,13 @@
       <widget class="QPushButton" name="genNpcParty">
        <property name="text">
         <string>NPC Party</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pb_dungeonMerch">
+       <property name="text">
+        <string>Dungeon Mercdhant</string>
        </property>
       </widget>
      </item>
