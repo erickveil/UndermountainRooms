@@ -41,6 +41,7 @@ public:
     static QString trapMonster();
     static QString trapPool();
     static QString trapDisease();
+    static QString polymorphForm();
 };
 
 #endif // TRAPTABLES_H

@@ -799,6 +799,8 @@ QString TrapTables::gasType()
     table.addEntry("Petrification. Save against Petrified condition.");
     table.addEntry("Stunning. Save against stunning condition.");
     table.addEntry("Disease: " + trapDisease());
+    table.addEntry("Confusion. Save or attack random nearby creature or PC.");
+    table.addEntry("Polymorph: " + polymorphForm());
 
     QString type = table.getRollTableEntry();
     QString radius = QString::number(Dice::roll(1,6) * 5) + " foot radius";
@@ -850,6 +852,8 @@ QString TrapTables::beamEffect()
     table.addEntry("Paralyzing.");
     table.addEntry("Petrification.");
     table.addEntry("Stunning.");
+    table.addEntry("Confusion - Save or attack random creature or PC.");
+    table.addEntry("Polymorph - " + polymorphForm());
 
     return table.getRollTableEntry();
 }
@@ -933,6 +937,32 @@ QString TrapTables::trapDisease()
     return table.getRollTableEntry();
 
 
+}
+
+QString TrapTables::polymorphForm()
+{
+    RandomTable table;
+    table.addEntry("Mouse");
+    table.addEntry("Frog");
+    table.addEntry("Goblin");
+    table.addEntry("Orc");
+    table.addEntry("Troll");
+    table.addEntry("Monkey");
+    table.addEntry("Snake (non poisonous)");
+    table.addEntry("Ogre");
+    table.addEntry("Dretch");
+    table.addEntry("Lemure");
+    table.addEntry("Nupperibo");
+    table.addEntry("Goat");
+    table.addEntry("Gray Ooze");
+    table.addEntry("Black Pudding");
+    table.addEntry("Giant");
+    table.addEntry("Fish");
+    table.addEntry("Pig");
+    table.addEntry("Giant Rat");
+    table.addEntry("Potted Plant");
+
+    return table.getRollTableEntry();
 }
 
 QString TrapTables::roomTrap()
