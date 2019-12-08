@@ -769,7 +769,7 @@ QString RandomChambers::chamberContents(int tier)
     int monsterWeight = 5;
     table.addEntry("MONSTER:\n" + monster , monsterWeight + 2);
 
-    int isMerch = Dice::roll(1, 6) == 1;
+    int isMerch = Dice::roll(1, 20) == 1;
     if (isMerch) {
         table.addEntry("MERCHANT:\n"
                     + DungeonMerchants::generateMerchant(tier),
